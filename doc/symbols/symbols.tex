@@ -1,0 +1,4123 @@
+
+\section{array}
+
+\begin{function}{adjust-array}{array dimensions \key (element-type (array-element-type array))
+ (initial-element nil initial-element-p)
+ (initial-contents nil initial-contents-p) fill-pointer displaced-to
+ displaced-index-offset}{}
+  Adjust ARRAY's dimensions to the given DIMENSIONS and stuff.
+\end{function}
+
+\begin{function}{adjustable-array-p}{array}{}
+  Return T if (ADJUST-ARRAY ARRAY...) would return an array identical
+   to the argument, this happens for complex arrays.
+\end{function}
+
+\begin{accessor}{aref}{array \rest subscripts}{}
+  Return the element of the ARRAY specified by the SUBSCRIPTS.
+\end{accessor}
+
+\begin{class}{array}{}{}
+  
+\end{class}
+
+\begin{function}{array-dimension}{array axis-number}{}
+  Return the length of dimension AXIS-NUMBER of ARRAY.
+\end{function}
+
+\begin{constant}{array-dimension-limit}{}{}
+  
+\end{constant}
+
+\begin{function}{array-dimensions}{array}{}
+  Return a list whose elements are the dimensions of the array
+\end{function}
+
+\begin{function}{array-displacement}{array}{}
+  Return the values of :DISPLACED-TO and :DISPLACED-INDEX-offset
+   options to MAKE-ARRAY, or NIL and 0 if not a displaced array.
+\end{function}
+
+\begin{function}{array-element-type}{array}{}
+  Return the type of the elements of the array
+\end{function}
+
+\begin{function}{array-has-fill-pointer-p}{array}{}
+  Return T if the given ARRAY has a fill pointer, or NIL otherwise.
+\end{function}
+
+\begin{function}{array-in-bounds-p}{array \rest subscripts}{}
+  Return T if the SUBSCIPTS are in bounds for the ARRAY, NIL otherwise.
+\end{function}
+
+\begin{function}{array-rank}{array}{}
+  Return the number of dimensions of ARRAY.
+\end{function}
+
+\begin{constant}{array-rank-limit}{}{}
+  
+\end{constant}
+
+\begin{function}{array-row-major-index}{array \rest subscripts}{}
+  
+\end{function}
+
+\begin{function}{array-total-size}{array}{}
+  Return the total number of elements in the Array.
+\end{function}
+
+\begin{constant}{array-total-size-limit}{}{}
+  
+\end{constant}
+
+\begin{function}{arrayp}{object}{}
+  Return true if OBJECT is an ARRAY, and NIL otherwise.
+\end{function}
+
+\begin{accessor}{bit}{bit-array \rest subscripts}{}
+  Return the bit from the BIT-ARRAY at the specified SUBSCRIPTS.
+\end{accessor}
+
+\begin{function}{bit-and}{bit-array-1 bit-array-2 \op result-bit-array}{}
+  Perform a bit-wise LOGAND on the elements of BIT-ARRAY-1 and BIT-ARRAY-2,
+  putting the results in RESULT-BIT-ARRAY. If RESULT-BIT-ARRAY is T,
+  BIT-ARRAY-1 is used. If RESULT-BIT-ARRAY is NIL or omitted, a new array is
+  created. All the arrays must have the same rank and dimensions.
+\end{function}
+
+\begin{function}{bit-andc1}{bit-array-1 bit-array-2 \op result-bit-array}{}
+  Perform a bit-wise LOGANDC1 on the elements of BIT-ARRAY-1 and BIT-ARRAY-2,
+  putting the results in RESULT-BIT-ARRAY. If RESULT-BIT-ARRAY is T,
+  BIT-ARRAY-1 is used. If RESULT-BIT-ARRAY is NIL or omitted, a new array is
+  created. All the arrays must have the same rank and dimensions.
+\end{function}
+
+\begin{function}{bit-andc2}{bit-array-1 bit-array-2 \op result-bit-array}{}
+  Perform a bit-wise LOGANDC2 on the elements of BIT-ARRAY-1 and BIT-ARRAY-2,
+  putting the results in RESULT-BIT-ARRAY. If RESULT-BIT-ARRAY is T,
+  BIT-ARRAY-1 is used. If RESULT-BIT-ARRAY is NIL or omitted, a new array is
+  created. All the arrays must have the same rank and dimensions.
+\end{function}
+
+\begin{function}{bit-eqv}{bit-array-1 bit-array-2 \op result-bit-array}{}
+  Perform a bit-wise LOGEQV on the elements of BIT-ARRAY-1 and BIT-ARRAY-2,
+  putting the results in RESULT-BIT-ARRAY. If RESULT-BIT-ARRAY is T,
+  BIT-ARRAY-1 is used. If RESULT-BIT-ARRAY is NIL or omitted, a new array is
+  created. All the arrays must have the same rank and dimensions.
+\end{function}
+
+\begin{function}{bit-ior}{bit-array-1 bit-array-2 \op result-bit-array}{}
+  Perform a bit-wise LOGIOR on the elements of BIT-ARRAY-1 and BIT-ARRAY-2,
+  putting the results in RESULT-BIT-ARRAY. If RESULT-BIT-ARRAY is T,
+  BIT-ARRAY-1 is used. If RESULT-BIT-ARRAY is NIL or omitted, a new array is
+  created. All the arrays must have the same rank and dimensions.
+\end{function}
+
+\begin{function}{bit-nand}{bit-array-1 bit-array-2 \op result-bit-array}{}
+  Perform a bit-wise LOGNAND on the elements of BIT-ARRAY-1 and BIT-ARRAY-2,
+  putting the results in RESULT-BIT-ARRAY. If RESULT-BIT-ARRAY is T,
+  BIT-ARRAY-1 is used. If RESULT-BIT-ARRAY is NIL or omitted, a new array is
+  created. All the arrays must have the same rank and dimensions.
+\end{function}
+
+\begin{function}{bit-nor}{bit-array-1 bit-array-2 \op result-bit-array}{}
+  Perform a bit-wise LOGNOR on the elements of BIT-ARRAY-1 and BIT-ARRAY-2,
+  putting the results in RESULT-BIT-ARRAY. If RESULT-BIT-ARRAY is T,
+  BIT-ARRAY-1 is used. If RESULT-BIT-ARRAY is NIL or omitted, a new array is
+  created. All the arrays must have the same rank and dimensions.
+\end{function}
+
+\begin{function}{bit-not}{bit-array \op result-bit-array}{}
+  Performs a bit-wise logical NOT on the elements of BIT-ARRAY,
+  putting the results in RESULT-BIT-ARRAY. If RESULT-BIT-ARRAY is T,
+  BIT-ARRAY is used. If RESULT-BIT-ARRAY is NIL or omitted, a new array is
+  created. Both arrays must have the same rank and dimensions.
+\end{function}
+
+\begin{function}{bit-orc1}{bit-array-1 bit-array-2 \op result-bit-array}{}
+  Perform a bit-wise LOGORC1 on the elements of BIT-ARRAY-1 and BIT-ARRAY-2,
+  putting the results in RESULT-BIT-ARRAY. If RESULT-BIT-ARRAY is T,
+  BIT-ARRAY-1 is used. If RESULT-BIT-ARRAY is NIL or omitted, a new array is
+  created. All the arrays must have the same rank and dimensions.
+\end{function}
+
+\begin{function}{bit-orc2}{bit-array-1 bit-array-2 \op result-bit-array}{}
+  Perform a bit-wise LOGORC2 on the elements of BIT-ARRAY-1 and BIT-ARRAY-2,
+  putting the results in RESULT-BIT-ARRAY. If RESULT-BIT-ARRAY is T,
+  BIT-ARRAY-1 is used. If RESULT-BIT-ARRAY is NIL or omitted, a new array is
+  created. All the arrays must have the same rank and dimensions.
+\end{function}
+
+\begin{class}{bit-vector}{}{}
+  
+\end{class}
+
+\begin{function}{bit-vector-p}{object}{}
+  Return true if OBJECT is a BIT-VECTOR, and NIL otherwise.
+\end{function}
+
+\begin{function}{bit-xor}{bit-array-1 bit-array-2 \op result-bit-array}{}
+  Perform a bit-wise LOGXOR on the elements of BIT-ARRAY-1 and BIT-ARRAY-2,
+  putting the results in RESULT-BIT-ARRAY. If RESULT-BIT-ARRAY is T,
+  BIT-ARRAY-1 is used. If RESULT-BIT-ARRAY is NIL or omitted, a new array is
+  created. All the arrays must have the same rank and dimensions.
+\end{function}
+
+\begin{accessor}{fill-pointer}{vector}{}
+  Return the FILL-POINTER of the given VECTOR.
+\end{accessor}
+
+\begin{function}{make-array}{dimensions \key (element-type t) (initial-element nil initial-element-p)
+ (initial-contents nil initial-contents-p) adjustable fill-pointer displaced-to
+ displaced-index-offset}{}
+  
+\end{function}
+
+\begin{accessor}{row-major-aref}{array index}{}
+  Return the element of array corressponding to the row-major index. This is
+   SETF'able.
+\end{accessor}
+
+\begin{accessor}{sbit}{simple-bit-array \rest subscripts}{}
+  Return the bit from SIMPLE-BIT-ARRAY at the specified SUBSCRIPTS.
+\end{accessor}
+
+\begin{type}{simple-array}{}{}
+  
+\end{type}
+
+\begin{type}{simple-bit-vector}{}{}
+  
+\end{type}
+
+\begin{function}{simple-bit-vector-p}{object}{}
+  Return true if OBJECT is a SIMPLE-BIT-VECTOR, and NIL otherwise.
+\end{function}
+
+\section{character}
+
+\begin{function}{alpha-char-p}{char}{}
+  The argument must be a character object. ALPHA-CHAR-P returns T if the
+   argument is an alphabetic character, A-Z or a-z; otherwise NIL.
+\end{function}
+
+\begin{function}{alphanumericp}{char}{}
+  Given a character-object argument, ALPHANUMERICP returns T if the
+   argument is either numeric or alphabetic.
+\end{function}
+
+\begin{type}{base-char}{}{}
+  
+\end{type}
+
+\begin{function}{both-case-p}{char}{}
+  The argument must be a character object. BOTH-CASE-P returns T if the
+  argument is an alphabetic character and if the character exists in
+  both upper and lower case. For ASCII, this is the same as ALPHA-CHAR-P.
+\end{function}
+
+\begin{function}{char-code}{char}{}
+  Return the integer code of CHAR.
+\end{function}
+
+\begin{constant}{char-code-limit}{}{}
+  
+\end{constant}
+
+\begin{function}{char-downcase}{char}{}
+  Return CHAR converted to lower-case if that is possible.
+\end{function}
+
+\begin{function}{char-equal}{character \rest more-characters}{}
+  Return T if all of the arguments are the same character.
+  Font, bits, and case are ignored.
+\end{function}
+
+\begin{function}{char-greaterp}{character \rest more-characters}{}
+  Return T if the arguments are in strictly decreasing alphabetic order.
+   Font, bits, and case are ignored.
+\end{function}
+
+\begin{function}{char-int}{char}{}
+  Return the integer code of CHAR. (In SBCL this is the same as CHAR-CODE, as
+   there are no character bits or fonts.)
+\end{function}
+
+\begin{function}{char-lessp}{character \rest more-characters}{}
+  Return T if the arguments are in strictly increasing alphabetic order.
+   Font, bits, and case are ignored.
+\end{function}
+
+\begin{function}{char-name}{char}{}
+  Return the name (a STRING) for a CHARACTER object.
+\end{function}
+
+\begin{function}{char-not-equal}{character \rest more-characters}{}
+  Return T if no two of the arguments are the same character.
+   Font, bits, and case are ignored.
+\end{function}
+
+\begin{function}{char-not-greaterp}{character \rest more-characters}{}
+  Return T if the arguments are in strictly non-decreasing alphabetic order.
+   Font, bits, and case are ignored.
+\end{function}
+
+\begin{function}{char-not-lessp}{character \rest more-characters}{}
+  Return T if the arguments are in strictly non-increasing alphabetic order.
+   Font, bits, and case are ignored.
+\end{function}
+
+\begin{function}{char-upcase}{char}{}
+  Return CHAR converted to upper-case if that is possible.  Don't convert
+   lowercase eszet (U+DF).
+\end{function}
+
+\begin{function}{char/=}{character \rest more-characters}{}
+  Return T if no two of the arguments are the same character.
+\end{function}
+
+\begin{function}{char<}{character \rest more-characters}{}
+  Return T if the arguments are in strictly increasing alphabetic order.
+\end{function}
+
+\begin{function}{char<=}{character \rest more-characters}{}
+  Return T if the arguments are in strictly non-decreasing alphabetic order.
+\end{function}
+
+\begin{function}{char=}{character \rest more-characters}{}
+  Return T if all of the arguments are the same character.
+\end{function}
+
+\begin{function}{char>}{character \rest more-characters}{}
+  Return T if the arguments are in strictly decreasing alphabetic order.
+\end{function}
+
+\begin{function}{char>=}{character \rest more-characters}{}
+  Return T if the arguments are in strictly non-increasing alphabetic order.
+\end{function}
+
+\begin{function}{character}{object}{}
+  Coerce OBJECT into a CHARACTER if possible. Legal inputs are
+  characters, strings and symbols of length 1.
+\end{function}
+
+\begin{class}{character}{object}{}
+  Coerce OBJECT into a CHARACTER if possible. Legal inputs are
+  characters, strings and symbols of length 1.
+\end{class}
+
+\begin{function}{characterp}{object}{}
+  Return true if OBJECT is a CHARACTER, and NIL otherwise.
+\end{function}
+
+\begin{function}{code-char}{code}{}
+  Return the character with the code CODE.
+\end{function}
+
+\begin{function}{digit-char}{weight \op (radix 10}{}
+  All arguments must be integers. Returns a character object that
+  represents a digit of the given weight in the specified radix. Returns
+  NIL if no such character exists.
+\end{function}
+
+\begin{function}{digit-char-p}{char \op (radix 10}{}
+  If char is a digit in the specified radix, returns the fixnum for
+  which that digit stands, else returns NIL.
+\end{function}
+
+\begin{type}{extended-char}{}{}
+  
+\end{type}
+
+\begin{function}{graphic-char-p}{char}{}
+  The argument must be a character object. GRAPHIC-CHAR-P returns T if the
+  argument is a printing character (space through ~ in ASCII), otherwise
+  returns NIL.
+\end{function}
+
+\begin{function}{lower-case-p}{char}{}
+  The argument must be a character object; LOWER-CASE-P returns T if the
+   argument is a lower-case character, NIL otherwise.
+\end{function}
+
+\begin{function}{name-char}{name}{}
+  Given an argument acceptable to STRING, NAME-CHAR returns a character
+  whose name is that string, if one exists. Otherwise, NIL is returned.
+\end{function}
+
+\section{condition}
+
+\begin{variable}{*break-on-signals*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*debugger-hook*}{}{}
+  
+\end{variable}
+
+\begin{function}{abort}{\op condition}{}
+  Transfer control to a restart named ABORT, signalling a CONTROL-ERROR if
+   none exists.
+\end{function}
+
+\begin{restart}{abort}{\op condition}{}
+  Transfer control to a restart named ABORT, signalling a CONTROL-ERROR if
+   none exists.
+\end{restart}
+
+\begin{macro}{assert}{test-form \op places datum \rest arguments}{}
+  Signals an error if the value of test-form is nil. Continuing from this
+   error using the CONTINUE restart will allow the user to alter the value of
+   some locations known to SETF, starting over with test-form. Returns NIL.
+\end{macro}
+
+\begin{function}{break}{\op (datum break) \rest arguments}{}
+  Print a message and invoke the debugger without allowing any possibility
+   of condition handling occurring.
+\end{function}
+
+\begin{condition-type}{cell-error}{}{}
+  
+\end{condition-type}
+
+\begin{function}{cell-error-name}{condition}{}
+  
+\end{function}
+
+\begin{function}{cerror}{continue-string datum \rest arguments}{}
+  
+\end{function}
+
+\begin{macro}{check-type}{place type \op type-string &environment env}{}
+  Signal a restartable error of type TYPE-ERROR if the value of PLACE
+is not of the specified type. If an error is signalled and the restart
+is used to return, this can only return if the STORE-VALUE restart is
+invoked. In that case it will store into PLACE and start over.
+\end{macro}
+
+\begin{function}{compute-restarts}{\op condition}{}
+  Return a list of all the currently active restarts ordered from most recently
+established to less recently established. If CONDITION is specified, then only
+restarts associated with CONDITION (or with no condition) will be returned.
+\end{function}
+
+\begin{condition-type}{condition}{}{}
+  
+\end{condition-type}
+
+\begin{function}{continue}{\op condition}{}
+  Transfer control to a restart named CONTINUE, or return NIL if none exists.
+\end{function}
+
+\begin{restart}{continue}{\op condition}{}
+  Transfer control to a restart named CONTINUE, or return NIL if none exists.
+\end{restart}
+
+\begin{macro}{define-condition}{name (\rest parent-types) (\rest slot-specs) \body options}{}
+  DEFINE-CONDITION Name (Parent-Type*) (Slot-Spec*) Option*
+   Define NAME as a condition type. This new type inherits slots and its
+   report function from the specified PARENT-TYPEs. A slot spec is a list of:
+     (slot-name :reader <rname> :initarg <iname> {Option Value}*
+
+   The DEFINE-CLASS slot options :ALLOCATION, :INITFORM, [slot] :DOCUMENTATION
+   and :TYPE and the overall options :DEFAULT-INITARGS and
+   [type] :DOCUMENTATION are also allowed.
+
+   The :REPORT option is peculiar to DEFINE-CONDITION. Its argument is either
+   a string or a two-argument lambda or function name. If a function, the
+   function is called with the condition and stream to report the condition.
+   If a string, the string is printed.
+
+   Condition types are classes, but (as allowed by ANSI and not as described in
+   CLtL2) are neither STANDARD-OBJECTs nor STRUCTURE-OBJECTs. WITH-SLOTS and
+   SLOT-VALUE may not be used on condition objects.
+\end{macro}
+
+\begin{condition-type}{error}{datum \rest arguments}{}
+  Invoke the signal facility on a condition formed from DATUM and ARGUMENTS.
+  If the condition is not handled, the debugger is invoked.
+\end{condition-type}
+
+\begin{function}{error}{datum \rest arguments}{}
+  Invoke the signal facility on a condition formed from DATUM and ARGUMENTS.
+  If the condition is not handled, the debugger is invoked.
+\end{function}
+
+\begin{function}{find-restart}{identifier \op condition}{}
+  Return the first restart identified by IDENTIFIER. If IDENTIFIER is a symbol,
+then the innermost applicable restart with that name is returned. If IDENTIFIER
+is a restart, it is returned if it is currently active. Otherwise NIL is
+returned. If CONDITION is specified and not NIL, then only restarts associated
+with that condition (or with no condition) will be returned.
+\end{function}
+
+\begin{macro}{handler-bind}{bindings \body forms}{}
+  (HANDLER-BIND ( {(type handler)}* )  body)
+
+Executes body in a dynamic context where the given handler bindings are in
+effect. Each handler must take the condition being signalled as an argument.
+The bindings are searched first to last in the event of a signalled
+condition.
+\end{macro}
+
+\begin{macro}{handler-case}{form \rest cases}{}
+  (HANDLER-CASE form { (type ([var]) body) }* )
+
+Execute FORM in a context with handlers established for the condition types. A
+peculiar property allows type to be :NO-ERROR. If such a clause occurs, and
+form returns normally, all its values are passed to this clause as if by
+MULTIPLE-VALUE-CALL. The :NO-ERROR clause accepts more than one var
+specification.
+\end{macro}
+
+\begin{macro}{ignore-errors}{\rest forms}{}
+  Execute FORMS handling ERROR conditions, returning the result of the last
+  form, or (VALUES NIL the-ERROR-that-was-caught) if an ERROR was handled.
+\end{macro}
+
+\begin{function}{invalid-method-error}{method format-control \rest format-arguments}{}
+  
+\end{function}
+
+\begin{function}{invoke-debugger}{condition}{}
+  Enter the debugger.
+\end{function}
+
+\begin{function}{invoke-restart}{restart \rest values}{}
+  Calls the function associated with the given restart, passing any given
+   arguments. If the argument restart is not a restart or a currently active
+   non-nil restart name, then a CONTROL-ERROR is signalled.
+\end{function}
+
+\begin{function}{invoke-restart-interactively}{restart}{}
+  Calls the function associated with the given restart, prompting for any
+   necessary arguments. If the argument restart is not a restart or a
+   currently active non-NIL restart name, then a CONTROL-ERROR is signalled.
+\end{function}
+
+\begin{function}{make-condition}{type \rest args}{}
+  Make an instance of a condition object using the specified initargs.
+\end{function}
+
+\begin{function}{method-combination-error}{format-control \rest format-arguments}{}
+  
+\end{function}
+
+\begin{function}{muffle-warning}{\op condition}{}
+  Transfer control to a restart named MUFFLE-WARNING, signalling a
+   CONTROL-ERROR if none exists.
+\end{function}
+
+\begin{restart}{muffle-warning}{\op condition}{}
+  Transfer control to a restart named MUFFLE-WARNING, signalling a
+   CONTROL-ERROR if none exists.
+\end{restart}
+
+\begin{condition-type}{parse-error}{}{}
+  
+\end{condition-type}
+
+\begin{class}{restart}{}{}
+  
+\end{class}
+
+\begin{macro}{restart-bind}{bindings \body forms}{}
+  Executes forms in a dynamic context where the given restart bindings are
+   in effect. Users probably want to use RESTART-CASE. When clauses contain
+   the same restart name, FIND-RESTART will find the first such clause.
+\end{macro}
+
+\begin{macro}{restart-case}{expression \body clauses &environment env}{}
+  (RESTART-CASE form
+   {(case-name arg-list {keyword value}* body)}*)
+   The form is evaluated in a dynamic context where the clauses have special
+   meanings as points to which control may be transferred (see INVOKE-RESTART).
+   When clauses contain the same case-name, FIND-RESTART will find the first
+   such clause. If Expression is a call to SIGNAL, ERROR, CERROR or WARN (or
+   macroexpands into such) then the signalled condition will be associated with
+   the new restarts.
+\end{macro}
+
+\begin{function}{restart-name}{instance}{}
+  Return the name of the given restart object.
+\end{function}
+
+\begin{condition-type}{serious-condition}{}{}
+  
+\end{condition-type}
+
+\begin{function}{signal}{datum \rest arguments}{}
+  Invokes the signal facility on a condition formed from DATUM and
+   ARGUMENTS. If the condition is not handled, NIL is returned. If
+   (TYPEP condition *BREAK-ON-SIGNALS*) is true, the debugger is invoked
+   before any signalling is done.
+\end{function}
+
+\begin{condition-type}{simple-condition}{}{}
+  
+\end{condition-type}
+
+\begin{function}{simple-condition-format-arguments}{condition}{}
+  
+\end{function}
+
+\begin{function}{simple-condition-format-control}{condition}{}
+  
+\end{function}
+
+\begin{condition-type}{simple-error}{}{}
+  
+\end{condition-type}
+
+\section{conses}
+
+\begin{function}{acons}{key datum alist}{}
+  Construct a new alist by adding the pair (KEY . DATUM) to ALIST.
+\end{function}
+
+\begin{function}{adjoin}{item list \key key (test #'eql testp) (test-not nil notp}{}
+  Add ITEM to LIST unless it is already a member
+\end{function}
+
+\begin{function}{append}{\rest lists}{}
+  Construct a new list by concatenating the list arguments
+\end{function}
+
+\begin{function}{assoc}{item alist \key key (test nil testp) (test-not nil notp}{}
+  Return the cons in ALIST whose car is equal (by a given test or EQL) to
+   the ITEM.
+\end{function}
+
+\begin{function}{assoc-if}{predicate alist \key key}{}
+  Return the first cons in ALIST whose CAR satisfies PREDICATE. If
+   KEY is supplied, apply it to the CAR of each cons before testing.
+\end{function}
+
+\begin{function}{assoc-if-not}{predicate alist \key key}{}
+  Return the first cons in ALIST whose CAR does not satisfy PREDICATE.
+  If KEY is supplied, apply it to the CAR of each cons before testing.
+\end{function}
+
+\begin{function}{atom}{object}{}
+  Return true if OBJECT is an ATOM, and NIL otherwise.
+\end{function}
+
+\begin{type}{atom}{object}{}
+  Return true if OBJECT is an ATOM, and NIL otherwise.
+\end{type}
+
+\begin{function}{butlast}{list \op (n 1}{}
+  
+\end{function}
+
+\begin{accessor}{caaaar}{list}{}
+  Return the car of the caaar of a list.
+\end{accessor}
+
+\begin{accessor}{caaadr}{list}{}
+  Return the car of the caadr of a list.
+\end{accessor}
+
+\begin{accessor}{caaar}{list}{}
+  Return the 1st object in the caar of a list.
+\end{accessor}
+
+\begin{accessor}{caadar}{list}{}
+  Return the car of the cadar of a list.
+\end{accessor}
+
+\begin{accessor}{caaddr}{list}{}
+  Return the car of the caddr of a list.
+\end{accessor}
+
+\begin{accessor}{caadr}{list}{}
+  Return the 1st object in the cadr of a list.
+\end{accessor}
+
+\begin{accessor}{caar}{list}{}
+  Return the car of the 1st sublist.
+\end{accessor}
+
+\begin{accessor}{cadaar}{list}{}
+  Return the car of the cdaar of a list.
+\end{accessor}
+
+\begin{accessor}{cadadr}{list}{}
+  Return the car of the cdadr of a list.
+\end{accessor}
+
+\begin{accessor}{cadar}{list}{}
+  Return the car of the cdar of a list.
+\end{accessor}
+
+\begin{accessor}{caddar}{list}{}
+  Return the car of the cddar of a list.
+\end{accessor}
+
+\begin{accessor}{cadddr}{list}{}
+  Return the car of the cdddr of a list.
+\end{accessor}
+
+\begin{accessor}{caddr}{list}{}
+  Return the 1st object in the cddr of a list.
+\end{accessor}
+
+\begin{accessor}{cadr}{list}{}
+  Return the 2nd object in a list.
+\end{accessor}
+
+\begin{accessor}{car}{list}{}
+  Return the 1st object in a list.
+\end{accessor}
+
+\begin{accessor}{cdaaar}{list}{}
+  Return the cdr of the caaar of a list.
+\end{accessor}
+
+\begin{accessor}{cdaadr}{list}{}
+  Return the cdr of the caadr of a list.
+\end{accessor}
+
+\begin{accessor}{cdaar}{list}{}
+  Return the cdr of the caar of a list.
+\end{accessor}
+
+\begin{accessor}{cdadar}{list}{}
+  Return the cdr of the cadar of a list.
+\end{accessor}
+
+\begin{accessor}{cdaddr}{list}{}
+  Return the cdr of the caddr of a list.
+\end{accessor}
+
+\begin{accessor}{cdadr}{list}{}
+  Return the cdr of the cadr of a list.
+\end{accessor}
+
+\begin{accessor}{cdar}{list}{}
+  Return the cdr of the 1st sublist.
+\end{accessor}
+
+\begin{accessor}{cddaar}{list}{}
+  Return the cdr of the cdaar of a list.
+\end{accessor}
+
+\begin{accessor}{cddadr}{list}{}
+  Return the cdr of the cdadr of a list.
+\end{accessor}
+
+\begin{accessor}{cddar}{list}{}
+  Return the cdr of the cdar of a list.
+\end{accessor}
+
+\begin{accessor}{cdddar}{list}{}
+  Return the cdr of the cddar of a list.
+\end{accessor}
+
+\begin{accessor}{cddddr}{list}{}
+  Return the cdr of the cdddr of a list.
+\end{accessor}
+
+\begin{accessor}{cdddr}{list}{}
+  Return the cdr of the cddr of a list.
+\end{accessor}
+
+\begin{accessor}{cddr}{list}{}
+  Return all but the 1st two objects of a list.
+\end{accessor}
+
+\begin{accessor}{cdr}{list}{}
+  Return all but the first object in a list.
+\end{accessor}
+
+\begin{function}{cons}{se1 se2}{}
+  Return a list with SE1 as the CAR and SE2 as the CDR.
+\end{function}
+
+\begin{class}{cons}{se1 se2}{}
+  Return a list with SE1 as the CAR and SE2 as the CDR.
+\end{class}
+
+\begin{function}{consp}{object}{}
+  Return true if OBJECT is a CONS, and NIL otherwise.
+\end{function}
+
+\begin{function}{copy-alist}{alist}{}
+  Return a new association list which is EQUAL to ALIST.
+\end{function}
+
+\begin{function}{copy-list}{list}{}
+  Return a new list which is EQUAL to LIST. LIST may be improper.
+\end{function}
+
+\begin{function}{copy-tree}{object}{}
+  Recursively copy trees of conses.
+\end{function}
+
+\begin{accessor}{eighth}{list}{}
+  Return the 8th object in a list or NIL if there is no 8th object.
+\end{accessor}
+
+\begin{function}{endp}{object}{}
+  This is the recommended way to test for the end of a proper list. It
+   returns true if OBJECT is NIL, false if OBJECT is a CONS, and an error
+   for any other type of OBJECT.
+\end{function}
+
+\begin{accessor}{fifth}{list}{}
+  Return the 5th object in a list or NIL if there is no 5th object.
+\end{accessor}
+
+\begin{accessor}{first}{list}{}
+  Return the 1st object in a list or NIL if the list is empty.
+\end{accessor}
+
+\begin{accessor}{fourth}{list}{}
+  Return the 4th object in a list or NIL if there is no 4th object.
+\end{accessor}
+
+\begin{function}{get-properties}{place indicator-list}{}
+  Like GETF, except that INDICATOR-LIST is a list of indicators which will
+  be looked for in the property list stored in PLACE. Three values are
+  returned, see manual for details.
+\end{function}
+
+\begin{accessor}{getf}{place indicator \op (default nil}{}
+  Search the property list stored in Place for an indicator EQ to INDICATOR.
+  If one is found, return the corresponding value, else return DEFAULT.
+\end{accessor}
+
+\begin{function}{intersection}{list1 list2 \key key (test #'eql testp) (test-not nil notp}{}
+  Return the intersection of LIST1 and LIST2.
+\end{function}
+
+\begin{function}{last}{list \op (n 1}{}
+  Return the last N conses (not the last element!) of a list.
+\end{function}
+
+\begin{function}{ldiff}{list object}{}
+  Return a new list, whose elements are those of LIST that appear before
+   OBJECT. If OBJECT is not a tail of LIST, a copy of LIST is returned.
+   LIST must be a proper list or a dotted list.
+\end{function}
+
+\begin{function}{list}{\rest args}{}
+  Return constructs and returns a list of its arguments.
+\end{function}
+
+\begin{class}{list}{\rest args}{}
+  Return constructs and returns a list of its arguments.
+\end{class}
+
+\begin{function}{list*}{arg \rest others}{}
+  Return a list of the arguments with last cons a dotted pair.
+\end{function}
+
+\begin{function}{list-length}{list}{}
+  Return the length of the given List, or Nil if the List is circular.
+\end{function}
+
+\begin{function}{listp}{object}{}
+  Return true if OBJECT is a LIST, and NIL otherwise.
+\end{function}
+
+\begin{function}{make-list}{size \key initial-element}{}
+  Constructs a list with size elements each set to value
+\end{function}
+
+\begin{function}{mapc}{function list \rest more-lists}{}
+  Apply FUNCTION to successive elements of lists. Return the second argument.
+\end{function}
+
+\begin{function}{mapcan}{function list \rest more-lists}{}
+  Apply FUNCTION to successive elements of LIST. Return NCONC of FUNCTION
+   results.
+\end{function}
+
+\begin{function}{mapcar}{function list \rest more-lists}{}
+  Apply FUNCTION to successive elements of LIST. Return list of FUNCTION
+   return values.
+\end{function}
+
+\begin{function}{mapcon}{function list \rest more-lists}{}
+  Apply FUNCTION to successive CDRs of lists. Return NCONC of results.
+\end{function}
+
+\begin{function}{mapl}{function list \rest more-lists}{}
+  Apply FUNCTION to successive CDRs of list. Return NIL.
+\end{function}
+
+\begin{function}{maplist}{function list \rest more-lists}{}
+  Apply FUNCTION to successive CDRs of list. Return list of results.
+\end{function}
+
+\begin{function}{member}{item list \key key (test nil testp) (test-not nil notp}{}
+  Return the tail of LIST beginning with first element satisfying EQLity,
+   :TEST, or :TEST-NOT with the given ITEM.
+\end{function}
+
+\begin{function}{member-if}{test list \key key}{}
+  Return tail of LIST beginning with first element satisfying TEST.
+\end{function}
+
+\begin{function}{member-if-not}{test list \key key}{}
+  Return tail of LIST beginning with first element not satisfying TEST.
+\end{function}
+
+\begin{function}{nbutlast}{list \op (n 1}{}
+  
+\end{function}
+
+\begin{function}{nconc}{\rest lists}{}
+  Concatenates the lists given as arguments (by changing them)
+\end{function}
+
+\begin{function}{nintersection}{list1 list2 \key key (test #'eql testp) (test-not nil notp}{}
+  Destructively return the intersection of LIST1 and LIST2.
+\end{function}
+
+\begin{accessor}{ninth}{list}{}
+  Return the 9th object in a list or NIL if there is no 9th object.
+\end{accessor}
+
+\begin{function}{nreconc}{x y}{}
+  Return (NCONC (NREVERSE X) Y).
+\end{function}
+
+\begin{function}{nset-difference}{list1 list2 \key key (test #'eql testp) (test-not nil notp}{}
+  Destructively return the elements of LIST1 which are not in LIST2.
+\end{function}
+
+\begin{function}{nset-exclusive-or}{list1 list2 \key key (test #'eql testp) (test-not #'eql notp}{}
+  Destructively return a list with elements which appear but once in LIST1
+   and LIST2.
+\end{function}
+
+\begin{function}{nsublis}{alist tree \key key (test #'eql testp) (test-not #'eql notp}{}
+  Substitute from ALIST into TRUE destructively.
+\end{function}
+
+\begin{function}{nsubst}{new old tree \key key (test #'eql testp) (test-not #'eql notp}{}
+  Substitute NEW for subtrees matching OLD.
+\end{function}
+
+\begin{function}{nsubst-if}{new test tree \key key}{}
+  Substitute NEW for subtrees of TREE for which TEST is true.
+\end{function}
+
+\begin{function}{nsubst-if-not}{new test tree \key key}{}
+  Substitute NEW for subtrees of TREE for which TEST is false.
+\end{function}
+
+\begin{accessor}{nth}{n list}{}
+  Return the nth object in a list where the car is the zero-th element.
+\end{accessor}
+
+\begin{function}{nthcdr}{n list}{}
+  Performs the cdr function n times on a list.
+\end{function}
+
+\begin{function}{null}{object}{}
+  Return true if OBJECT is a NULL, and NIL otherwise.
+\end{function}
+
+\begin{class}{null}{object}{}
+  Return true if OBJECT is a NULL, and NIL otherwise.
+\end{class}
+
+\begin{function}{nunion}{list1 list2 \key key (test #'eql testp) (test-not nil notp}{}
+  Destructively return the union of LIST1 and LIST2.
+\end{function}
+
+\begin{function}{pairlis}{keys data \op (alist 'nil}{}
+  Construct an association list from KEYS and DATA (adding to ALIST).
+\end{function}
+
+\begin{macro}{pop}{place &environment env}{}
+  The argument is a location holding a list. Pops one item off the front
+  of the list and returns it.
+\end{macro}
+
+\begin{macro}{push}{obj place &environment env}{}
+  Takes an object and a location holding a list. Conses the object onto
+  the list, returning the modified list. OBJ is evaluated before PLACE.
+\end{macro}
+
+\begin{macro}{pushnew}{obj place \rest keys \key key test test-not &environment env}{}
+  Takes an object and a location holding a list. If the object is
+  already in the list, does nothing; otherwise, conses the object onto
+  the list. Returns the modified list. If there is a :TEST keyword, this
+  is used for the comparison.
+\end{macro}
+
+\begin{function}{rassoc}{item alist \key key (test nil testp) (test-not nil notp}{}
+  Return the cons in ALIST whose CDR is equal (by a given test or EQL) to
+   the ITEM.
+\end{function}
+
+\begin{function}{rassoc-if}{predicate alist \key key}{}
+  Return the first cons in ALIST whose CDR satisfies PREDICATE. If KEY
+  is supplied, apply it to the CDR of each cons before testing.
+\end{function}
+
+\begin{function}{rassoc-if-not}{predicate alist \key key}{}
+  Return the first cons in ALIST whose CDR does not satisfy PREDICATE.
+  If KEY is supplied, apply it to the CDR of each cons before testing.
+\end{function}
+
+\begin{macro}{remf}{place indicator &environment env}{}
+  Place may be any place expression acceptable to SETF, and is expected
+  to hold a property list or (). This list is destructively altered to
+  remove the property specified by the indicator. Returns T if such a
+  property was present, NIL if not.
+\end{macro}
+
+\begin{accessor}{rest}{list}{}
+  Means the same as the cdr of a list.
+\end{accessor}
+
+\begin{function}{revappend}{x y}{}
+  Return (append (reverse x) y).
+\end{function}
+
+\begin{function}{rplaca}{cons x}{}
+  Change the CAR of CONS to X and return the CONS.
+\end{function}
+
+\begin{function}{rplacd}{cons x}{}
+  Change the CDR of CONS to X and return the CONS.
+\end{function}
+
+\begin{accessor}{second}{list}{}
+  Return the 2nd object in a list or NIL if there is no 2nd object.
+\end{accessor}
+
+\begin{function}{set-difference}{list1 list2 \key key (test #'eql testp) (test-not nil notp}{}
+  Return the elements of LIST1 which are not in LIST2.
+\end{function}
+
+\begin{function}{set-exclusive-or}{list1 list2 \key key (test #'eql testp) (test-not #'eql notp}{}
+  Return new list of elements appearing exactly once in LIST1 and LIST2.
+\end{function}
+
+\begin{accessor}{seventh}{list}{}
+  Return the 7th object in a list or NIL if there is no 7th object.
+\end{accessor}
+
+\section{control-flow}
+
+\begin{macro}{and}{\rest forms}{}
+  
+\end{macro}
+
+\begin{function}{apply}{function arg \rest arguments}{}
+  Apply FUNCTION to a list of arguments produced by evaluating ARGUMENTS in
+  the manner of LIST*. That is, a list is made of the values of all but the
+  last argument, appended to the value of the last argument, which must be a
+  list.
+\end{function}
+
+\begin{specialop}{block}{name \rest forms}{}
+  BLOCK name form*
+
+Evaluate the FORMS as a PROGN. Within the lexical scope of the body,
+RETURN-FROM can be used to exit the form.
+\end{specialop}
+
+\begin{constant}{call-arguments-limit}{}{}
+  
+\end{constant}
+
+\begin{macro}{case}{keyform \body cases}{}
+  CASE Keyform {({(Key*) | Key} Form*)}*
+  Evaluates the Forms in the first clause with a Key EQL to the value of
+  Keyform. If a singleton key is T then the clause is a default clause.
+\end{macro}
+
+\begin{specialop}{catch}{tag \body body}{}
+  CATCH tag form*
+
+Evaluate TAG and instantiate it as a catcher while the body forms are
+evaluated in an implicit PROGN. If a THROW is done to TAG within the dynamic
+scope of the body, then control will be transferred to the end of the body and
+the thrown values will be returned.
+\end{specialop}
+
+\begin{macro}{ccase}{keyform \body cases}{}
+  CCASE Keyform {({(Key*) | Key} Form*)}*
+  Evaluates the Forms in the first clause with a Key EQL to the value of
+  Keyform. If none of the keys matches then a correctable error is
+  signalled.
+\end{macro}
+
+\begin{function}{compiled-function-p}{object}{}
+  Return true if OBJECT is a COMPILED-FUNCTION, and NIL otherwise.
+\end{function}
+
+\begin{function}{complement}{function}{}
+  Return a new function that returns T whenever FUNCTION returns NIL and
+   NIL whenever FUNCTION returns non-NIL.
+\end{function}
+
+\begin{macro}{cond}{\rest clauses}{}
+  
+\end{macro}
+
+\begin{function}{constantly}{value}{}
+  Return a function that always returns VALUE.
+\end{function}
+
+\begin{condition-type}{control-error}{}{}
+  
+\end{condition-type}
+
+\begin{macro}{ctypecase}{keyform \body cases}{}
+  CTYPECASE Keyform {(Type Form*)}*
+  Evaluates the Forms in the first clause for which TYPEP of Keyform and Type
+  is true. If no form is satisfied then a correctable error is signalled.
+\end{macro}
+
+\begin{macro}{defconstant}{name value \op documentation}{}
+  Define a global constant, saying that the value is constant and may be
+  compiled into code. If the variable already has a value, and this is not
+  EQL to the new value, the code is not portable (undefined behavior). The
+  third argument is an optional documentation string for the variable.
+\end{macro}
+
+\begin{macro}{define-modify-macro}{name lambda-list function \op doc-string}{}
+  Creates a new read-modify-write macro like PUSH or INCF.
+\end{macro}
+
+\begin{macro}{define-setf-expander}{access-fn lambda-list \body body}{}
+  Syntax like DEFMACRO, but creates a setf expander function. The body
+  of the definition must be a form that returns five appropriate values.
+\end{macro}
+
+\begin{macro}{defparameter}{var val \op (doc nil docp}{}
+  Define a parameter that is not normally changed by the program,
+  but that may be changed without causing an error. Declare the
+  variable special and sets its value to VAL, overwriting any
+  previous value. The third argument is an optional documentation
+  string for the parameter.
+\end{macro}
+
+\begin{macro}{defsetf}{access-fn \rest rest}{}
+  Associates a SETF update function or macro with the specified access
+  function or macro. The format is complex. See the manual for details.
+\end{macro}
+
+\begin{macro}{defun}{&environment env name args \body body}{}
+  Define a function at top level.
+\end{macro}
+
+\begin{macro}{defvar}{var \op (val nil valp) (doc nil docp}{}
+  Define a global variable at top level. Declare the variable
+  SPECIAL and, optionally, initialize it. If the variable already has a
+  value, the old value is not clobbered. The third argument is an optional
+  documentation string for the variable.
+\end{macro}
+
+\begin{macro}{destructuring-bind}{lambda-list expression \body body}{}
+  Bind the variables in LAMBDA-LIST to the corresponding values in the
+tree structure resulting from the evaluation of EXPRESSION.
+\end{macro}
+
+\begin{macro}{ecase}{keyform \body cases}{}
+  ECASE Keyform {({(Key*) | Key} Form*)}*
+  Evaluates the Forms in the first clause with a Key EQL to the value of
+  Keyform. If none of the keys matches then an error is signalled.
+\end{macro}
+
+\begin{function}{eq}{obj1 obj2}{}
+  Return T if OBJ1 and OBJ2 are the same object, otherwise NIL.
+\end{function}
+
+\begin{function}{eql}{x y}{}
+  
+\end{function}
+
+\begin{function}{equal}{x y}{}
+  Return T if X and Y are EQL or if they are structured components whose
+elements are EQUAL. Strings and bit-vectors are EQUAL if they are the same
+length and have identical components. Other arrays must be EQ to be EQUAL.
+\end{function}
+
+\begin{function}{equalp}{x y}{}
+  
+\end{function}
+
+\begin{macro}{etypecase}{keyform \body cases}{}
+  ETYPECASE Keyform {(Type Form*)}*
+  Evaluates the Forms in the first clause for which TYPEP of Keyform and Type
+  is true. If no form is satisfied then an error is signalled.
+\end{macro}
+
+\begin{function}{every}{pred first-seq \rest more-seqs}{}
+  Apply PREDICATE to the 0-indexed elements of the sequences, then
+   possibly to those with index 1, and so on. Return NIL as soon
+   as any invocation of PREDICATE returns NIL, or T if every invocation
+   is non-NIL.
+\end{function}
+
+\begin{function}{fboundp}{name}{}
+  Return true if name has a global function definition.
+\end{function}
+
+\begin{accessor}{fdefinition}{name}{}
+  Return name's global function definition taking care to respect any
+   encapsulations and to return the innermost encapsulated definition.
+   This is SETF'able.
+\end{accessor}
+
+\begin{specialop}{flet}{definitions \body body}{}
+  FLET ({(name lambda-list declaration* form*)}*) declaration* body-form*
+
+Evaluate the BODY-FORMS with local function definitions. The bindings do
+not enclose the definitions; any use of NAME in the FORMS will refer to the
+lexically apparent function definition in the enclosing environment.
+\end{specialop}
+
+\begin{function}{fmakunbound}{name}{}
+  Make NAME have no global function definition.
+\end{function}
+
+\begin{function}{funcall}{function \rest arguments}{}
+  Call FUNCTION with the given ARGUMENTS.
+\end{function}
+
+\begin{specialop}{function}{thing}{}
+  FUNCTION name
+
+Return the lexically apparent definition of the function NAME. NAME may also
+be a lambda expression.
+\end{specialop}
+
+\begin{function}{function-lambda-expression}{fun}{}
+  Return (VALUES DEFINING-LAMBDA-EXPRESSION CLOSURE-P NAME), where
+  DEFINING-LAMBDA-EXPRESSION is NIL if unknown, or a suitable argument
+  to COMPILE otherwise, CLOSURE-P is non-NIL if the function's definition
+  might have been enclosed in some non-null lexical environment, and
+  NAME is some name (for debugging only) or NIL if there is no name.
+\end{function}
+
+\begin{function}{functionp}{object}{}
+  Return true if OBJECT is a FUNCTION, and NIL otherwise.
+\end{function}
+
+\begin{function}{get-setf-expansion}{form \op environment}{}
+  Return five values needed by the SETF machinery: a list of temporary
+   variables, a list of values with which to fill them, a list of temporaries
+   for the new values, the setting function, and the accessing function.
+\end{function}
+
+\begin{specialop}{go}{tag}{}
+  GO tag
+
+Transfer control to the named TAG in the lexically enclosing TAGBODY. This is
+constrained to be used only within the dynamic extent of the TAGBODY.
+\end{specialop}
+
+\begin{function}{identity}{thing}{}
+  This function simply returns what was passed to it.
+\end{function}
+
+\begin{specialop}{if}{test then \op else}{}
+  IF predicate then [else]
+
+If PREDICATE evaluates to false, evaluate THEN and return its values,
+otherwise evaluate ELSE and return its values. ELSE defaults to NIL.
+\end{specialop}
+
+\begin{specialop}{labels}{definitions \body body}{}
+  LABELS ({(name lambda-list declaration* form*)}*) declaration* body-form*
+
+Evaluate the BODY-FORMS with local function definitions. The bindings enclose
+the new definitions, so the defined functions can call themselves or each
+other.
+\end{specialop}
+
+\begin{constant}{lambda-list-keywords}{}{}
+  
+\end{constant}
+
+\begin{constant}{lambda-parameters-limit}{}{}
+  
+\end{constant}
+
+\begin{specialop}{let}{bindings \body body}{}
+  LET ({(var [value]) | var}*) declaration* form*
+
+During evaluation of the FORMS, bind the VARS to the result of evaluating the
+VALUE forms. The variables are bound in parallel after all of the VALUES forms
+have been evaluated.
+\end{specialop}
+
+\begin{specialop}{let*}{bindings \body body}{}
+  LET* ({(var [value]) | var}*) declaration* form*
+
+Similar to LET, but the variables are bound sequentially, allowing each VALUE
+form to reference any of the previous VARS.
+\end{specialop}
+
+\begin{specialop}{macrolet}{definitions \rest body}{}
+  MACROLET ({(name lambda-list form*)}*) body-form*
+
+Evaluate the BODY-FORMS in an environment with the specified local macros
+defined. Name is the local macro name, LAMBDA-LIST is a DEFMACRO style
+destructuring lambda list, and the FORMS evaluate to the expansion.
+\end{specialop}
+
+\begin{macro}{multiple-value-bind}{vars value-form \body body}{}
+  
+\end{macro}
+
+\begin{specialop}{multiple-value-call}{fun \rest args}{}
+  MULTIPLE-VALUE-CALL function values-form*
+
+Call FUNCTION, passing all the values of each VALUES-FORM as arguments,
+values from the first VALUES-FORM making up the first argument, etc.
+\end{specialop}
+
+\begin{macro}{multiple-value-list}{value-form}{}
+  
+\end{macro}
+
+\begin{specialop}{multiple-value-prog1}{values-form \rest forms}{}
+  MULTIPLE-VALUE-PROG1 values-form form*
+
+Evaluate VALUES-FORM and then the FORMS, but return all the values of
+VALUES-FORM.
+\end{specialop}
+
+\begin{macro}{multiple-value-setq}{vars value-form}{}
+  
+\end{macro}
+
+\begin{constant}{multiple-values-limit}{}{}
+  
+\end{constant}
+
+\begin{constant}{nil}{}{}
+  
+\end{constant}
+
+\begin{function}{not}{object}{}
+  Return T if X is NIL, otherwise return NIL.
+\end{function}
+
+\begin{function}{notany}{pred first-seq \rest more-seqs}{}
+  Apply PREDICATE to the 0-indexed elements of the sequences, then
+   possibly to those with index 1, and so on. Return NIL as soon
+   as any invocation of PREDICATE returns a non-NIL value, or T if the end
+   of any sequence is reached.
+\end{function}
+
+\begin{function}{notevery}{pred first-seq \rest more-seqs}{}
+  Apply PREDICATE to 0-indexed elements of the sequences, then
+   possibly to those with index 1, and so on. Return T as soon
+   as any invocation of PREDICATE returns NIL, or NIL if every invocation
+   is non-NIL.
+\end{function}
+
+\begin{macro}{nth-value}{n form}{}
+  Evaluate FORM and return the Nth value (zero based). This involves no
+  consing when N is a trivial constant integer.
+\end{macro}
+
+\begin{macro}{or}{\rest forms}{}
+  
+\end{macro}
+
+\begin{macro}{prog}{varlist \body body-decls}{}
+  
+\end{macro}
+
+\begin{macro}{prog*}{varlist \body body-decls}{}
+  
+\end{macro}
+
+\begin{macro}{prog1}{result \body body}{}
+  
+\end{macro}
+
+\begin{macro}{prog2}{form1 result \body body}{}
+  
+\end{macro}
+
+\begin{specialop}{progn}{\rest forms}{}
+  PROGN form*
+
+Evaluates each FORM in order, returning the values of the last form. With no
+forms, returns NIL.
+\end{specialop}
+
+\begin{condition-type}{program-error}{}{}
+  
+\end{condition-type}
+
+\begin{specialop}{progv}{vars vals \body body}{}
+  
+\end{specialop}
+
+\begin{macro}{psetf}{\rest args &environment env}{}
+  This is to SETF as PSETQ is to SETQ. Args are alternating place
+  expressions and values to go into those places. All of the subforms and
+  values are determined, left to right, and only then are the locations
+  updated. Returns NIL.
+\end{macro}
+
+\begin{macro}{psetq}{\rest pairs}{}
+  PSETQ {var value}*
+   Set the variables to the values, like SETQ, except that assignments
+   happen in parallel, i.e. no assignments take place until all the
+   forms have been evaluated.
+\end{macro}
+
+\begin{macro}{return}{\op (value nil}{}
+  
+\end{macro}
+
+\begin{specialop}{return-from}{name \op value}{}
+  RETURN-FROM block-name value-form
+
+Evaluate the VALUE-FORM, returning its values from the lexically enclosing
+block BLOCK-NAME. This is constrained to be used only within the dynamic
+extent of the block.
+\end{specialop}
+
+\begin{macro}{rotatef}{\rest args &environment env}{}
+  Takes any number of SETF-style place expressions. Evaluates all of the
+   expressions in turn, then assigns to each place the value of the form to
+   its right. The rightmost form gets the value of the leftmost.
+   Returns NIL.
+\end{macro}
+
+\begin{macro}{setf}{\rest args &environment env}{}
+  Takes pairs of arguments like SETQ. The first is a place and the second
+  is the value that is supposed to go into that place. Returns the last
+  value. The place argument may be any of the access forms for which SETF
+  knows a corresponding setting form.
+\end{macro}
+
+\begin{special-form}{setq}{&whole source \rest things}{}
+  
+\end{special-form}
+
+\begin{macro}{shiftf}{&whole form \rest args &environment env}{}
+  One or more SETF-style place expressions, followed by a single
+   value expression. Evaluates all of the expressions in turn, then
+   assigns the value of each expression to the place on its left,
+   returning the value of the leftmost.
+\end{macro}
+
+\section{environment}
+
+\begin{variable}{*}{\rest args}{}
+  Return the product of its arguments. With no args, returns 1.
+\end{variable}
+
+\begin{variable}{**}{}{}
+  
+\end{variable}
+
+\begin{variable}{***}{}{}
+  
+\end{variable}
+
+\begin{variable}{+}{\rest args}{}
+  Return the sum of its arguments. With no args, returns 0.
+\end{variable}
+
+\begin{variable}{++}{}{}
+  
+\end{variable}
+
+\begin{variable}{+++}{}{}
+  
+\end{variable}
+
+\begin{variable}{-}{number \rest more-numbers}{}
+  Subtract the second and all subsequent arguments from the first;
+  or with one argument, negate the first argument.
+\end{variable}
+
+\begin{variable}{/}{number \rest more-numbers}{}
+  Divide the first argument by each of the following arguments, in turn.
+  With one argument, return reciprocal.
+\end{variable}
+
+\begin{variable}{//}{}{}
+  
+\end{variable}
+
+\begin{variable}{///}{}{}
+  
+\end{variable}
+
+\begin{function}{apropos}{string-designator \op package external-only}{}
+  Briefly describe all symbols which contain the specified STRING.
+  If PACKAGE is supplied then only describe symbols present in
+  that package. If EXTERNAL-ONLY then only describe
+  external symbols in the specified package.
+\end{function}
+
+\begin{function}{apropos-list}{string-designator \op package-designator external-only}{}
+  Like APROPOS, except that it returns a list of the symbols found instead
+  of describing them.
+\end{function}
+
+\begin{function}{decode-universal-time}{universal-time \op time-zone}{}
+  Converts a universal-time to decoded time format returning the following
+   nine values: second, minute, hour, date, month, year, day of week (0 =
+   Monday), T (daylight savings time) or NIL (standard time), and timezone.
+   Completely ignores daylight-savings-time when time-zone is supplied.
+\end{function}
+
+\begin{function}{describe}{x \op (stream-designator *standard-output*}{}
+  Print a description of the object X.
+\end{function}
+
+\begin{generic}{describe-object}{x stream}{}
+  
+\end{generic}
+
+\begin{function}{disassemble}{object \key (stream *standard-output*) (use-labels t}{}
+  Disassemble the compiled code associated with OBJECT, which can be a
+  function, a lambda expression, or a symbol with a function definition. If
+  it is not already compiled, the compiler is called to produce something to
+  disassemble.
+\end{function}
+
+\begin{generic}{documentation}{slotd doc-type}{}
+  Return the documentation string of Doc-Type for X, or NIL if
+  none exists. System doc-types are VARIABLE, FUNCTION, STRUCTURE, TYPE,
+  SETF, and T.
+\end{generic}
+
+\begin{function}{dribble}{\op pathname \key (if-exists append}{}
+  With a file name as an argument, dribble opens the file and sends a
+  record of further I/O to that file. Without an argument, it closes
+  the dribble file, and quits logging.
+\end{function}
+
+\begin{function}{ed}{\op x}{}
+  Starts the editor (on a file or a function if named).  Functions
+from the list *ED-FUNCTIONS* are called in order with X as an argument
+until one of them returns non-NIL; these functions are responsible for
+signalling a FILE-ERROR to indicate failure to perform an operation on
+the file system.
+\end{function}
+
+\begin{function}{encode-universal-time}{second minute hour date month year \op time-zone}{}
+  The time values specified in decoded format are converted to
+   universal time, which is returned.
+\end{function}
+
+\begin{function}{get-decoded-time}{nil}{}
+  Return nine values specifying the current time as follows:
+   second, minute, hour, date, month, year, day of week (0 = Monday), T
+   (daylight savings times) or NIL (standard time), and timezone.
+\end{function}
+
+\begin{function}{get-internal-real-time}{nil}{}
+  Return the real time ("wallclock time") since startup in the internal
+time format. (See INTERNAL-TIME-UNITS-PER-SECOND.)
+\end{function}
+
+\begin{function}{get-internal-run-time}{nil}{}
+  Return the run time used by the process in the internal time format. (See
+INTERNAL-TIME-UNITS-PER-SECOND.) This is useful for finding CPU usage.
+Includes both "system" and "user" time.
+\end{function}
+
+\begin{function}{get-universal-time}{nil}{}
+  Return a single integer for the current time of day in universal time
+format.
+\end{function}
+
+\begin{function}{inspect}{object}{}
+  
+\end{function}
+
+\begin{constant}{internal-time-units-per-second}{}{}
+  
+\end{constant}
+
+\begin{function}{lisp-implementation-type}{nil}{}
+  
+\end{function}
+
+\begin{function}{lisp-implementation-version}{nil}{}
+  
+\end{function}
+
+\begin{function}{long-site-name}{nil}{}
+  Return a string with the long form of the site name, or NIL if not known.
+\end{function}
+
+\begin{function}{machine-instance}{nil}{}
+  Return a string giving the name of the local machine.
+\end{function}
+
+\begin{function}{machine-type}{nil}{}
+  Return a string describing the type of the local machine.
+\end{function}
+
+\begin{function}{machine-version}{nil}{}
+  Return a string describing the version of the computer hardware we
+are running on, or NIL if we can't find any useful information.
+\end{function}
+
+\begin{function}{room}{\op (verbosity default}{}
+  Print to *STANDARD-OUTPUT* information about the state of internal
+  storage and its management. The optional argument controls the
+  verbosity of output. If it is T, ROOM prints out a maximal amount of
+  information. If it is NIL, ROOM prints out a minimal amount of
+  information. If it is :DEFAULT or it is not supplied, ROOM prints out
+  an intermediate amount of information.
+\end{function}
+
+\begin{function}{short-site-name}{nil}{}
+  Return a string with the abbreviated site name, or NIL if not known.
+\end{function}
+
+\section{evaluation}
+
+\begin{variable}{*macroexpand-hook*}{}{}
+  
+\end{variable}
+
+\begin{function}{compile}{name \op (definition (or (macro-function name) (fdefinition name}{}
+  Coerce DEFINITION (by default, the function whose name is NAME)
+  to a compiled function, returning (VALUES THING WARNINGS-P FAILURE-P),
+  where if NAME is NIL, THING is the result of compilation, and
+  otherwise THING is NAME. When NAME is not NIL, the compiled function
+  is also set into (MACRO-FUNCTION NAME) if NAME names a macro, or into
+  (FDEFINITION NAME) otherwise.
+\end{function}
+
+\begin{accessor}{compiler-macro-function}{name \op env}{}
+  If NAME names a compiler-macro in ENV, return the expansion function, else
+return NIL. Can be set with SETF when ENV is NIL.
+\end{accessor}
+
+\begin{function}{constantp}{form \op (environment nil envp}{}
+  True of any FORM that has a constant value: self-evaluating objects,
+keywords, defined constants, quote forms. Additionally the
+constant-foldability of some function calls special forms is recognized. If
+ENVIRONMENT is provided the FORM is first macroexpanded in it.
+\end{function}
+
+\begin{macro}{declaim}{\rest specs}{}
+  DECLAIM Declaration*
+  Do a declaration or declarations for the global environment.
+\end{macro}
+
+\begin{declaration}{declaration}{}{}
+  
+\end{declaration}
+
+\begin{symbol}{declare}{}{}
+  
+\end{symbol}
+
+\begin{macro}{define-compiler-macro}{name lambda-list \body body}{}
+  Define a compiler-macro for NAME.
+\end{macro}
+
+\begin{macro}{define-symbol-macro}{name expansion}{}
+  
+\end{macro}
+
+\begin{macro}{defmacro}{name lambda-list \rest body}{}
+  
+\end{macro}
+
+\begin{declaration}{dynamic-extent}{}{}
+  
+\end{declaration}
+
+\begin{function}{eval}{original-exp}{}
+  Evaluate the argument in a null lexical environment, returning the
+   result or results.
+\end{function}
+
+\begin{specialop}{eval-when}{situations \rest forms}{}
+  EVAL-WHEN (situation*) form*
+
+Evaluate the FORMS in the specified SITUATIONS (any of :COMPILE-TOPLEVEL,
+:LOAD-TOPLEVEL, or :EXECUTE, or (deprecated) COMPILE, LOAD, or EVAL).
+\end{specialop}
+
+\begin{declaration}{ftype}{}{}
+  
+\end{declaration}
+
+\begin{declaration}{ignorable}{}{}
+  
+\end{declaration}
+
+\begin{declaration}{ignore}{}{}
+  
+\end{declaration}
+
+\begin{declaration}{inline}{}{}
+  
+\end{declaration}
+
+\begin{macro}{lambda}{&whole whole args \body body}{}
+  
+\end{macro}
+
+\begin{symbol}{lambda}{&whole whole args \body body}{}
+  
+\end{symbol}
+
+\begin{specialop}{load-time-value}{form \op read-only-p}{}
+  Arrange for FORM to be evaluated at load-time and use the value produced
+   as if it were a constant. If READ-ONLY-P is non-NIL, then the resultant
+   object is guaranteed to never be modified, so it can be put in read-only
+   storage.
+\end{specialop}
+
+\begin{specialop}{locally}{\body body}{}
+  LOCALLY declaration* form*
+
+Sequentially evaluate the FORMS in a lexical environment where the
+DECLARATIONS have effect. If LOCALLY is a top level form, then the FORMS are
+also processed as top level forms.
+\end{specialop}
+
+\begin{accessor}{macro-function}{symbol \op env}{}
+  If SYMBOL names a macro in ENV, returns the expansion function,
+else returns NIL. If ENV is unspecified or NIL, use the global environment
+only.
+\end{accessor}
+
+\begin{function}{macroexpand}{form \op env}{}
+  Repetitively call MACROEXPAND-1 until the form can no longer be expanded.
+   Returns the final resultant form, and T if it was expanded. ENV is the
+   lexical environment to expand in, or NIL (the default) for the null
+   environment.
+\end{function}
+
+\begin{function}{macroexpand-1}{form \op env}{}
+  If form is a macro (or symbol macro), expand it once. Return two values,
+   the expanded form and a T-or-NIL flag indicating whether the form was, in
+   fact, a macro. ENV is the lexical environment to expand in, which defaults
+   to the null environment.
+\end{function}
+
+\begin{declaration}{notinline}{}{}
+  
+\end{declaration}
+
+\begin{declaration}{optimize}{}{}
+  
+\end{declaration}
+
+\begin{function}{proclaim}{raw-form}{}
+  
+\end{function}
+
+\begin{specialop}{quote}{thing}{}
+  QUOTE value
+
+Return VALUE without evaluating it.
+\end{specialop}
+
+\section{file}
+
+\begin{function}{delete-file}{file}{}
+  Delete the specified FILE.
+\end{function}
+
+\begin{function}{directory}{pathname \key (resolve-symlinks t}{}
+  Return a list of PATHNAMEs, each the TRUENAME of a file that matched the
+   given pathname. Note that the interaction between this ANSI-specified
+   TRUENAMEing and the semantics of the Unix filesystem (symbolic links..)
+   means this function can sometimes return files which don't have the same
+   directory as PATHNAME.  If :RESOLVE-SYMLINKS is NIL, don't resolve
+   symbolic links in matching filenames.
+\end{function}
+
+\begin{function}{ensure-directories-exist}{pathspec \key verbose (mode 511}{}
+  Test whether the directories containing the specified file
+  actually exist, and attempt to create them if they do not.
+  The MODE argument is a CMUCL/SBCL-specific extension to control
+  the Unix permission bits.
+\end{function}
+
+\begin{function}{file-author}{pathspec}{}
+  Return the author of the file specified by PATHSPEC. Signal an
+error of type FILE-ERROR if no such file exists, or if PATHSPEC
+is a wild pathname.
+\end{function}
+
+\begin{condition-type}{file-error}{}{}
+  
+\end{condition-type}
+
+\begin{function}{file-error-pathname}{condition}{}
+  
+\end{function}
+
+\begin{function}{file-write-date}{pathspec}{}
+  Return the write date of the file specified by PATHSPEC.
+An error of type FILE-ERROR is signaled if no such file exists,
+or if PATHSPEC is a wild pathname.
+\end{function}
+
+\begin{function}{probe-file}{pathspec}{}
+  Return the truename of PATHSPEC if the truename can be found,
+or NIL otherwise.  See TRUENAME for more information.
+\end{function}
+
+\begin{function}{rename-file}{file new-name}{}
+  Rename FILE to have the specified NEW-NAME. If FILE is a stream open to a
+  file, then the associated file is renamed.
+\end{function}
+
+\section{filename}
+
+\begin{variable}{*default-pathname-defaults*}{}{}
+  
+\end{variable}
+
+\begin{function}{directory-namestring}{pathname}{}
+  Return a string representation of the directories used in the pathname.
+\end{function}
+
+\begin{function}{enough-namestring}{pathname \op (defaults *default-pathname-defaults*}{}
+  Return an abbreviated pathname sufficent to identify the pathname relative
+   to the defaults.
+\end{function}
+
+\begin{function}{file-namestring}{pathname}{}
+  Return a string representation of the name used in the pathname.
+\end{function}
+
+\begin{function}{host-namestring}{pathname}{}
+  Return a string representation of the name of the host in the pathname.
+\end{function}
+
+\begin{function}{load-logical-pathname-translations}{host}{}
+  
+\end{function}
+
+\begin{function}{logical-pathname}{pathspec}{}
+  Converts the pathspec argument to a logical-pathname and returns it.
+\end{function}
+
+\begin{class}{logical-pathname}{pathspec}{}
+  Converts the pathspec argument to a logical-pathname and returns it.
+\end{class}
+
+\begin{accessor}{logical-pathname-translations}{host}{}
+  Return the (logical) host object argument's list of translations.
+\end{accessor}
+
+\begin{function}{make-pathname}{\key host (device nil devp) (directory nil dirp) (name nil namep)
+ (type nil typep) (version nil versionp) defaults (case local}{}
+  Makes a new pathname from the component arguments. Note that host is
+a host-structure or string.
+\end{function}
+
+\begin{function}{merge-pathnames}{pathname \op (defaults *default-pathname-defaults*)
+          (default-version newest}{}
+  Construct a filled in pathname by completing the unspecified components
+   from the defaults.
+\end{function}
+
+\begin{function}{namestring}{pathname}{}
+  Construct the full (name)string form of the pathname.
+\end{function}
+
+\begin{function}{parse-namestring}{thing \op host (defaults *default-pathname-defaults*) \key (start 0) end
+ junk-allowed}{}
+  
+\end{function}
+
+\begin{function}{pathname}{pathspec}{}
+  Convert PATHSPEC (a pathname designator) into a pathname.
+\end{function}
+
+\begin{class}{pathname}{pathspec}{}
+  Convert PATHSPEC (a pathname designator) into a pathname.
+\end{class}
+
+\begin{function}{pathname-device}{pathname \key (case local}{}
+  Return PATHNAME's device.
+\end{function}
+
+\begin{function}{pathname-directory}{pathname \key (case local}{}
+  Return PATHNAME's directory.
+\end{function}
+
+\begin{function}{pathname-host}{pathname \key (case local}{}
+  Return PATHNAME's host.
+\end{function}
+
+\begin{function}{pathname-match-p}{in-pathname in-wildname}{}
+  Pathname matches the wildname template?
+\end{function}
+
+\begin{function}{pathname-name}{pathname \key (case local}{}
+  Return PATHNAME's name.
+\end{function}
+
+\begin{function}{pathname-type}{pathname \key (case local}{}
+  Return PATHNAME's type.
+\end{function}
+
+\begin{function}{pathname-version}{pathname}{}
+  Return PATHNAME's version.
+\end{function}
+
+\begin{function}{pathnamep}{object}{}
+  
+\end{function}
+
+\section{hash-table}
+
+\begin{function}{clrhash}{hash-table}{}
+  This removes all the entries from HASH-TABLE and returns the hash
+table itself.
+\end{function}
+
+\begin{accessor}{gethash}{key hash-table \op default}{}
+  Finds the entry in HASH-TABLE whose key is KEY and returns the
+associated value and T as multiple values, or returns DEFAULT and NIL
+if there is no such entry. Entries can be added using SETF.
+\end{accessor}
+
+\begin{class}{hash-table}{}{}
+  
+\end{class}
+
+\begin{function}{hash-table-count}{hash-table}{}
+  Return the number of entries in the given HASH-TABLE.
+\end{function}
+
+\begin{function}{hash-table-p}{object}{}
+  
+\end{function}
+
+\begin{function}{hash-table-rehash-size}{instance}{}
+  Return the rehash-size HASH-TABLE was created with.
+\end{function}
+
+\begin{function}{hash-table-rehash-threshold}{instance}{}
+  Return the rehash-threshold HASH-TABLE was created with.
+\end{function}
+
+\begin{function}{hash-table-size}{hash-table}{}
+  Return a size that can be used with MAKE-HASH-TABLE to create a hash
+   table that can hold however many entries HASH-TABLE can hold without
+   having to be grown.
+\end{function}
+
+\begin{function}{hash-table-test}{instance}{}
+  Return the test HASH-TABLE was created with.
+\end{function}
+
+\begin{function}{make-hash-table}{\key (test 'eql) (size +min-hash-table-size+) (rehash-size 1.5)
+ (rehash-threshold 1) (weakness nil) (synchronized}{}
+  Create and return a new hash table. The keywords are as follows:
+     :TEST -- Indicates what kind of test to use.
+     :SIZE -- A hint as to how many elements will be put in this hash
+       table.
+     :REHASH-SIZE -- Indicates how to expand the table when it fills up.
+       If an integer, add space for that many elements. If a floating
+       point number (which must be greater than 1.0), multiply the size
+       by that amount.
+     :REHASH-THRESHOLD -- Indicates how dense the table can become before
+       forcing a rehash. Can be any positive number <=1, with density
+       approaching zero as the threshold approaches 0. Density 1 means an
+       average of one entry per bucket.
+     :WEAKNESS -- If NIL (the default) it is a normal non-weak hash table.
+       If one of :KEY, :VALUE, :KEY-AND-VALUE, :KEY-OR-VALUE it is a weak
+       hash table.
+       Depending on the type of weakness the lack of references to the
+       key and the value may allow for removal of the entry. If WEAKNESS
+       is :KEY and the key would otherwise be garbage the entry is eligible
+       for removal from the hash table. Similarly, if WEAKNESS is :VALUE
+       the life of an entry depends on its value's references. If WEAKNESS
+       is :KEY-AND-VALUE and either the key or the value would otherwise be
+       garbage the entry can be removed. If WEAKNESS is :KEY-OR-VALUE and
+       both the key and the value would otherwise be garbage the entry can
+       be removed.
+     :SYNCHRONIZED -- If NIL (the default), the hash-table may have
+       multiple concurrent readers, but results are undefined if a
+       thread writes to the hash-table concurrently with another
+       reader or writer. If T, all concurrent accesses are safe, but
+       note that CLHS 3.6 (Traversal Rules and Side Effects) remains
+       in force. See also: SB-EXT:WITH-LOCKED-HASH-TABLE. This keyword
+       argument is experimental, and may change incompatibly or be
+       removed in the future.
+\end{function}
+
+\begin{function}{maphash}{function-designator hash-table}{}
+  For each entry in HASH-TABLE, call the designated two-argument function on
+the key and value of the entry. Return NIL.
+
+Consequences are undefined if HASH-TABLE is mutated during the call to
+MAPHASH, except for changing or removing elements corresponding to the
+current key. The applies to all threads, not just the current one --
+even for synchronized hash-tables. If the table may be mutated by
+another thread during iteration, use eg. SB-EXT:WITH-LOCKED-HASH-TABLE
+to protect the MAPHASH call.
+\end{function}
+
+\begin{function}{remhash}{key hash-table}{}
+  Remove the entry in HASH-TABLE associated with KEY. Return T if
+there was such an entry, or NIL if not.
+\end{function}
+
+\section{iteration}
+
+\begin{macro}{do}{varlist endlist \body body}{}
+  DO ({(Var [Init] [Step])}*) (Test Exit-Form*) Declaration* Form*
+  Iteration construct. Each Var is initialized in parallel to the value of the
+  specified Init form. On subsequent iterations, the Vars are assigned the
+  value of the Step form (if any) in parallel. The Test is evaluated before
+  each evaluation of the body Forms. When the Test is true, the Exit-Forms
+  are evaluated as a PROGN, with the result being the value of the DO. A block
+  named NIL is established around the entire expansion, allowing RETURN to be
+  used as an alternate exit mechanism.
+\end{macro}
+
+\begin{macro}{do*}{varlist endlist \body body}{}
+  DO* ({(Var [Init] [Step])}*) (Test Exit-Form*) Declaration* Form*
+  Iteration construct. Each Var is initialized sequentially (like LET*) to the
+  value of the specified Init form. On subsequent iterations, the Vars are
+  sequentially assigned the value of the Step form (if any). The Test is
+  evaluated before each evaluation of the body Forms. When the Test is true,
+  the Exit-Forms are evaluated as a PROGN, with the result being the value
+  of the DO. A block named NIL is established around the entire expansion,
+  allowing RETURN to be used as an laternate exit mechanism.
+\end{macro}
+
+\begin{macro}{dolist}{var list \op (result nil)) \body body &environment env}{}
+  
+\end{macro}
+
+\begin{macro}{dotimes}{var count \op (result nil)) \body body}{}
+  
+\end{macro}
+
+\begin{macro}{loop}{&environment env \rest keywords-and-forms}{}
+  
+\end{macro}
+
+\begin{local-macro}{loop-finish}{nil}{}
+  Cause the iteration to terminate "normally", the same as implicit
+termination by an iteration driving clause, or by use of WHILE or
+UNTIL -- the epilogue code (if any) will be run, and any implicitly
+collected result will be returned as the value of the LOOP.
+\end{local-macro}
+
+\section{number}
+
+\begin{function}{*}{\rest args}{}
+  Return the product of its arguments. With no args, returns 1.
+\end{function}
+
+\begin{variable}{*random-state*}{}{}
+  
+\end{variable}
+
+\begin{function}{+}{\rest args}{}
+  Return the sum of its arguments. With no args, returns 0.
+\end{function}
+
+\begin{function}{-}{number \rest more-numbers}{}
+  Subtract the second and all subsequent arguments from the first;
+  or with one argument, negate the first argument.
+\end{function}
+
+\begin{function}{/}{number \rest more-numbers}{}
+  Divide the first argument by each of the following arguments, in turn.
+  With one argument, return reciprocal.
+\end{function}
+
+\begin{function}{/=}{number \rest more-numbers}{}
+  Return T if no two of its arguments are numerically equal, NIL otherwise.
+\end{function}
+
+\begin{function}{1+}{number}{}
+  Return NUMBER + 1.
+\end{function}
+
+\begin{function}{1-}{number}{}
+  Return NUMBER - 1.
+\end{function}
+
+\begin{function}{<}{number \rest more-numbers}{}
+  Return T if its arguments are in strictly increasing order, NIL otherwise.
+\end{function}
+
+\begin{function}{<=}{number \rest more-numbers}{}
+  Return T if arguments are in strictly non-decreasing order, NIL otherwise.
+\end{function}
+
+\begin{function}{=}{number \rest more-numbers}{}
+  Return T if all of its arguments are numerically equal, NIL otherwise.
+\end{function}
+
+\begin{function}{>}{number \rest more-numbers}{}
+  Return T if its arguments are in strictly decreasing order, NIL otherwise.
+\end{function}
+
+\begin{function}{>=}{number \rest more-numbers}{}
+  Return T if arguments are in strictly non-increasing order, NIL otherwise.
+\end{function}
+
+\begin{function}{abs}{number}{}
+  Return the absolute value of the number.
+\end{function}
+
+\begin{function}{acos}{number}{}
+  Return the arc cosine of NUMBER.
+\end{function}
+
+\begin{function}{acosh}{number}{}
+  Return the hyperbolic arc cosine of NUMBER.
+\end{function}
+
+\begin{condition-type}{arithmetic-error}{}{}
+  
+\end{condition-type}
+
+\begin{function}{arithmetic-error-operands}{condition}{}
+  
+\end{function}
+
+\begin{function}{arithmetic-error-operation}{condition}{}
+  
+\end{function}
+
+\begin{function}{ash}{integer count}{}
+  Shifts integer left by count places preserving sign. - count shifts right.
+\end{function}
+
+\begin{function}{asin}{number}{}
+  Return the arc sine of NUMBER.
+\end{function}
+
+\begin{function}{asinh}{number}{}
+  Return the hyperbolic arc sine of NUMBER.
+\end{function}
+
+\begin{function}{atan}{y \op (x nil xp}{}
+  Return the arc tangent of Y if X is omitted or Y/X if X is supplied.
+\end{function}
+
+\begin{function}{atanh}{number}{}
+  Return the hyperbolic arc tangent of NUMBER.
+\end{function}
+
+\begin{type}{bignum}{}{}
+  
+\end{type}
+
+\begin{type}{bit}{bit-array \rest subscripts}{}
+  Return the bit from the BIT-ARRAY at the specified SUBSCRIPTS.
+\end{type}
+
+\begin{function}{boole}{op integer1 integer2}{}
+  Bit-wise boolean function on two integers. Function chosen by OP:
+        0       BOOLE-CLR
+        1       BOOLE-SET
+        2       BOOLE-1
+        3       BOOLE-2
+        4       BOOLE-C1
+        5       BOOLE-C2
+        6       BOOLE-AND
+        7       BOOLE-IOR
+        8       BOOLE-XOR
+        9       BOOLE-EQV
+        10      BOOLE-NAND
+        11      BOOLE-NOR
+        12      BOOLE-ANDC1
+        13      BOOLE-ANDC2
+        14      BOOLE-ORC1
+        15      BOOLE-ORC2
+\end{function}
+
+\begin{constant}{boole-1}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-2}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-and}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-andc1}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-andc2}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-c1}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-c2}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-clr}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-eqv}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-ior}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-nand}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-nor}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-orc1}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-orc2}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-set}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-xor}{}{}
+  
+\end{constant}
+
+\begin{function}{byte}{size position}{}
+  Return a byte specifier which may be used by other byte functions
+  (e.g. LDB).
+\end{function}
+
+\begin{function}{byte-position}{bytespec}{}
+  Return the position part of the byte specifier bytespec.
+\end{function}
+
+\begin{function}{byte-size}{bytespec}{}
+  Return the size part of the byte specifier bytespec.
+\end{function}
+
+\begin{function}{ceiling}{number \op (divisor 1}{}
+  Return the smallest integer not less than number, or number/divisor.
+  The second returned value is the remainder.
+\end{function}
+
+\begin{function}{cis}{theta}{}
+  Return cos(Theta) + i sin(Theta), i.e. exp(i Theta).
+\end{function}
+
+\begin{function}{complex}{realpart \op (imagpart 0}{}
+  Return a complex number with the specified real and imaginary components.
+\end{function}
+
+\begin{class}{complex}{realpart \op (imagpart 0}{}
+  Return a complex number with the specified real and imaginary components.
+\end{class}
+
+\begin{function}{complexp}{object}{}
+  Return true if OBJECT is a COMPLEX, and NIL otherwise.
+\end{function}
+
+\begin{function}{conjugate}{number}{}
+  Return the complex conjugate of NUMBER. For non-complex numbers, this is
+  an identity.
+\end{function}
+
+\begin{function}{cos}{number}{}
+  Return the cosine of NUMBER.
+\end{function}
+
+\begin{function}{cosh}{number}{}
+  Return the hyperbolic cosine of NUMBER.
+\end{function}
+
+\begin{macro}{decf}{place \op (delta 1) &environment env}{}
+  The first argument is some location holding a number. This number is
+  decremented by the second argument, DELTA, which defaults to 1.
+\end{macro}
+
+\begin{function}{decode-float}{f}{}
+  Return three values:
+   1) a floating-point number representing the significand. This is always
+      between 0.5 (inclusive) and 1.0 (exclusive).
+   2) an integer representing the exponent.
+   3) -1.0 or 1.0 (i.e. the sign of the argument.)
+\end{function}
+
+\begin{function}{denominator}{number}{}
+  Return the denominator of NUMBER, which must be rational.
+\end{function}
+
+\begin{function}{deposit-field}{newbyte bytespec integer}{}
+  Return new integer with newbyte in specified position, newbyte is not right justified.
+\end{function}
+
+\begin{condition-type}{division-by-zero}{}{}
+  
+\end{condition-type}
+
+\begin{type}{double-float}{}{}
+  
+\end{type}
+
+\begin{constant}{double-float-epsilon}{}{}
+  
+\end{constant}
+
+\begin{constant}{double-float-negative-epsilon}{}{}
+  
+\end{constant}
+
+\begin{function}{dpb}{newbyte bytespec integer}{}
+  Return new integer with newbyte in specified position, newbyte is right justified.
+\end{function}
+
+\begin{function}{evenp}{number}{}
+  Is this integer even?
+\end{function}
+
+\begin{function}{exp}{number}{}
+  Return e raised to the power NUMBER.
+\end{function}
+
+\begin{function}{expt}{base power}{}
+  Return BASE raised to the POWER.
+\end{function}
+
+\begin{function}{fceiling}{number \op (divisor 1}{}
+  Same as CEILING, but returns first value as a float.
+\end{function}
+
+\begin{function}{ffloor}{number \op (divisor 1}{}
+  Same as FLOOR, but returns first value as a float.
+\end{function}
+
+\begin{type}{fixnum}{}{}
+  
+\end{type}
+
+\begin{function}{float}{number \op (other nil otherp}{}
+  Converts any REAL to a float. If OTHER is not provided, it returns a
+  SINGLE-FLOAT if NUMBER is not already a FLOAT. If OTHER is provided, the
+  result is the same float format as OTHER.
+\end{function}
+
+\begin{class}{float}{number \op (other nil otherp}{}
+  Converts any REAL to a float. If OTHER is not provided, it returns a
+  SINGLE-FLOAT if NUMBER is not already a FLOAT. If OTHER is provided, the
+  result is the same float format as OTHER.
+\end{class}
+
+\begin{function}{float-digits}{f}{}
+  
+\end{function}
+
+\begin{function}{float-precision}{f}{}
+  Return a non-negative number of significant digits in its float argument.
+  Will be less than FLOAT-DIGITS if denormalized or zero.
+\end{function}
+
+\begin{function}{float-radix}{x}{}
+  Return (as an integer) the radix b of its floating-point argument.
+\end{function}
+
+\begin{function}{float-sign}{float1 \op (float2 (float 1 float1}{}
+  Return a floating-point number that has the same sign as
+   FLOAT1 and, if FLOAT2 is given, has the same absolute value
+   as FLOAT2.
+\end{function}
+
+\begin{condition-type}{floating-point-inexact}{}{}
+  
+\end{condition-type}
+
+\begin{condition-type}{floating-point-invalid-operation}{}{}
+  
+\end{condition-type}
+
+\begin{condition-type}{floating-point-overflow}{}{}
+  
+\end{condition-type}
+
+\begin{condition-type}{floating-point-underflow}{}{}
+  
+\end{condition-type}
+
+\begin{function}{floatp}{object}{}
+  Return true if OBJECT is a FLOAT, and NIL otherwise.
+\end{function}
+
+\begin{function}{floor}{number \op (divisor 1}{}
+  Return the greatest integer not greater than number, or number/divisor.
+  The second returned value is (mod number divisor).
+\end{function}
+
+\begin{function}{fround}{number \op (divisor 1}{}
+  Same as ROUND, but returns first value as a float.
+\end{function}
+
+\begin{function}{ftruncate}{number \op (divisor 1}{}
+  Same as TRUNCATE, but returns first value as a float.
+\end{function}
+
+\begin{function}{gcd}{\rest integers}{}
+  Return the greatest common divisor of the arguments, which must be
+  integers. Gcd with no arguments is defined to be 0.
+\end{function}
+
+\begin{function}{imagpart}{number}{}
+  Extract the imaginary part of a number.
+\end{function}
+
+\begin{macro}{incf}{place \op (delta 1) &environment env}{}
+  The first argument is some location holding a number. This number is
+  incremented by the second argument, DELTA, which defaults to 1.
+\end{macro}
+
+\begin{class}{integer}{}{}
+  
+\end{class}
+
+\begin{function}{integer-decode-float}{x}{}
+  Return three values:
+   1) an integer representation of the significand.
+   2) the exponent for the power of 2 that the significand must be multiplied
+      by to get the actual value. This differs from the DECODE-FLOAT exponent
+      by FLOAT-DIGITS, since the significand has been scaled to have all its
+      digits before the radix point.
+   3) -1 or 1 (i.e. the sign of the argument.)
+\end{function}
+
+\begin{function}{integer-length}{integer}{}
+  Return the number of non-sign bits in the twos-complement representation
+  of INTEGER.
+\end{function}
+
+\begin{function}{integerp}{object}{}
+  Return true if OBJECT is an INTEGER, and NIL otherwise.
+\end{function}
+
+\begin{function}{isqrt}{n}{}
+  Return the root of the nearest integer less than n which is a perfect
+   square.
+\end{function}
+
+\begin{function}{lcm}{\rest integers}{}
+  Return the least common multiple of one or more integers. LCM of no
+  arguments is defined to be 1.
+\end{function}
+
+\begin{accessor}{ldb}{bytespec integer}{}
+  Extract the specified byte from integer, and right justify result.
+\end{accessor}
+
+\begin{function}{ldb-test}{bytespec integer}{}
+  Return T if any of the specified bits in integer are 1's.
+\end{function}
+
+\begin{constant}{least-negative-double-float}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-negative-long-float}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-negative-normalized-double-float}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-negative-normalized-long-float}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-negative-normalized-short-float}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-negative-normalized-single-float}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-negative-short-float}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-negative-single-float}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-positive-double-float}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-positive-long-float}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-positive-normalized-double-float}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-positive-normalized-long-float}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-positive-normalized-short-float}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-positive-normalized-single-float}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-positive-short-float}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-positive-single-float}{}{}
+  
+\end{constant}
+
+\begin{function}{log}{number \op (base nil base-p}{}
+  Return the logarithm of NUMBER in the base BASE, which defaults to e.
+\end{function}
+
+\begin{function}{logand}{\rest integers}{}
+  Return the bit-wise and of its arguments. Args must be integers.
+\end{function}
+
+\begin{function}{logandc1}{integer1 integer2}{}
+  Bitwise AND (LOGNOT INTEGER1) with INTEGER2.
+\end{function}
+
+\begin{function}{logandc2}{integer1 integer2}{}
+  Bitwise AND INTEGER1 with (LOGNOT INTEGER2).
+\end{function}
+
+\begin{function}{logbitp}{index integer}{}
+  Predicate returns T if bit index of integer is a 1.
+\end{function}
+
+\begin{function}{logcount}{integer}{}
+  Count the number of 1 bits if INTEGER is positive, and the number of 0 bits
+  if INTEGER is negative.
+\end{function}
+
+\begin{function}{logeqv}{\rest integers}{}
+  Return the bit-wise equivalence of its arguments. Args must be integers.
+\end{function}
+
+\begin{function}{logior}{\rest integers}{}
+  Return the bit-wise or of its arguments. Args must be integers.
+\end{function}
+
+\begin{function}{lognand}{integer1 integer2}{}
+  Complement the logical AND of INTEGER1 and INTEGER2.
+\end{function}
+
+\begin{function}{lognor}{integer1 integer2}{}
+  Complement the logical AND of INTEGER1 and INTEGER2.
+\end{function}
+
+\begin{function}{lognot}{number}{}
+  Return the bit-wise logical not of integer.
+\end{function}
+
+\begin{function}{logorc1}{integer1 integer2}{}
+  Bitwise OR (LOGNOT INTEGER1) with INTEGER2.
+\end{function}
+
+\begin{function}{logorc2}{integer1 integer2}{}
+  Bitwise OR INTEGER1 with (LOGNOT INTEGER2).
+\end{function}
+
+\begin{function}{logtest}{integer1 integer2}{}
+  Predicate which returns T if logand of integer1 and integer2 is not zero.
+\end{function}
+
+\begin{function}{logxor}{\rest integers}{}
+  Return the bit-wise exclusive or of its arguments. Args must be integers.
+\end{function}
+
+\begin{type}{long-float}{}{}
+  
+\end{type}
+
+\begin{constant}{long-float-epsilon}{}{}
+  
+\end{constant}
+
+\begin{constant}{long-float-negative-epsilon}{}{}
+  
+\end{constant}
+
+\begin{function}{make-random-state}{\op state}{}
+  Make a random state object. If STATE is not supplied, return a copy
+  of the default random state. If STATE is a random state, then return a
+  copy of it. If STATE is T then return a random state generated from
+  the universal time.
+\end{function}
+
+\begin{accessor}{mask-field}{bytespec integer}{}
+  Extract the specified byte from integer,  but do not right justify result.
+\end{accessor}
+
+\begin{function}{max}{number \rest more-numbers}{}
+  Return the greatest of its arguments; among EQUALP greatest, return
+the first.
+\end{function}
+
+\begin{function}{min}{number \rest more-numbers}{}
+  Return the least of its arguments; among EQUALP least, return
+the first.
+\end{function}
+
+\begin{function}{minusp}{number}{}
+  Is this real number strictly negative?
+\end{function}
+
+\begin{function}{mod}{number divisor}{}
+  Return second result of FLOOR.
+\end{function}
+
+\begin{type-specifier}{mod}{number divisor}{}
+  Return second result of FLOOR.
+\end{type-specifier}
+
+\begin{constant}{most-negative-double-float}{}{}
+  
+\end{constant}
+
+\begin{constant}{most-negative-fixnum}{}{}
+  
+\end{constant}
+
+\begin{constant}{most-negative-long-float}{}{}
+  
+\end{constant}
+
+\begin{constant}{most-negative-short-float}{}{}
+  
+\end{constant}
+
+\begin{constant}{most-negative-single-float}{}{}
+  
+\end{constant}
+
+\begin{constant}{most-positive-double-float}{}{}
+  
+\end{constant}
+
+\begin{constant}{most-positive-fixnum}{}{}
+  
+\end{constant}
+
+\begin{constant}{most-positive-long-float}{}{}
+  
+\end{constant}
+
+\begin{constant}{most-positive-short-float}{}{}
+  
+\end{constant}
+
+\begin{constant}{most-positive-single-float}{}{}
+  
+\end{constant}
+
+\begin{class}{number}{}{}
+  
+\end{class}
+
+\begin{function}{numberp}{object}{}
+  Return true if OBJECT is a NUMBER, and NIL otherwise.
+\end{function}
+
+\begin{function}{numerator}{number}{}
+  Return the numerator of NUMBER, which must be rational.
+\end{function}
+
+\begin{function}{oddp}{number}{}
+  Is this integer odd?
+\end{function}
+
+\begin{function}{parse-integer}{string \key (start 0) end (radix 10) junk-allowed}{}
+  Examine the substring of string delimited by start and end
+  (default to the beginning and end of the string)  It skips over
+  whitespace characters and then tries to parse an integer. The
+  radix parameter must be between 2 and 36.
+\end{function}
+
+\begin{function}{phase}{number}{}
+  Return the angle part of the polar representation of a complex number.
+  For complex numbers, this is (atan (imagpart number) (realpart number)).
+  For non-complex positive numbers, this is 0. For non-complex negative
+  numbers this is PI.
+\end{function}
+
+\begin{constant}{pi}{}{}
+  
+\end{constant}
+
+\begin{function}{plusp}{number}{}
+  Is this real number strictly positive?
+\end{function}
+
+\begin{function}{random}{arg \op (state *random-state*}{}
+  
+\end{function}
+
+\begin{class}{random-state}{}{}
+  
+\end{class}
+
+\begin{function}{random-state-p}{object}{}
+  
+\end{function}
+
+\begin{class}{ratio}{}{}
+  
+\end{class}
+
+\begin{function}{rational}{x}{}
+  RATIONAL produces a rational number for any real numeric argument. This is
+  more efficient than RATIONALIZE, but it assumes that floating-point is
+  completely accurate, giving a result that isn't as pretty.
+\end{function}
+
+\begin{class}{rational}{x}{}
+  RATIONAL produces a rational number for any real numeric argument. This is
+  more efficient than RATIONALIZE, but it assumes that floating-point is
+  completely accurate, giving a result that isn't as pretty.
+\end{class}
+
+\begin{function}{rationalize}{x}{}
+  Converts any REAL to a RATIONAL.  Floats are converted to a simple rational
+  representation exploiting the assumption that floats are only accurate to
+  their precision.  RATIONALIZE (and also RATIONAL) preserve the invariant:
+      (= x (float (rationalize x) x))
+\end{function}
+
+\begin{function}{rationalp}{object}{}
+  Return true if OBJECT is a RATIONAL, and NIL otherwise.
+\end{function}
+
+\begin{class}{real}{}{}
+  
+\end{class}
+
+\begin{function}{realp}{object}{}
+  Return true if OBJECT is a REAL, and NIL otherwise.
+\end{function}
+
+\begin{function}{realpart}{number}{}
+  Extract the real part of a number.
+\end{function}
+
+\begin{function}{rem}{number divisor}{}
+  Return second result of TRUNCATE.
+\end{function}
+
+\begin{function}{round}{number \op (divisor 1}{}
+  Rounds number (or number/divisor) to nearest integer.
+  The second returned value is the remainder.
+\end{function}
+
+\begin{function}{scale-float}{f ex}{}
+  Return the value (* f (expt (float 2 f) ex)), but with no unnecessary loss
+  of precision or overflow.
+\end{function}
+
+\begin{type}{short-float}{}{}
+  
+\end{type}
+
+\begin{constant}{short-float-epsilon}{}{}
+  
+\end{constant}
+
+\begin{constant}{short-float-negative-epsilon}{}{}
+  
+\end{constant}
+
+\begin{type}{signed-byte}{}{}
+  
+\end{type}
+
+\begin{function}{signum}{number}{}
+  If NUMBER is zero, return NUMBER, else return (/ NUMBER (ABS NUMBER)).
+\end{function}
+
+\section{object}
+
+\begin{generic}{add-method}{generic-function method}{}
+  
+\end{generic}
+
+\begin{generic}{allocate-instance}{class \rest initargs}{}
+  
+\end{generic}
+
+\begin{local-macro}{call-method}{\rest args}{}
+  
+\end{local-macro}
+
+\begin{local-function}{call-next-method}{}{}
+  
+\end{local-function}
+
+\begin{generic}{change-class}{instance new-class-name \rest initargs &allow-other-keys}{}
+  
+\end{generic}
+
+\begin{generic}{class-name}{class}{}
+  
+\end{generic}
+
+\begin{function}{class-of}{x}{}
+  
+\end{function}
+
+\begin{generic}{compute-applicable-methods}{generic-function arguments}{}
+  
+\end{generic}
+
+\begin{macro}{defclass}{&environment env name direct-superclasses direct-slots \rest options}{}
+  
+\end{macro}
+
+\begin{macro}{defgeneric}{fun-name lambda-list \body options}{}
+  
+\end{macro}
+
+\begin{macro}{define-method-combination}{&whole form \rest args}{}
+  
+\end{macro}
+
+\begin{macro}{defmethod}{\rest args}{}
+  
+\end{macro}
+
+\begin{function}{ensure-generic-function}{fun-name \rest all-keys \key environment source-location &allow-other-keys}{}
+  
+\end{function}
+
+\begin{accessor}{find-class}{symbol \op (errorp t) environment}{}
+  
+\end{accessor}
+
+\begin{generic}{find-method}{generic-function qualifiers specializers \op errorp}{}
+  
+\end{generic}
+
+\begin{generic}{function-keywords}{method}{}
+  
+\end{generic}
+
+\begin{generic}{initialize-instance}{gf \key (lambda-list nil lambda-list-p) argument-precedence-order
+ &allow-other-keys}{}
+  
+\end{generic}
+
+\begin{generic}{make-instance}{class \rest initargs &allow-other-keys}{}
+  
+\end{generic}
+
+\begin{generic}{make-instances-obsolete}{class}{}
+  
+\end{generic}
+
+\begin{generic}{make-load-form}{object \op environment}{}
+  
+\end{generic}
+
+\begin{function}{make-load-form-saving-slots}{object \key (slot-names nil slot-names-p) environment}{}
+  
+\end{function}
+
+\begin{local-macro}{make-method}{}{}
+  
+\end{local-macro}
+
+\begin{generic}{method-qualifiers}{m}{}
+  
+\end{generic}
+
+\begin{local-function}{next-method-p}{}{}
+  
+\end{local-function}
+
+\begin{generic}{no-applicable-method}{generic-function \rest args}{}
+  
+\end{generic}
+
+\begin{generic}{no-next-method}{generic-function method \rest args}{}
+  
+\end{generic}
+
+\begin{generic}{reinitialize-instance}{gf \rest args \key direct-superclasses (lambda-list nil lambda-list-p)
+ (argument-precedence-order nil apo-p) &allow-other-keys}{}
+  
+\end{generic}
+
+\begin{generic}{remove-method}{generic-function method}{}
+  
+\end{generic}
+
+\begin{generic}{shared-initialize}{generic-function slot-names \key
+ (method-combination nil method-combination-supplied-p)
+ (method-class nil method-class-supplied-p) documentation declarations
+ argument-precedence-order (lambda-list nil lambda-list-p) (name nil namep)
+ slot-definition slot-name definition-source direct-default-initargs
+ (direct-slots nil direct-slots-p)
+ (direct-superclasses nil direct-superclasses-p) force type protocol
+ (allocation instance) allocation-class qualifiers specializers function
+ ((method-cell method-cell)) &allow-other-keys}{}
+  
+\end{generic}
+
+\section{package}
+
+\begin{variable}{*package*}{}{}
+  
+\end{variable}
+
+\begin{macro}{defpackage}{package \rest options}{}
+  Defines a new package called PACKAGE. Each of OPTIONS should be one of the
+   following: 
+    (NICKNAMES {package-name}*)
+    (SIZE <integer>)
+    (SHADOW {symbol-name}*)
+    (SHADOWING-IMPORT-FROM <package-name> {symbol-name}*)
+    (USE {package-name}*)
+    (IMPORT-FROM <package-name> {symbol-name}*)
+    (INTERN {symbol-name}*)
+    (EXPORT {symbol-name}*)
+    (IMPLEMENT {package-name}*)
+    (LOCK boolean)
+    (DOCUMENTATION doc-string)
+   All options except SIZE, LOCK, and :DOCUMENTATION can be used multiple
+   times.
+\end{macro}
+
+\begin{function}{delete-package}{package-designator}{}
+  Delete the package designated by PACKAGE-DESIGNATOR from the package
+  system data structures.
+\end{function}
+
+\begin{macro}{do-all-symbols}{var \op result-form) \body body-decls}{}
+  DO-ALL-SYMBOLS (VAR [RESULT-FORM]) {DECLARATION}* {TAG | FORM}*
+   Executes the FORMs once for each symbol in every package with VAR bound
+   to the current symbol.
+\end{macro}
+
+\begin{macro}{do-external-symbols}{var \op (package '*package*) result-form) \body body-decls}{}
+  DO-EXTERNAL-SYMBOLS (VAR [PACKAGE [RESULT-FORM]]) {DECL}* {TAG | FORM}*
+   Executes the FORMs once for each external symbol in the given PACKAGE with
+   VAR bound to the current symbol.
+\end{macro}
+
+\begin{macro}{do-symbols}{var \op (package '*package*) result-form) \body body-decls}{}
+  DO-SYMBOLS (VAR [PACKAGE [RESULT-FORM]]) {DECLARATION}* {TAG | FORM}*
+   Executes the FORMs at least once for each symbol accessible in the given
+   PACKAGE with VAR bound to the current symbol.
+\end{macro}
+
+\begin{function}{export}{symbols \op (package (sane-package}{}
+  Exports SYMBOLS from PACKAGE, checking that no name conflicts result.
+\end{function}
+
+\begin{function}{find-all-symbols}{string-or-symbol}{}
+  Return a list of all symbols in the system having the specified name.
+\end{function}
+
+\begin{function}{find-package}{package-designator}{}
+  
+\end{function}
+
+\begin{function}{find-symbol}{name \op (package (sane-package}{}
+  Return the symbol named STRING in PACKAGE. If such a symbol is found
+  then the second value is :INTERNAL, :EXTERNAL or :INHERITED to indicate
+  how the symbol is accessible. If no symbol is found then both values
+  are NIL.
+\end{function}
+
+\begin{function}{import}{symbols \op (package (sane-package}{}
+  Make SYMBOLS accessible as internal symbols in PACKAGE. If a symbol is
+already accessible then it has no effect. If a name conflict would result from
+the importation, then a correctable error is signalled.
+\end{function}
+
+\begin{macro}{in-package}{string-designator}{}
+  
+\end{macro}
+
+\begin{function}{intern}{name \op (package (sane-package}{}
+  Return a symbol in PACKAGE having the specified NAME, creating it
+  if necessary.
+\end{function}
+
+\begin{function}{list-all-packages}{nil}{}
+  Return a list of all existing packages.
+\end{function}
+
+\begin{function}{make-package}{name \key (use 'nil) nicknames (internal-symbols 10) (external-symbols 10}{}
+  Make a new package having the specified NAME, NICKNAMES, and USE
+list. :INTERNAL-SYMBOLS and :EXTERNAL-SYMBOLS are estimates for the number of
+internal and external symbols which will ultimately be present in the package.
+The default value of USE is implementation-dependent, and in this
+implementation it is NIL.
+\end{function}
+
+\begin{class}{package}{}{}
+  
+\end{class}
+
+\begin{condition-type}{package-error}{}{}
+  
+\end{condition-type}
+
+\begin{function}{package-error-package}{condition}{}
+  
+\end{function}
+
+\begin{function}{package-name}{package-designator}{}
+  
+\end{function}
+
+\begin{function}{package-nicknames}{x}{}
+  
+\end{function}
+
+\begin{function}{package-shadowing-symbols}{x}{}
+  
+\end{function}
+
+\begin{function}{package-use-list}{x}{}
+  
+\end{function}
+
+\begin{function}{package-used-by-list}{x}{}
+  
+\end{function}
+
+\begin{function}{packagep}{object}{}
+  
+\end{function}
+
+\begin{function}{rename-package}{package name \op (nicknames nil}{}
+  Changes the name and nicknames for a package.
+\end{function}
+
+\begin{function}{shadow}{symbols \op (package (sane-package}{}
+  Make an internal symbol in PACKAGE with the same name as each of the
+specified SYMBOLS. If a symbol with the given name is already present in
+PACKAGE, then the existing symbol is placed in the shadowing symbols list if
+it is not already present.
+\end{function}
+
+\begin{function}{shadowing-import}{symbols \op (package (sane-package}{}
+  Import SYMBOLS into package, disregarding any name conflict. If
+  a symbol of the same name is present, then it is uninterned.
+\end{function}
+
+\section{printer}
+
+\begin{variable}{*print-array*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-base*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-case*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-circle*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-escape*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-gensym*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-length*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-level*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-lines*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-miser-width*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-pprint-dispatch*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-pretty*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-radix*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-readably*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-right-margin*}{}{}
+  
+\end{variable}
+
+\begin{function}{copy-pprint-dispatch}{\op (table *print-pprint-dispatch*}{}
+  
+\end{function}
+
+\begin{function}{format}{destination control-string \rest format-arguments}{}
+  Provides various facilities for formatting output.
+  CONTROL-STRING contains a string to be output, possibly with embedded
+  directives, which are flagged with the escape character "~". Directives
+  generally expand into additional text to be output, usually consuming one
+  or more of the FORMAT-ARGUMENTS in the process. A few useful directives
+  are:
+        ~A or ~nA   Prints one argument as if by PRINC
+        ~S or ~nS   Prints one argument as if by PRIN1
+        ~D or ~nD   Prints one argument as a decimal integer
+        ~%          Does a TERPRI
+        ~&          Does a FRESH-LINE
+  where n is the width of the field in which the object is printed.
+
+  DESTINATION controls where the result will go. If DESTINATION is T, then
+  the output is sent to the standard output stream. If it is NIL, then the
+  output is returned in a string as the value of the call. Otherwise,
+  DESTINATION must be a stream to which the output will be sent.
+
+  Example:   (FORMAT NIL "The answer is ~D." 10) => "The answer is 10."
+
+  FORMAT has many additional capabilities not described here. Consult the
+  manual for details.
+\end{function}
+
+\begin{macro}{formatter}{control-string}{}
+  
+\end{macro}
+
+\begin{function}{pprint}{object \op stream}{}
+  Prettily output OBJECT preceded by a newline.
+\end{function}
+
+\begin{function}{pprint-dispatch}{object \op (table *print-pprint-dispatch*}{}
+  
+\end{function}
+
+\begin{local-macro}{pprint-exit-if-list-exhausted}{nil}{}
+  Cause the closest enclosing use of PPRINT-LOGICAL-BLOCK to return
+   if its list argument is exhausted. Can only be used inside
+   PPRINT-LOGICAL-BLOCK, and only when the LIST argument to
+   PPRINT-LOGICAL-BLOCK is supplied.
+\end{local-macro}
+
+\begin{function}{pprint-fill}{stream list \op (colon? t) atsign?}{}
+  Output LIST to STREAM putting :FILL conditional newlines between each
+   element. If COLON? is NIL (defaults to T), then no parens are printed
+   around the output. ATSIGN? is ignored (but allowed so that PPRINT-FILL
+   can be used with the ~/.../ format directive.
+\end{function}
+
+\begin{function}{pprint-indent}{relative-to n \op stream}{}
+  Specify the indentation to use in the current logical block if
+STREAM (which defaults to *STANDARD-OUTPUT*) is a pretty-printing
+stream and do nothing if not. (See PPRINT-LOGICAL-BLOCK.) N is the
+indentation to use (in ems, the width of an ``m'') and RELATIVE-TO can
+be either:
+
+     :BLOCK - Indent relative to the column the current logical block
+        started on.
+
+     :CURRENT - Indent relative to the current column.
+
+The new indentation value does not take effect until the following
+line break.
+\end{function}
+
+\begin{function}{pprint-linear}{stream list \op (colon? t) atsign?}{}
+  Output LIST to STREAM putting :LINEAR conditional newlines between each
+   element. If COLON? is NIL (defaults to T), then no parens are printed
+   around the output. ATSIGN? is ignored (but allowed so that PPRINT-LINEAR
+   can be used with the ~/.../ format directive.
+\end{function}
+
+\begin{macro}{pprint-logical-block}{stream-symbol object \key (prefix nil prefixp)
+  (per-line-prefix nil per-line-prefix-p) (suffix  suffixp))
+ \body body &environment env}{}
+  Group some output into a logical block. STREAM-SYMBOL should be either a
+   stream, T (for *TERMINAL-IO*), or NIL (for *STANDARD-OUTPUT*). The printer
+   control variable *PRINT-LEVEL* is automatically handled.
+\end{macro}
+
+\begin{function}{pprint-newline}{kind \op stream}{}
+  Output a conditional newline to STREAM (which defaults to
+   *STANDARD-OUTPUT*) if it is a pretty-printing stream, and do
+   nothing if not. KIND can be one of:
+     :LINEAR - A line break is inserted if and only if the immediatly
+        containing section cannot be printed on one line.
+     :MISER - Same as LINEAR, but only if ``miser-style'' is in effect.
+        (See *PRINT-MISER-WIDTH*.)
+     :FILL - A line break is inserted if and only if either:
+       (a) the following section cannot be printed on the end of the
+           current line,
+       (b) the preceding section was not printed on a single line, or
+       (c) the immediately containing section cannot be printed on one
+           line and miser-style is in effect.
+     :MANDATORY - A line break is always inserted.
+   When a line break is inserted by any type of conditional newline, any
+   blanks that immediately precede the conditional newline are ommitted
+   from the output and indentation is introduced at the beginning of the
+   next line. (See PPRINT-INDENT.)
+\end{function}
+
+\begin{local-macro}{pprint-pop}{nil}{}
+  Return the next element from LIST argument to the closest enclosing
+   use of PPRINT-LOGICAL-BLOCK, automatically handling *PRINT-LENGTH*
+   and *PRINT-CIRCLE*. Can only be used inside PPRINT-LOGICAL-BLOCK.
+   If the LIST argument to PPRINT-LOGICAL-BLOCK was NIL, then nothing
+   is popped, but the *PRINT-LENGTH* testing still happens.
+\end{local-macro}
+
+\begin{function}{pprint-tab}{kind colnum colinc \op stream}{}
+  If STREAM (which defaults to *STANDARD-OUTPUT*) is a pretty-printing
+   stream, perform tabbing based on KIND, otherwise do nothing. KIND can
+   be one of:
+     :LINE - Tab to column COLNUM. If already past COLNUM tab to the next
+       multiple of COLINC.
+     :SECTION - Same as :LINE, but count from the start of the current
+       section, not the start of the line.
+     :LINE-RELATIVE - Output COLNUM spaces, then tab to the next multiple of
+       COLINC.
+     :SECTION-RELATIVE - Same as :LINE-RELATIVE, but count from the start
+       of the current section, not the start of the line.
+\end{function}
+
+\begin{function}{pprint-tabular}{stream list \op (colon? t) atsign? tabsize}{}
+  Output LIST to STREAM tabbing to the next column that is an even multiple
+   of TABSIZE (which defaults to 16) between each element. :FILL style
+   conditional newlines are also output between each element. If COLON? is
+   NIL (defaults to T), then no parens are printed around the output.
+   ATSIGN? is ignored (but allowed so that PPRINT-TABULAR can be used with
+   the ~/.../ format directive.
+\end{function}
+
+\begin{function}{prin1}{object \op stream}{}
+  Output a mostly READable printed representation of OBJECT on the specified
+  STREAM.
+\end{function}
+
+\begin{function}{prin1-to-string}{object}{}
+  Return the printed representation of OBJECT as a string with
+   slashification on.
+\end{function}
+
+\begin{function}{princ}{object \op stream}{}
+  Output an aesthetic but not necessarily READable printed representation
+  of OBJECT on the specified STREAM.
+\end{function}
+
+\begin{function}{princ-to-string}{object}{}
+  Return the printed representation of OBJECT as a string with
+  slashification off.
+\end{function}
+
+\begin{function}{print}{object \op stream}{}
+  Output a newline, the mostly READable printed representation of OBJECT, and
+  space to the specified STREAM.
+\end{function}
+
+\begin{condition-type}{print-not-readable}{}{}
+  
+\end{condition-type}
+
+\begin{function}{print-not-readable-object}{condition}{}
+  
+\end{function}
+
+\begin{generic}{print-object}{object stream}{}
+  
+\end{generic}
+
+\begin{macro}{print-unreadable-object}{object stream \key type identity) \body body}{}
+  Output OBJECT to STREAM with "#<" prefix, ">" suffix, optionally
+  with object-type prefix and object-identity suffix, and executing the
+  code in BODY to provide possible further output.
+\end{macro}
+
+\begin{function}{set-pprint-dispatch}{type function \op (priority 0) (table *print-pprint-dispatch*}{}
+  
+\end{function}
+
+\section{reader}
+
+\begin{variable}{*read-base*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*read-default-float-format*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*read-eval*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*read-suppress*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*readtable*}{}{}
+  
+\end{variable}
+
+\begin{function}{copy-readtable}{\op (from-readtable *readtable*) to-readtable}{}
+  
+\end{function}
+
+\begin{function}{get-dispatch-macro-character}{disp-char sub-char \op (rt-designator *readtable*}{}
+  Return the macro character function for SUB-CHAR under DISP-CHAR
+   or NIL if there is no associated function.
+\end{function}
+
+\begin{function}{get-macro-character}{char \op (rt-designator *readtable*}{}
+  Return the function associated with the specified CHAR which is a macro
+  character, or NIL if there is no such function. As a second value, return
+  T if CHAR is a macro character which is non-terminating, i.e. which can
+  be embedded in a symbol name.
+\end{function}
+
+\begin{function}{make-dispatch-macro-character}{char \op (non-terminating-p nil) (rt *readtable*}{}
+  Cause CHAR to become a dispatching macro character in readtable (which
+   defaults to the current readtable). If NON-TERMINATING-P, the char will
+   be non-terminating.
+\end{function}
+
+\begin{function}{read}{\op (stream *standard-input*) (eof-error-p t) (eof-value nil)
+ (recursive-p nil}{}
+  Read the next Lisp value from STREAM, and return it.
+\end{function}
+
+\begin{function}{read-delimited-list}{endchar \op (input-stream *standard-input*) recursive-p}{}
+  Read Lisp values from INPUT-STREAM until the next character after a
+   value's representation is ENDCHAR, and return the objects as a list.
+\end{function}
+
+\begin{function}{read-from-string}{string \op (eof-error-p t) eof-value \key (start 0) end
+        preserve-whitespace}{}
+  The characters of string are successively given to the lisp reader
+   and the lisp object built by the reader is returned. Macro chars
+   will take effect.
+\end{function}
+
+\begin{function}{read-preserving-whitespace}{\op (stream *standard-input*) (eof-error-p t) (eof-value nil)
+ (recursive-p nil}{}
+  Read from STREAM and return the value read, preserving any whitespace
+   that followed the object.
+\end{function}
+
+\begin{condition-type}{reader-error}{}{}
+  
+\end{condition-type}
+
+\begin{class}{readtable}{}{}
+  
+\end{class}
+
+\begin{accessor}{readtable-case}{readtable}{}
+  
+\end{accessor}
+
+\begin{function}{readtablep}{object}{}
+  
+\end{function}
+
+\begin{function}{set-dispatch-macro-character}{disp-char sub-char function \op (rt-designator *readtable*}{}
+  Cause FUNCTION to be called whenever the reader reads DISP-CHAR
+   followed by SUB-CHAR.
+\end{function}
+
+\begin{function}{set-macro-character}{char function \op (non-terminatingp nil) (rt-designator *readtable*}{}
+  Causes CHAR to be a macro character which invokes FUNCTION when seen
+   by the reader. The NON-TERMINATINGP flag can be used to make the macro
+   character non-terminating, i.e. embeddable in a symbol name.
+\end{function}
+
+\begin{function}{set-syntax-from-char}{to-char from-char \op (to-readtable *readtable*) (from-readtable nil}{}
+  Causes the syntax of TO-CHAR to be the same as FROM-CHAR in the optional
+readtable (defaults to the current readtable). The FROM-TABLE defaults to the
+standard Lisp readtable when NIL.
+\end{function}
+
+\section{sequence}
+
+\begin{function}{concatenate}{output-type-spec \rest sequences}{}
+  Return a new sequence of all the argument sequences concatenated together
+  which shares no structure with the original argument sequences of the
+  specified OUTPUT-TYPE-SPEC.
+\end{function}
+
+\begin{function}{copy-seq}{sequence}{}
+  Return a copy of SEQUENCE which is EQUAL to SEQUENCE but not EQ.
+\end{function}
+
+\begin{function}{count}{item sequence \rest args \key from-end (start 0) (end nil) (key nil)
+ (test #'eql test-p) (test-not nil test-not-p}{}
+  Return the number of elements in SEQUENCE satisfying a test with ITEM,
+   which defaults to EQL.
+\end{function}
+
+\begin{function}{count-if}{pred sequence \rest args \key from-end (start 0) (end nil) (key nil}{}
+  Return the number of elements in SEQUENCE satisfying PRED(el).
+\end{function}
+
+\begin{function}{count-if-not}{pred sequence \rest args \key from-end (start 0) (end nil) (key nil}{}
+  Return the number of elements in SEQUENCE not satisfying TEST(el).
+\end{function}
+
+\begin{function}{delete}{item sequence \rest args \key from-end (test #'eql) (test-not nil) (start 0)
+ (end nil) (count nil) (key nil}{}
+  Return a sequence formed by destructively removing the specified ITEM from
+  the given SEQUENCE.
+\end{function}
+
+\begin{function}{delete-duplicates}{sequence \rest args \key (test #'eql) (test-not nil) (start 0) (end nil)
+ from-end (key nil}{}
+  The elements of SEQUENCE are examined, and if any two match, one is
+   discarded. The resulting sequence, which may be formed by destroying the
+   given sequence, is returned.
+
+   The :TEST-NOT argument is deprecated.
+\end{function}
+
+\begin{function}{delete-if}{predicate sequence \rest args \key from-end (start 0) (key nil) (end nil)
+ (count nil}{}
+  Return a sequence formed by destructively removing the elements satisfying
+  the specified PREDICATE from the given SEQUENCE.
+\end{function}
+
+\begin{function}{delete-if-not}{predicate sequence \rest args \key from-end (start 0) (end nil) (key nil)
+ (count nil}{}
+  Return a sequence formed by destructively removing the elements not
+  satisfying the specified PREDICATE from the given SEQUENCE.
+\end{function}
+
+\begin{accessor}{elt}{sequence index}{}
+  Return the element of SEQUENCE specified by INDEX.
+\end{accessor}
+
+\begin{function}{fill}{sequence item \key (start 0) end}{}
+  Replace the specified elements of SEQUENCE with ITEM.
+\end{function}
+
+\begin{function}{find}{item sequence \rest args \key from-end (start 0) end key test test-not}{}
+  
+\end{function}
+
+\begin{function}{find-if}{predicate sequence \rest args \key from-end (start 0) end key}{}
+  
+\end{function}
+
+\begin{function}{find-if-not}{predicate sequence \rest args \key from-end (start 0) end key}{}
+  
+\end{function}
+
+\begin{function}{length}{sequence}{}
+  Return an integer that is the length of SEQUENCE.
+\end{function}
+
+\begin{function}{make-sequence}{type length \key (initial-element nil iep}{}
+  Return a sequence of the given TYPE and LENGTH, with elements initialized
+  to INITIAL-ELEMENT.
+\end{function}
+
+\begin{function}{map}{result-type function first-sequence \rest more-sequences}{}
+  
+\end{function}
+
+\begin{function}{map-into}{result-sequence function \rest sequences}{}
+  
+\end{function}
+
+\begin{function}{merge}{result-type sequence1 sequence2 predicate \key key}{}
+  Merge the sequences SEQUENCE1 and SEQUENCE2 destructively into a
+   sequence of type RESULT-TYPE using PREDICATE to order the elements.
+\end{function}
+
+\begin{function}{mismatch}{sequence1 sequence2 \rest args \key from-end (test #'eql) (test-not nil)
+ (start1 0) (end1 nil) (start2 0) (end2 nil) (key nil}{}
+  The specified subsequences of SEQUENCE1 and SEQUENCE2 are compared
+   element-wise. If they are of equal length and match in every element, the
+   result is NIL. Otherwise, the result is a non-negative integer, the index
+   within SEQUENCE1 of the leftmost position at which they fail to match; or,
+   if one is shorter than and a matching prefix of the other, the index within
+   SEQUENCE1 beyond the last position tested is returned. If a non-NIL
+   :FROM-END argument is given, then one plus the index of the rightmost
+   position in which the sequences differ is returned.
+\end{function}
+
+\begin{function}{nreverse}{sequence}{}
+  Return a sequence of the same elements in reverse order; the argument
+   is destroyed.
+\end{function}
+
+\begin{function}{nsubstitute}{new old sequence \rest args \key from-end (test #'eql) (test-not nil)
+ (end nil) (count nil) (key nil) (start 0}{}
+  Return a sequence of the same kind as SEQUENCE with the same elements
+  except that all elements equal to OLD are replaced with NEW. SEQUENCE
+  may be destructively modified.
+\end{function}
+
+\begin{function}{nsubstitute-if}{new predicate sequence \rest args \key from-end (start 0) (end nil)
+ (count nil) (key nil}{}
+  Return a sequence of the same kind as SEQUENCE with the same elements
+   except that all elements satisfying PREDICATE are replaced with NEW.
+   SEQUENCE may be destructively modified.
+\end{function}
+
+\begin{function}{nsubstitute-if-not}{new predicate sequence \rest args \key from-end (start 0) (end nil)
+ (count nil) (key nil}{}
+  Return a sequence of the same kind as SEQUENCE with the same elements
+   except that all elements not satisfying PREDICATE are replaced with NEW.
+   SEQUENCE may be destructively modified.
+\end{function}
+
+\begin{function}{position}{item sequence \rest args \key from-end (start 0) end key test test-not}{}
+  
+\end{function}
+
+\begin{function}{position-if}{predicate sequence \rest args \key from-end (start 0) end key}{}
+  
+\end{function}
+
+\begin{function}{position-if-not}{predicate sequence \rest args \key from-end (start 0) end key}{}
+  
+\end{function}
+
+\begin{function}{reduce}{function sequence \rest args \key (key nil) from-end (start 0) (end nil)
+ (initial-value nil ivp}{}
+  
+\end{function}
+
+\begin{function}{remove}{item sequence \rest args \key from-end (test #'eql) (test-not nil) (start 0)
+ (end nil) (count nil) (key nil}{}
+  Return a copy of SEQUENCE with elements satisfying the test (default is
+   EQL) with ITEM removed.
+\end{function}
+
+\begin{function}{remove-duplicates}{sequence \rest args \key (test #'eql) (test-not nil) (start 0) (end nil)
+ from-end (key nil}{}
+  The elements of SEQUENCE are compared pairwise, and if any two match,
+   the one occurring earlier is discarded, unless FROM-END is true, in
+   which case the one later in the sequence is discarded. The resulting
+   sequence is returned.
+
+   The :TEST-NOT argument is deprecated.
+\end{function}
+
+\begin{function}{remove-if}{predicate sequence \rest args \key from-end (start 0) (end nil) (count nil)
+ (key nil}{}
+  Return a copy of sequence with elements satisfying PREDICATE removed.
+\end{function}
+
+\begin{function}{remove-if-not}{predicate sequence \rest args \key from-end (start 0) (end nil) (count nil)
+ (key nil}{}
+  Return a copy of sequence with elements not satisfying PREDICATE removed.
+\end{function}
+
+\begin{function}{replace}{sequence1 sequence2 \rest args \key (start1 0) (end1 nil) (start2 0)
+ (end2 nil}{}
+  The target sequence is destructively modified by copying successive
+   elements into it from the source sequence.
+\end{function}
+
+\begin{function}{reverse}{sequence}{}
+  Return a new sequence containing the same elements but in reverse order.
+\end{function}
+
+\begin{function}{search}{sequence1 sequence2 \rest args \key from-end (test #'eql) (test-not nil)
+ (start1 0) (end1 nil) (start2 0) (end2 nil) (key nil}{}
+  
+\end{function}
+
+\begin{class}{sequence}{}{}
+  
+\end{class}
+
+\section{stream}
+
+\begin{variable}{*debug-io*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*error-output*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*query-io*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*standard-input*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*standard-output*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*terminal-io*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*trace-output*}{}{}
+  
+\end{variable}
+
+\begin{class}{broadcast-stream}{}{}
+  
+\end{class}
+
+\begin{function}{broadcast-stream-streams}{instance}{}
+  
+\end{function}
+
+\begin{function}{clear-input}{\op (stream *standard-input*}{}
+  
+\end{function}
+
+\begin{function}{clear-output}{\op (stream *standard-output*}{}
+  
+\end{function}
+
+\begin{function}{close}{stream \key abort}{}
+  Close the given STREAM. No more I/O may be performed, but
+  inquiries may still be made. If :ABORT is true, an attempt is made
+  to clean up the side effects of having created the stream.
+\end{function}
+
+\begin{class}{concatenated-stream}{}{}
+  
+\end{class}
+
+\begin{function}{concatenated-stream-streams}{instance}{}
+  
+\end{function}
+
+\begin{class}{echo-stream}{}{}
+  
+\end{class}
+
+\begin{function}{echo-stream-input-stream}{instance}{}
+  
+\end{function}
+
+\begin{function}{echo-stream-output-stream}{instance}{}
+  
+\end{function}
+
+\begin{condition-type}{end-of-file}{}{}
+  
+\end{condition-type}
+
+\begin{function}{file-length}{stream}{}
+  
+\end{function}
+
+\begin{function}{file-position}{stream \op position}{}
+  
+\end{function}
+
+\begin{class}{file-stream}{}{}
+  
+\end{class}
+
+\begin{function}{file-string-length}{stream object}{}
+  
+\end{function}
+
+\begin{function}{finish-output}{\op (stream *standard-output*}{}
+  
+\end{function}
+
+\begin{function}{force-output}{\op (stream *standard-output*}{}
+  
+\end{function}
+
+\begin{function}{fresh-line}{\op (stream *standard-output*}{}
+  
+\end{function}
+
+\begin{function}{get-output-stream-string}{stream}{}
+  
+\end{function}
+
+\begin{function}{input-stream-p}{stream}{}
+  Can STREAM perform input operations?
+\end{function}
+
+\begin{function}{interactive-stream-p}{stream}{}
+  Is STREAM an interactive stream?
+\end{function}
+
+\begin{function}{listen}{\op (stream *standard-input*}{}
+  
+\end{function}
+
+\begin{function}{make-broadcast-stream}{\rest streams}{}
+  
+\end{function}
+
+\begin{function}{make-concatenated-stream}{\rest streams}{}
+  Return a stream which takes its input from each of the streams in turn,
+   going on to the next at EOF.
+\end{function}
+
+\begin{function}{make-echo-stream}{input-stream output-stream}{}
+  Return a bidirectional stream which gets its input from INPUT-STREAM and
+   sends its output to OUTPUT-STREAM. In addition, all input is echoed to
+   the output stream.
+\end{function}
+
+\begin{function}{make-string-input-stream}{string \op (start 0) end}{}
+  Return an input stream which will supply the characters of STRING between
+  START and END in order.
+\end{function}
+
+\begin{function}{make-string-output-stream}{\key (element-type 'character) &aux
+ (buffer (make-string *string-output-stream-buffer-initial-size*}{}
+  Return an output stream which will accumulate all output given it for the
+benefit of the function GET-OUTPUT-STREAM-STRING.
+\end{function}
+
+\begin{function}{make-synonym-stream}{symbol}{}
+  
+\end{function}
+
+\begin{function}{make-two-way-stream}{input-stream output-stream}{}
+  Return a bidirectional stream which gets its input from INPUT-STREAM and
+   sends its output to OUTPUT-STREAM.
+\end{function}
+
+\begin{function}{open}{filename \key (direction input) (element-type 'base-char)
+ (if-exists nil if-exists-given)
+ (if-does-not-exist nil if-does-not-exist-given) (external-format default) &aux
+ (direction direction) (if-does-not-exist if-does-not-exist)
+ (if-exists if-exists}{}
+  Return a stream which reads from or writes to FILENAME.
+  Defined keywords:
+   :DIRECTION - one of :INPUT, :OUTPUT, :IO, or :PROBE
+   :ELEMENT-TYPE - the type of object to read or write, default BASE-CHAR
+   :IF-EXISTS - one of :ERROR, :NEW-VERSION, :RENAME, :RENAME-AND-DELETE,
+                       :OVERWRITE, :APPEND, :SUPERSEDE or NIL
+   :IF-DOES-NOT-EXIST - one of :ERROR, :CREATE or NIL
+  See the manual for details.
+\end{function}
+
+\begin{function}{open-stream-p}{stream}{}
+  Return true if STREAM is not closed. A default method is provided
+  by class FUNDAMENTAL-STREAM which returns true if CLOSE has not been
+  called on the stream.
+\end{function}
+
+\begin{function}{output-stream-p}{stream}{}
+  Can STREAM perform output operations?
+\end{function}
+
+\begin{function}{peek-char}{\op (peek-type nil) (stream *standard-input*) (eof-error-p t) eof-value
+ recursive-p}{}
+  
+\end{function}
+
+\begin{function}{read-byte}{stream \op (eof-error-p t) eof-value}{}
+  
+\end{function}
+
+\begin{function}{read-char}{\op (stream *standard-input*) (eof-error-p t) eof-value recursive-p}{}
+  
+\end{function}
+
+\begin{function}{read-char-no-hang}{\op (stream *standard-input*) (eof-error-p t) eof-value recursive-p}{}
+  
+\end{function}
+
+\begin{function}{read-line}{\op (stream *standard-input*) (eof-error-p t) eof-value recursive-p}{}
+  
+\end{function}
+
+\begin{function}{read-sequence}{seq stream \key (start 0) end}{}
+  Destructively modify SEQ by reading elements from STREAM.
+  That part of SEQ bounded by START and END is destructively modified by
+  copying successive elements into it from STREAM. If the end of file
+  for STREAM is reached before copying all elements of the subsequence,
+  then the extra elements near the end of sequence are not updated, and
+  the index of the next element is returned.
+\end{function}
+
+\section{string}
+
+\begin{type}{base-string}{}{}
+  
+\end{type}
+
+\begin{accessor}{char}{string index}{}
+  Given a string and a non-negative integer index less than the length of
+  the string, returns the character object representing the character at
+  that position in the string.
+\end{accessor}
+
+\begin{function}{make-string}{count \key (element-type 'character) ((initial-element fill-char}{}
+  Given a character count and an optional fill character, makes and returns a
+new string COUNT long filled with the fill character.
+\end{function}
+
+\begin{function}{nstring-capitalize}{string \key (start 0) end}{}
+  
+\end{function}
+
+\begin{function}{nstring-downcase}{string \key (start 0) end}{}
+  
+\end{function}
+
+\begin{function}{nstring-upcase}{string \key (start 0) end}{}
+  
+\end{function}
+
+\begin{accessor}{schar}{string index}{}
+  SCHAR returns the character object at an indexed position in a string
+   just as CHAR does, except the string must be a simple-string.
+\end{accessor}
+
+\begin{type}{simple-base-string}{}{}
+  
+\end{type}
+
+\begin{type}{simple-string}{}{}
+  
+\end{type}
+
+\begin{function}{simple-string-p}{object}{}
+  Return true if OBJECT is a SIMPLE-STRING, and NIL otherwise.
+\end{function}
+
+\section{structure}
+
+\begin{function}{copy-structure}{structure}{}
+  Return a copy of STRUCTURE with the same (EQL) slot values.
+\end{function}
+
+\begin{macro}{defstruct}{name-and-options \rest slot-descriptions}{}
+  DEFSTRUCT {Name | (Name Option*)} {Slot | (Slot [Default] {Key Value}*)}
+   Define the structure type Name. Instances are created by MAKE-<name>,
+   which takes &KEY arguments allowing initial slot values to the specified.
+   A SETF'able function <name>-<slot> is defined for each slot to read and
+   write slot values. <name>-p is a type predicate.
+
+   Popular DEFSTRUCT options (see manual for others):
+
+   (:CONSTRUCTOR Name)
+   (:PREDICATE Name)
+       Specify the name for the constructor or predicate.
+
+   (:CONSTRUCTOR Name Lambda-List)
+       Specify the name and arguments for a BOA constructor
+       (which is more efficient when keyword syntax isn't necessary.)
+
+   (:INCLUDE Supertype Slot-Spec*)
+       Make this type a subtype of the structure type Supertype. The optional
+       Slot-Specs override inherited slot options.
+
+   Slot options:
+
+   :TYPE Type-Spec
+       Asserts that the value of this slot is always of the specified type.
+
+   :READ-ONLY {T | NIL}
+       If true, no setter function is defined for this slot.
+\end{macro}
+
+\section{symbol}
+
+\begin{variable}{*gensym-counter*}{}{}
+  
+\end{variable}
+
+\begin{function}{boundp}{symbol}{}
+  Return non-NIL if SYMBOL is bound to a value.
+\end{function}
+
+\begin{function}{copy-symbol}{symbol \op (copy-props nil) &aux new-symbol}{}
+  Make and return a new uninterned symbol with the same print name
+  as SYMBOL. If COPY-PROPS is false, the new symbol is neither bound
+  nor fbound and has no properties, else it has a copy of SYMBOL's
+  function, value and property list.
+\end{function}
+
+\begin{function}{gensym}{\op (thing g}{}
+  Creates a new uninterned symbol whose name is a prefix string (defaults
+   to "G"), followed by a decimal number. Thing, when supplied, will
+   alter the prefix if it is a string, or be used for the decimal number
+   if it is a number, of this symbol. The default value of the number is
+   the current value of *gensym-counter* which is incremented each time
+   it is used.
+\end{function}
+
+\begin{function}{gentemp}{\op (prefix t) (package (sane-package}{}
+  Creates a new symbol interned in package PACKAGE with the given PREFIX.
+\end{function}
+
+\begin{accessor}{get}{symbol indicator \op (default nil}{}
+  Look on the property list of SYMBOL for the specified INDICATOR. If this
+  is found, return the associated value, else return DEFAULT.
+\end{accessor}
+
+\begin{type}{keyword}{}{}
+  
+\end{type}
+
+\begin{function}{keywordp}{object}{}
+  Return true if Object is a symbol in the "KEYWORD" package.
+\end{function}
+
+\begin{function}{make-symbol}{string}{}
+  Make and return a new symbol with the STRING as its print name.
+\end{function}
+
+\begin{function}{makunbound}{symbol}{}
+  Make SYMBOL unbound, removing any value it may currently have.
+\end{function}
+
+\begin{function}{remprop}{symbol indicator}{}
+  Look on property list of SYMBOL for property with specified
+  INDICATOR. If found, splice this indicator and its value out of
+  the plist, and return the tail of the original list starting with
+  INDICATOR. If not found, return () with no side effects.
+
+  NOTE: The ANSI specification requires REMPROP to return true (not false)
+  or false (the symbol NIL). Portable code should not rely on any other value.
+\end{function}
+
+\begin{function}{set}{symbol new-value}{}
+  Set SYMBOL's value cell to NEW-VALUE.
+\end{function}
+
+\section{system}
+
+\begin{variable}{*compile-file-pathname*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*compile-file-truename*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*compile-print*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*compile-verbose*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*features*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*load-pathname*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*load-print*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*load-truename*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*load-verbose*}{}{}
+  
+\end{variable}
+
+\begin{variable}{*modules*}{}{}
+  
+\end{variable}
+
+\begin{function}{compile-file}{input-file \key (output-file (cfp-output-file-default input-file))
+ ((verbose *compile-verbose*) *compile-verbose*)
+ ((print *compile-print*) *compile-print*) (external-format default)
+ (trace-file nil) ((block-compile *block-compile-arg*) nil}{}
+  Compile INPUT-FILE, producing a corresponding fasl file and
+returning its filename.
+
+  :PRINT
+     If true, a message per non-macroexpanded top level form is printed
+     to *STANDARD-OUTPUT*. Top level forms that whose subforms are
+     processed as top level forms (eg. EVAL-WHEN, MACROLET, PROGN) receive
+     no such message, but their subforms do.
+
+     As an extension to ANSI, if :PRINT is :top-level-forms, a message
+     per top level form after macroexpansion is printed to *STANDARD-OUTPUT*.
+     For example, compiling an IN-PACKAGE form will result in a message about
+     a top level SETQ in addition to the message about the IN-PACKAGE form'
+     itself.
+
+     Both forms of reporting obey the SB-EXT:*COMPILER-PRINT-VARIABLE-ALIST*.
+
+  :BLOCK-COMPILE
+     Though COMPILE-FILE accepts an additional :BLOCK-COMPILE
+     argument, it is not currently supported. (non-standard)
+
+  :TRACE-FILE
+     If given, internal data structures are dumped to the specified
+     file, or if a value of T is given, to a file of *.trace type
+     derived from the input file name. (non-standard)
+\end{function}
+
+\begin{function}{compile-file-pathname}{input-file \key (output-file nil output-file-p) &allow-other-keys}{}
+  Return a pathname describing what file COMPILE-FILE would write to given
+   these arguments.
+\end{function}
+
+\begin{function}{load}{pathspec \key (verbose *load-verbose*) (print *load-print*)
+ (if-does-not-exist t) (external-format default}{}
+  Load the file given by FILESPEC into the Lisp environment, returning
+   T on success.
+\end{function}
+
+\begin{function}{provide}{module-name}{}
+  Adds a new module name to *MODULES* indicating that it has been loaded.
+   Module-name is a string designator
+\end{function}
+
+\begin{function}{require}{module-name \op pathnames}{}
+  Loads a module, unless it already has been loaded. PATHNAMES, if supplied,
+   is a designator for a list of pathnames to be loaded if the module
+   needs to be. If PATHNAMES is not supplied, functions from the list
+   *MODULE-PROVIDER-FUNCTIONS* are called in order with MODULE-NAME
+   as an argument, until one of them returns non-NIL.  User code is
+   responsible for calling PROVIDE to indicate a successful load of the
+   module.
+\end{function}
+
+\section{types}
+
+\begin{type-specifier}{and}{\rest forms}{}
+  
+\end{type-specifier}
+
+\begin{type}{boolean}{}{}
+  
+\end{type}
+
+\begin{class}{built-in-class}{}{}
+  
+\end{class}
+
+\begin{class}{class}{}{}
+  
+\end{class}
+
+\begin{function}{coerce}{object output-type-spec}{}
+  Coerce the Object to an object of type Output-Type-Spec.
+\end{function}
+
+\begin{type}{compiled-function}{}{}
+  
+\end{type}
+
+\begin{macro}{deftype}{name lambda-list \body body}{}
+  Define a new type, with syntax like DEFMACRO.
+\end{macro}
+
+\begin{type-specifier}{eql}{x y}{}
+  
+\end{type-specifier}
+
+\begin{class}{function}{thing}{}
+  FUNCTION name
+
+Return the lexically apparent definition of the function NAME. NAME may also
+be a lambda expression.
+\end{class}
+
+\begin{class}{generic-function}{}{}
+  
+\end{class}
+
+\begin{type-specifier}{member}{item list \key key (test nil testp) (test-not nil notp}{}
+  Return the tail of LIST beginning with first element satisfying EQLity,
+   :TEST, or :TEST-NOT with the given ITEM.
+\end{type-specifier}
+
+\begin{class}{method}{}{}
+  
+\end{class}
+
+\begin{class}{method-combination}{}{}
+  
+\end{class}
+
+\begin{type}{nil}{}{}
+  
+\end{type}
+
+\begin{type-specifier}{not}{object}{}
+  Return T if X is NIL, otherwise return NIL.
+\end{type-specifier}
+
+\begin{type-specifier}{or}{\rest forms}{}
+  
+\end{type-specifier}
+
+\begin{type-specifier}{satisfies}{}{}
+  
+\end{type-specifier}
+
+\begin{condition-type}{simple-type-error}{}{}
+  
+\end{condition-type}

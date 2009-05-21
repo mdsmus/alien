@@ -1,0 +1,725 @@
+\chapter{Numbers}
+
+\section{Predicates}
+\label{sec:number-predicates}
+
+\begin{function}{complexp}{object}{}{}
+  Return true if OBJECT is a COMPLEX, and NIL otherwise.
+\end{function}
+
+\begin{function}{evenp}{number}{}{}
+  Is this integer even?
+\end{function}
+
+\begin{function}{floatp}{object}{}{}
+  Return true if OBJECT is a FLOAT, and NIL otherwise.
+\end{function}
+
+\begin{function}{integerp}{object}{}{}
+  Return true if OBJECT is an INTEGER, and NIL otherwise.
+\end{function}
+
+\begin{function}{logbitp}{index integer}{}{}
+  Predicate returns T if bit index of integer is a 1.
+\end{function}
+
+\begin{function}{minusp}{number}{}{}
+  Is this real number strictly negative?
+\end{function}
+
+\begin{function}{numberp}{object}{}{}
+  Return true if OBJECT is a NUMBER, and NIL otherwise.
+\end{function}
+
+\begin{function}{oddp}{number}{}{}
+  Is this integer odd?
+\end{function}
+
+\begin{function}{plusp}{number}{}{}
+  Is this real number strictly positive?
+\end{function}
+
+\begin{function}{random-state-p}{object}{}{}
+  
+\end{function}
+
+\begin{function}{rationalp}{object}{}{}
+  Return true if OBJECT is a RATIONAL, and NIL otherwise.
+\end{function}
+
+\begin{function}{realp}{object}{}{}
+  Return true if OBJECT is a REAL, and NIL otherwise.
+\end{function}
+
+\begin{function}{zerop}{number}{}{}
+  Is this number zero?
+\end{function}
+
+\section{Number comparison}
+\label{sec:number-comparison}
+
+\begin{function}{/=}{number \rest more-numbers}{}{}
+  Return T if no two of its arguments are numerically equal, NIL otherwise.
+\end{function}
+
+\begin{function}{=}{number \rest more-numbers}{}{}
+  Return T if all of its arguments are numerically equal, NIL otherwise.
+\end{function}
+
+\begin{function}{>}{number \rest more-numbers}{}{}
+  Return T if its arguments are in strictly decreasing order, NIL otherwise.
+\end{function}
+
+\begin{function}{>=}{number \rest more-numbers}{}{}
+  Return T if arguments are in strictly non-increasing order, NIL otherwise.
+\end{function}
+
+\begin{function}{<}{number \rest more-numbers}{}{}
+  Return T if its arguments are in strictly increasing order, NIL otherwise.
+\end{function}
+
+\begin{function}{<=}{number \rest more-numbers}{}{}
+  Return T if arguments are in strictly non-decreasing order, NIL otherwise.
+\end{function}
+
+\begin{function}{max}{number \rest more-numbers}{}{}
+  Return the greatest of its arguments; among EQUALP greatest, return
+the first.
+\end{function}
+
+\begin{function}{min}{number \rest more-numbers}{}{}
+  Return the least of its arguments; among EQUALP least, return
+the first.
+\end{function}
+
+\section{Arithmetic Operations}
+\label{sec:arithm-oper}
+
+\begin{function}{*}{\rest args}{}{}
+  Return the product of its arguments. With no args, returns 1.
+\end{function}
+
+\begin{function}{+}{\rest args}{}{}
+  Return the sum of its arguments. With no args, returns 0.
+\end{function}
+
+\begin{function}{-}{number \rest more-numbers}{}{}
+  Subtract the second and all subsequent arguments from the first;
+  or with one argument, negate the first argument.
+\end{function}
+
+\begin{function}{/}{number \rest more-numbers}{}{}
+  Divide the first argument by each of the following arguments, in turn.
+  With one argument, return reciprocal.
+\end{function}
+
+\begin{function}{1+}{number}{}{}
+  Return NUMBER + 1.
+\end{function}
+
+\begin{function}{1-}{number}{}{}
+  Return NUMBER - 1.
+\end{function}
+
+\begin{macro}{decf}{place \op delta \env env}{}{}
+  The first argument is some location holding a number. This number is
+  decremented by the second argument, DELTA, which defaults to 1.
+\end{macro}
+
+\begin{macro}{incf}{place \op delta \env env}{}{}
+  The first argument is some location holding a number. This number is
+  incremented by the second argument, DELTA, which defaults to 1.
+\end{macro}
+
+\begin{function}{abs}{number}{}{}
+  Return the absolute value of the number.
+\end{function}
+
+\begin{function}{conjugate}{number}{}{}
+  Return the complex conjugate of NUMBER. For non-complex numbers, this is
+  an identity.
+\end{function}
+
+\begin{function}{gcd}{\rest integers}{}{}
+  Return the greatest common divisor of the arguments, which must be
+  integers. Gcd with no arguments is defined to be 0.
+\end{function}
+
+\begin{function}{lcm}{\rest integers}{}{}
+  Return the least common multiple of one or more integers. LCM of no
+  arguments is defined to be 1.
+\end{function}
+
+\begin{function}{signum}{number}{}{}
+  Return the signal of a number as -1, 0, or 1.
+\end{function}
+
+\section{Exponential and Logarithmic Functions}
+\label{sec:expon-logar-funct}
+
+\begin{function}{exp}{number}{}{}
+  Return e raised to the power NUMBER.
+\end{function}
+
+\begin{function}{expt}{base power}{}{}
+  Return BASE raised to the POWER.
+\end{function}
+
+\begin{function}{log}{number \op base}{}{}
+  Return the logarithm of NUMBER in the base BASE, which defaults to e.
+\end{function}
+
+\begin{function}{isqrt}{n}{}{}
+  Return the root of the nearest integer less than n which is a perfect
+   square.
+\end{function}
+
+\begin{function}{sqrt}{number}{}{}
+  Return the square root of NUMBER.
+\end{function}
+
+
+\section{Trigonometric functions}
+\label{sec:trig-funct}
+
+See also \fun{abs} and \fun{signum} since they are extended to operate
+on complex numbers.
+
+\begin{constant}{pi}{}{}{}
+  
+\end{constant}
+
+\begin{function}{acos}{number}{}{}
+  Return the arc cosine of NUMBER.
+\end{function}
+
+\begin{function}{acosh}{number}{}{}
+  Return the hyperbolic arc cosine of NUMBER.
+\end{function}
+
+\begin{function}{asin}{number}{}{}
+  Return the arc sine of NUMBER.
+\end{function}
+
+\begin{function}{asinh}{number}{}{}
+  Return the hyperbolic arc sine of NUMBER.
+\end{function}
+
+\begin{function}{atan}{y \op x}{}{}
+  Return the arc tangent of Y if X is omitted or Y/X if X is supplied.
+\end{function}
+
+\begin{function}{atanh}{number}{}{}
+  Return the hyperbolic arc tangent of NUMBER.
+\end{function}
+
+\begin{function}{cis}{theta}{}{}
+  Return cos(Theta) + i sin(Theta), i.e. exp(i Theta).
+\end{function}
+
+\begin{function}{cos}{number}{}{}
+  Return the cosine of NUMBER.
+\end{function}
+
+\begin{function}{cosh}{number}{}{}
+  Return the hyperbolic cosine of NUMBER.
+\end{function}
+
+\begin{function}{phase}{number}{}{}
+  Return the angle part of the polar representation of a complex number.
+  For complex numbers, this is (atan (imagpart number) (realpart number)).
+  For non-complex positive numbers, this is 0. For non-complex negative
+  numbers this is PI.
+\end{function}
+
+\begin{function}{sin}{number}{}{}
+  Return the sine of NUMBER.
+\end{function}
+
+\begin{function}{sinh}{number}{}{}
+  Return the hyperbolic sine of NUMBER.
+\end{function}
+
+\begin{function}{tan}{number}{}{}
+  Return the tangent of NUMBER.
+\end{function}
+
+\begin{function}{tanh}{number}{}{}
+  Return the hyperbolic tangent of NUMBER.
+\end{function}
+
+\section{Type Conversions and Component Extractions}
+\label{sec:type-conv-comp}
+
+\begin{function}{float}{number \op other}{}{}
+  Converts any REAL to a float. If OTHER is not provided, it returns a
+  SINGLE-FLOAT if NUMBER is not already a FLOAT. If OTHER is provided, the
+  result is the same float format as OTHER.
+\end{function}
+
+\begin{function}{denominator}{number}{}{}
+  Return the denominator of NUMBER, which must be rational.
+\end{function}
+
+\begin{function}{numerator}{number}{}{}
+  Return the numerator of NUMBER, which must be rational.
+\end{function}
+
+\begin{function}{rational}{x}{}{}
+  RATIONAL produces a rational number for any real numeric argument. This is
+  more efficient than RATIONALIZE, but it assumes that floating-point is
+  completely accurate, giving a result that isn't as pretty.
+\end{function}
+
+\begin{function}{rationalize}{x}{}{}
+  Converts any REAL to a RATIONAL.  Floats are converted to a simple rational
+  representation exploiting the assumption that floats are only accurate to
+  their precision.  RATIONALIZE (and also RATIONAL) preserve the invariant:
+      (= x (float (rationalize x) x))
+\end{function}
+
+\begin{function}{mod}{number divisor}{}{}
+  Return second result of FLOOR.
+\end{function}
+
+\begin{function}{rem}{number divisor}{}{}
+  Return second result of TRUNCATE.
+\end{function}
+
+\begin{function}{ceiling}{number \op divisor}{}{}
+  Return the smallest integer not less than number, or number/divisor.
+  The second returned value is the remainder.
+\end{function}
+
+\begin{function}{floor}{number \op divisor}{}{}
+  Return the greatest integer not greater than number, or number/divisor.
+  The second returned value is (mod number divisor).
+\end{function}
+
+\begin{function}{round}{number \op divisor}{}{}
+  Rounds number (or number/divisor) to nearest integer.
+  The second returned value is the remainder.
+\end{function}
+
+\begin{function}{truncate}{number \op divisor}{}{}
+  Return number (or number/divisor) as an integer, rounded toward 0.
+  The second returned value is the remainder.
+\end{function}
+
+\begin{function}{fceiling}{number \op divisor}{}{}
+  Same as CEILING, but returns first value as a float.
+\end{function}
+
+\begin{function}{ffloor}{number \op divisor}{}{}
+  Same as FLOOR, but returns first value as a float.
+\end{function}
+
+\begin{function}{fround}{number \op divisor}{}{}
+  Same as ROUND, but returns first value as a float.
+\end{function}
+
+\begin{function}{ftruncate}{number \op divisor}{}{}
+  Same as TRUNCATE, but returns first value as a float.
+\end{function}
+
+\begin{function}{decode-float}{f}{}{}
+  Return three values:
+   1) a floating-point number representing the significand. This is always
+      between 0.5 (inclusive) and 1.0 (exclusive).
+   2) an integer representing the exponent.
+   3) -1.0 or 1.0 (i.e. the sign of the argument.)
+\end{function}
+
+\begin{function}{scale-float}{f ex}{}{}
+  Return the value (* f (expt (float 2 f) ex)), but with no unnecessary loss
+  of precision or overflow.
+\end{function}
+
+\begin{function}{float-digits}{f}{}{}
+  
+\end{function}
+
+\begin{function}{float-precision}{f}{}{}
+  Return a non-negative number of significant digits in its float argument.
+  Will be less than FLOAT-DIGITS if denormalized or zero.
+\end{function}
+
+\begin{function}{float-radix}{x}{}{}
+  Return (as an integer) the radix b of its floating-point argument.
+\end{function}
+
+\begin{function}{float-sign}{float1 \op float2}{}{}
+  Return a floating-point number that has the same sign as
+   FLOAT1 and, if FLOAT2 is given, has the same absolute value
+   as FLOAT2.
+\end{function}
+
+\begin{function}{integer-decode-float}{x}{}{}
+  Return three values:
+   1) an integer representation of the significand.
+   2) the exponent for the power of 2 that the significand must be multiplied
+      by to get the actual value. This differs from the DECODE-FLOAT exponent
+      by FLOAT-DIGITS, since the significand has been scaled to have all its
+      digits before the radix point.
+   3) -1 or 1 (i.e. the sign of the argument.)
+\end{function}
+
+\begin{function}{complex}{realpart \op imagpart}{}{}
+  Return a complex number with the specified real and imaginary components.
+\end{function}
+
+\begin{function}{realpart}{number}{}{}
+  Extract the real part of a number.
+\end{function}
+
+\begin{function}{imagpart}{number}{}{}
+  Extract the imaginary part of a number.
+\end{function}
+
+\section{Logic operations}
+\label{sec:logic-operations}
+
+\begin{function}{boole}{op integer1 integer2}{}{}
+  Bit-wise boolean function on two integers. Function chosen by OP:
+        0       BOOLE-CLR
+        1       BOOLE-SET
+        2       BOOLE-1
+        3       BOOLE-2
+        4       BOOLE-C1
+        5       BOOLE-C2
+        6       BOOLE-AND
+        7       BOOLE-IOR
+        8       BOOLE-XOR
+        9       BOOLE-EQV
+        10      BOOLE-NAND
+        11      BOOLE-NOR
+        12      BOOLE-ANDC1
+        13      BOOLE-ANDC2
+        14      BOOLE-ORC1
+        15      BOOLE-ORC2
+\end{function}
+
+\begin{constant}{boole-1}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-2}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-and}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-andc1}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-andc2}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-c1}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-c2}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-clr}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-eqv}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-ior}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-nand}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-nor}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-orc1}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-orc2}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-set}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{boole-xor}{}{}{}
+  
+\end{constant}
+
+\begin{function}{logand}{\rest integers}{}{}
+  Return the bit-wise and of its arguments. Args must be integers.
+\end{function}
+
+\begin{function}{logandc1}{integer1 integer2}{}{}
+  Bitwise AND (LOGNOT INTEGER1) with INTEGER2.
+\end{function}
+
+\begin{function}{logandc2}{integer1 integer2}{}{}
+  Bitwise AND INTEGER1 with (LOGNOT INTEGER2).
+\end{function}
+
+\begin{function}{logcount}{integer}{}{}
+  Count the number of 1 bits if INTEGER is positive, and the number of 0 bits
+  if INTEGER is negative.
+\end{function}
+
+\begin{function}{logeqv}{\rest integers}{}{}
+  Return the bit-wise equivalence of its arguments. Args must be integers.
+\end{function}
+
+\begin{function}{logior}{\rest integers}{}{}
+  Return the bit-wise or of its arguments. Args must be integers.
+\end{function}
+
+\begin{function}{lognand}{integer1 integer2}{}{}
+  Complement the logical AND of INTEGER1 and INTEGER2.
+\end{function}
+
+\begin{function}{lognor}{integer1 integer2}{}{}
+  Complement the logical AND of INTEGER1 and INTEGER2.
+\end{function}
+
+\begin{function}{lognot}{number}{}{}
+  Return the bit-wise logical not of integer.
+\end{function}
+
+\begin{function}{logorc1}{integer1 integer2}{}{}
+  Bitwise OR (LOGNOT INTEGER1) with INTEGER2.
+\end{function}
+
+\begin{function}{logorc2}{integer1 integer2}{}{}
+  Bitwise OR INTEGER1 with (LOGNOT INTEGER2).
+\end{function}
+
+\begin{function}{logtest}{integer1 integer2}{}{}
+  Predicate which returns T if logand of integer1 and integer2 is not zero.
+\end{function}
+
+\begin{function}{logxor}{\rest integers}{}{}
+  Return the bit-wise exclusive or of its arguments. Args must be integers.
+\end{function}
+
+\begin{function}{ash}{integer count}{}{}
+  Shifts integer left by count places preserving sign. - count shifts right.
+\end{function}
+
+\begin{function}{integer-length}{integer}{}{}
+  Return the number of non-sign bits in the twos-complement representation
+  of INTEGER.
+\end{function}
+
+\section{Byte Manipulation Functions}
+\label{sec:byte-manip-funct}
+
+\begin{function}{byte}{size position}{}{}
+  Return a byte specifier which may be used by other byte functions
+  (e.g. LDB).
+\end{function}
+
+\begin{function}{byte-position}{bytespec}{}{}
+  Return the position part of the byte specifier bytespec.
+\end{function}
+
+\begin{function}{byte-size}{bytespec}{}{}
+  Return the size part of the byte specifier bytespec.
+\end{function}
+
+\begin{function}{deposit-field}{newbyte bytespec integer}{}{}
+  Return new integer with newbyte in specified position, newbyte is not right justified.
+\end{function}
+
+\begin{function}{dpb}{newbyte bytespec integer}{}{}
+  Return new integer with newbyte in specified position, newbyte is right justified.
+\end{function}
+
+\begin{function}{ldb-test}{bytespec integer}{}{}
+  Return T if any of the specified bits in integer are 1's.
+\end{function}
+
+\begin{accessor}{ldb}{bytespec integer}{}{}
+  Extract the specified byte from integer, and right justify result.
+\end{accessor}
+
+\begin{accessor}{mask-field}{bytespec integer}{}{}
+  Extract the specified byte from integer,  but do not right justify result.
+\end{accessor}
+
+\section{Random numbers}
+\label{sec:random-numbers}
+
+See also \fun{random-state-p}
+
+\begin{function}{random}{arg \op state}{}{}
+  
+\end{function}
+
+\begin{function}{make-random-state}{\op state}{}{}
+  Make a random state object. If STATE is not supplied, return a copy
+  of the default random state. If STATE is a random state, then return a
+  copy of it. If STATE is T then return a random state generated from
+  the universal time.
+\end{function}
+
+\begin{class}{random-state}{}{}{}
+  
+\end{class}
+
+\begin{variable}{*random-state*}{}{}{}
+  
+\end{variable}
+
+\section{Implementation Parameters}
+\label{sec:impl-param}
+
+\begin{constant}{most-negative-double-float}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{most-negative-fixnum}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{most-negative-long-float}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{most-negative-short-float}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{most-negative-single-float}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{most-positive-double-float}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{most-positive-fixnum}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{most-positive-long-float}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{most-positive-short-float}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{most-positive-single-float}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-negative-double-float}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-negative-long-float}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-negative-normalized-double-float}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-negative-normalized-long-float}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-negative-normalized-short-float}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-negative-normalized-single-float}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-negative-short-float}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-negative-single-float}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-positive-double-float}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-positive-long-float}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-positive-normalized-double-float}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-positive-normalized-long-float}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-positive-normalized-short-float}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-positive-normalized-single-float}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-positive-short-float}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{least-positive-single-float}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{double-float-epsilon}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{double-float-negative-epsilon}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{long-float-epsilon}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{long-float-negative-epsilon}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{short-float-epsilon}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{short-float-negative-epsilon}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{single-float-epsilon}{}{}{}
+  
+\end{constant}
+
+\begin{constant}{single-float-negative-epsilon}{}{}{}
+  
+\end{constant}

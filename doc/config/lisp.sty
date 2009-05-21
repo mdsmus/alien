@@ -1,0 +1,260 @@
+\usepackage{listings}
+\usepackage{makeidx}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage[a4paper,top=2cm,right=2.5cm,left=2.5cm,bottom=2cm]{geometry}
+\usepackage{babelbib}
+\usepackage{ifthen}
+\usepackage{setspace}
+\usepackage{times}
+\usepackage{color}
+\usepackage{titling}
+\usepackage[Bjornstrup]{fncychap}
+\usepackage{xargs}
+\RequirePackage{framed}
+\RequirePackage{fancyvrb}
+\usepackage{python-colors}
+\RequirePackage{titlesec}
+% Include hyperref last.
+\RequirePackage[colorlinks,breaklinks,hyperindex=true
+                linkcolor=InnerLinkColor,filecolor=OuterLinkColor,
+                menucolor=OuterLinkColor,pagecolor=OuterLinkColor,
+                urlcolor=OuterLinkColor]{hyperref}
+
+% Redefine these colors to your liking in the preamble.
+\definecolor{TitleColor}{rgb}{0.126,0.263,0.361}
+\definecolor{InnerLinkColor}{rgb}{0.208,0.374,0.486}
+\definecolor{OuterLinkColor}{rgb}{0.216,0.439,0.388}
+
+\def\lisp@NormalColor{\color[rgb]{0.0,0.0,0.0}}
+\def\lisp@TitleColor{\color{TitleColor}}
+\pdfcompresslevel=9
+
+\definecolor{VerbatimColor}{rgb}{1,1,1}
+\definecolor{VerbatimBorderColor}{rgb}{1,1,1}
+
+% Set some sane defaults for section numbering depth and TOC depth.  You can
+% reset these counters in your preamble.
+%
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{1}
+
+\def\release#1{\gdef\lisp@release{Release #1}}
+
+\newcommand{\lisp@headerfamily}{\sffamily\bfseries}
+
+\renewcommand{\maketitle}{
+  \begin{titlepage}
+    \begin{center}
+      \rule{\textwidth}{2pt}\par
+      \vfill
+      {\rm\Huge\lisp@headerfamily \@title \par}%
+      {\em\LARGE\lisp@headerfamily \lisp@release \par}
+      \vfill
+      {\large \@date \par } \vfill {\LARGE\lisp@headerfamily
+        \@author \par} \vfill\vfill
+      \rule{\textwidth}{2pt}\par
+    \end{center}
+  \end{titlepage}
+  \cleardoublepage%
+  \let\thanks\relax\let\maketitle\relax
+}
+
+\renewcommand\frontmatter{%
+    \cleardoublepage
+  \@mainmatterfalse
+  \singlespacing
+  \pagenumbering{roman}}
+
+\renewcommand\mainmatter{%
+    \cleardoublepage
+  \@mainmattertrue
+  \doublespacing
+  \setlength\parindent{0em}
+  \pagenumbering{arabic}}
+
+\renewcommand\backmatter{%
+  \if@openright
+    \cleardoublepage
+  \else
+    \clearpage
+  \fi
+  \singlespacing
+  \setlength\parindent{0em}
+  \@mainmatterfalse}
+
+% Augment the sectioning commands used to get our own font family in place,
+% and reset some internal data items:
+\titleformat{\section}{\Large\lisp@headerfamily}%
+            {\lisp@TitleColor\thesection}{0.5em}{\lisp@TitleColor}{\lisp@NormalColor}
+\titleformat{\subsection}{\large\lisp@headerfamily}%
+            {\lisp@TitleColor\thesubsection}{0.5em}{\lisp@TitleColor}{\lisp@NormalColor}
+\titleformat{\subsubsection}{\lisp@headerfamily}%
+            {\lisp@TitleColor\thesubsubsection}{0.5em}{\lisp@TitleColor}{\lisp@NormalColor}
+\titleformat{\paragraph}{\large\lisp@headerfamily}%
+            {\lisp@TitleColor}{0em}{\lisp@TitleColor}{\lisp@NormalColor}
+
+% This wraps the \tableofcontents macro with all the magic to get the spacing
+% right and have the right number of pages if the 'openright' option has been
+% used.  This eliminates a fair amount of crud in the individual document files.
+%
+\let\lisp@OldTableofcontents=\tableofcontents
+\renewcommand{\tableofcontents}{%
+  \setcounter{page}{1}%
+  \pagebreak%
+  \pagestyle{plain}%
+  {%
+    \parskip = 0mm%
+    \lisp@OldTableofcontents%
+    \if@openright%
+      \ifodd\value{page}%
+        \typeout{Adding blank page after the table of contents.}%
+        \pagebreak\hspace{0pt}%
+      \fi%
+    \fi%
+    \cleardoublepage%
+  }%
+  \pagenumbering{arabic}%
+  \@ifundefined{fancyhf}{}{\pagestyle{normal}}%
+}
+
+% Fix the index and bibliography environments to add an entry to the Table of
+% Contents; this is much nicer than just having to jump to the end of the book
+% and flip around, especially with multiple indexes.
+%
+\let\py@OldTheindex=\theindex
+\renewcommand{\theindex}{
+  \cleardoublepage
+  \phantomsection
+  \py@OldTheindex
+  \addcontentsline{toc}{chapter}{\indexname}
+}
+
+\let\py@OldThebibliography=\thebibliography
+\renewcommand{\thebibliography}[1]{
+  \cleardoublepage
+  \phantomsection
+  \py@OldThebibliography{1}
+  \addcontentsline{toc}{chapter}{\bibname}
+}
+
+\raggedbottom 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{header}{}{}
+
+\newcommand{\strong}[1]{{\bf #1}}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\bfcode}[1]{\code{\bfseries#1}}
+\newcommand{\samp}[1]{`\code{#1}'}
+\newcommand{\email}[1]{\textsf{#1}}
+
+\newcommand{\var}[1]{\texttt{#1}}
+\newcommand{\fun}[1]{\textbf{\hyperref[fun:#1]{#1}}}
+\newcommand{\args}[1]{\textit{#1}}
+\newcommand{\funmark}[1]{\textsf{\hfill[#1]}}
+
+ \newenvironment{block}
+ {\small \begin{spacing}{1}\list{}{
+       \setlength{\leftmargin}{6ex}
+       \setlength{\rightmargin}{\leftmargin}
+     }
+   \item\relax}
+   {\endlist\end{spacing}}
+ 
+\newcommand{\keyop}[1]{\textnormal{\textmd{#1}}}
+
+\newcommand{\rest}{\keyop{\&rest\ }}
+\newcommand{\op}{\keyop{\&optional\ }}
+\newcommand{\env}{\keyop{\&environment\ }}
+\newcommand{\whole}{\keyop{\&whole\ }}
+\newcommand{\akeys}{\keyop{\&allow-other-keys\ }}
+\newcommand{\key}{\keyop{\&key\ }}
+\newcommand{\body}{\keyop{\&body\ }}
+\newcommand{\aux}{\keyop{\&aux\ }}
+
+\newcommand{\funindex}[5]{
+  %% name, args, module, short-label, long-name
+  \label{#4:#1}
+  % basic index, without module name
+  {\index{#5!#1}}
+  % \ifthenelse{\equal{#3}{}}
+  % {\index{#5!default!#1}}
+  % {\index{#5!#3!#1}}
+}
+
+\newcommand{\fundef}[4]{
+  %% name, args, packagename, fun-type
+  \ifthenelse{\equal{#3}{}}{}{#3:}\textbf{#1}\hspace{2ex}\args{#2}\funmark{#4}
+}
+
+\newcommand{\includelisp}[1]{
+  \lstinputlisting[language=lisp]{#1}
+}
+
+\newcommand{\includelispcolor}[1]{
+  \input{#1}
+}
+
+\newcommand{\tmpfile}{}
+
+\newcommand{\makeStartEnv}[7]{
+  %% name, args, module, packagename
+  \funindex{#1}{#2}{#3}{#5}{#7}
+  \fundef{#1}{#2}{#4}{#6}
+  \renewcommand{\tmpfile}{lisp-color/#1}
+  \begin{block}
+  }
+
+\newcommand{\makeEndEnv}{
+  \IfFileExists{\tmpfile}{\includelispcolor{\tmpfile}}{}
+\end{block}
+}
+
+\newenvironment{class}[4]{
+  %% name, args, module, packagename, short-label, longname, plural
+  \makeStartEnv{#1}{#2}{#3}{#4}{class}{class}{Classes}}
+{\makeEndEnv}
+
+\newenvironment{constant}[4]{
+  %% name, args, module, packagename, short-label, longname, plural
+  \makeStartEnv{#1}{#2}{#3}{#4}{const}{constant}{Constants}}
+{\makeEndEnv}
+
+\newenvironment{variable}[4]{
+  %% name, args, module, packagename, short-label, longname, plural
+  \makeStartEnv{#1}{#2}{#3}{#4}{var}{variable}{Variables}}
+{\makeEndEnv}
+
+\newenvironment{specialop}[4]{
+  %% name, args, module, packagename, short-label, longname, plural
+  \makeStartEnv{#1}{#2}{#3}{#4}{specialop}{special operator}{Special Operators}}
+{\makeEndEnv}
+
+\newenvironment{generic}[4]{
+  %% name, args, module, packagename, short-label, longname, plural
+  \makeStartEnv{#1}{#2}{#3}{#4}{genfun}{generic functions}{Generic Functions}}
+{\makeEndEnv}
+
+\newenvironment{accessor}[4]{
+  %% name, args, module, packagename, short-label, longname, plural
+  \makeStartEnv{#1}{#2}{#3}{#4}{acc}{accessor}{Accessors}}
+{\makeEndEnv}
+
+\newenvironment{function}[4]{
+  %% name, args, module, packagename, short-label, longname, plural
+  \makeStartEnv{#1}{#2}{#3}{#4}{fun}{function}{Functions}}
+{\makeEndEnv}
+
+\newenvironment{macro}[4]{
+  %% name, args, module, packagename, short-label, longname, plural
+  \makeStartEnv{#1}{#2}{#3}{#4}{mac}{macro}{Macros}}
+{\makeEndEnv}
+
+\lstnewenvironment{lisp}
+{\lstset{language=lisp}}
+{}
+

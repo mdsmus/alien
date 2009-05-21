@@ -1,0 +1,210 @@
+\chapter{Sequences}
+
+\begin{accessor}{elt}{sequence index}{}{}
+  Return the element of SEQUENCE specified by INDEX.
+\end{accessor}
+
+\begin{accessor}{subseq}{sequence start \op end}{}{}
+  Return a copy of a subsequence of SEQUENCE starting with element number
+   START and continuing to the end of SEQUENCE or the optional END.
+\end{accessor}
+
+\begin{function}{concatenate}{output-type-spec \rest sequences}{}{}
+  Return a new sequence of all the argument sequences concatenated together
+  which shares no structure with the original argument sequences of the
+  specified OUTPUT-TYPE-SPEC.
+\end{function}
+
+\begin{function}{copy-seq}{sequence}{}{}
+  Return a copy of SEQUENCE which is EQUAL to SEQUENCE but not EQ.
+\end{function}
+
+\begin{function}{count}{item sequence \rest args \key from-end start end key test test-not}{}{}
+  Return the number of elements in SEQUENCE satisfying a test with ITEM,
+   which defaults to EQL.
+\end{function}
+
+\begin{function}{count-if}{pred sequence \rest args \key from-end start end key}{}{}
+  Return the number of elements in SEQUENCE satisfying PRED(el).
+\end{function}
+
+\begin{function}{count-if-not}{pred sequence \rest args \key from-end start end key}{}{}
+  Return the number of elements in SEQUENCE not satisfying TEST(el).
+\end{function}
+
+\begin{function}{delete}{item sequence \rest args \key from-end test test-not start end count key}{}{}
+  Return a sequence formed by destructively removing the specified ITEM from
+  the given SEQUENCE.
+\end{function}
+
+\begin{function}{delete-duplicates}{sequence \rest args \key test test-not start end from-end key}{}{}
+  The elements of SEQUENCE are examined, and if any two match, one is
+   discarded. The resulting sequence, which may be formed by destroying the
+   given sequence, is returned.
+
+   The :TEST-NOT argument is deprecated.
+\end{function}
+
+\begin{function}{delete-if}{predicate sequence \rest args \key from-end start key end count}{}{}
+  Return a sequence formed by destructively removing the elements satisfying
+  the specified PREDICATE from the given SEQUENCE.
+\end{function}
+
+\begin{function}{delete-if-not}{predicate sequence \rest args \key from-end start end key count}{}{}
+  Return a sequence formed by destructively removing the elements not
+  satisfying the specified PREDICATE from the given SEQUENCE.
+\end{function}
+
+\begin{function}{fill}{sequence item \key start end}{}{}
+  Replace the specified elements of SEQUENCE with ITEM.
+\end{function}
+
+\begin{function}{find}{item sequence \rest args \key from-end start end key test test-not}{}{}
+  
+\end{function}
+
+\begin{function}{find-if}{predicate sequence \rest args \key from-end start end key}{}{}
+  
+\end{function}
+
+\begin{function}{find-if-not}{predicate sequence \rest args \key from-end start end key}{}{}
+  
+\end{function}
+
+\begin{function}{length}{sequence}{}{}
+  Return an integer that is the length of SEQUENCE.
+\end{function}
+
+\begin{function}{make-sequence}{type length \key initial-element}{}{}
+  Return a sequence of the given TYPE and LENGTH, with elements initialized
+  to INITIAL-ELEMENT.
+\end{function}
+
+\begin{function}{map}{result-type function first-sequence \rest more-sequences}{}{}
+  
+\end{function}
+
+\begin{function}{map-into}{result-sequence function \rest sequences}{}{}
+  
+\end{function}
+
+\begin{function}{merge}{result-type sequence1 sequence2 predicate \key key}{}{}
+  Merge the sequences SEQUENCE1 and SEQUENCE2 destructively into a
+   sequence of type RESULT-TYPE using PREDICATE to order the elements.
+\end{function}
+
+\begin{function}{mismatch}{sequence1 sequence2 \rest args \key from-end test test-not start1 end1 start2
+ end2 key}{}{}
+  The specified subsequences of SEQUENCE1 and SEQUENCE2 are compared
+   element-wise. If they are of equal length and match in every element, the
+   result is NIL. Otherwise, the result is a non-negative integer, the index
+   within SEQUENCE1 of the leftmost position at which they fail to match; or,
+   if one is shorter than and a matching prefix of the other, the index within
+   SEQUENCE1 beyond the last position tested is returned. If a non-NIL
+   :FROM-END argument is given, then one plus the index of the rightmost
+   position in which the sequences differ is returned.
+\end{function}
+
+\begin{function}{nreverse}{sequence}{}{}
+  Return a sequence of the same elements in reverse order; the argument
+   is destroyed.
+\end{function}
+
+\begin{function}{nsubstitute}{new old sequence \rest args \key from-end test test-not end count key start}{}{}
+  Return a sequence of the same kind as SEQUENCE with the same elements
+  except that all elements equal to OLD are replaced with NEW. SEQUENCE
+  may be destructively modified.
+\end{function}
+
+\begin{function}{nsubstitute-if}{new predicate sequence \rest args \key from-end start end count key}{}{}
+  Return a sequence of the same kind as SEQUENCE with the same elements
+   except that all elements satisfying PREDICATE are replaced with NEW.
+   SEQUENCE may be destructively modified.
+\end{function}
+
+\begin{function}{nsubstitute-if-not}{new predicate sequence \rest args \key from-end start end count key}{}{}
+  Return a sequence of the same kind as SEQUENCE with the same elements
+   except that all elements not satisfying PREDICATE are replaced with NEW.
+   SEQUENCE may be destructively modified.
+\end{function}
+
+\begin{function}{position}{item sequence \rest args \key from-end start end key test test-not}{}{}
+  
+\end{function}
+
+\begin{function}{position-if}{predicate sequence \rest args \key from-end start end key}{}{}
+  
+\end{function}
+
+\begin{function}{position-if-not}{predicate sequence \rest args \key from-end start end key}{}{}
+  
+\end{function}
+
+\begin{function}{reduce}{function sequence \rest args \key key from-end start end initial-value}{}{}
+  
+\end{function}
+
+\begin{function}{remove}{item sequence \rest args \key from-end test test-not start end count key}{}{}
+  Return a copy of SEQUENCE with elements satisfying the test (default is
+   EQL) with ITEM removed.
+\end{function}
+
+\begin{function}{remove-duplicates}{sequence \rest args \key test test-not start end from-end key}{}{}
+  The elements of SEQUENCE are compared pairwise, and if any two match,
+   the one occurring earlier is discarded, unless FROM-END is true, in
+   which case the one later in the sequence is discarded. The resulting
+   sequence is returned.
+
+   The :TEST-NOT argument is deprecated.
+\end{function}
+
+\begin{function}{remove-if}{predicate sequence \rest args \key from-end start end count key}{}{}
+  Return a copy of sequence with elements satisfying PREDICATE removed.
+\end{function}
+
+\begin{function}{remove-if-not}{predicate sequence \rest args \key from-end start end count key}{}{}
+  Return a copy of sequence with elements not satisfying PREDICATE removed.
+\end{function}
+
+\begin{function}{replace}{sequence1 sequence2 \rest args \key start1 end1 start2 end2}{}{}
+  The target sequence is destructively modified by copying successive
+   elements into it from the source sequence.
+\end{function}
+
+\begin{function}{reverse}{sequence}{}{}
+  Return a new sequence containing the same elements but in reverse order.
+\end{function}
+
+\begin{function}{search}{sequence1 sequence2 \rest args \key from-end test test-not start1 end1 start2
+ end2 key}{}{}
+  
+\end{function}
+
+\begin{function}{sort}{sequence predicate \rest args \key key}{}{}
+  Destructively sort SEQUENCE. PREDICATE should return non-NIL if
+   ARG1 is to precede ARG2.
+\end{function}
+
+\begin{function}{stable-sort}{sequence predicate \rest args \key key}{}{}
+  Destructively sort SEQUENCE. PREDICATE should return non-NIL if
+   ARG1 is to precede ARG2.
+\end{function}
+
+\begin{function}{substitute}{new old sequence \rest args \key from-end test test-not start count end key}{}{}
+  Return a sequence of the same kind as SEQUENCE with the same elements,
+  except that all elements equal to OLD are replaced with NEW.
+\end{function}
+
+\begin{function}{substitute-if}{new predicate sequence \rest args \key from-end start end count key}{}{}
+  Return a sequence of the same kind as SEQUENCE with the same elements
+  except that all elements satisfying the PRED are replaced with NEW.
+\end{function}
+
+\begin{function}{substitute-if-not}{new predicate sequence \rest args \key from-end start end count key}{}{}
+  Return a sequence of the same kind as SEQUENCE with the same elements
+  except that all elements not satisfying the PRED are replaced with NEW.
+\end{function}
+
+\begin{class}{sequence}{}{}{}
+  
+\end{class}

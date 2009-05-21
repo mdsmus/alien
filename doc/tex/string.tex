@@ -1,0 +1,154 @@
+\chapter{Strings}
+
+\begin{function}{parse-integer}{string \key start end radix junk-allowed}{}{}
+  Examine the substring of string delimited by start and end
+  (default to the beginning and end of the string)  It skips over
+  whitespace characters and then tries to parse an integer. The
+  radix parameter must be between 2 and 36.
+\end{function}
+
+\begin{accessor}{char}{string index}{}{}
+  Given a string and a non-negative integer index less than the length of
+  the string, returns the character object representing the character at
+  that position in the string.
+\end{accessor}
+
+\begin{accessor}{schar}{string index}{}{}
+  SCHAR returns the character object at an indexed position in a string
+   just as CHAR does, except the string must be a simple-string.
+\end{accessor}
+
+\begin{function}{make-string}{count \key element-type (initial-element fill-char)}{}{}
+  Given a character count and an optional fill character, makes and returns a
+new string COUNT long filled with the fill character.
+\end{function}
+
+\begin{function}{nstring-capitalize}{string \key start end}{}{}
+  
+\end{function}
+
+\begin{function}{nstring-downcase}{string \key start end}{}{}
+  
+\end{function}
+
+\begin{function}{nstring-upcase}{string \key start end}{}{}
+  
+\end{function}
+
+\begin{function}{simple-string-p}{object}{}{}
+  Return true if OBJECT is a SIMPLE-STRING, and NIL otherwise.
+\end{function}
+
+\begin{function}{string}{x}{}{}
+  Coerces X into a string. If X is a string, X is returned. If X is a
+   symbol, X's pname is returned. If X is a character then a one element
+   string containing that character is returned. If X cannot be coerced
+   into a string, an error occurs.
+\end{function}
+
+\begin{function}{string-capitalize}{string \key start end}{}{}
+  
+\end{function}
+
+\begin{function}{string-downcase}{string \key start end}{}{}
+  
+\end{function}
+
+\begin{function}{string-equal}{string1 string2 \key start1 end1 start2 end2}{}{}
+  Given two strings (string1 and string2), and optional integers start1,
+  start2, end1 and end2, compares characters in string1 to characters in
+  string2 (using char-equal).
+\end{function}
+
+\begin{function}{string-greaterp}{string1 string2 \key start1 end1 start2 end2}{}{}
+  Given two strings, if the first string is lexicographically greater than
+  the second string, returns the longest common prefix (using char-equal)
+  of the two strings. Otherwise, returns ().
+\end{function}
+
+\begin{function}{string-left-trim}{char-bag string}{}{}
+  
+\end{function}
+
+\begin{function}{string-lessp}{string1 string2 \key start1 end1 start2 end2}{}{}
+  Given two strings, if the first string is lexicographically less than
+  the second string, returns the longest common prefix (using char-equal)
+  of the two strings. Otherwise, returns ().
+\end{function}
+
+\begin{function}{string-not-equal}{string1 string2 \key start1 end1 start2 end2}{}{}
+  Given two strings, if the first string is not lexicographically equal
+  to the second string, returns the longest common prefix (using char-equal)
+  of the two strings. Otherwise, returns ().
+\end{function}
+
+\begin{function}{string-not-greaterp}{string1 string2 \key start1 end1 start2 end2}{}{}
+  Given two strings, if the first string is lexicographically less than
+  or equal to the second string, returns the longest common prefix
+  (using char-equal) of the two strings. Otherwise, returns ().
+\end{function}
+
+\begin{function}{string-not-lessp}{string1 string2 \key start1 end1 start2 end2}{}{}
+  Given two strings, if the first string is lexicographically greater
+  than or equal to the second string, returns the longest common prefix
+  (using char-equal) of the two strings. Otherwise, returns ().
+\end{function}
+
+\begin{function}{string-right-trim}{char-bag string}{}{}
+  
+\end{function}
+
+\begin{function}{string-trim}{char-bag string}{}{}
+  
+\end{function}
+
+\begin{function}{string-upcase}{string \key start end}{}{}
+  
+\end{function}
+
+\begin{function}{string/=}{string1 string2 \key start1 end1 start2 end2}{}{}
+  Given two strings, if the first string is not lexicographically equal
+  to the second string, returns the longest common prefix (using char=)
+  of the two strings. Otherwise, returns ().
+\end{function}
+
+\begin{function}{string<}{string1 string2 \key start1 end1 start2 end2}{}{}
+  Given two strings, if the first string is lexicographically less than
+  the second string, returns the longest common prefix (using char=)
+  of the two strings. Otherwise, returns ().
+\end{function}
+
+\begin{function}{string<=}{string1 string2 \key start1 end1 start2 end2}{}{}
+  Given two strings, if the first string is lexicographically less than
+  or equal to the second string, returns the longest common prefix
+  (using char=) of the two strings. Otherwise, returns ().
+\end{function}
+
+\begin{function}{string=}{string1 string2 \key start1 end1 start2 end2}{}{}
+  Given two strings (string1 and string2), and optional integers start1,
+  start2, end1 and end2, compares characters in string1 to characters in
+  string2 (using char=).
+\end{function}
+
+\begin{function}{string>}{string1 string2 \key start1 end1 start2 end2}{}{}
+  Given two strings, if the first string is lexicographically greater than
+  the second string, returns the longest common prefix (using char=)
+  of the two strings. Otherwise, returns ().
+\end{function}
+
+\begin{function}{string>=}{string1 string2 \key start1 end1 start2 end2}{}{}
+  Given two strings, if the first string is lexicographically greater
+  than or equal to the second string, returns the longest common prefix
+  (using char=) of the two strings. Otherwise, returns ().
+\end{function}
+
+\begin{function}{stringp}{object}{}{}
+  Return true if OBJECT is a STRING, and NIL otherwise.
+\end{function}
+
+\begin{class}{string}{x}{}{}
+  Coerces X into a string. If X is a string, X is returned. If X is a
+   symbol, X's pname is returned. If X is a character then a one element
+   string containing that character is returned. If X cannot be coerced
+   into a string, an error occurs.
+\end{class}

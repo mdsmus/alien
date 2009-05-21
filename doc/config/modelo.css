@@ -1,0 +1,140 @@
+#container {
+    width: 90%;
+    margin: 10px auto;
+    background-color: #fff;
+    color: #333;
+    line-height: 130%;
+}
+
+#content {
+    max-width: 36em;
+    width: 600px;
+    margin-left: 200px;
+    padding: 15px 0px;
+}
+
+#header {
+    padding: .5em;
+}
+
+#header, .b2f, .b3f, .b4f {
+    background: #a2cd5a;
+}
+
+#language {
+    
+}
+
+#language p {
+    float: right;    
+}
+
+.footer, .push {
+    height: 4em;
+}
+
+.b1f, .b2f, .b3f, .b4f {
+    font-size:1px;
+    overflow:hidden;
+    display:block;
+}
+
+.b1f {
+    height:1px;
+    margin:0 5px;
+}
+
+.b2f {
+    height:1px;
+    margin:0 3px;
+}
+
+.b3f {
+    height:1px;
+    margin:0 2px;
+}
+
+.b4f {
+    height:2px;
+    margin:0 1px;
+}
+    
+#header h1 {
+    margin: 0px 10px 0px 10px;
+    padding-bottom: 3px;
+}
+
+#menu {
+    /* position: relative; */
+    float: left;
+    top: 50px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 100%;
+    width: 130px;
+    padding: 20px;
+    margin: 0px;
+}
+
+body {
+    font: 80% arial, helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    font-size: 1.5em;
+    color: #036;
+}
+
+h3 {
+    font-size: 1.25em;
+    color: #036;
+}
+
+#menu ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+
+#menu ul li {
+    margin: 0px;
+    padding: 0px;
+}
+#menu ul li a {
+    font-size: 80%;
+    display: block;
+    border-bottom: 1px dashed #C39C4E;
+    padding: 5px 0px 2px 4px;
+    text-decoration: none;
+    color: #666666;
+    width:130px;
+}
+
+#menu ul li a:hover, #menu ul li a:focus {
+    color: #000000;
+    background-color: #eeeeee;
+}
+
+ul.bib2xhtml li {
+list-style-type: none;
+padding-bottom: 1em;
+}
+
+.ecbx-1200 {
+font-weight: bold;
+}
+
+.ecti-1200 {
+font-style: italic;
+}
+
+.cmbx-10 {
+    font-weight: bold;
+
+}
+
+.cmti-10 {
+    font-style: italic;
+}

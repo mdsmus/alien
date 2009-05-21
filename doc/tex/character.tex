@@ -1,0 +1,153 @@
+\chapter{Characters}
+
+\begin{constant}{char-code-limit}{}{}{}
+  
+\end{constant}
+
+\begin{function}{alpha-char-p}{char}{}{}
+  The argument must be a character object. ALPHA-CHAR-P returns T if the
+   argument is an alphabetic character, A-Z or a-z; otherwise NIL.
+\end{function}
+
+\begin{function}{alphanumericp}{char}{}{}
+  Given a character-object argument, ALPHANUMERICP returns T if the
+   argument is either numeric or alphabetic.
+\end{function}
+
+\begin{function}{both-case-p}{char}{}{}
+  The argument must be a character object. BOTH-CASE-P returns T if the
+  argument is an alphabetic character and if the character exists in
+  both upper and lower case. For ASCII, this is the same as ALPHA-CHAR-P.
+\end{function}
+
+\begin{function}{char-code}{char}{}{}
+  Return the integer code of CHAR.
+\end{function}
+
+\begin{function}{char-downcase}{char}{}{}
+  Return CHAR converted to lower-case if that is possible.
+\end{function}
+
+\begin{function}{char-equal}{character \rest more-characters}{}{}
+  Return T if all of the arguments are the same character.
+  Font, bits, and case are ignored.
+\end{function}
+
+\begin{function}{char-greaterp}{character \rest more-characters}{}{}
+  Return T if the arguments are in strictly decreasing alphabetic order.
+   Font, bits, and case are ignored.
+\end{function}
+
+\begin{function}{char-int}{char}{}{}
+  Return the integer code of CHAR. (In SBCL this is the same as CHAR-CODE, as
+   there are no character bits or fonts.)
+\end{function}
+
+\begin{function}{char-lessp}{character \rest more-characters}{}{}
+  Return T if the arguments are in strictly increasing alphabetic order.
+   Font, bits, and case are ignored.
+\end{function}
+
+\begin{function}{char-name}{char}{}{}
+  Return the name (a STRING) for a CHARACTER object.
+\end{function}
+
+\begin{function}{char-not-equal}{character \rest more-characters}{}{}
+  Return T if no two of the arguments are the same character.
+   Font, bits, and case are ignored.
+\end{function}
+
+\begin{function}{char-not-greaterp}{character \rest more-characters}{}{}
+  Return T if the arguments are in strictly non-decreasing alphabetic order.
+   Font, bits, and case are ignored.
+\end{function}
+
+\begin{function}{char-not-lessp}{character \rest more-characters}{}{}
+  Return T if the arguments are in strictly non-increasing alphabetic order.
+   Font, bits, and case are ignored.
+\end{function}
+
+\begin{function}{char-upcase}{char}{}{}
+  Return CHAR converted to upper-case if that is possible.  Don't convert
+   lowercase eszet (U+DF).
+\end{function}
+
+\begin{function}{char/=}{character \rest more-characters}{}{}
+  Return T if no two of the arguments are the same character.
+\end{function}
+
+\begin{function}{char<}{character \rest more-characters}{}{}
+  Return T if the arguments are in strictly increasing alphabetic order.
+\end{function}
+
+\begin{function}{char<=}{character \rest more-characters}{}{}
+  Return T if the arguments are in strictly non-decreasing alphabetic order.
+\end{function}
+
+\begin{function}{char=}{character \rest more-characters}{}{}
+  Return T if all of the arguments are the same character.
+\end{function}
+
+\begin{function}{char>}{character \rest more-characters}{}{}
+  Return T if the arguments are in strictly decreasing alphabetic order.
+\end{function}
+
+\begin{function}{char>=}{character \rest more-characters}{}{}
+  Return T if the arguments are in strictly non-increasing alphabetic order.
+\end{function}
+
+\begin{function}{character}{object}{}{}
+  Coerce OBJECT into a CHARACTER if possible. Legal inputs are
+  characters, strings and symbols of length 1.
+\end{function}
+
+\begin{function}{characterp}{object}{}{}
+  Return true if OBJECT is a CHARACTER, and NIL otherwise.
+\end{function}
+
+\begin{function}{code-char}{code}{}{}
+  Return the character with the code CODE.
+\end{function}
+
+\begin{function}{digit-char}{weight \op radix}{}{}
+  All arguments must be integers. Returns a character object that
+  represents a digit of the given weight in the specified radix. Returns
+  NIL if no such character exists.
+\end{function}
+
+\begin{function}{digit-char-p}{char \op radix}{}{}
+  If char is a digit in the specified radix, returns the fixnum for
+  which that digit stands, else returns NIL.
+\end{function}
+
+\begin{function}{graphic-char-p}{char}{}{}
+  The argument must be a character object. GRAPHIC-CHAR-P returns T if the
+  argument is a printing character (space through \~{}\% in ASCII), otherwise
+  returns NIL.
+\end{function}
+
+\begin{function}{lower-case-p}{char}{}{}
+  The argument must be a character object; LOWER-CASE-P returns T if the
+   argument is a lower-case character, NIL otherwise.
+\end{function}
+
+\begin{function}{name-char}{name}{}{}
+  Given an argument acceptable to STRING, NAME-CHAR returns a character
+  whose name is that string, if one exists. Otherwise, NIL is returned.
+\end{function}
+
+\begin{function}{standard-char-p}{char}{}{}
+  The argument must be a character object. STANDARD-CHAR-P returns T if the
+   argument is a standard character -- one of the 95 ASCII printing characters
+   or <return>.
+\end{function}
+
+\begin{function}{upper-case-p}{char}{}{}
+  The argument must be a character object; UPPER-CASE-P returns T if the
+   argument is an upper-case character, NIL otherwise.
+\end{function}
+
+\begin{class}{character}{object}{}{}
+  Coerce OBJECT into a CHARACTER if possible. Legal inputs are
+  characters, strings and symbols of length 1.
+\end{class}

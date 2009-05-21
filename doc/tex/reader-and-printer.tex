@@ -1,0 +1,361 @@
+\section{Reader}
+
+\begin{accessor}{readtable-case}{readtable}{}{}
+  
+\end{accessor}
+
+\begin{function}{copy-readtable}{\op from-readtable to-readtable}{}{}
+  
+\end{function}
+
+\begin{function}{get-dispatch-macro-character}{disp-char sub-char \op rt-designator}{}{}
+  Return the macro character function for SUB-CHAR under DISP-CHAR
+   or NIL if there is no associated function.
+\end{function}
+
+\begin{function}{get-macro-character}{char \op rt-designator}{}{}
+  Return the function associated with the specified CHAR which is a macro
+  character, or NIL if there is no such function. As a second value, return
+  T if CHAR is a macro character which is non-terminating, i.e. which can
+  be embedded in a symbol name.
+\end{function}
+
+\begin{function}{make-dispatch-macro-character}{char \op non-terminating-p rt}{}{}
+  Cause CHAR to become a dispatching macro character in readtable (which
+   defaults to the current readtable). If NON-TERMINATING-P, the char will
+   be non-terminating.
+\end{function}
+
+\begin{function}{read}{\op stream eof-error-p eof-value recursive-p}{}{}
+  Read the next Lisp value from STREAM, and return it.
+\end{function}
+
+\begin{function}{read-delimited-list}{endchar \op input-stream recursive-p}{}{}
+  Read Lisp values from INPUT-STREAM until the next character after a
+   value's representation is ENDCHAR, and return the objects as a list.
+\end{function}
+
+\begin{function}{read-from-string}{string \op eof-error-p eof-value \key start end preserve-whitespace}{}{}
+  The characters of string are successively given to the lisp reader
+   and the lisp object built by the reader is returned. Macro chars
+   will take effect.
+\end{function}
+
+\begin{function}{read-preserving-whitespace}{\op stream eof-error-p eof-value recursive-p}{}{}
+  Read from STREAM and return the value read, preserving any whitespace
+   that followed the object.
+\end{function}
+
+\begin{function}{readtablep}{object}{}{}
+  
+\end{function}
+
+\begin{function}{set-dispatch-macro-character}{disp-char sub-char function \op rt-designator}{}{}
+  Cause FUNCTION to be called whenever the reader reads DISP-CHAR
+   followed by SUB-CHAR.
+\end{function}
+
+\begin{function}{set-macro-character}{char function \op non-terminatingp rt-designator}{}{}
+  Causes CHAR to be a macro character which invokes FUNCTION when seen
+   by the reader. The NON-TERMINATINGP flag can be used to make the macro
+   character non-terminating, i.e. embeddable in a symbol name.
+\end{function}
+
+\begin{function}{set-syntax-from-char}{to-char from-char \op to-readtable from-readtable}{}{}
+  Causes the syntax of TO-CHAR to be the same as FROM-CHAR in the optional
+readtable (defaults to the current readtable). The FROM-TABLE defaults to the
+standard Lisp readtable when NIL.
+\end{function}
+
+\begin{macro}{with-standard-io-syntax}{\body body}{}{}
+  Bind the reader and printer control variables to values that enable READ
+   to reliably read the results of PRINT. These values are:
+       *PACKAGE*                        the COMMON-LISP-USER package
+       *PRINT-ARRAY*                    T
+       *PRINT-BASE*                     10
+       *PRINT-CASE*                     :UPCASE
+       *PRINT-CIRCLE*                   NIL
+       *PRINT-ESCAPE*                   T
+       *PRINT-GENSYM*                   T
+       *PRINT-LENGTH*                   NIL
+       *PRINT-LEVEL*                    NIL
+       *PRINT-LINES*                    NIL
+       *PRINT-MISER-WIDTH*              NIL
+       *PRINT-PRETTY*                   NIL
+       *PRINT-RADIX*                    NIL
+       *PRINT-READABLY*                 T
+       *PRINT-RIGHT-MARGIN*             NIL
+       *READ-BASE*                      10
+       *READ-DEFAULT-FLOAT-FORMAT*      SINGLE-FLOAT
+       *READ-EVAL*                      T
+       *READ-SUPPRESS*                  NIL
+       *READTABLE*                      the standard readtable
+\end{macro}
+
+\begin{class}{readtable}{}{}{}
+  
+\end{class}
+
+\begin{variable}{*read-base*}{}{}{}
+  
+\end{variable}
+
+\begin{variable}{*read-default-float-format*}{}{}{}
+  
+\end{variable}
+
+\begin{variable}{*read-eval*}{}{}{}
+  
+\end{variable}
+
+\begin{variable}{*read-suppress*}{}{}{}
+  
+\end{variable}
+
+\begin{variable}{*readtable*}{}{}{}
+  
+\end{variable}
+
+\section{Printer}
+
+\begin{function}{copy-pprint-dispatch}{\op table}{}{}
+  
+\end{function}
+
+\begin{function}{format}{destination control-string \rest format-arguments}{}{}
+  Provides various facilities for formatting output.
+  CONTROL-STRING contains a string to be output, possibly with embedded
+  directives, which are flagged with the escape character "\~{}\%". Directives
+  generally expand into additional text to be output, usually consuming one
+  or more of the FORMAT-ARGUMENTS in the process. A few useful directives
+  are:
+        \~{}\%A or \~{}\%nA   Prints one argument as if by PRINC
+        \~{}\%S or \~{}\%nS   Prints one argument as if by PRIN1
+        \~{}\%D or \~{}\%nD   Prints one argument as a decimal integer
+        \~{}\%\%          Does a TERPRI
+        \~{}\%\&          Does a FRESH-LINE
+  where n is the width of the field in which the object is printed.
+
+  DESTINATION controls where the result will go. If DESTINATION is T, then
+  the output is sent to the standard output stream. If it is NIL, then the
+  output is returned in a string as the value of the call. Otherwise,
+  DESTINATION must be a stream to which the output will be sent.
+
+  Example:   (FORMAT NIL "The answer is \~{}\%D." 10) => "The answer is 10."
+
+  FORMAT has many additional capabilities not described here. Consult the
+  manual for details.
+\end{function}
+
+\begin{function}{pprint}{object \op stream}{}{}
+  Prettily output OBJECT preceded by a newline.
+\end{function}
+
+\begin{function}{pprint-dispatch}{object \op table}{}{}
+  
+\end{function}
+
+\begin{function}{pprint-fill}{stream list \op colon? atsign?}{}{}
+  Output LIST to STREAM putting :FILL conditional newlines between each
+   element. If COLON? is NIL (defaults to T), then no parens are printed
+   around the output. ATSIGN? is ignored (but allowed so that PPRINT-FILL
+   can be used with the \~{}\%/.../ format directive.
+\end{function}
+
+\begin{function}{pprint-indent}{relative-to n \op stream}{}{}
+  Specify the indentation to use in the current logical block if
+STREAM (which defaults to *STANDARD-OUTPUT*) is a pretty-printing
+stream and do nothing if not. (See PPRINT-LOGICAL-BLOCK.) N is the
+indentation to use (in ems, the width of an ``m'') and RELATIVE-TO can
+be either:
+
+     :BLOCK - Indent relative to the column the current logical block
+        started on.
+
+     :CURRENT - Indent relative to the current column.
+
+The new indentation value does not take effect until the following
+line break.
+\end{function}
+
+\begin{function}{pprint-linear}{stream list \op colon? atsign?}{}{}
+  Output LIST to STREAM putting :LINEAR conditional newlines between each
+   element. If COLON? is NIL (defaults to T), then no parens are printed
+   around the output. ATSIGN? is ignored (but allowed so that PPRINT-LINEAR
+   can be used with the \~{}\%/.../ format directive.
+\end{function}
+
+\begin{function}{pprint-newline}{kind \op stream}{}{}
+  Output a conditional newline to STREAM (which defaults to
+   *STANDARD-OUTPUT*) if it is a pretty-printing stream, and do
+   nothing if not. KIND can be one of:
+     :LINEAR - A line break is inserted if and only if the immediatly
+        containing section cannot be printed on one line.
+     :MISER - Same as LINEAR, but only if ``miser-style'' is in effect.
+        (See *PRINT-MISER-WIDTH*.)
+     :FILL - A line break is inserted if and only if either:
+       (a) the following section cannot be printed on the end of the
+           current line,
+       (b) the preceding section was not printed on a single line, or
+       (c) the immediately containing section cannot be printed on one
+           line and miser-style is in effect.
+     :MANDATORY - A line break is always inserted.
+   When a line break is inserted by any type of conditional newline, any
+   blanks that immediately precede the conditional newline are ommitted
+   from the output and indentation is introduced at the beginning of the
+   next line. (See PPRINT-INDENT.)
+\end{function}
+
+\begin{function}{pprint-tab}{kind colnum colinc \op stream}{}{}
+  If STREAM (which defaults to *STANDARD-OUTPUT*) is a pretty-printing
+   stream, perform tabbing based on KIND, otherwise do nothing. KIND can
+   be one of:
+     :LINE - Tab to column COLNUM. If already past COLNUM tab to the next
+       multiple of COLINC.
+     :SECTION - Same as :LINE, but count from the start of the current
+       section, not the start of the line.
+     :LINE-RELATIVE - Output COLNUM spaces, then tab to the next multiple of
+       COLINC.
+     :SECTION-RELATIVE - Same as :LINE-RELATIVE, but count from the start
+       of the current section, not the start of the line.
+\end{function}
+
+\begin{function}{pprint-tabular}{stream list \op colon? atsign? tabsize}{}{}
+  Output LIST to STREAM tabbing to the next column that is an even multiple
+   of TABSIZE (which defaults to 16) between each element. :FILL style
+   conditional newlines are also output between each element. If COLON? is
+   NIL (defaults to T), then no parens are printed around the output.
+   ATSIGN? is ignored (but allowed so that PPRINT-TABULAR can be used with
+   the \~{}\%/.../ format directive.
+\end{function}
+
+\begin{function}{prin1}{object \op stream}{}{}
+  Output a mostly READable printed representation of OBJECT on the specified
+  STREAM.
+\end{function}
+
+\begin{function}{prin1-to-string}{object}{}{}
+  Return the printed representation of OBJECT as a string with
+   slashification on.
+\end{function}
+
+\begin{function}{princ}{object \op stream}{}{}
+  Output an aesthetic but not necessarily READable printed representation
+  of OBJECT on the specified STREAM.
+\end{function}
+
+\begin{function}{princ-to-string}{object}{}{}
+  Return the printed representation of OBJECT as a string with
+  slashification off.
+\end{function}
+
+\begin{function}{print}{object \op stream}{}{}
+  Output a newline, the mostly READable printed representation of OBJECT, and
+  space to the specified STREAM.
+\end{function}
+
+\begin{function}{print-not-readable-object}{condition}{}{}
+  
+\end{function}
+
+\begin{function}{set-pprint-dispatch}{type function \op priority table}{}{}
+  
+\end{function}
+
+\begin{function}{write}{object \key (stream stream) (escape *print-escape*) (radix *print-radix*)
+ (base *print-base*) (circle *print-circle*) (pretty *print-pretty*)
+ (level *print-level*) (length *print-length*) (case *print-case*)
+ (array *print-array*) (gensym *print-gensym*) (readably *print-readably*)
+ (right-margin *print-right-margin*) (miser-width *print-miser-width*)
+ (lines *print-lines*) (pprint-dispatch *print-pprint-dispatch*)}{}{}
+  Output OBJECT to the specified stream, defaulting to *STANDARD-OUTPUT*
+\end{function}
+
+\begin{function}{write-to-string}{object \key (escape *print-escape*) (radix *print-radix*) (base *print-base*)
+ (circle *print-circle*) (pretty *print-pretty*) (level *print-level*)
+ (length *print-length*) (case *print-case*) (array *print-array*)
+ (gensym *print-gensym*) (readably *print-readably*)
+ (right-margin *print-right-margin*) (miser-width *print-miser-width*)
+ (lines *print-lines*) (pprint-dispatch *print-pprint-dispatch*)}{}{}
+  Return the printed representation of OBJECT as a string.
+\end{function}
+
+\begin{generic}{print-object}{object stream}{}{}
+  
+\end{generic}
+
+\begin{macro}{formatter}{control-string}{}{}
+  
+\end{macro}
+
+\begin{macro}{pprint-logical-block}{stream-symbol \body body \env env}{}{}
+  Group some output into a logical block. STREAM-SYMBOL should be either a
+   stream, T (for *TERMINAL-IO*), or NIL (for *STANDARD-OUTPUT*). The printer
+   control variable *PRINT-LEVEL* is automatically handled.
+\end{macro}
+
+\begin{macro}{print-unreadable-object}{object \body body}{}{}
+  Output OBJECT to STREAM with "\#<" prefix, ">" suffix, optionally
+  with object-type prefix and object-identity suffix, and executing the
+  code in BODY to provide possible further output.
+\end{macro}
+
+\begin{variable}{*print-array*}{}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-base*}{}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-case*}{}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-circle*}{}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-escape*}{}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-gensym*}{}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-length*}{}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-level*}{}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-lines*}{}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-miser-width*}{}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-pprint-dispatch*}{}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-pretty*}{}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-radix*}{}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-readably*}{}{}{}
+  
+\end{variable}
+
+\begin{variable}{*print-right-margin*}{}{}{}
+  
+\end{variable}
