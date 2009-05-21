@@ -28,7 +28,7 @@ may be faster in some cases."
 ;; "type"
 
 (defparameter *symbols*
-  (sort (with-open-file (s "/home/kroger/src/common-lisp-distribution/doc/symbols/all-symbols.lisp")
+  (sort (with-open-file (s "/home/kroger/src/cl-distribution/doc/symbols/all-symbols.lisp")
           (read s))
         #'string< :key #'third))
 
@@ -86,7 +86,7 @@ may be faster in some cases."
   (sort (remove-if-not (lambda (item) (equal (third item) category)) *symbols*)
         #'string< :key #'second))
 
-(defparameter *dir* "/home/kroger/src/common-lisp-distribution/doc/auto-tex/")
+(defparameter *dir* "/home/kroger/src/cl-distribution/doc/auto-tex/")
 
 (defun export-to-latex ()
   (loop for category in *categories* do

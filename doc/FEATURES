@@ -1,1 +1,4 @@
 * if lisp file exists will load it by default
+
+* devnote to document where functions came from and what we did to
+  them. mainly for cl-dist creators and not for the users

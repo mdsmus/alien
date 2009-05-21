@@ -154,6 +154,25 @@ the first.
   Return the signal of a number as -1, 0, or 1.
 \end{function}
 
+\section{Extensions}
+\label{sec:extensions-1}
+
+\begin{macro}{maxf}{place other \env env}{arnesi}{}
+  Sets the place to new-value if new-value is \#'> the current value
+\end{macro}
+
+\begin{macro}{minf}{place other \env env}{arnesi}{}
+  Sets the place to new-value if new-value is \#'< the current value
+\end{macro}
+
+\begin{macro}{mulf}{place b \env env}{arnesi}{}
+  SETF NUM to the result of (* NUM B).
+\end{macro}
+
+\begin{macro}{divf}{place b \env env}{arnesi}{}
+  SETF NUM to the result of (/ NUM B).
+\end{macro}
+
 \section{Exponential and Logarithmic Functions}
 \label{sec:expon-logar-funct}
 
@@ -178,6 +197,13 @@ the first.
   Return the square root of NUMBER.
 \end{function}
 
+\section{Extensions}
+\label{sec:exp-extensions}
+
+%%% FIXME: 10^
+\begin{function}{10}{n}{arnesi}{}
+  Return 10 to the \var{n}.
+\end{function}
 
 \section{Trigonometric functions}
 \label{sec:trig-funct}

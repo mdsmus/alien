@@ -12,7 +12,7 @@
 \usepackage{color}
 \usepackage{titling}
 \usepackage[Bjornstrup]{fncychap}
-\usepackage{xargs}
+\usepackage{verbatim}
 \RequirePackage{framed}
 \RequirePackage{fancyvrb}
 \usepackage{python-colors}
@@ -157,14 +157,44 @@
 \newcommand{\args}[1]{\textit{#1}}
 \newcommand{\funmark}[1]{\textsf{\hfill[#1]}}
 
- \newenvironment{block}
- {\small \begin{spacing}{1}\list{}{
-       \setlength{\leftmargin}{6ex}
-       \setlength{\rightmargin}{\leftmargin}
-     }
-   \item\relax}
-   {\endlist\end{spacing}}
- 
+\newenvironment{block}
+{\small \begin{spacing}{1}\list{}{
+      \setlength{\leftmargin}{6ex}
+      \setlength{\rightmargin}{\leftmargin}
+    }
+  \item\relax}
+  {\endlist\end{spacing}}
+
+\newenvironment{noteblock}
+{\small \begin{spacing}{1}\list{}{
+      \setlength{\leftmargin}{12ex}
+      \setlength{\rightmargin}{\leftmargin}
+    }
+  \item\relax}
+  {\endlist\end{spacing}}
+
+%% empty environment devnote
+% \def\devnote{\@bsphack
+%              \let\do\@makeother\dospecials\catcode`\^^M\active
+%              \let\verbatim@startline\relax
+%              \let\verbatim@addtoline\@gobble
+%              \let\verbatim@processline\relax
+%              \let\verbatim@finish\relax
+%              \verbatim@}
+
+\newenvironment{devnote}
+{\begin{noteblock}\rule{35em}{1.5pt}\par
+\textbf{\textsf{dev note:}}}
+{\par\rule{35em}{1.5pt}\par\end{noteblock}}
+
+\newenvironment{note}
+{}
+{}
+
+\newenvironment{warning}
+{}
+{}
+
 \newcommand{\keyop}[1]{\textnormal{\textmd{#1}}}
 
 \newcommand{\rest}{\keyop{\&rest\ }}
@@ -181,9 +211,9 @@
   \label{#4:#1}
   % basic index, without module name
   {\index{#5!#1}}
-  % \ifthenelse{\equal{#3}{}}
-  % {\index{#5!default!#1}}
-  % {\index{#5!#3!#1}}
+  \ifthenelse{\equal{#3}{}}
+  {}
+  {\index{#3!#1}}
 }
 
 \newcommand{\fundef}[4]{
@@ -200,18 +230,23 @@
 }
 
 \newcommand{\tmpfile}{}
+\newcommand{\@tmplib}{}
 
 \newcommand{\makeStartEnv}[7]{
   %% name, args, module, packagename
   \funindex{#1}{#2}{#3}{#5}{#7}
   \fundef{#1}{#2}{#4}{#6}
   \renewcommand{\tmpfile}{lisp-color/#1}
+  \renewcommand{\@tmplib}{#3}
   \begin{block}
   }
 
 \newcommand{\makeEndEnv}{
   \IfFileExists{\tmpfile}{\includelispcolor{\tmpfile}}{}
-\end{block}
+    \ifthenelse{\equal{\@tmplib}{}}
+    {}
+    {[\@tmplib]}
+  \end{block}
 }
 
 \newenvironment{class}[4]{
