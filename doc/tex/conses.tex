@@ -475,3 +475,38 @@
 \begin{class}{null}{object}{}{}
   Return true if OBJECT is a NULL, and NIL otherwise.
 \end{class}
+
+\section{Lists extensions}
+\label{sec:lists-extensions}
+
+\begin{function}{range}{[start] end [step]}{}{}
+  Return a list of numbers from \var{start} to \var{end}, inclusive,
+  by \var{step}. With only one argument it will return a list of
+  numbers from 0 to \var{end}. Numeric contagion from \var{step} and
+  \var{start} is applied to the other numbers.
+\begin{devnote}
+  The function RANGE here is similar to python's range in the way it
+  handle arguments and to bash's seq.
+\end{devnote}
+\end{function}
+
+\begin{function}{map-range}{function start end \op step}{arnesi}{}
+  Return a list with numbers from \var{min} to \var{max} by \var{step}
+  and apply \var{function} to each element of the list.
+\end{function}
+
+\begin{macro}{do-range}{(index \op min max step return value) \body body}{arnesi}{}
+  
+\end{macro}
+
+\begin{function}{iota}{n \key start step}{alexandria}{}
+  Return a list of n numbers, starting from START (with numeric
+  contagion from STEP applied), each consequtive number being the sum
+  of the previous one and STEP. START defaults to 0 and STEP to 1.
+\end{function}
+
+\begin{function}{map-iota}{function n \key start step}{alexandria}{}
+  Calls FUNCTION with N numbers, starting from START (with numeric contagion
+from STEP applied), each consequtive number being the sum of the previous one
+and STEP. START defaults to 0 and STEP to 1. Returns N.
+\end{function}

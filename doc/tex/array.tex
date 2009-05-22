@@ -222,3 +222,12 @@
 \begin{class}{vector}{\rest objects}{}{}
   Construct a SIMPLE-VECTOR from the given objects.
 \end{class}
+
+\section{Extensions}
+\label{sec:extensions}
+
+\begin{function}{copy-array}{array \key element-type fill-pointer adjustable}{alexandria}{}
+  Returns an undisplaced copy of ARRAY, with same fill-pointer
+and adjustability (if any) as the original, unless overridden by
+the keyword arguments.
+\end{function}
