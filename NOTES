@@ -1,0 +1,28 @@
+; -*- org -*-
+
+* why hand-made documentation?
+  - it's easier to use things like sections, subsections
+  - superior way of editing documents (using auctex instead of docstrings)
+  - documentation in one place (for common lisp, libraries, etc)
+* defconstant
+http://www.tagoror.com.mx/grupos/comp/article.php?id=119629&group=comp.lang.lisp
+
+Of course many people have complaints with the DEFCONSTANT statement, and
+the minimum thought aproach would be just to "fix" that.  Looking at my
+asdf area I find macroes for DEFINE-CONSTANT or redefinitions of
+DEFCONSTANT in alexandria, arnesi, chunga, drakma, cells, cl-ppcre,
+flexi-streams and huchentoot.  One can just adapt the cells/kt-utils
+macro:
+
+(defmacro defconstant* (name value &optional doc)
+  (let ((val (gensym "VALUE")))
+    `(eval-when (:compile-toplevel :load-toplevel :execute)
+       (defconstant ,name
+         (let ((,val ,value))
+           (if (and (boundp ',name)
+                    (equal (symbol-value ',name) ,val))
+               (symbol-value ',name)
+               ,val))
+         ,@(when doc (list doc))))))
+
+and hold your nose.

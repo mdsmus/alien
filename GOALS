@@ -1,0 +1,8 @@
+; -*- org -*-
+
+* reduce symbol conflicts
+* be able to use just a single :use :cl-ext
+  (and reduce conflicts)
+* easy of use (scripting, etc)
+* documentation in one place
+
