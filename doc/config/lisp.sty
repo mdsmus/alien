@@ -289,6 +289,11 @@
   \makeStartEnv{#1}{#2}{#3}{#4}{mac}{macro}{Macros}}
 {\makeEndEnv}
 
+\newenvironment{type}[4]{
+  %% name, args, module, packagename, short-label, longname, plural
+  \makeStartEnv{#1}{#2}{#3}{#4}{type}{type}{Types}}
+{\makeEndEnv}
+
 \lstnewenvironment{lisp}
 {\lstset{language=lisp}}
 {}

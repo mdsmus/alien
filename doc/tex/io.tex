@@ -4,6 +4,50 @@
 \input{format}
 \input{stream}
 
+\section{Extensions}
+\label{sec:extensions}
+
+\begin{macro}{with-input-from-file}{stream-name \body body}{alexandria}{}
+  Evaluate BODY with STREAM-NAME bound to an input-stream from file
+FILE-NAME. ARGS is passed directly to open.
+\end{macro}
+
+\begin{macro}{with-output-to-file}{stream-name \body body}{alexandria}{}
+  Evaluate BODY with STREAM-NAME to an output stream on the file
+FILE-NAME. ARGS is sent as is to the call te open.
+\end{macro}
+
+\begin{function}{write-string-into-file}{string pathname \key if-exists if-does-not-exist external-format}{alexandria}{}
+  Write STRING to PATHNAME.
+
+The EXTERNAL-FORMAT parameter will be passed to
+ENCODING-KEYWORD-TO-NATIVE, see ENCODING-KEYWORD-TO-NATIVE to
+possible values.
+\end{function}
+
+\begin{function}{read-file-into-string}{pathname \key buffer-size external-format}{alexandria}{}
+  Return the contents of PATHNAME as a fresh string.
+
+The file specified by PATHNAME will be read one ELEMENT-TYPE
+element at a time, the EXTERNAL-FORMAT and ELEMENT-TYPEs must be
+compatible.
+
+The EXTERNAL-FORMAT parameter will be passed to
+ENCODING-KEYWORD-TO-NATIVE, see ENCODING-KEYWORD-TO-NATIVE to
+possible values.
+\end{function}
+
+\begin{function}{copy-file}{from to \key if-to-exists element-type}{alexandria}{}
+  
+\end{function}
+
+\begin{function}{copy-stream}{input output \op element-type}{alexandria}{}
+  Reads data from FROM and writes it to TO. Both FROM and TO must be streams,
+they will be passed to read-sequence/write-sequence and must have compatable
+element-types.
+\end{function}
+
+
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: t

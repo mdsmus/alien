@@ -386,3 +386,39 @@ returning its filename.
 list and NIL if it does not. FEATURE-EXPRESSION can be any atom
 or list acceptable to the reader macros \#+ and \#-.
 \end{function}
+
+\begin{function}{ensure-symbol}{name \op package}{alexandria}{}
+  Returns a symbol with name designated by NAME, accessible in package
+designated by PACKAGE. If symbol is not already accessible in PACKAGE, it is
+interned there. Returns a secondary value reflecting the status of the symbol
+in the package, which matches the secondary return value of INTERN.
+\end{function}
+
+\begin{function}{format-symbol}{package control \rest arguments}{alexandria}{}
+  Constructs a string by applying ARGUMENTS to CONTROL as if by FORMAT, and
+then creates a symbol named by that string. If PACKAGE is NIL, returns an
+uninterned symbol, if package is T, returns a symbol interned in the current
+package, and otherwise returns a symbol interned in the package designated by
+PACKAGE.
+\end{function}
+
+\begin{function}{make-keyword}{name}{alexandria}{}
+  Interns the string designated by NAME in the KEYWORD package.
+\end{function}
+
+\begin{function}{make-gensym}{name}{alexandria}{}
+  If NAME is a non-negative integer, calls GENSYM using it. Otherwise NAME
+must be a string designator, in which case calls GENSYM using the designated
+string as the argument.
+\end{function}
+
+\begin{function}{make-gensym-list}{length \op x}{alexandria}{}
+  Returns a list of LENGTH gensyms, each generated as if with a call to MAKE-GENSYM,
+using the second (optional, defaulting to "G") argument.
+\end{function}
+
+\begin{function}{symbolicate}{\rest things}{alexandria}{}
+  Concatenate together the names of some strings and symbols,
+producing a symbol in the current package.
+\end{function}
+

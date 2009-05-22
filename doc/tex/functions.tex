@@ -3,3 +3,50 @@
 \section{Extensions}
 \label{sec:fun-extensions}
 
+\begin{function}{ensure-function}{function-designator}{alexandria}{}
+  Returns the function designated by FUNCTION-DESIGNATOR:
+if FUNCTION-DESIGNATOR is a function, it is returned, otherwise
+it must be a function name and its FDEFINITION is returned.
+\end{function}
+
+\begin{function}{disjoin}{predicate \rest more-predicates}{alexandria}{}
+  Returns a function that applies each of PREDICATE and MORE-PREDICATE
+functions in turn to its arguments, returning the primary value of the first
+predicate that returns true, without calling the remaining predicates.
+If none of the predicates returns true, NIL is returned.
+\end{function}
+
+\begin{function}{conjoin}{predicate \rest more-predicates}{alexandria}{}
+  Returns a function that applies each of PREDICATE and MORE-PREDICATE
+functions in turn to its arguments, returning NIL if any of the predicates
+returns false, without calling the remaining predicates. If none of the
+predicates returns false, returns the primary value of the last predicate.
+\end{function}
+
+\begin{function}{compose}{function \rest more-functions}{alexandria}{}
+  Returns a function composed of FUNCTION and MORE-FUNCTIONS that applies its
+arguments to to each in turn, starting from the rightmost of MORE-FUNCTIONS,
+and then calling the next one with the primary value of the last.
+\end{function}
+
+\begin{function}{multiple-value-compose}{function \rest more-functions}{alexandria}{}
+  Returns a function composed of FUNCTION and MORE-FUNCTIONS that applies
+its arguments to to each in turn, starting from the rightmost of
+MORE-FUNCTIONS, and then calling the next one with all the return values of
+the last.
+\end{function}
+
+\begin{function}{curry}{function \rest arguments}{alexandria}{}
+  Returns a function that applies ARGUMENTS and the arguments
+it is called with to FUNCTION.
+\end{function}
+
+\begin{function}{rcurry}{function \rest arguments}{alexandria}{}
+  Returns a function that applies the arguments it is called
+with and ARGUMENTS to FUNCTION.
+\end{function}
+
+\begin{macro}{named-lambda}{name lambda-list \body body}{alexandria}{}
+  Expands into a lambda-expression within whose BODY NAME denotes the
+corresponding function.
+\end{macro}

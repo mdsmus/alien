@@ -1,0 +1,38 @@
+
+\chapter{Types}
+\label{cha:types}
+
+\section{Extensions}
+\label{sec:extensions}
+
+Check http://cdr.eurolisp.org/document/5/extra-num-types.html for the
+types frob generates.
+
+\begin{type}{array-index}{}{alexandria}{}
+  
+\end{type}
+
+\begin{type}{array-length}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{of-type}{type}{alexandria}{}
+  Returns a function of one argument, which returns true when its argument is
+of TYPE.
+\end{function}
+
+\begin{function}{type=}{type1 type2}{alexandria}{}
+  Returns a primary value of T is TYPE1 and TYPE2 are the same type,
+and a secondary value that is true is the type equality could be reliably
+determined: primary value of NIL and secondary value of T indicates that the
+types are not equivalent.
+\end{function}
+
+\begin{macro}{coercef}{place type-spec \env env}{alexandria}{}
+  Modify-macro for COERCE.
+\end{macro}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
