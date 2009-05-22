@@ -12,6 +12,9 @@ vpath %.lisp-color lisp-color
 
 pdf: $(OTHER) lisp.sty
 
+view-pdf: pdf
+	acroread $(NAME).pdf
+
 foo: $(NAME).tex
 	htlatex $< "site,uni-html4" " -cunihtf"
 
