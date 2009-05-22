@@ -510,3 +510,132 @@
 from STEP applied), each consequtive number being the sum of the previous one
 and STEP. START defaults to 0 and STEP to 1. Returns N.
 \end{function}
+
+\begin{function}{plist-alist}{plist}{alexandria}{}
+  Returns an association list containing the same keys and values as the
+property list PLIST in the same order.
+\end{function}
+
+\begin{function}{alist-plist}{alist}{alexandria}{}
+  Returns a property list containing the same keys and values as the
+association list ALIST in the same order.
+\end{function}
+
+\begin{macro}{doplist}{key \body body}{alexandria}{}
+  Iterates over elements of PLIST. BODY can be preceded by
+declarations, and is like a TAGBODY. RETURN may be used to terminate
+the iteration early. If RETURN is not used, returns VALUES.
+\end{macro}
+
+\begin{macro}{appendf}{place \rest lists \env env}{alexandria}{}
+  Modify-macro for APPEND. Appends LISTS to the place designated by the first
+argument.
+\end{macro}
+
+\begin{macro}{nconcf}{place \rest lists \env env}{alexandria}{}
+  Modify-macro for NCONC. Concatenates LISTS to place designated by the first
+argument.
+\end{macro}
+
+\begin{macro}{unionf}{place list \env env}{alexandria}{}
+  Modify-macro for UNION. Saves the union of LIST and the contents of the
+place designated by the first argument to the designated place.
+\end{macro}
+
+\begin{macro}{nunionf}{place list \env env}{alexandria}{}
+  Modify-macro for NUNION. Saves the union of LIST and the contents of the
+place designated by the first argument to the designated place. May modify
+either argument.
+\end{macro}
+
+\begin{function}{circular-list}{\rest elements}{alexandria}{}
+  Creates a circular list of ELEMENTS.
+\end{function}
+
+\begin{function}{circular-list-p}{object}{alexandria}{}
+  Returns true if OBJECT is a circular list, NIL otherwise.
+\end{function}
+
+\begin{function}{circular-tree-p}{object}{alexandria}{}
+  Returns true if OBJECT is a circular tree, NIL otherwise.
+\end{function}
+
+\begin{type}{circular-list}{}{alexandria}{}
+  
+\end{type}
+
+\begin{type}{proper-list}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{proper-list-p}{object}{alexandria}{}
+  Returns true if OBJECT is a proper list.
+\end{function}
+
+\begin{function}{lastcar}{list}{alexandria}{}
+  Returns the last element of LIST. Signals a type-error if LIST is not a
+proper list.
+\end{function}
+
+\begin{function}{make-circular-list}{length \key initial-element}{alexandria}{}
+  Creates a circular list of LENGTH with the given INITIAL-ELEMENT.
+\end{function}
+
+\begin{function}{ensure-car}{thing}{alexandria}{}
+  If THING is a CONS, its CAR is returned. Otherwise THING is returned.
+\end{function}
+
+\begin{function}{ensure-cons}{cons}{alexandria}{}
+  If CONS is a cons, it is returned. Otherwise returns a fresh cons with CONS
+  in the car, and NIL in the cdr.
+\end{function}
+
+\begin{function}{ensure-list}{list}{alexandria}{}
+  If LIST is a list, it is returned. Otherwise returns the list designated by LIST.
+\end{function}
+
+\begin{function}{remove-from-plist}{plist \rest keys}{alexandria}{}
+  Returns a propery-list with same keys and values as PLIST, except that keys
+in the list designated by KEYS and values corresponding to them are removed.
+The returned property-list may share structure with the PLIST, but PLIST is
+not destructively modified. Keys are compared using EQ.
+\end{function}
+
+\begin{macro}{remove-from-plistf}{place \rest keys \env env}{alexandria}{}
+  
+\end{macro}
+
+\begin{function}{delete-from-plist}{plist \rest keys}{alexandria}{}
+  Just like REMOVE-FROM-PLIST, but this version may destructively modify the
+provided plist.
+\end{function}
+
+\begin{macro}{delete-from-plistf}{place \rest keys \env env}{alexandria}{}
+  
+\end{macro}
+
+\begin{function}{mappend}{function \rest lists}{alexandria}{}
+  Applies FUNCTION to respective element(s) of each LIST, appending all the
+all the result list to a single list. FUNCTION must return a list.
+\end{function}
+
+\begin{function}{set-equal}{list1 list2 \key test key}{alexandria}{}
+  Returns true if every element of LIST1 matches some element of LIST2 and
+every element of LIST2 matches some element of LIST1. Otherwise returns false.
+\end{function}
+
+\begin{function}{setp}{object \key test key}{alexandria}{}
+  Returns true if OBJECT is a list that denotes a set, NIL otherwise. A list
+denotes a set if each element of the list is unique under KEY and TEST.
+\end{function}
+
+\begin{function}{map-product}{function list \rest more-lists}{alexandria}{}
+  Returns a list containing the results of calling FUNCTION with one argument
+from LIST, and one from each of MORE-LISTS for each combination of arguments.
+In other words, returns the product of LIST and MORE-LISTS using FUNCTION.
+\end{function}
+
+\begin{function}{flatten}{tree}{alexandria}{}
+  Traverses the tree in order, collecting non-null leaves into a list.
+\end{function}
+

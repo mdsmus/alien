@@ -1,0 +1,2 @@
+(setf (symbol-function '!) #'factorial)
+

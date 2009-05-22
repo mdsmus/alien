@@ -562,3 +562,8 @@ Signals an error if NAME is already a bound non-constant variable.
 Signals an error if NAME is already a constant variable whose value is not
 equal under TEST to result of evaluating INITIAL-VALUE.
 \end{macro}
+
+\begin{macro}{whichever}{\rest possibilities \env env}{alexandria}{}
+  Evaluates exactly one of POSSIBILITIES, chosen at random.
+\end{macro}
+

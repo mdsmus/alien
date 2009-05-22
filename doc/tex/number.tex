@@ -168,12 +168,14 @@ the first.
   \end{devnote}
 \end{function}
 
-\begin{macro}{maxf}{place other \env env}{arnesi}{}
-  Sets the place to new-value if new-value is \#'> the current value
+\begin{macro}{maxf}{place \rest numbers \env env}{alexandria}{}
+  Modify-macro for MAX. Sets place designated by the first argument to the
+maximum of its original value and NUMBERS.
 \end{macro}
 
-\begin{macro}{minf}{place other \env env}{arnesi}{}
-  Sets the place to new-value if new-value is \#'< the current value
+\begin{macro}{minf}{place \rest numbers \env env}{alexandria}{}
+  Modify-macro for MIN. Sets place designated by the first argument to the
+minimum of its original value and NUMBERS.
 \end{macro}
 
 \begin{macro}{mulf}{place b \env env}{arnesi}{}
@@ -784,3 +786,322 @@ See also \fun{random-state-p}
 \begin{constant}{single-float-negative-epsilon}{}{}{}
   
 \end{constant}
+
+\section{Other extensions}
+\label{sec:other-extensions}
+
+\begin{function}{gaussian-random}{\op min max}{alexandria}{}
+  Returns two gaussian random double floats as the primary and secondary value,
+optionally constrained by MIN and MAX. Gaussian random numbers form a standard
+normal distribution around 0.0d0.
+\end{function}
+
+\begin{function}{binomial-coefficient}{n k}{alexandria}{}
+  Binomial coefficient of N and K, also expressed as N choose K. This is the
+number of K element combinations given N choises. N must be equal to or
+greater then K.
+\end{function}
+
+\begin{function}{count-permutations}{n \op k}{alexandria}{}
+  Number of K element permutations for a sequence of N objects.
+R defaults to N
+\end{function}
+
+\begin{function}{subfactorial}{n}{alexandria}{}
+  Subfactorial of the non-negative integer N.
+\end{function}
+
+\begin{function}{standard-deviation}{sample \key biased}{alexandria}{}
+  Standard deviation of SAMPLE. Returns the biased standard deviation if
+BIASED is true (the default), and the square root of the unbiased estimator
+for variance if BIASED is false (which is not the same as the unbiased
+estimator for standard deviation). SAMPLE must be a sequence of numbers.
+\end{function}
+
+\begin{type}{negative-double-float}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{negative-double-float-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{negative-fixnum}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{negative-fixnum-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{negative-float}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{negative-float-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{negative-integer}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{negative-integer-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{negative-long-float}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{negative-long-float-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{negative-rational}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{negative-rational-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{negative-real}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{negative-real-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{negative-short-float}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{negative-short-float-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{negative-single-float}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{negative-single-float-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{non-negative-double-float}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{non-negative-double-float-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{non-negative-fixnum}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{non-negative-fixnum-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{non-negative-float}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{non-negative-float-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{non-negative-integer}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{non-negative-integer-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{non-negative-long-float}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{non-negative-long-float-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{non-negative-rational}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{non-negative-rational-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{non-negative-real}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{non-negative-real-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{non-negative-short-float}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{non-negative-short-float-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{non-negative-single-float}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{non-negative-single-float-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{non-positive-double-float}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{non-positive-double-float-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{non-positive-fixnum}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{non-positive-fixnum-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{non-positive-float}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{non-positive-float-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{non-positive-integer}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{non-positive-integer-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{non-positive-long-float}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{non-positive-long-float-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{non-positive-rational}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{non-positive-rational-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{non-positive-real}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{non-positive-real-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{non-positive-short-float}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{non-positive-short-float-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{non-positive-single-float}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{non-positive-single-float-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{positive-double-float}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{positive-double-float-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{positive-fixnum}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{positive-fixnum-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{positive-float}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{positive-float-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{positive-integer}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{positive-integer-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{positive-long-float}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{positive-long-float-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{positive-rational}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{positive-rational-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{positive-real}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{positive-real-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{positive-short-float}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{positive-short-float-p}{n}{alexandria}{}
+  
+\end{function}
+
+\begin{type}{positive-single-float}{}{alexandria}{}
+  
+\end{type}
+
+\begin{function}{positive-single-float-p}{n}{alexandria}{}
+  
+\end{function}

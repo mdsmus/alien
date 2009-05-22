@@ -217,3 +217,44 @@ specification.
 \begin{variable}{*debugger-hook*}{}{}{}
   
 \end{variable}
+
+\section{Extensions}
+\label{sec:extensions}
+
+\begin{function}{required-argument}{\op name}{alexandria}{}
+  Signals an error for a missing argument of NAME. Intended for
+use as an initialization form for structure and class-slots, and
+a default value for required keyword arguments.
+\end{function}
+
+these functions also have conditions with the same name:
+
+\begin{function}{simple-parse-error}{message \rest args}{alexandria}{}
+  
+\end{function}
+
+\begin{function}{simple-program-error}{message \rest args}{alexandria}{}
+  
+\end{function}
+
+\begin{function}{simple-reader-error}{stream message \rest args}{alexandria}{}
+  
+\end{function}
+
+\begin{function}{simple-style-warning}{message \rest args}{alexandria}{}
+  
+\end{function}
+
+\begin{macro}{unwind-protect-case}{\op protected-form \body clauses}{alexandria}{}
+  Like CL:UNWIND-PROTECT, but you can specify the circumstances that
+the cleanup CLAUSES are run.
+
+ABORT-FLAG is the name of a variable that will be bound to T in
+CLAUSES if the PROTECTED-FORM aborted preemptively, and to NIL
+otherwise.
+\end{macro}
+
+\begin{macro}{ignore-some-conditions}{\rest \body body}{alexandria}{}
+  Similar to CL:IGNORE-ERRORS but the (unevaluated) CONDITIONS
+list determines which specific conditions are to be ignored.
+\end{macro}

@@ -189,4 +189,70 @@ estimator for standard deviation). SAMPLE must be a sequence of numbers."
   (check-type n (integer 0))
   (%factorial n))
 
-(setf (symbol-function '!) #'factorial)
+(defun gaussian-random (&optional min max)
+  "Returns two gaussian random double floats as the primary and secondary value,
+optionally constrained by MIN and MAX. Gaussian random numbers form a standard
+normal distribution around 0.0d0."
+  (labels ((gauss ()
+             (loop
+                for x1 = (- (random 2.0d0) 1.0d0)
+                for x2 = (- (random 2.0d0) 1.0d0)
+                for w = (+ (expt x1 2) (expt x2 2))
+                when (< w 1.0d0)
+                do (let ((v (sqrt (/ (* -2.0d0 (log w)) w))))
+                     (return (values (* x1 v) (* x2 v))))))
+           (guard (x min max)
+             (unless (<= min x max)
+               (tagbody
+                :retry
+                  (multiple-value-bind (x1 x2) (gauss)
+                    (when (<= min x1 max)
+                      (setf x x1)
+                      (go :done))
+                    (when (<= min x2 max)
+                      (setf x x2)
+                      (go :done))
+                    (go :retry))
+                :done))
+             x))
+    (multiple-value-bind (g1 g2) (gauss)
+      (values (guard g1 (or min g1) (or max g1))
+              (guard g2 (or min g2) (or max g2))))))
+
+(defun binomial-coefficient (n k)
+  "Binomial coefficient of N and K, also expressed as N choose K. This is the
+number of K element combinations given N choises. N must be equal to or
+greater then K."
+  (check-type n (integer 0))
+  (check-type k (integer 0))
+  (assert (>= n k))
+  (if (or (zerop k) (= n k))
+      1
+      (let ((n-k (- n k)))
+        (if (= 1 n-k)
+            n
+            ;; General case, avoid computing the 1x...xK twice:
+            ;;
+            ;;    N!           1x...xN          (K+1)x...xN
+            ;; --------  =  ---------------- =  ------------, N>1
+            ;; K!(N-K)!     1x...xK x (N-K)!       (N-K)!
+            (/ (%multiply-range (+ k 1) n)
+               (%factorial n-k))))))
+
+(defun subfactorial (n)
+  "Subfactorial of the non-negative integer N."
+  (check-type n (integer 0))
+  (case n
+    (0 1)
+    (1 0)
+    (otherwise
+     (floor (/ (+ 1 (factorial n)) (exp 1))))))
+
+(defun count-permutations (n &optional (k n))
+  "Number of K element permutations for a sequence of N objects.
+R defaults to N"
+  ;; FIXME: Use %multiply-range and take care of 1 and 2, plus
+  ;; check types.
+  (/ (factorial n)
+     (factorial (- n k))))
+
