@@ -1,0 +1,18 @@
+; -*- org -*-
+
+* better \maketitle
+* better tableofcontents
+* better header and footer
+* be able to print A4, letter, B&W, color
+* DONE B15 colorize code in pdf {2}
+* better colors for code in pdf
+* B16 colorize code in html {2}
+* smaller spacing between items
+* inline functions (check alexandria)
+* check http://common-lisp.net/pipermail/alexandria-devel/2008-November/000449.html
+  http://common-lisp.net/pipermail/alexandria-devel/2008-November/000451.html
+* check http://common-lisp.net/project/osicat/
+* check http://www.lispforum.com/viewtopic.php?f=20&t=355
+* check http://www.lispforum.com/viewtopic.php?f=2&t=356
+  http://ilc2009.scheming.org/node/48
+* check http://www.lispforum.com/viewtopic.php?f=2&t=344
