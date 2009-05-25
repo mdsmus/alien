@@ -243,3 +243,35 @@ be a lambda expression.
 \begin{class}{t}{}{}{}
   
 \end{class}
+
+\section{Extensions}
+\label{sec:extensions}
+
+\begin{macro}{defclass-struct}{name-and-options supers \rest slots}{arnesi}{}
+  DEFCLASS with a DEFSTRUCT api.
+
+NAME-AND-OPTIONS:
+
+  name-symbol |
+  ( name-symbol [ (:conc-name conc-name ) ]
+                [ (:predicate predicate-name ) ]
+                class-option* )
+
+SUPERS - a list of super classes passed directly to DEFCLASS.
+
+SLOTS - a list of slot forms:
+
+  name |
+  ( name [ init-arg ] [ slot-options* ] )
+\end{macro}
+
+\begin{macro}{defprint-object}{self \body body}{arnesi}{}
+  Define a print-object method using print-unreadable-object.
+  An example:
+  (defprint-object (self parenscript-dispatcher)
+    (when (cachep self)
+      (princ "cached")
+      (princ " "))
+    (princ (parenscript-file self)))
+\end{macro}
+

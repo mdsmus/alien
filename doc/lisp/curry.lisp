@@ -1,0 +1,1 @@
+ (funcall (curry #'list 1) 2) ==> (list 1 2)

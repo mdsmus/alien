@@ -48,7 +48,8 @@ with and ARGUMENTS to FUNCTION.
 
 \begin{macro}{named-lambda}{name lambda-list \body body}{alexandria}{}
   Expands into a lambda-expression within whose BODY NAME denotes the
-corresponding function.
+  corresponding function. Just like lambda except BODY can make recursive
+  calls to the lambda by calling the function NAME.
 \end{macro}
 
 \begin{function}{make-reducer}{function \op initial-value}{arnesi}{}

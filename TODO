@@ -30,3 +30,5 @@
 ** decimal arithmetic
 ** timing
 ** partial aplication
+** readtable syntax (with {})
+** reader macro for lambdas (#L)
