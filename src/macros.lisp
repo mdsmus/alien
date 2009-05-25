@@ -1,3 +1,5 @@
+(in-package :cl-extensions)
+
 (defmacro with-gensyms (names &body forms)
   "Binds each variable named by a symbol in NAMES to a unique symbol around
 FORMS. Each of NAMES must either be either a symbol, or of the form:
@@ -24,6 +26,13 @@ unique symbol the named variable will be bound to."
 (defmacro with-unique-names (names &body forms)
   "Alias for WITH-GENSYMS."
   `(with-gensyms ,names ,@forms))
+
+(defun make-gensym-list (length &optional (x "G"))
+  "Returns a list of LENGTH gensyms, each generated as if with a call to MAKE-GENSYM,
+using the second (optional, defaulting to \"G\") argument."
+  (let ((g (if (typep x '(integer 0)) x (string x))))
+    (loop repeat length
+          collect (gensym g))))
 
 (defmacro once-only (specs &body forms)
   "Each SPEC must be either a NAME, or a (NAME INITFORM), with plain

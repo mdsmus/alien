@@ -1,3 +1,5 @@
+(in-package :cl-extensions)
+
 (defun required-argument (&optional name)
   "Signals an error for a missing argument of NAME. Intended for
 use as an initialization form for structure and class-slots, and

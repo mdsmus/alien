@@ -29,9 +29,11 @@
 ** mopp.lisp
 ** Queues
 ** slime extras
-** code walker/unwalker
+** code walker/unwalker and lambda list parsing
 ** decimal arithmetic
 ** timing
 ** partial aplication
 ** readtable syntax (with {})
 ** reader macro for lambdas (#L)
+** special environment
+** Portable lexical environment access

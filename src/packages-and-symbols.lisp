@@ -1,3 +1,5 @@
+(in-package :cl-extensions)
+
 (defun featurep (feature-expression)
   "Returns T if the argument matches the state of the *FEATURES*
 list and NIL if it does not. FEATURE-EXPRESSION can be any atom
@@ -45,13 +47,6 @@ string as the argument."
   (gensym (if (typep name '(integer 0))
               name
               (string name))))
-
-(defun make-gensym-list (length &optional (x "G"))
-  "Returns a list of LENGTH gensyms, each generated as if with a call to MAKE-GENSYM,
-using the second (optional, defaulting to \"G\") argument."
-  (let ((g (if (typep x '(integer 0)) x (string x))))
-    (loop repeat length
-          collect (gensym g))))
 
 (defun symbolicate (&rest things)
   "Concatenate together the names of some strings and symbols,

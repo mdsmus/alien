@@ -1,3 +1,5 @@
+(in-package :cl-extensions)
+
 (defmacro defclass-struct (name-and-options supers &rest slots)
   "DEFCLASS with a DEFSTRUCT api.
 

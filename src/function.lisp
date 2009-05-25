@@ -1,3 +1,5 @@
+(in-package :cl-extensions)
+
 (declaim (inline ensure-function))	; to propagate return type.
 (declaim (ftype (function (t) (values function &optional))
                 ensure-function))

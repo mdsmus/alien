@@ -1,3 +1,5 @@
+(in-package :cl-extensions)
+
 (defun copy-hash-table (table &key key test size
                                    rehash-size rehash-threshold)
   "Returns a copy of hash table TABLE, with the same keys and values

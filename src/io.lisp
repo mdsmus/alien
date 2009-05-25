@@ -1,3 +1,5 @@
+(in-package :cl-extensions)
+
 (defmacro with-input-from-file ((stream-name file-name &rest args &key
 					     (direction nil direction-provided-p)
 					     &allow-other-keys)

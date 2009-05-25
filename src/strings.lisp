@@ -1,3 +1,5 @@
+(in-package :cl-extensions)
+
 (deftype string-designator ()
   "A string designator type. A string designator is either a string, a symbol,
 or a character."

@@ -1,3 +1,5 @@
+(in-package :cl-extensions)
+
 ;; Make these inlinable by declaiming them INLINE here and some of them
 ;; NOTINLINE at the end of the file. Exclude functions that have a compiler
 ;; macro, because inlining seems to cancel compiler macros (at least on SBCL).

@@ -1,3 +1,5 @@
+(in-package :cl-extensions)
+
 (defun quit (&optional (exit-code 0))
   #+openmcl (ccl:quit exit-code)
   #+sbcl (sb-ext:quit :unix-status exit-code)

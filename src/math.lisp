@@ -1,3 +1,5 @@
+(in-package :cl-extensions)
+
 (defun 10^ (n)
   (expt 10 n))
 
@@ -135,6 +137,11 @@ BIASED is true (the default), and the square root of the unbiased estimator
 for variance if BIASED is false (which is not the same as the unbiased
 estimator for standard deviation). SAMPLE must be a sequence of numbers."
   (sqrt (variance sample :biased biased)))
+
+;;; KLUDGE: This is really dependant on the numbers in question: for
+;;; small numbers this is larger, and vice versa. Ideally instead of a
+;;; constant we would have RANGE-FAST-TO-MULTIPLY-DIRECTLY-P.
+(defconstant +factorial-bisection-range-limit+ 8)
 
 ;;; KLUDGE: This is really platform dependant: ideally we would use
 ;;; (load-time-value (find-good-direct-multiplication-limit)) instead.

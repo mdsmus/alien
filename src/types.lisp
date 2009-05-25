@@ -1,3 +1,5 @@
+(in-package :cl-extensions)
+
 (deftype array-index (&optional (length array-dimension-limit))
   "Type designator for an index into array of LENGTH: an integer between
 0 (inclusive) and LENGTH (exclusive). LENGTH defaults to
@@ -17,12 +19,12 @@ ARRAY-DIMENSION-LIMIT."
        (let ((subtype-names (list))
              (predicate-names (list)))
          (flet ((make-subtype-name (format-control)
-                  (let ((result (format-symbol :alexandria format-control
+                  (let ((result (format-symbol :cl-extensions format-control
                                                (symbol-name type))))
                     (push result subtype-names)
                     result))
                 (make-predicate-name (sybtype-name)
-                  (let ((result (format-symbol :alexandria "~A-P"
+                  (let ((result (format-symbol :cl-extensions "~A-P"
                                                (symbol-name sybtype-name))))
                     (push result predicate-names)
                     result))

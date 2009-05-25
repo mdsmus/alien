@@ -1,3 +1,5 @@
+(in-package :cl-extensions)
+
 (defun copy-array (array &key
                    (element-type (array-element-type array))
                    (fill-pointer (and (array-has-fill-pointer-p array)

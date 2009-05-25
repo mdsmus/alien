@@ -1,3 +1,5 @@
+(in-package :cl-extensions)
+
 (defmacro defalias (function redefinition)
   `(eval-always
     (progn

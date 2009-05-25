@@ -1,3 +1,5 @@
+(in-package :cl-extensions)
+
 (defun %range (start end step)
   "Builds a range of numbers from a to b."
   (assert (and (<= start end) (plusp step)))

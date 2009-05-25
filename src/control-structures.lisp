@@ -1,3 +1,5 @@
+(in-package :cl-extensions)
+
 (defmacro if-let (bindings &body (then-form &optional else-form))
     "Creates new variable bindings, and conditionally executes either
 THEN-FORM or ELSE-FORM. ELSE-FORM defaults to NIL.
