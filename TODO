@@ -18,3 +18,15 @@
 * check http://www.lispforum.com/viewtopic.php?f=2&t=344
 * check http://groups.google.com/group/comp.lang.lisp/browse_thread/thread/1bf89fbe1458a8d2#
   http://www.tfeb.org/lisp/hax.html#CONDUITS
+* ARNESI libs
+** csv
+** http
+** log
+** fare-like matching
+** mopp.lisp
+** Queues
+** slime extras
+** code walker/unwalker
+** decimal arithmetic
+** timing
+** partial aplication

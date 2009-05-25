@@ -9,8 +9,7 @@ the keyword arguments."
   (let ((dims (array-dimensions array)))
     ;; Dictionary entry for ADJUST-ARRAY requires adjusting a
     ;; displaced array to a non-displaced one to make a copy.
-    (adjust-array
-     (make-array dims
-                 :element-type element-type :fill-pointer fill-pointer
-                 :adjustable adjustable :displaced-to array)
-     dims)))
+    (adjust-array (make-array dims
+                              :element-type element-type :fill-pointer fill-pointer
+                              :adjustable adjustable :displaced-to array)
+                  dims)))

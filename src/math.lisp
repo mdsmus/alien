@@ -1,6 +1,17 @@
 (defun 10^ (n)
   (expt 10 n))
 
+(defun radix-values (radix)
+  (assert (<= 2 radix 35)
+          (radix)
+          "RADIX must be between 2 and 35 (inclusive), not ~D." radix)
+  (make-array radix
+              :displaced-to "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+              :displaced-index-offset 0
+              :element-type 
+              #+lispworks 'base-char
+              #-lispworks 'character))
+
 (defun parse-float (float-string
                     &key (start 0) (end nil) (radix 10)
                          (junk-allowed t)
