@@ -86,3 +86,18 @@ SLOTS - a list of slot forms:
                    `(progn))
                (let (,@(when with-package `((*package* ,(find-package with-package)))))
                  ,@body))))))))
+
+(defmacro with-accessors* (accessor-names object &body body)
+  "Just like WITH-ACCESSORS, but if the slot-entry is a symbol
+  assume the variable and accessor name are the same."
+  `(with-accessors ,(mapcar (lambda (name)
+			      (if (consp name) 
+				  name 
+				  `(,name ,name)))
+			    accessor-names)
+       ,object
+     ,@body))
+
+(defun class-name-of (obj)
+  (class-name (class-of obj)))
+

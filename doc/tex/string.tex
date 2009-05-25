@@ -231,3 +231,10 @@ corresponding encodings. Any other keyword is passed, as is, to
 the underlying lisp.
 \end{function}
 
+\begin{function}{string-from-array}{array \key start end}{arnesi}{}
+  Assuming ARRAY is an array of ASCII chars encoded as bytes return
+the corresponding string. Respect the C convention of null terminating
+strings. START and END specify the zero indexed offsets of a sub range
+of ARRAY.
+\end{function}
+

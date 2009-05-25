@@ -224,11 +224,14 @@ expected-type designator of a TYPE-ERROR."
       cons
       (cons cons nil)))
 
-(defun ensure-list (list)
-  "If LIST is a list, it is returned. Otherwise returns the list designated by LIST."
-  (if (listp list)
-      list
-      (list list)))
+(defun ensure-list (thing)
+  "Returns THING as a list.
+
+If THING is already a list (as per listp) it is returned,
+otherwise a one element list containing THING is returned."
+  (if (listp thing)
+      thing
+      (list thing)))
 
 (defun remove-from-plist (plist &rest keys)
   "Returns a propery-list with same keys and values as PLIST, except that keys
@@ -317,3 +320,75 @@ Example:
       (traverse tree))
     (nreverse list)))
 
+(defmacro dolist* ((iterator list &optional return-value) &body body)
+  "Like DOLIST but destructuring-binds the elements of LIST.
+
+If ITERATOR is a symbol then dolist* is just like dolist EXCEPT
+that it creates a fresh binding."
+  (if (listp iterator)
+      (let ((i (gensym "DOLIST*-I-")))
+        `(dolist (,i ,list ,return-value)
+           (destructuring-bind ,iterator ,i
+             ,@body)))
+      `(dolist (,iterator ,list ,return-value)
+         (let ((,iterator ,iterator))
+           ,@body))))
+
+(defun partition (list &rest lambdas)
+  "Split LIST into sub lists according to LAMBDAS.
+
+Each element of LIST will be passed to each element of LAMBDAS,
+the first function in LAMBDAS which returns T will cause that
+element to be collected into the corresponding list.
+
+Examples:
+
+ (partition '(1 2 3) #'oddp #'evenp) => ((1 3) (2))
+
+ (partition '(1 2 3) #'oddp t) => ((1 3) (1 2 3))
+
+ (partition '(1 2 3) #'oddp #'stringp) => ((1 3) nil)"
+  (let ((collectors (mapcar (lambda (predicate)
+                              (cons (case predicate
+                                      ((t :otherwise) 
+                                       (constantly t))
+                                      ((nil)
+                                       (constantly nil))
+                                      (t predicate))
+                                    (make-collector)))
+                            lambdas)))
+    (dolist (item list)
+      (dolist* ((test-func . collector-func) collectors)
+        (when (funcall test-func item)
+          (funcall collector-func item))))
+    (mapcar #'funcall (mapcar #'cdr collectors))))
+
+(defmacro dotree ((name tree &optional ret-val) &body body)
+  "Evaluate BODY with NAME bound to every element in TREE. Return RET-VAL."
+  (with-unique-names (traverser list list-element)
+    `(progn
+       (labels ((,traverser (,list)
+                  (dolist (,list-element ,list)
+                    (if (consp ,list-element)
+                        (,traverser ,list-element)
+                        (let ((,name ,list-element))
+                          ,@body)))))
+         (,traverser ,tree)
+         ,ret-val))))
+
+(defun do-push* (list &rest items)
+  (dolist (i items)
+    (setf list (cons i list)))
+  list)
+
+(define-modify-macro push* (&rest items)
+  do-push*
+  "Pushes every element of ITEMS onto LIST. Equivalent to calling PUSH
+  with each element of ITEMS.")
+
+(defun append1 (&rest itens)
+  (loop for x in itens append (ensure-list x)))
+
+(defun length=1 (x) 
+  "Is x a list of length 1?"
+  (and (consp x) (null (cdr x))))

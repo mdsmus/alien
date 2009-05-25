@@ -328,3 +328,42 @@ from the subsequence of SEQUENCE delimited by START and END. START
 defaults to 0, END to length of the sequence, and LENGTH to the
 length of the delimited subsequence.
 \end{function}
+
+\begin{macro}{remf-keywords}{place \rest keywords \env env}{arnesi}{}
+  Creates a copy of PLIST without the properties identified by KEYWORDS.
+\end{macro}
+
+\begin{function}{remove-keywords}{plist \rest keywords}{arnesi}{}
+  Creates a copy of PLIST without the listed KEYWORDS.
+\end{function}
+
+\begin{function}{tail}{seq \op how-many}{arnesi}{}
+  Returns the last HOW-MANY elements of the sequence SEQ. HOW-MANY is
+  greater than (length SEQ) then all of SEQ is returned.
+\end{function}
+
+\begin{function}{head}{seq \op how-many}{arnesi}{}
+  Returns the first HOW-MANY elements of SEQ.
+\end{function}
+
+\begin{function}{but-head}{seq \op how-many}{arnesi}{}
+  Returns SEQ with the first HOW-MANY elements removed.
+\end{function}
+
+\begin{function}{but-tail}{seq \op how-many}{arnesi}{}
+  Returns SEQ with the last HOW-MANY elements removed.
+\end{function}
+
+\begin{function}{read-sequence*}{sequence stream \key start end}{arnesi}{}
+  Like READ-SEQUENCE except the sequence is returned as well.
+
+The second value returned is READ-SEQUENCE's primary value, the
+primary value returned by READ-SEQUENCE* is the medified
+sequence.
+\end{function}
+
+\begin{function}{levenshtein-distance}{source target \key test}{arnesi}{}
+  Levenshtein distance is a metric for measuring the amount of
+  difference between two sequences.
+\end{function}
+

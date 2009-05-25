@@ -197,3 +197,39 @@ Signals a PROGRAM-ERROR is the lambda-list is malformed."
               (simple-program-error "Invalid ordinary lambda-list:~%  ~S" lambda-list)))))))
     (values (nreverse required) (nreverse optional) rest (nreverse keys)
             allow-other-keys (nreverse aux))))
+
+(defmacro rebinding (bindings &body body)
+  "Bind each var in BINDINGS to a gensym, bind the gensym to
+var's value via a let, return BODY's value wrapped in this let.
+
+Evaluates a series of forms in the lexical environment that is
+formed by adding the binding of each VAR to a fresh, uninterned
+symbol, and the binding of that fresh, uninterned symbol to VAR's
+original value, i.e., its value in the current lexical
+environment.
+
+The uninterned symbol is created as if by a call to GENSYM with the
+string denoted by PREFIX - or, if PREFIX is not supplied, the string
+denoted by VAR - as argument.
+
+The forms are evaluated in order, and the values of all but the last
+are discarded \(that is, the body is an implicit PROGN)."
+  ;; reference implementation posted to comp.lang.lisp as
+  ;; <cy3wv0fya0p.fsf@ljosa.com> by Vebjorn Ljosa - see also
+  ;; <http://www.cliki.net/Common%20Lisp%20Utilities>
+  (loop for binding in bindings
+        for var = (car (if (consp binding) binding (list binding)))
+        for name = (gensym)
+        collect `(,name ,var) into renames
+        collect ``(,,var ,,name) into temps
+        finally (return `(let* ,renames
+                          (with-unique-names ,bindings
+                            `(let (,,@temps)
+                               ,,@body))))))
+
+(defmacro rebind (bindings &body body)
+  `(let ,(loop
+            for symbol-name in bindings
+            collect (list symbol-name symbol-name))
+     ,@body))
+

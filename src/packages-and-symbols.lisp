@@ -66,3 +66,12 @@ producing a symbol in the current package."
           (replace name x :start1 index)
           (incf index len))))))
 
+(defun intern-concat (string-designators &optional (package *package*))
+  (intern (with-output-to-string (symbol-name)
+            (dolist (designator string-designators)
+              (write-string (etypecase designator
+                              (symbol (symbol-name designator))
+                              (string designator))
+                            symbol-name)))
+          package))
+

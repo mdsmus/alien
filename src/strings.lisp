@@ -241,3 +241,31 @@ corresponding encodings. Any other keyword is passed, as is, to
 the underlying lisp."
   (%encoding-keyword-to-native encoding))
 
+(defun string-from-array (array &key (start 0) (end (1- (length array))))
+  "Assuming ARRAY is an array of ASCII chars encoded as bytes return
+the corresponding string. Respect the C convention of null terminating
+strings. START and END specify the zero indexed offsets of a sub range
+of ARRAY."
+  ;; This is almost always the case
+  (assert (<= 0 start (1- (length array)))
+          (start)
+          "START must be a valid offset of ARRAY.")
+  (assert (<= 0 end (1- (length array)))
+          (end)
+          "END must be a valid offset of ARRAY.")
+  (assert (<= start end)
+          (start end)
+          "START must be less than or equal to END.")
+  (assert (every (lambda (element) (<= 0 element 255)) array)
+	  (array)
+	  "Some element of ~S was not > 0 and < 255" array)
+  (let* ((working-array (make-array (1+ (- end start))
+                                    :element-type (array-element-type array)
+                                    :displaced-to array
+                                    :displaced-index-offset start))
+	  (length (if-bind pos (position 0 working-array)
+		      pos
+		      (length working-array))))
+    (map-into (make-array length :element-type 'character)
+	      #'code-char
+	      working-array)))

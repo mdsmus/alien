@@ -13,3 +13,10 @@ the keyword arguments."
                               :element-type element-type :fill-pointer fill-pointer
                               :adjustable adjustable :displaced-to array)
                   dims)))
+
+(defun make-displaced-array (array &optional (start 0) (end (length array)))
+  (make-array (- end start)
+              :element-type (array-element-type array)
+              :displaced-to array
+              :displaced-index-offset start))
+

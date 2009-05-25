@@ -590,8 +590,11 @@ proper list.
   in the car, and NIL in the cdr.
 \end{function}
 
-\begin{function}{ensure-list}{list}{alexandria}{}
-  If LIST is a list, it is returned. Otherwise returns the list designated by LIST.
+\begin{function}{ensure-list}{thing}{arnesi}{}
+  Returns THING as a list.
+
+If THING is already a list (as per listp) it is returned,
+otherwise a one element list containing THING is returned.
 \end{function}
 
 \begin{function}{remove-from-plist}{plist \rest keys}{alexandria}{}
@@ -637,5 +640,37 @@ In other words, returns the product of LIST and MORE-LISTS using FUNCTION.
 
 \begin{function}{flatten}{tree}{alexandria}{}
   Traverses the tree in order, collecting non-null leaves into a list.
+\end{function}
+
+\begin{macro}{dolist*}{iterator \body body}{arnesi}{}
+  Like DOLIST but destructuring-binds the elements of LIST.
+
+If ITERATOR is a symbol then dolist* is just like dolist EXCEPT
+that it creates a fresh binding.
+\end{macro}
+
+\begin{function}{partition}{list \rest lambdas}{arnesi}{}
+  Split LIST into sub lists according to LAMBDAS. Each element of LIST
+  will be passed to each element of LAMBDAS, the first function in
+  LAMBDAS which returns T will cause that element to be collected into
+  the corresponding list.
+\end{function}
+
+\begin{macro}{dotree}{name \body body}{arnesi}{}
+  Evaluate BODY with NAME bound to every element in TREE. Return RET-VAL.
+\end{macro}
+
+\begin{macro}{push*}{place \rest items \env env}{arnesi}{}
+  Pushes every element of ITEMS onto LIST. Equivalent to calling PUSH
+  with each element of ITEMS.
+\end{macro}
+
+\begin{function}{append1}{\rest itens}{kroger}{}
+  Append itens in the same list regardless if itens are lists or
+  symbols.
+\end{function}
+
+\begin{function}{length=1}{list}{paip}{}
+  Is x a list of length 1?
 \end{function}
 

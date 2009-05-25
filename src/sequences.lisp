@@ -458,3 +458,104 @@ if calling FUNCTION modifies either the derangement or SEQUENCE."
       sequence)))
 
 (declaim (notinline sequence-of-length-p))
+
+(defun remove-keywords (plist &rest keywords)
+  "Creates a copy of PLIST without the listed KEYWORDS."
+  (declare (optimize (speed 3)))
+  (loop for cell = plist :then (cddr cell)
+        for el = (car cell)
+        while cell
+        unless (member el keywords :test #'eq)
+        collect el
+        and collect (cadr cell)
+        and do (assert (cdr cell) () "Not a proper plist")))
+
+(define-modify-macro remf-keywords (&rest keywords) remove-keywords
+  "Creates a copy of PLIST without the properties identified by KEYWORDS.")
+
+(defun tail (seq &optional (how-many 1))
+  "Returns the last HOW-MANY elements of the sequence SEQ. HOW-MANY is
+  greater than (length SEQ) then all of SEQ is returned."
+  (let ((seq-length (length seq)))
+    (cond
+      ((<= 0 how-many seq-length)
+       (subseq seq (- seq-length how-many)))
+      ((< seq-length how-many)
+       (copy-seq seq))
+      (t ; (< how-many 0)
+       (head seq (- how-many))))))
+
+(defun but-tail (seq &optional (how-many 1))
+  "Returns SEQ with the last HOW-MANY elements removed."
+  (let ((seq-length (length seq)))
+    (cond
+      ((<= 0 how-many seq-length)
+       (subseq seq 0 (- seq-length how-many)))
+      ((< seq-length how-many)
+       (copy-seq seq))
+      (t
+       (but-head seq (- how-many))))))
+
+(defun head (seq &optional (how-many 1))
+  "Returns the first HOW-MANY elements of SEQ."
+  (let ((seq-length (length seq)))
+    (cond
+      ((<= 0 how-many seq-length)
+       (subseq seq 0 how-many))
+      ((< seq-length how-many)
+       (copy-seq seq))
+      (t
+       (tail seq (- how-many))))))
+
+(defun but-head (seq &optional (how-many 1))
+  "Returns SEQ with the first HOW-MANY elements removed."
+  (let ((seq-length (length seq)))
+    (cond ((<= 0 how-many (length seq))
+           (subseq seq how-many))
+          ((< seq-length how-many)
+           (copy-seq seq))
+          (t
+           (but-tail seq (- how-many))))))
+
+(defun read-sequence* (sequence stream &key (start 0) end)
+  "Like READ-SEQUENCE except the sequence is returned as well.
+
+The second value returned is READ-SEQUENCE's primary value, the
+primary value returned by READ-SEQUENCE* is the medified
+sequence."
+  (let ((pos (read-sequence sequence stream :start start :end end)))
+    (values sequence pos)))
+
+(defun levenshtein-distance (source target &key (test #'eql))
+  (block nil
+    (let ((source-length (length source))
+	  (target-length (length target)))
+      (when (zerop source-length)
+	(return target-length))
+      (when (zerop target-length)
+	(return source-length))
+      (let ((buffer (make-array (1+ target-length))))
+	(dotimes (i (1+ target-length))
+	  (setf (aref buffer i) i))
+	;; we make a slight modification to the alogrithm described
+	;; above. we don't create the entire array, just enough to
+	;; keep the info we need, which is an array of size
+	;; target-length + the "above" value and the "over". (this is
+	;; similar to the optimizaiont for determining lcs).
+	(loop
+	   for i from 1 upto source-length
+	   do (setf (aref buffer 0) i)
+	   do (loop
+		 with above-value = i
+		 with over-value = (1- i)
+		 for j from 1 upto target-length
+		 for cost = (if (funcall test (elt source (1- i))
+					      (elt target (1- j)))
+				0 1)
+		 do (let ((over-value* (aref buffer j)))
+		      (setf (aref buffer j) (min (1+ above-value)
+						 (1+ (aref buffer j))
+						 (+ cost over-value))
+			    above-value (aref buffer j)
+			    over-value over-value*))))
+	(return (aref buffer target-length))))))

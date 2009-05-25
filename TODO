@@ -1,5 +1,8 @@
 ; -*- org -*-
 
+* DECIDE FUNCTIONS
+** symbolicate vs intern-concat: symbolicate is better, but no way to define package
+* where to document 0-optional-names (defalias, etc)
 * better \maketitle
 * better tableofcontents
 * better header and footer

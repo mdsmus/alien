@@ -49,3 +49,26 @@ arguments when given.
 
 Signals a PROGRAM-ERROR is the lambda-list is malformed.
 \end{function}
+
+\begin{macro}{rebind}{bindings \body body}{arnesi}{}
+  
+\end{macro}
+
+\begin{macro}{rebinding}{bindings \body body}{arnesi}{}
+  Bind each var in BINDINGS to a gensym, bind the gensym to
+var's value via a let, return BODY's value wrapped in this let.
+
+Evaluates a series of forms in the lexical environment that is
+formed by adding the binding of each VAR to a fresh, uninterned
+symbol, and the binding of that fresh, uninterned symbol to VAR's
+original value, i.e., its value in the current lexical
+environment.
+
+The uninterned symbol is created as if by a call to GENSYM with the
+string denoted by PREFIX - or, if PREFIX is not supplied, the string
+denoted by VAR - as argument.
+
+The forms are evaluated in order, and the values of all but the last
+are discarded (that is, the body is an implicit PROGN).
+\end{macro}
+
