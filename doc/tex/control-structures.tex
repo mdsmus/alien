@@ -567,3 +567,79 @@ equal under TEST to result of evaluating INITIAL-VALUE.
   Evaluates exactly one of POSSIBILITIES, chosen at random.
 \end{macro}
 
+\begin{macro}{if-bind}{var test \body then/else}{arnesi}{}
+  Anaphoric IF control structure.
+
+VAR (a symbol) will be bound to the primary value of TEST. If
+TEST returns a true value then THEN will be executed, otherwise
+ELSE will be executed.
+\end{macro}
+
+\begin{macro}{aif}{test then \op else}{arnesi}{}
+  Just like IF-BIND but the var is always IT.
+\end{macro}
+
+\begin{macro}{aif2}{test then \op else}{arnesi}{}
+  Just like IF-BIND but the var is always IT.
+
+Very useful with functions like GETHASH.
+\end{macro}
+
+\begin{macro}{when-bind}{var test \body body}{arnesi}{}
+  Just like when except VAR will be bound to the
+  result of TEST in BODY.
+\end{macro}
+
+\begin{macro}{awhen}{test \body body}{arnesi}{}
+  Just like when expect the symbol IT will be
+  bound to the result of TEST in BODY.
+\end{macro}
+
+\begin{macro}{cond-bind}{var \body clauses}{arnesi}{}
+  Just like COND but VAR will be bound to the result of the
+  condition in the clause when executing the body of the clause.
+\end{macro}
+
+\begin{macro}{acond}{\rest clauses}{arnesi}{}
+  Just like cond-bind except the var is automatically IT.
+\end{macro}
+
+\begin{macro}{aand}{\rest forms}{arnesi}{}
+  
+\end{macro}
+
+\begin{macro}{and-bind}{var \rest forms}{arnesi}{}
+  
+\end{macro}
+
+\begin{macro}{if2-bind}{var test \body then/else}{arnesi}{}
+  Anaphoric IF control structure for multiple values.
+
+VAR (a symbol) will be bound to the primary value of TEST.  If
+TEST's second value is true then THEN will be executed, otherwise
+ELSE will be executed.
+\end{macro}
+
+\begin{macro}{while*}{test \body body}{arnesi}{}
+  Repeat BODY while TEST is true. You may exit the loop with
+  (RETURN-FROM WHILE).
+  \begin{devnote}
+    The original name in arnesi is while, but the symbol conflicts
+    with while in iterate.
+  \end{devnote}
+\end{macro}
+
+\begin{macro}{until*}{test \body body}{arnesi}{}
+  Repeat BODY until TEST is false. You may exit the loop with
+  (RETURN-FROM UNTIL).
+  \begin{devnote}
+    The original name in arnesi is until, but the symbol conflicts
+    with while in iterate.
+  \end{devnote}
+\end{macro}
+
+\begin{macro}{awhile}{test \body body}{arnesi}{}
+  Just like WHILE, but the result of TEST is bound to IT.
+
+You may exit the loop with (RETURN-FROM AWHILE).
+\end{macro}

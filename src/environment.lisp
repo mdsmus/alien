@@ -1,0 +1,8 @@
+(defun quit (&optional (exit-code 0))
+  #+openmcl (ccl:quit exit-code)
+  #+sbcl (sb-ext:quit :unix-status exit-code)
+  #+clisp (ext:quit exit-code)
+  #+(or cmu allegro) (declare (ignore exit-code))
+  #+cmu (ext:quit)
+  #+lispworks (lispworks:quit :status exit-code)
+  #+allegro (excl:exit))

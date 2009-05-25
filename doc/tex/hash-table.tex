@@ -127,39 +127,39 @@ is invoked on the value. As KEY defaults to CL:IDENTITY, a shallow
 copy is returned by default.
 \end{function}
 
-\begin{function}{maphash-keys}{'tabl}{alexandria}{}
+\begin{function}{maphash-keys}{hash-table}{kroger}{}
   Like MAPHASH, but calls FUNCTION with each key in the hash table TABLE.
 \end{function}
 
-\begin{function}{maphash-values}{'tabl}{alexandria}{}
+\begin{function}{maphash-values}{hash-table}{kroger}{}
   Like MAPHASH, but calls FUNCTION with each value in the hash table TABLE.
 \end{function}
 
-\begin{function}{plist-hash-table}{plist \rest hash-table-initargs}{alexandria}{}
+\begin{function}{plist-to-hash}{plist \rest hash-table-initargs}{alexandria}{}
   Returns a hash table containing the keys and values of the property list
 PLIST. Hash table is initialized using the HASH-TABLE-INITARGS.
 \end{function}
 
-\begin{function}{alist-hash-table}{alist \rest hash-table-initargs}{alexandria}{}
+\begin{function}{alist-to-hash}{alist \rest hash-table-initargs}{kroger}{}
   Returns a hash table containing the keys and values of the association list
 ALIST. Hash table is initialized using the HASH-TABLE-INITARGS.
 \end{function}
 
-\begin{function}{hash-table-alist}{table}{alexandria}{}
-  Returns an association list containing the keys and values of hash table
-TABLE.
+\begin{function}{hash-to-alist}{hash-table}{arnesi}{}
+  Returns an association list containing the keys and values of hash
+  table.
 \end{function}
 
-\begin{function}{hash-table-keys}{table}{alexandria}{}
+\begin{function}{hash-to-plist}{hash-table}{kroger}{}
+  Returns a property list containing the keys and values of hash
+  table.
+\end{function}
+
+\begin{function}{hash-table-keys}{table}{arnesi}{}
   Returns a list containing the keys of hash table TABLE.
 \end{function}
 
-\begin{function}{hash-table-plist}{table}{alexandria}{}
-  Returns a property list containing the keys and values of hash table
-TABLE.
-\end{function}
-
-\begin{function}{hash-table-values}{table}{alexandria}{}
+\begin{function}{hash-table-values}{table}{arnesi}{}
   Returns a list containing the values of hash table TABLE.
 \end{function}
 
@@ -169,3 +169,10 @@ under key before returning it. Secondary return value is true if key was
 already in the table.
 \end{function}
 
+\begin{function}{build-hash-table}{hash-spec inital-contents}{arnesi}{}
+  Create a hash table containing ``INITAL-CONTENTS''.
+\end{function}
+
+\begin{macro}{deflookup-table}{name \key var reader writer rem-er at-redefinition documentation test initial-contents}{arnesi}{}
+  Creates a hash table and the associated accessors.
+\end{macro}

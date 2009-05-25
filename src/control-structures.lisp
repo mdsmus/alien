@@ -219,3 +219,109 @@ Signals an error if NAME is already a constant variable whose value is not
 equal under TEST to result of evaluating INITIAL-VALUE."
   `(defconstant ,name (%reevaluate-constant ',name ,initial-value ,test)
      ,@(when documentation `(,documentation))))
+
+(defmacro if-bind (var test &body then/else)
+  "Anaphoric IF control structure.
+
+VAR (a symbol) will be bound to the primary value of TEST. If
+TEST returns a true value then THEN will be executed, otherwise
+ELSE will be executed."
+  (assert (first then/else)
+          (then/else)
+          "IF-BIND missing THEN clause.")
+  (destructuring-bind (then &optional else)
+      then/else
+    `(let ((,var ,test))
+       (if ,var ,then ,else))))
+
+(defmacro aif (test then &optional else)
+  "Just like IF-BIND but the var is always IT."
+  `(if-bind it ,test ,then ,else))
+
+(defmacro when-bind (var test &body body)
+  "Just like when except VAR will be bound to the
+  result of TEST in BODY."
+  `(if-bind ,var ,test (progn ,@body)))
+
+(defmacro awhen (test &body body)
+  "Just like when expect the symbol IT will be
+  bound to the result of TEST in BODY."
+  `(when-bind it ,test ,@body))
+
+(defmacro cond-bind (var &body clauses)
+  "Just like COND but VAR will be bound to the result of the
+  condition in the clause when executing the body of the clause."
+  (if clauses
+      (destructuring-bind ((test &rest body) &rest others)
+          clauses
+        `(if-bind ,var ,test
+           (progn ,@(if body body (list var)))
+           (cond-bind ,var ,@others)))
+      nil))
+
+(defmacro acond (&rest clauses)
+  "Just like cond-bind except the var is automatically IT."
+  `(cond-bind it ,@clauses))
+
+(defmacro aand (&rest forms)
+  `(and-bind it ,@forms))
+
+(defmacro and-bind (var &rest forms)
+  (cond
+    ((cdr forms)
+     `(when-bind ,var ,(first forms)
+        (and-bind ,var ,@(cdr forms))))
+    (forms (first forms))
+    (t 't)))
+
+(defmacro if2-bind (var test &body then/else)
+  "Anaphoric IF control structure for multiple values.
+
+VAR (a symbol) will be bound to the primary value of TEST.  If
+TEST's second value is true then THEN will be executed, otherwise
+ELSE will be executed."
+  (assert (first then/else)
+          (then/else)
+          "IF-BIND missing THEN clause.")
+  (destructuring-bind (then &optional else)
+      then/else
+    (with-unique-names (bool)
+      `(multiple-value-bind (,var ,bool) ,test
+	 (if ,bool ,then ,else)))))
+
+(defmacro aif2 (test then &optional else)
+  "Just like IF-BIND but the var is always IT.
+
+Very useful with functions like GETHASH."
+  `(if2-bind it ,test ,then ,else))
+
+(defmacro while* (test &body body)
+  "Repeat BODY while TEST is true.
+
+You may exit the loop with (RETURN-FROM WHILE)."
+  `(block while
+     (loop
+	(if ,test
+	    (progn ,@body)
+	    (return-from while)))))
+
+(defmacro awhile (test &body body)
+  "Just like WHILE, but the result of TEST is bound to IT.
+
+You may exit the loop with (RETURN-FROM AWHILE)."
+  `(block awhile
+     (loop
+	(aif ,test
+	     (progn ,@body)
+	     (return-from awhile)))))
+
+(defmacro until* (test &body body)
+  "Repeat BODY until TEST is false.
+
+You may exit the loop with (RETURN-FROM UNTIL)."
+  `(block until
+     (loop
+	(if (not ,test)
+	    (progn ,@body)
+	    (return-from until)))))
+
