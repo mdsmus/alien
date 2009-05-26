@@ -21,6 +21,7 @@
    #:simple-parse-error
    #:simple-program-error
    #:ignore-nome-conditions
+   #:unwind-protect-case
    ;; control structures
    #:if-let
    #:when-let
@@ -134,6 +135,9 @@
    #:but-head
    #:read-sequence*
    #:levenshtein-distance
+   #:split-sequence
+   #:split-sequence-if
+   #:split-sequence-if-not
    ;; strings
    #:+lower-case-ascii-alphabet+
    #:+upper-case-ascii-alphabet+

@@ -411,3 +411,7 @@ Examples:
             (funcall collector-func item)
             (return-from item)))))
     (mapcar #'funcall (mapcar #'cdr collectors))))
+
+(defun make-pairs (list)
+  (loop for x from 0 to (1- (length list)) by 2
+        collect (subseq list x (+ x 2))))
