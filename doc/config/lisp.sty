@@ -13,6 +13,7 @@
 \usepackage{titling}
 \usepackage[Bjornstrup]{fncychap}
 \usepackage{verbatim}
+\usepackage{xargs}
 \RequirePackage{framed}
 \RequirePackage{fancyvrb}
 \usepackage{python-colors}
@@ -206,21 +207,6 @@
 \newcommand{\body}{\keyop{\&body\ }}
 \newcommand{\aux}{\keyop{\&aux\ }}
 
-\newcommand{\funindex}[5]{
-  %% name, args, module, short-label, long-name
-  \label{#4:#1}
-  % basic index, without module name
-  {\index{#5!#1}}
-  \ifthenelse{\equal{#3}{}}
-  {}
-  {\index{#3!#1}}
-}
-
-\newcommand{\fundef}[4]{
-  %% name, args, packagename, fun-type
-  \ifthenelse{\equal{#3}{}}{}{#3:}\textbf{#1}\hspace{2ex}\args{#2}\funmark{#4}
-}
-
 \newcommand{\includelisp}[1]{
   \lstinputlisting[language=lisp]{#1}
 }
@@ -230,68 +216,76 @@
 }
 
 \newcommand{\tmpfile}{}
-\newcommand{\@tmplib}{}
+
+\newcommand{\funindex}[6]{
+  %% name, args, module, optional-label, short-label, long-name
+  \ifthenelse{\equal{#4}{}}{\label{#5:#1}}{\label{#5:#4}}
+  % basic index, without module name
+  \index{#6!#1}
+  \ifthenelse{\equal{#3}{}}
+  {}
+  {\ifthenelse{\equal{#4}{}}{\label{#3:#1}}{\label{#3:#4}}}
+}
+
+\newcommand{\fundef}[4]{
+  %% name, args, packagename, fun-type
+  \textbf{#1}\hspace{2ex}\args{#2}\funmark{#4}
+}
 
 \newcommand{\makeStartEnv}[7]{
-  %% name, args, module, packagename
-  \funindex{#1}{#2}{#3}{#5}{#7}
-  \fundef{#1}{#2}{#4}{#6}
+  %% name, args, module, optional-label
+  \funindex{#1}{#2}{#3}{#4}{#5}{#7}
+  \fundef{#1}{#2}{#3}{#6}
   \renewcommand{\tmpfile}{lisp-color/#1}
-  \renewcommand{\@tmplib}{#3}
   \begin{block}
   }
 
 \newcommand{\makeEndEnv}{
   \IfFileExists{\tmpfile}{\includelispcolor{\tmpfile}}{}
-    \ifthenelse{\equal{\@tmplib}{}}
-    {}
-    {[\@tmplib]}
   \end{block}
 }
 
-\newenvironment{class}[4]{
-  %% name, args, module, packagename, short-label, longname, plural
-  \makeStartEnv{#1}{#2}{#3}{#4}{class}{class}{Classes}}
+% \newenvironment{function}[4]{
+%   %% name, args, module, packagename, short-label, longname, plural
+%   \makeStartEnv{#1}{#2}{#3}{#4}{fun}{function}{Functions}}
+% {\makeEndEnv}
+
+\newenvironmentx{function}[4][1,4]{
+  %% name, args, module, [alternate label]
+  %% short-label, longname, plural
+  \makeStartEnv{#2}{#3}{#4}{#1}{fun}{function}{Functions}}
 {\makeEndEnv}
 
-\newenvironment{constant}[4]{
-  %% name, args, module, packagename, short-label, longname, plural
-  \makeStartEnv{#1}{#2}{#3}{#4}{const}{constant}{Constants}}
+\newenvironmentx{class}[4][1,4]{
+  \makeStartEnv{#2}{#3}{#4}{}{class}{class}{Classes}}
 {\makeEndEnv}
 
-\newenvironment{variable}[4]{
-  %% name, args, module, packagename, short-label, longname, plural
-  \makeStartEnv{#1}{#2}{#3}{#4}{var}{variable}{Variables}}
+\newenvironmentx{constant}[4][1,4]{
+  \makeStartEnv{#2}{#3}{#4}{}{const}{constant}{Constants}}
 {\makeEndEnv}
 
-\newenvironment{specialop}[4]{
-  %% name, args, module, packagename, short-label, longname, plural
-  \makeStartEnv{#1}{#2}{#3}{#4}{specialop}{special operator}{Special Operators}}
+\newenvironmentx{variable}[4][1,4]{
+  \makeStartEnv{#2}{#3}{#4}{}{var}{variable}{Variables}}
 {\makeEndEnv}
 
-\newenvironment{generic}[4]{
-  %% name, args, module, packagename, short-label, longname, plural
-  \makeStartEnv{#1}{#2}{#3}{#4}{genfun}{generic functions}{Generic Functions}}
+\newenvironmentx{specialop}[4][1,4]{
+  \makeStartEnv{#2}{#3}{#4}{}{specialop}{special operator}{Special Operators}}
 {\makeEndEnv}
 
-\newenvironment{accessor}[4]{
-  %% name, args, module, packagename, short-label, longname, plural
-  \makeStartEnv{#1}{#2}{#3}{#4}{acc}{accessor}{Accessors}}
+\newenvironmentx{generic}[4][1,4]{
+  \makeStartEnv{#2}{#3}{#4}{}{genfun}{generic functions}{Generic Functions}}
 {\makeEndEnv}
 
-\newenvironment{function}[4]{
-  %% name, args, module, packagename, short-label, longname, plural
-  \makeStartEnv{#1}{#2}{#3}{#4}{fun}{function}{Functions}}
+\newenvironmentx{accessor}[4][1,4]{
+  \makeStartEnv{#2}{#3}{#4}{}{acc}{accessor}{Accessors}}
 {\makeEndEnv}
 
-\newenvironment{macro}[4]{
-  %% name, args, module, packagename, short-label, longname, plural
-  \makeStartEnv{#1}{#2}{#3}{#4}{mac}{macro}{Macros}}
+\newenvironmentx{macro}[4][1,4]{
+  \makeStartEnv{#2}{#3}{#4}{}{mac}{macro}{Macros}}
 {\makeEndEnv}
 
-\newenvironment{type}[4]{
-  %% name, args, module, packagename, short-label, longname, plural
-  \makeStartEnv{#1}{#2}{#3}{#4}{type}{type}{Types}}
+\newenvironmentx{type}[4][1,4]{
+  \makeStartEnv{#2}{#3}{#4}{}{type}{type}{Types}}
 {\makeEndEnv}
 
 \lstnewenvironment{lisp}
