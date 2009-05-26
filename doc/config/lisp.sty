@@ -29,6 +29,8 @@
 \definecolor{InnerLinkColor}{rgb}{0.208,0.374,0.486}
 \definecolor{OuterLinkColor}{rgb}{0.216,0.439,0.388}
 
+\definecolor{FunExtColor}{rgb}{0.216,0.439,0.388}
+
 \def\lisp@NormalColor{\color[rgb]{0.0,0.0,0.0}}
 \def\lisp@TitleColor{\color{TitleColor}}
 \pdfcompresslevel=9
@@ -229,7 +231,7 @@
 
 \newcommand{\fundef}[4]{
   %% name, args, packagename, fun-type
-  \textbf{#1}\hspace{2ex}\args{#2}\funmark{#4}
+  \ifthenelse{\equal{#3}{cl-ext}}{\textbf{\textcolor{FunExtColor}{#1}}}{\textbf{#1}}\hspace{2ex}\args{#2}\funmark{#4}
 }
 
 \newcommand{\makeStartEnv}[7]{
