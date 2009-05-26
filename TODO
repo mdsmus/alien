@@ -1,6 +1,19 @@
 ; -*- org -*-
 
+* http://www.cliki.net/Common Lisp Utilities
 * checkout
+
+http://common-lisp.net/pipermail/cltl3-devel/2009-May/000003.html
+
+http://common-lisp.net/pipermail/cltl3-devel/2009-May/000008.html
+
+What I, myself, would like to see is easy ways for programmers to do
+all the normal things that application programs and servers can do
+today.  How much of that belongs in the scope of the CLtL3 process is
+yet to be determined.  We might agree that there should be easy and
+common ways to do an HTTP server, but also agree that CLtL3 isn't the
+place to put them.
+
 http://code.google.com/p/cl-op/
 
 Well, I wouldn't call it Evil, but not exactly close to Good, either. Personally, I prefer more functional approach of using compose/curry/rcurry functions, from, say Alexandria, misnamed as they are. They allow me to avoid explicit lambda in simple cases, and for more complex case I think it is better to give a function a name, if only for documentation purposes. If one does not want to pollute the global namespace there are always flet/labels.
