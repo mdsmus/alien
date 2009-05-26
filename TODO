@@ -1,5 +1,61 @@
 ; -*- org -*-
 
+* checkout
+http://code.google.com/p/cl-op/
+
+Well, I wouldn't call it Evil, but not exactly close to Good, either. Personally, I prefer more functional approach of using compose/curry/rcurry functions, from, say Alexandria, misnamed as they are. They allow me to avoid explicit lambda in simple cases, and for more complex case I think it is better to give a function a name, if only for documentation purposes. If one does not want to pollute the global namespace there are always flet/labels.
+
+Admittedly the functional approach doesn't work on macros, but I think doing that is usually a sign that something went wrong. For example functional equivalent of (and ...) is (every #'identity ...), but you probably know that. If ever, this comes rarely enough that explicit (lambda ...) doesn't hurt, anyway.
+
+
+;;; cf = Compose function with optional currying.
+; Example usage:
+; (mapcar (cf (* 2) (+ 10 20) -) '(1 2 3))
+; ==> (-32 -34 -36)
+; Each argument to cf gets converted to a function,
+; and the functions are applied in left to right
+; order.  E.g. (cf f1 f2 f3) is equivalent to
+; (lambda (x) (f3 (f2 (f1 x))))
+; Arguments accepted by cf:
+; * #'name and 'name have their usual meanings.
+;   I.e. #'name names a function in lexical scope
+;   but 'name is only global.
+; * name (unquoted) is #'name with #' elided.  Note
+;   this contradicts the normal Lisp convention.
+; * ''form has the same meaning form unquoted would
+;   have in the normal Lisp convention.  E.g. to
+;   get the function from a variable as in
+;   (funcall var) use ''var instead of just var.
+; * (/x a b c) is shorthand for (lambda (x) a b c)
+;   But there is no /y or anything, just /x.
+; * (func 1 2 3) is to curry.  I.e. it gets
+;   converted to (lambda (x) (func x 1 2 3))
+; * Special case:  If one of the curry args is a $
+;   then the non-curried arg takes the place of the
+;   $ instead of being leftmost.
+;   (func 1 2 $)  =  (lambda (x) (func 1 2 x))
+;   E.g.  (cf (+ 1) (/ 1 $))  =  1/(x+1)
+(defmacro cf (&rest xs)
+  (loop with argname = (gensym)
+        as x in (cons nil xs)
+        as curryargs = nil
+        as func = (if (atom x)
+                      `#',x
+                    (case (car x)
+                      (quote       (if (and (consp (cadr x))
+                                            (eq (caadr x) 'quote))
+                                       (cadadr x)
+                                     x))
+                      (function    x)
+                      (/x          `(lambda (x) ,@(cdr x)))
+                      (t           (setq curryargs (cdr x))
+                                   `#',(car x))))
+        as args = (if (member '$ curryargs)
+                      (loop as x in curryargs collect
+                        (if (eq x '$) argname x))
+                    (nconc (list code) curryargs))
+        as code = argname then `(funcall ,func ,@args)
+        finally (return `(lambda (,argname) ,code))))
 * remove dependencies from fiveam?
 * DECIDE FUNCTIONS
 ** symbolicate vs intern-concat: symbolicate is better, but no way to define package

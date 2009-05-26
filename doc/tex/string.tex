@@ -238,3 +238,23 @@ strings. START and END specify the zero indexed offsets of a sub range
 of ARRAY.
 \end{function}
 
+\begin{function}{empty-string-p}{string}{kroger}{}
+  Indicates, if a given string is empty (or being nil)
+\end{function}
+
+\begin{function}{split-tabs}{string}{kroger}{}
+  Utility function to split a string by tabs and remove empty
+  subsequences.
+\end{function}
+
+\begin{function}{split-newline}{string}{kroger}{}
+  Utility function to split a string by newlines and remove empty
+  subsequences.
+\end{function}
+
+\begin{function}{replace-all}{part string replacement \key test}{cl-cookbook}{}
+  Returns a new string in which all the occurences of the part is
+  replaced with replacement. It was taken from the cl-cookbook, it's
+  not as optimized as cl-ppcre, but if you just want to replace
+  strings it may be faster in some cases.
+\end{function}

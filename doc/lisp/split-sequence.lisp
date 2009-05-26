@@ -10,11 +10,5 @@
 (split-sequence #\; "a;;b;c" :remove-empty-subseqs t)
 => ("a" "b" "c"), 6
 
-(split-sequence-if (lambda (x) (member x '(#\a #\b))) "abracadabra")
-=> ("" "" "r" "c" "d" "" "r" ""), 11
-
-(split-sequence-if-not (lambda (x) (member x '(#\a #\b))) "abracadabra")
-=> ("ab" "a" "a" "ab" "a"), 11 
-
 (split-sequence #\; ";oo;bar;ba;" :start 1 :end 9)
 => ("oo" "bar" "b"), 9

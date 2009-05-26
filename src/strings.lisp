@@ -271,3 +271,31 @@ of ARRAY."
     (map-into (make-array length :element-type 'character)
 	      #'code-char
 	      working-array)))
+
+(defun empty-string-p (string)
+  "Indicates, if a given string is empty (or being nil)."
+  (or (null string)
+      (zerop (length string))))
+
+(defun split-tabs (string)
+  (split-sequence #\Tab string :remove-empty-subseqs t))
+
+(defun split-newline (string)
+  (split-sequence #\Newline string :remove-empty-subseqs t))
+
+(defun replace-all (part string replacement &key (test #'char=))
+"Returns a new string in which all the occurences of the part is
+replaced with replacement. It was taken from the cl-cookbook, it's not
+as optimized as cl-ppcre, but if you just want to replace strings it
+may be faster in some cases."
+    (with-output-to-string (out)
+      (loop with part-length = (length part)
+            for old-pos = 0 then (+ pos part-length)
+            for pos = (search part string
+                              :start2 old-pos
+                              :test test)
+            do (write-string string out
+                             :start old-pos
+                             :end (or pos (length string)))
+            when pos do (write-string replacement out)
+            while pos)))
