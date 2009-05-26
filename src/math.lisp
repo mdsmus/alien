@@ -77,23 +77,13 @@
   /
   "SETF NUM to the result of (/ NUM B).")
 
-(defun do-minf (current other)
-  (if (< other current)
-      other
-      current))
+(define-modify-macro maxf (&rest numbers) max
+  "Modify-macro for MAX. Sets place designated by the first argument to the
+maximum of its original value and NUMBERS.")
 
-(define-modify-macro minf (other)
-  do-minf
-  "Sets the place to new-value if new-value is #'< the current value")
-
-(defun do-maxf (current other)
-  (if (> other current)
-      other
-      current))
-
-(define-modify-macro maxf (other)
-  do-maxf
-  "Sets the place to new-value if new-value is #'> the current value")
+(define-modify-macro minf (&rest numbers) min
+  "Modify-macro for MIN. Sets place designated by the first argument to the
+minimum of its original value and NUMBERS.")
 
 (defun clamp (number min max)
   "Clamps the NUMBER into [MIN, MAX] range. Returns MIN if NUMBER lesser then

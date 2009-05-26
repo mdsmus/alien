@@ -49,7 +49,7 @@ and STEP. START defaults to 0 and STEP to 1. Returns N."
         do (funcall function i))
   n)
 
-(defun alist-plist (alist)
+(defun alist-to-plist (alist)
   "Returns a property list containing the same keys and values as the
 association list ALIST in the same order."
   (let (plist)
@@ -58,7 +58,7 @@ association list ALIST in the same order."
       (push (cdr pair) plist))
     (nreverse plist)))
 
-(defun plist-alist (plist)
+(defun plist-to-alist (plist)
   "Returns an association list containing the same keys and values as the
 property list PLIST in the same order."
   (let (alist)

@@ -13,15 +13,15 @@ FILE-NAME. ARGS is passed directly to open."
      ,@body))
 
 (defmacro with-output-to-file ((stream-name file-name &rest args &key
-					     (direction nil direction-provided-p)
-					     &allow-other-keys)
+                                            (direction nil direction-provided-p)
+                                            &allow-other-keys)
 			       &body body)
   "Evaluate BODY with STREAM-NAME to an output stream on the file
 FILE-NAME. ARGS is sent as is to the call te open."
   (declare (ignore direction))
   (when direction-provided-p
     (error "Can't specifiy :DIRECTION in WITH-OUTPUT-FILE."))
-  `(with-open-file (,stream-name ,file-name :direction :output ,@args)
+  `(with-open-file (,stream-name ,file-name :direction :output :if-exists :supersede ,@args)
      ,@body))
 
 (defun read-file-into-string (pathname &key (buffer-size 4096) (external-format :default))

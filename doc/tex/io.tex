@@ -7,14 +7,21 @@
 \section{Extensions}
 \label{sec:extensions}
 
-\begin{macro}{with-input-from-file}{stream-name \body body}{alexandria}{}
+\begin{macro}{with-input-from-file}{stream-name file-name \rest args
+    \key direction \akeys \body body}{alexandria}{}
   Evaluate BODY with STREAM-NAME bound to an input-stream from file
 FILE-NAME. ARGS is passed directly to open.
 \end{macro}
 
-\begin{macro}{with-output-to-file}{stream-name \body body}{alexandria}{}
+\begin{macro}{with-output-to-file}{stream-name file-name \rest args
+    \key direction \akeys \body body}{alexandria}{}
   Evaluate BODY with STREAM-NAME to an output stream on the file
-FILE-NAME. ARGS is sent as is to the call te open.
+FILE-NAME. ARGS is sent as is to the call te open. It will supersed
+file-name if it exists.
+\begin{devnote}
+  The supersed thing is not originaly in alexandria, but I think it's
+  more useful.
+\end{devnote}
 \end{macro}
 
 \begin{function}{write-string-into-file}{string pathname \key if-exists if-does-not-exist external-format}{alexandria}{}

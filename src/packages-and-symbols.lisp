@@ -69,4 +69,3 @@ producing a symbol in the current package."
                               (string designator))
                             symbol-name)))
           package))
-
