@@ -326,3 +326,28 @@ functions when called with no arguments.
   
 \end{function}
 
+\begin{macro}{def-special-environment}{name \key \rest vars}{arnesi}{}
+  Define two macros for dealing with groups or related special variables.
+
+ACCESSOR is defined as a macro: (defmacro ACCESSOR (VARS \&rest
+BODY)).  Each element of VARS will be bound to the
+current (dynamic) value of the special variable.
+
+BINDER is defined as a macro for introducing (and binding new)
+special variables. It is basically a readable LET form with the
+prorpe declarations appended to the body. The first argument to
+BINDER must be a form suitable as the first argument to LET.
+
+ACCESSOR defaults to a new symbol in the same package as NAME
+which is the concatenation of "WITH-" NAME. BINDER is built as
+"BIND-" and BINDER* is BINDER "*".
+\end{macro}
+
+\begin{function}{collect-timing}{lambda}{arnesi}{}
+  Executes LAMBDA and returns a timing-info object specifying
+  how long execution took and how much memory was used.
+
+NB: Not all implementations provide all information. See the
+various \%collect-timing definitions for details.
+\end{function}
+

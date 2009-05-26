@@ -64,6 +64,8 @@
    #:quit
    #:getenv
    #:argv
+   #:def-special-environment
+   #:collect-timing
    ;; evaluation
    #:eval-always
    ;; lists
@@ -103,6 +105,7 @@
    #:push*
    #:append1
    #:length=1
+   #:partitionx
    ;; sequences
    #:rotate
    #:shuffle
