@@ -92,6 +92,16 @@ the first.
 the first.
 \end{function}
 
+\begin{macro}{maxf}{place \rest numbers \env env}[cl-ext]
+  Modify-macro for MAX. Sets place designated by the first argument to the
+maximum of its original value and NUMBERS.
+\end{macro}
+
+\begin{macro}{minf}{place \rest numbers \env env}[cl-ext]
+  Modify-macro for MIN. Sets place designated by the first argument to the
+minimum of its original value and NUMBERS.
+\end{macro}
+
 \section{Arithmetic Operations}
 \label{sec:arithm-oper}
 
@@ -131,6 +141,14 @@ the first.
   incremented by the second argument, DELTA, which defaults to 1.
 \end{macro}
 
+\begin{macro}{mulf}{place b \env env}[cl-ext]
+  SETF NUM to the result of (* NUM B).
+\end{macro}
+
+\begin{macro}{divf}{place b \env env}[cl-ext]
+  SETF NUM to the result of (/ NUM B).
+\end{macro}
+
 \begin{function}{abs}{number}
   Return the absolute value of the number.
 \end{function}
@@ -154,47 +172,26 @@ the first.
   Return the signal of a number as -1, 0, or 1.
 \end{function}
 
-\section{Extensions}
-\label{sec:extensions-1}
-
 \begin{function}{clamp}{number min max}[cl-ext]
   Clamps the NUMBER into [MIN, MAX] range. Returns MIN if NUMBER
   lesser then MIN and MAX if NUMBER is greater then MAX, otherwise
   returns NUMBER. This is a convenient way of limiting values to a set
   boundary.
-  \begin{devnote}
-    Code used nested ifs, I changed to use cond. It's shorter and
-    easier to read.
-  \end{devnote}
-\end{function}
-
-\begin{macro}{maxf}{place \rest numbers \env env}[cl-ext]
-  Modify-macro for MAX. Sets place designated by the first argument to the
-maximum of its original value and NUMBERS.
-\end{macro}
-
-\begin{macro}{minf}{place \rest numbers \env env}[cl-ext]
-  Modify-macro for MIN. Sets place designated by the first argument to the
-minimum of its original value and NUMBERS.
-\end{macro}
-
-\begin{macro}{mulf}{place b \env env}[cl-ext]
-  SETF NUM to the result of (* NUM B).
-\end{macro}
-
-\begin{macro}{divf}{place b \env env}[cl-ext]
-  SETF NUM to the result of (/ NUM B).
-\end{macro}
-
-\begin{function}{lerp}{v a b}[cl-ext]
-  Returns the result of linear interpolation between A and B, using the
-interpolation coefficient V.
 \end{function}
 
 %%% FIXME, ! as function
 \begin{function}{factorial}{n}[cl-ext]
   Factorial of non-negative integer N. The function ! is an
   alternative name.
+\end{function}
+
+\begin{function}{subfactorial}{n}[cl-ext]
+  Subfactorial of the non-negative integer N.
+\end{function}
+
+\begin{function}{lerp}{v a b}[cl-ext]
+  Returns the result of linear interpolation between A and B, using the
+interpolation coefficient V.
 \end{function}
 
 \begin{function}{mean}{sample}[cl-ext]
@@ -213,6 +210,10 @@ sequence of numbers.
 
 \section{Exponential and Logarithmic Functions}
 \label{sec:expon-logar-funct}
+
+\begin{function}[10caret]{10\^{}}{n}[cl-ext]
+  Return 10 to the \var{n}.
+\end{function}
 
 \begin{function}{exp}{number}
   Return e raised to the power NUMBER.
@@ -233,13 +234,6 @@ sequence of numbers.
 
 \begin{function}{sqrt}{number}
   Return the square root of NUMBER.
-\end{function}
-
-\section{Extensions}
-\label{sec:exp-extensions}
-
-\begin{function}[10caret]{10\^{}}{n}[cl-ext]
-  Return 10 to the \var{n}.
 \end{function}
 
 \section{Trigonometric functions}
@@ -805,10 +799,6 @@ greater then K.
 \begin{function}{count-permutations}{n \op k}[cl-ext]
   Number of K element permutations for a sequence of N objects.
 R defaults to N
-\end{function}
-
-\begin{function}{subfactorial}{n}[cl-ext]
-  Subfactorial of the non-negative integer N.
 \end{function}
 
 \begin{function}{standard-deviation}{sample \key biased}[cl-ext]
