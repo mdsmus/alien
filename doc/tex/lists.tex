@@ -490,182 +490,182 @@
 \end{devnote}
 \end{function}
 
-\begin{function}{map-range}{function start end \op step}{arnesi}{}
+\begin{function}{map-range}{function start end \op step}{cl-ext}{}
   Return a list with numbers from \var{min} to \var{max} by \var{step}
   and apply \var{function} to each element of the list.
 \end{function}
 
-\begin{macro}{do-range}{(index \op min max step return value) \body body}{arnesi}{}
+\begin{macro}{do-range}{(index \op min max step return value) \body body}{cl-ext}{}
   
 \end{macro}
 
-\begin{function}{iota}{n \key start step}{alexandria}{}
+\begin{function}{iota}{n \key start step}{cl-ext}{}
   Return a list of n numbers, starting from START (with numeric
   contagion from STEP applied), each consequtive number being the sum
   of the previous one and STEP. START defaults to 0 and STEP to 1.
 \end{function}
 
-\begin{function}{map-iota}{function n \key start step}{alexandria}{}
+\begin{function}{map-iota}{function n \key start step}{cl-ext}{}
   Calls FUNCTION with N numbers, starting from START (with numeric contagion
 from STEP applied), each consequtive number being the sum of the previous one
 and STEP. START defaults to 0 and STEP to 1. Returns N.
 \end{function}
 
-\begin{function}{plist-to-alist}{plist}{alexandria}{}
+\begin{function}{plist-to-alist}{plist}{cl-ext}{}
   Returns an association list containing the same keys and values as the
 property list PLIST in the same order.
 \end{function}
 
-\begin{function}{alist-to-plist}{alist}{alexandria}{}
+\begin{function}{alist-to-plist}{alist}{cl-ext}{}
   Returns a property list containing the same keys and values as the
 association list ALIST in the same order.
 \end{function}
 
-\begin{macro}{doplist}{key \body body}{alexandria}{}
+\begin{macro}{doplist}{key \body body}{cl-ext}{}
   Iterates over elements of PLIST. BODY can be preceded by
 declarations, and is like a TAGBODY. RETURN may be used to terminate
 the iteration early. If RETURN is not used, returns VALUES.
 \end{macro}
 
-\begin{macro}{appendf}{place \rest lists \env env}{alexandria}{}
+\begin{macro}{appendf}{place \rest lists \env env}{cl-ext}{}
   Modify-macro for APPEND. Appends LISTS to the place designated by the first
 argument.
 \end{macro}
 
-\begin{macro}{nconcf}{place \rest lists \env env}{alexandria}{}
+\begin{macro}{nconcf}{place \rest lists \env env}{cl-ext}{}
   Modify-macro for NCONC. Concatenates LISTS to place designated by the first
 argument.
 \end{macro}
 
-\begin{macro}{unionf}{place list \env env}{alexandria}{}
+\begin{macro}{unionf}{place list \env env}{cl-ext}{}
   Modify-macro for UNION. Saves the union of LIST and the contents of the
 place designated by the first argument to the designated place.
 \end{macro}
 
-\begin{macro}{nunionf}{place list \env env}{alexandria}{}
+\begin{macro}{nunionf}{place list \env env}{cl-ext}{}
   Modify-macro for NUNION. Saves the union of LIST and the contents of the
 place designated by the first argument to the designated place. May modify
 either argument.
 \end{macro}
 
-\begin{function}{circular-list}{\rest elements}{alexandria}{}
+\begin{function}{circular-list}{\rest elements}{cl-ext}{}
   Creates a circular list of ELEMENTS.
 \end{function}
 
-\begin{function}{circular-list-p}{object}{alexandria}{}
+\begin{function}{circular-list-p}{object}{cl-ext}{}
   Returns true if OBJECT is a circular list, NIL otherwise.
 \end{function}
 
-\begin{function}{circular-tree-p}{object}{alexandria}{}
+\begin{function}{circular-tree-p}{object}{cl-ext}{}
   Returns true if OBJECT is a circular tree, NIL otherwise.
 \end{function}
 
-\begin{type}{circular-list}{}{alexandria}{}
+\begin{type}{circular-list}{}{cl-ext}{}
   
 \end{type}
 
-\begin{type}{proper-list}{}{alexandria}{}
+\begin{type}{proper-list}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{proper-list-p}{object}{alexandria}{}
+\begin{function}{proper-list-p}{object}{cl-ext}{}
   Returns true if OBJECT is a proper list.
 \end{function}
 
-\begin{function}{lastcar}{list}{alexandria}{}
+\begin{function}{lastcar}{list}{cl-ext}{}
   Returns the last element of LIST. Signals a type-error if LIST is not a
 proper list.
 \end{function}
 
-\begin{function}{make-circular-list}{length \key initial-element}{alexandria}{}
+\begin{function}{make-circular-list}{length \key initial-element}{cl-ext}{}
   Creates a circular list of LENGTH with the given INITIAL-ELEMENT.
 \end{function}
 
-\begin{function}{ensure-car}{thing}{alexandria}{}
+\begin{function}{ensure-car}{thing}{cl-ext}{}
   If THING is a CONS, its CAR is returned. Otherwise THING is returned.
 \end{function}
 
-\begin{function}{ensure-cons}{cons}{alexandria}{}
+\begin{function}{ensure-cons}{cons}{cl-ext}{}
   If CONS is a cons, it is returned. Otherwise returns a fresh cons with CONS
   in the car, and NIL in the cdr.
 \end{function}
 
-\begin{function}{ensure-list}{thing}{arnesi}{}
+\begin{function}{ensure-list}{thing}{cl-ext}{}
   Returns THING as a list.
 
 If THING is already a list (as per listp) it is returned,
 otherwise a one element list containing THING is returned.
 \end{function}
 
-\begin{function}{remove-from-plist}{plist \rest keys}{alexandria}{}
+\begin{function}{remove-from-plist}{plist \rest keys}{cl-ext}{}
   Returns a propery-list with same keys and values as PLIST, except that keys
 in the list designated by KEYS and values corresponding to them are removed.
 The returned property-list may share structure with the PLIST, but PLIST is
 not destructively modified. Keys are compared using EQ.
 \end{function}
 
-\begin{macro}{remove-from-plistf}{place \rest keys \env env}{alexandria}{}
+\begin{macro}{remove-from-plistf}{place \rest keys \env env}{cl-ext}{}
   
 \end{macro}
 
-\begin{function}{delete-from-plist}{plist \rest keys}{alexandria}{}
+\begin{function}{delete-from-plist}{plist \rest keys}{cl-ext}{}
   Just like REMOVE-FROM-PLIST, but this version may destructively modify the
 provided plist.
 \end{function}
 
-\begin{macro}{delete-from-plistf}{place \rest keys \env env}{alexandria}{}
+\begin{macro}{delete-from-plistf}{place \rest keys \env env}{cl-ext}{}
   
 \end{macro}
 
-\begin{function}{mappend}{function \rest lists}{alexandria}{}
+\begin{function}{mappend}{function \rest lists}{cl-ext}{}
   Applies FUNCTION to respective element(s) of each LIST, appending all the
 all the result list to a single list. FUNCTION must return a list.
 \end{function}
 
-\begin{function}{set-equal}{list1 list2 \key test key}{alexandria}{}
+\begin{function}{set-equal}{list1 list2 \key test key}{cl-ext}{}
   Returns true if every element of LIST1 matches some element of LIST2 and
 every element of LIST2 matches some element of LIST1. Otherwise returns false.
 \end{function}
 
-\begin{function}{setp}{object \key test key}{alexandria}{}
+\begin{function}{setp}{object \key test key}{cl-ext}{}
   Returns true if OBJECT is a list that denotes a set, NIL otherwise. A list
 denotes a set if each element of the list is unique under KEY and TEST.
 \end{function}
 
-\begin{function}{map-product}{function list \rest more-lists}{alexandria}{}
+\begin{function}{map-product}{function list \rest more-lists}{cl-ext}{}
   Returns a list containing the results of calling FUNCTION with one argument
 from LIST, and one from each of MORE-LISTS for each combination of arguments.
 In other words, returns the product of LIST and MORE-LISTS using FUNCTION.
 \end{function}
 
-\begin{function}{flatten}{tree}{alexandria}{}
+\begin{function}{flatten}{tree}{cl-ext}{}
   Traverses the tree in order, collecting non-null leaves into a list.
 \end{function}
 
-\begin{macro}{dolist*}{iterator \body body}{arnesi}{}
+\begin{macro}{dolist*}{iterator \body body}{cl-ext}{}
   Like DOLIST but destructuring-binds the elements of LIST.
 
 If ITERATOR is a symbol then dolist* is just like dolist EXCEPT
 that it creates a fresh binding.
 \end{macro}
 
-\begin{function}{partition}{list \rest lambdas}{arnesi}{}
+\begin{function}{partition}{list \rest lambdas}{cl-ext}{}
   Split LIST into sub lists according to LAMBDAS. Each element of LIST
   will be passed to each element of LAMBDAS, the first function in
   LAMBDAS which returns T will cause that element to be collected into
   the corresponding list.
 \end{function}
 
-\begin{macro}{dotree}{name \body body}{arnesi}{}
+\begin{macro}{dotree}{name \body body}{cl-ext}{}
   Evaluate BODY with NAME bound to every element in TREE. Return RET-VAL.
 \end{macro}
 
-\begin{macro}{push*}{place \rest items \env env}{arnesi}{}
+\begin{macro}{push*}{place \rest items \env env}{cl-ext}{}
   Pushes every element of ITEMS onto LIST. Equivalent to calling PUSH
   with each element of ITEMS.
 \end{macro}
 
-\begin{function}{append1}{\rest itens}{kroger}{}
+\begin{function}{append1}{\rest itens}{cl-ext}{}
   Append itens in the same list regardless if itens are lists or
   symbols.
 \end{function}
@@ -674,7 +674,7 @@ that it creates a fresh binding.
   Is x a list of length 1?
 \end{function}
 
-\begin{function}{partitionx}{list \rest lambdas}{arnesi}{}
+\begin{function}{partitionx}{list \rest lambdas}{cl-ext}{}
 
   used by fiveam
 \end{function}

@@ -156,60 +156,60 @@ new string COUNT long filled with the fill character.
 \section{String extensions}
 \label{sec:string-extensions}
 
-\begin{function}{parse-float}{float-string \key start end radix junk-allowed type decimal-character}{arnesi}{}
+\begin{function}{parse-float}{float-string \key start end radix junk-allowed type decimal-character}{cl-ext}{}
 \end{function}
 
-\begin{type}{string-designator}{}{alexandria}{}
+\begin{type}{string-designator}{}{cl-ext}{}
   A string designator type. A string designator is either a string, a
   symbol, or a character.
 \end{type}
 
-\begin{constant}{+lower-case-ascii-alphabet+}{}{arnesi}{}
+\begin{constant}{+lower-case-ascii-alphabet+}{}{cl-ext}{}
   All the lower case letters in 7 bit ASCII.
 \end{constant}
 
-\begin{constant}{+upper-case-ascii-alphabet+}{}{arnesi}{}
+\begin{constant}{+upper-case-ascii-alphabet+}{}{cl-ext}{}
   All the upper case letters in 7 bit ASCII.
 \end{constant}
 
-\begin{constant}{+alphanumeric-ascii-alphabet+}{}{arnesi}{}
+\begin{constant}{+alphanumeric-ascii-alphabet+}{}{cl-ext}{}
   All the letters and numbers in 7 bit ASCII.
 \end{constant}
 
-\begin{constant}{+ascii-alphabet+}{}{arnesi}{}
+\begin{constant}{+ascii-alphabet+}{}{cl-ext}{}
   All letters in 7 bit ASCII.
 \end{constant}
 
-\begin{constant}{+base64-alphabet+}{}{arnesi}{}
+\begin{constant}{+base64-alphabet+}{}{cl-ext}{}
   All the characters allowed in base64 encoding.
 \end{constant}
 
-\begin{function}{random-string}{\op length alphabet}{arnesi}{}
+\begin{function}{random-string}{\op length alphabet}{cl-ext}{}
   Returns a random alphabetic string. The returned string will contain
   LENGTH characters chosen from the vector ALPHABET.
 \end{function}
 
-\begin{function}{strcat}{\rest items}{arnesi}{}
+\begin{function}{strcat}{\rest items}{cl-ext}{}
   Returns a fresh string consisting of ITEMS concat'd together.
 \end{function}
 
-\begin{function}{strcat*}{string-designators}{arnesi}{}
+\begin{function}{strcat*}{string-designators}{cl-ext}{}
   Concatenate all the strings in STRING-DESIGNATORS.
 \end{function}
 
-\begin{function}{join-strings}{list}{arnesi}{}
+\begin{function}{join-strings}{list}{cl-ext}{}
   Concatenate strings.
 \end{function}
 
-\begin{function}{fold-strings}{}{arnesi}{}
+\begin{function}{fold-strings}{}{cl-ext}{}
   
 \end{function}
 
-\begin{function}{octets-to-string}{octets encoding}{arnesi}{}
+\begin{function}{octets-to-string}{octets encoding}{cl-ext}{}
   
 \end{function}
 
-\begin{function}{string-to-octets}{string encoding}{arnesi}{}
+\begin{function}{string-to-octets}{string encoding}{cl-ext}{}
   Convert STRING, a list string, a vector of bytes according to ENCODING.
 
 ENCODING is a keyword representing the desired character
@@ -222,7 +222,7 @@ On CLISP we intern the ENCODING symbol in the CHARSET package and
 pass that. On SBCL we simply pass the keyword.
 \end{function}
 
-\begin{function}{encoding-keyword-to-native}{encoding}{arnesi}{}
+\begin{function}{encoding-keyword-to-native}{encoding}{cl-ext}{}
   Convert ENCODING, a keyword, to an object the native list
 accepts as an encoding.
 
@@ -231,23 +231,23 @@ corresponding encodings. Any other keyword is passed, as is, to
 the underlying lisp.
 \end{function}
 
-\begin{function}{string-from-array}{array \key start end}{arnesi}{}
+\begin{function}{string-from-array}{array \key start end}{cl-ext}{}
   Assuming ARRAY is an array of ASCII chars encoded as bytes return
 the corresponding string. Respect the C convention of null terminating
 strings. START and END specify the zero indexed offsets of a sub range
 of ARRAY.
 \end{function}
 
-\begin{function}{empty-string-p}{string}{kroger}{}
+\begin{function}{empty-string-p}{string}{cl-ext}{}
   Indicates, if a given string is empty (or being nil)
 \end{function}
 
-\begin{function}{split-tabs}{string}{kroger}{}
+\begin{function}{split-tabs}{string}{cl-ext}{}
   Utility function to split a string by tabs and remove empty
   subsequences.
 \end{function}
 
-\begin{function}{split-newline}{string}{kroger}{}
+\begin{function}{split-newline}{string}{cl-ext}{}
   Utility function to split a string by newlines and remove empty
   subsequences.
 \end{function}

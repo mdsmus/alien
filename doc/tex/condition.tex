@@ -221,7 +221,7 @@ specification.
 \section{Extensions}
 \label{sec:extensions}
 
-\begin{function}{required-argument}{\op name}{alexandria}{}
+\begin{function}{required-argument}{\op name}{cl-ext}{}
   Signals an error for a missing argument of NAME. Intended for
 use as an initialization form for structure and class-slots, and
 a default value for required keyword arguments.
@@ -229,23 +229,23 @@ a default value for required keyword arguments.
 
 these functions also have conditions with the same name:
 
-\begin{function}{simple-parse-error}{message \rest args}{alexandria}{}
+\begin{function}{simple-parse-error}{message \rest args}{cl-ext}{}
   
 \end{function}
 
-\begin{function}{simple-program-error}{message \rest args}{alexandria}{}
+\begin{function}{simple-program-error}{message \rest args}{cl-ext}{}
   
 \end{function}
 
-\begin{function}{simple-reader-error}{stream message \rest args}{alexandria}{}
+\begin{function}{simple-reader-error}{stream message \rest args}{cl-ext}{}
   
 \end{function}
 
-\begin{function}{simple-style-warning}{message \rest args}{alexandria}{}
+\begin{function}{simple-style-warning}{message \rest args}{cl-ext}{}
   
 \end{function}
 
-\begin{macro}{unwind-protect-case}{\op protected-form \body clauses}{alexandria}{}
+\begin{macro}{unwind-protect-case}{\op protected-form \body clauses}{cl-ext}{}
   Like CL:UNWIND-PROTECT, but you can specify the circumstances that
 the cleanup CLAUSES are run.
 
@@ -254,7 +254,7 @@ CLAUSES if the PROTECTED-FORM aborted preemptively, and to NIL
 otherwise.
 \end{macro}
 
-\begin{macro}{ignore-some-conditions}{\rest \body body}{alexandria}{}
+\begin{macro}{ignore-some-conditions}{\rest \body body}{cl-ext}{}
   Similar to CL:IGNORE-ERRORS but the (unevaluated) CONDITIONS
 list determines which specific conditions are to be ignored.
 \end{macro}

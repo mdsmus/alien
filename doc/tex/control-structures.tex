@@ -454,7 +454,7 @@ due to normal completion or a non-local exit such as THROW).
 \section{Extensions}
 \label{sec:extensions}
 
-\begin{macro}{if-let}{bindings \body then-form}{alexandria}{}
+\begin{macro}{if-let}{bindings \body then-form}{cl-ext}{}
   Creates new variable bindings, and conditionally executes either
 THEN-FORM or ELSE-FORM. ELSE-FORM defaults to NIL.
 
@@ -477,7 +477,7 @@ bindings in effect, otherwise the ELSE-FORM is executed with the bindings in
 effect.
 \end{macro}
 
-\begin{macro}{when-let}{bindings \body forms}{alexandria}{}
+\begin{macro}{when-let}{bindings \body forms}{cl-ext}{}
   Creates new variable bindings, and conditionally executes FORMS.
 
 BINDINGS must be either single binding of the form:
@@ -498,7 +498,7 @@ If all variables were bound to true values, then FORMS are executed as an
 implicit PROGN.
 \end{macro}
 
-\begin{macro}{when-let*}{bindings \body forms}{alexandria}{}
+\begin{macro}{when-let*}{bindings \body forms}{cl-ext}{}
   Creates new variable bindings, and conditionally executes FORMS.
 
 BINDINGS must be either single binding of the form:
@@ -521,20 +521,20 @@ If all initial-forms evaluate to true, then FORMS are executed as an implicit
 PROGN.
 \end{macro}
 
-\begin{macro}{cswitch}{\whole whole object \body clauses}{alexandria}{}
+\begin{macro}{cswitch}{\whole whole object \body clauses}{cl-ext}{}
   Like SWITCH, but signals a continuable error if no key matches.
 \end{macro}
 
-\begin{macro}{eswitch}{\whole whole object \body clauses}{alexandria}{}
+\begin{macro}{eswitch}{\whole whole object \body clauses}{cl-ext}{}
   Like SWITCH, but signals an error if no key matches.
 \end{macro}
 
-\begin{macro}{switch}{\whole whole object \body clauses}{alexandria}{}
+\begin{macro}{switch}{\whole whole object \body clauses}{cl-ext}{}
   Evaluates first matching clause, returning its values, or evaluates and
 returns the values of DEFAULT if no keys match.
 \end{macro}
 
-\begin{macro}{xor}{\rest datums}{alexandria}{}
+\begin{macro}{xor}{\rest datums}{cl-ext}{}
   Evaluates its argument one at a time, from left to right. If more then one
 argument evaluates to a true value no further DATUMS are evaluated, and NIL is
 returned as both primary and secondary value. If exactly one argument
@@ -544,14 +544,14 @@ arguments evaluate to true NIL is retuned as primary, and T as secondary
 value.
 \end{macro}
 
-\begin{macro}{nth-value-or}{nth-value \body forms}{alexandria}{}
+\begin{macro}{nth-value-or}{nth-value \body forms}{cl-ext}{}
   Evaluates FORM arguments one at a time, until the NTH-VALUE returned by one
 of the forms is non-NIL. It then returns all the values returned by evaluating
 that form. If none of the forms return a non-nil nth value, this form returns
 NIL.
 \end{macro}
 
-\begin{macro}{define-constant}{name initial-value \key test documentation}{alexandria}{}
+\begin{macro}{define-constant}{name initial-value \key test documentation}{cl-ext}{}
   Ensures that the global variable named by NAME is a constant with a value
 that is equal under TEST to the result of evaluating INITIAL-VALUE. TEST is a
 /function designator/ that defaults to EQL. If DOCUMENTATION is given, it
@@ -563,11 +563,11 @@ Signals an error if NAME is already a constant variable whose value is not
 equal under TEST to result of evaluating INITIAL-VALUE.
 \end{macro}
 
-\begin{macro}{whichever}{\rest possibilities \env env}{alexandria}{}
+\begin{macro}{whichever}{\rest possibilities \env env}{cl-ext}{}
   Evaluates exactly one of POSSIBILITIES, chosen at random.
 \end{macro}
 
-\begin{macro}{if-bind}{var test \body then/else}{arnesi}{}
+\begin{macro}{if-bind}{var test \body then/else}{cl-ext}{}
   Anaphoric IF control structure.
 
 VAR (a symbol) will be bound to the primary value of TEST. If
@@ -575,48 +575,48 @@ TEST returns a true value then THEN will be executed, otherwise
 ELSE will be executed.
 \end{macro}
 
-\begin{macro}{aif}{test then \op else}{arnesi}{}
+\begin{macro}{aif}{test then \op else}{cl-ext}{}
   Just like IF-BIND but the var is always IT.
 \end{macro}
 
-\begin{macro}{aif2}{test then \op else}{arnesi}{}
+\begin{macro}{aif2}{test then \op else}{cl-ext}{}
   Just like IF-BIND but the var is always IT.
 
 Very useful with functions like GETHASH.
 \end{macro}
 
-\begin{macro}{when-bind}{var test \body body}{arnesi}{}
+\begin{macro}{when-bind}{var test \body body}{cl-ext}{}
   Just like when except VAR will be bound to the
   result of TEST in BODY.
 \end{macro}
 
-\begin{macro}{awhen}{test \body body}{arnesi}{}
+\begin{macro}{awhen}{test \body body}{cl-ext}{}
   Just like when expect the symbol IT will be
   bound to the result of TEST in BODY.
 \end{macro}
 
-\begin{macro}{cond-bind}{var \body clauses}{arnesi}{}
+\begin{macro}{cond-bind}{var \body clauses}{cl-ext}{}
   Just like COND but VAR will be bound to the result of the
   condition in the clause when executing the body of the clause.
 \end{macro}
 
-\begin{macro}{acond}{\rest clauses}{arnesi}{}
+\begin{macro}{acond}{\rest clauses}{cl-ext}{}
   Just like cond-bind except the var is automatically IT.
 \end{macro}
 
-\begin{macro}{acond2}{\rest clauses}{arnesi}{}
+\begin{macro}{acond2}{\rest clauses}{cl-ext}{}
   Simple list matching based on code from Paul Graham's On Lisp.
 \end{macro}
 
-\begin{macro}{aand}{\rest forms}{arnesi}{}
+\begin{macro}{aand}{\rest forms}{cl-ext}{}
   
 \end{macro}
 
-\begin{macro}{and-bind}{var \rest forms}{arnesi}{}
+\begin{macro}{and-bind}{var \rest forms}{cl-ext}{}
   
 \end{macro}
 
-\begin{macro}{if2-bind}{var test \body then/else}{arnesi}{}
+\begin{macro}{if2-bind}{var test \body then/else}{cl-ext}{}
   Anaphoric IF control structure for multiple values.
 
 VAR (a symbol) will be bound to the primary value of TEST.  If
@@ -624,7 +624,7 @@ TEST's second value is true then THEN will be executed, otherwise
 ELSE will be executed.
 \end{macro}
 
-\begin{macro}{while*}{test \body body}{arnesi}{}
+\begin{macro}{while*}{test \body body}{cl-ext}{}
   Repeat BODY while TEST is true. You may exit the loop with
   (RETURN-FROM WHILE).
   \begin{devnote}
@@ -633,7 +633,7 @@ ELSE will be executed.
   \end{devnote}
 \end{macro}
 
-\begin{macro}{until*}{test \body body}{arnesi}{}
+\begin{macro}{until*}{test \body body}{cl-ext}{}
   Repeat BODY until TEST is false. You may exit the loop with
   (RETURN-FROM UNTIL).
   \begin{devnote}
@@ -642,17 +642,17 @@ ELSE will be executed.
   \end{devnote}
 \end{macro}
 
-\begin{macro}{awhile}{test \body body}{arnesi}{}
+\begin{macro}{awhile}{test \body body}{cl-ext}{}
   Just like WHILE, but the result of TEST is bound to IT.
 
 You may exit the loop with (RETURN-FROM AWHILE).
 \end{macro}
 
-\begin{macro}{list-match-case}{target \body clauses}{arnesi}{}
+\begin{macro}{list-match-case}{target \body clauses}{cl-ext}{}
   
 \end{macro}
 
-\begin{macro}{let1}{var val \body body}{arnesi}{}
+\begin{macro}{let1}{var val \body body}{cl-ext}{}
   
 \end{macro}
 

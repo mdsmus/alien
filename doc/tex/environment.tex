@@ -314,19 +314,19 @@ functions when called with no arguments.
 \section{Extensions}
 \label{sec:extensions}
 
-\begin{function}{quit}{\op exit-code}{arnesi}{}
+\begin{function}{quit}{\op exit-code}{cl-ext}{}
   
 \end{function}
 
-\begin{function}{getenv}{var}{arnesi}{}
+\begin{function}{getenv}{var}{cl-ext}{}
   
 \end{function}
 
-\begin{function}{argv}{var}{kroger}{}
+\begin{function}{argv}{var}{cl-ext}{}
   
 \end{function}
 
-\begin{macro}{def-special-environment}{name \key \rest vars}{arnesi}{}
+\begin{macro}{def-special-environment}{name \key \rest vars}{cl-ext}{}
   Define two macros for dealing with groups or related special variables.
 
 ACCESSOR is defined as a macro: (defmacro ACCESSOR (VARS \&rest
@@ -343,7 +343,7 @@ which is the concatenation of "WITH-" NAME. BINDER is built as
 "BIND-" and BINDER* is BINDER "*".
 \end{macro}
 
-\begin{function}{collect-timing}{lambda}{arnesi}{}
+\begin{function}{collect-timing}{lambda}{cl-ext}{}
   Executes LAMBDA and returns a timing-info object specifying
   how long execution took and how much memory was used.
 

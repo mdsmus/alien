@@ -2,7 +2,7 @@
 \section{Macros}
 \label{sec:macros}
 
-\begin{macro}{with-gensyms}{names \body forms}{alexandria}{}
+\begin{macro}{with-gensyms}{names \body forms}{cl-ext}{}
   Binds each variable named by a symbol in NAMES to a unique symbol around
 FORMS. Each of NAMES must either be either a symbol, or of the form:
 
@@ -16,11 +16,11 @@ The string-designator is used as the argument to GENSYM when constructing the
 unique symbol the named variable will be bound to.
 \end{macro}
 
-\begin{macro}{with-unique-names}{names \body forms}{alexandria}{}
+\begin{macro}{with-unique-names}{names \body forms}{cl-ext}{}
   Alias for WITH-GENSYMS.
 \end{macro}
 
-\begin{macro}{once-only}{specs \body forms}{alexandria}{}
+\begin{macro}{once-only}{specs \body forms}{cl-ext}{}
   Each SPEC must be either a NAME, or a (NAME INITFORM), with plain
 NAME using the named variable as initform.
 
@@ -28,14 +28,14 @@ Evaluates FORMS with names rebound to temporary variables, ensuring
 that each is evaluated only once.
 \end{macro}
 
-\begin{function}{parse-body}{body \key documentation whole}{alexandria}{}
+\begin{function}{parse-body}{body \key documentation whole}{cl-ext}{}
   Parses BODY into (values remaining-forms declarations doc-string).
 Documentation strings are recognized only if DOCUMENTATION is true.
 Syntax errors in body are signalled and WHOLE is used in the signal
 arguments when given.
 \end{function}
 
-\begin{function}{parse-ordinary-lambda-list}{lambda-list}{alexandria}{}
+\begin{function}{parse-ordinary-lambda-list}{lambda-list}{cl-ext}{}
   Parses an ordinary lambda-list, returning as multiple values:
 
  1. Required parameters.
@@ -50,11 +50,11 @@ arguments when given.
 Signals a PROGRAM-ERROR is the lambda-list is malformed.
 \end{function}
 
-\begin{macro}{rebind}{bindings \body body}{arnesi}{}
+\begin{macro}{rebind}{bindings \body body}{cl-ext}{}
   
 \end{macro}
 
-\begin{macro}{rebinding}{bindings \body body}{arnesi}{}
+\begin{macro}{rebinding}{bindings \body body}{cl-ext}{}
   Bind each var in BINDINGS to a gensym, bind the gensym to
 var's value via a let, return BODY's value wrapped in this let.
 

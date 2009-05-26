@@ -8,27 +8,27 @@
 Check http://cdr.eurolisp.org/document/5/extra-num-types.html for the
 types frob generates.
 
-\begin{type}{array-index}{}{alexandria}{}
+\begin{type}{array-index}{}{cl-ext}{}
   
 \end{type}
 
-\begin{type}{array-length}{}{alexandria}{}
+\begin{type}{array-length}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{of-type}{type}{alexandria}{}
+\begin{function}{of-type}{type}{cl-ext}{}
   Returns a function of one argument, which returns true when its argument is
 of TYPE.
 \end{function}
 
-\begin{function}{type=}{type1 type2}{alexandria}{}
+\begin{function}{type=}{type1 type2}{cl-ext}{}
   Returns a primary value of T is TYPE1 and TYPE2 are the same type,
 and a secondary value that is true is the type equality could be reliably
 determined: primary value of NIL and secondary value of T indicates that the
 types are not equivalent.
 \end{function}
 
-\begin{macro}{coercef}{place type-spec \env env}{alexandria}{}
+\begin{macro}{coercef}{place type-spec \env env}{cl-ext}{}
   Modify-macro for COERCE.
 \end{macro}
 

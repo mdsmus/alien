@@ -212,7 +212,7 @@
 \section{Sequence extensions}
 \label{sec:sequence-extensions}
 
-\begin{function}{rotate}{sequence \op n}{alexandria}{}
+\begin{function}{rotate}{sequence \op n}{cl-ext}{}
   Returns a sequence of the same type as SEQUENCE, with the elements of
 SEQUENCE rotated by N: N elements are moved from the end of the sequence to
 the front if N is positive, and -N elements moved from the front to the end if
@@ -223,87 +223,87 @@ N (LENGTH SEQUENCE))). The original sequence may be destructively altered, and
 result sequence may share structure with it.
 \end{function}
 
-\begin{function}{shuffle}{sequence \key start end}{alexandria}{}
+\begin{function}{shuffle}{sequence \key start end}{cl-ext}{}
   Returns a random permutation of SEQUENCE bounded by START and END.
 Permuted sequence may share storage with the original one. Signals an
 error if SEQUENCE is not a proper sequence.
 \end{function}
 
-\begin{function}{random-elt}{sequence \key start end}{alexandria}{}
+\begin{function}{random-elt}{sequence \key start end}{cl-ext}{}
   Returns a random element from SEQUENCE bounded by START and END. Signals an
 error if the SEQUENCE is not a proper sequence.
 \end{function}
 
-\begin{macro}{removef}{place item \rest remove-keywords \env env}{alexandria}{}
+\begin{macro}{removef}{place item \rest remove-keywords \env env}{cl-ext}{}
   Modify-macro for REMOVE. Sets place designated by the first argument to
 the result of calling REMOVE with ITEM, place, and the REMOVE-KEYWORDS.
 \end{macro}
 
-\begin{macro}{deletef}{place item \rest remove-keywords \env env}{alexandria}{}
+\begin{macro}{deletef}{place item \rest remove-keywords \env env}{cl-ext}{}
   Modify-macro for DELETE. Sets place designated by the first argument to
 the result of calling DELETE with ITEM, place, and the REMOVE-KEYWORDS.
 \end{macro}
 
-\begin{type}{proper-sequence}{}{alexandria}{}
+\begin{type}{proper-sequence}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{emptyp}{sequence}{alexandria}{}
+\begin{function}{emptyp}{sequence}{cl-ext}{}
   Returns true if SEQUENCE is an empty sequence. Signals an error if SEQUENCE
 is not a sequence
 \end{function}
 
-\begin{function}{length=}{\rest sequences}{alexandria}{}
+\begin{function}{length=}{\rest sequences}{cl-ext}{}
   Takes any number of sequences or integers in any order. Returns true iff
 the length of all the sequences and the integers are equal. Hint: there's a
 compiler macro that expands into more efficient code if the first argument
 is a literal integer.
 \end{function}
 
-\begin{function}{sequence-of-length-p}{sequence length}{alexandria}{}
+\begin{function}{sequence-of-length-p}{sequence length}{cl-ext}{}
   Return true if SEQUENCE is a sequence of length LENGTH. Signals an error if
 SEQUENCE is not a sequence. Returns FALSE for circular lists.
 \end{function}
 
-\begin{function}{copy-sequence}{type sequence}{alexandria}{}
+\begin{function}{copy-sequence}{type sequence}{cl-ext}{}
   Returns a fresh sequence of TYPE, which has the same elements as
 SEQUENCE.
 \end{function}
 
-\begin{function}{first-elt}{sequence}{alexandria}{}
+\begin{function}{first-elt}{sequence}{cl-ext}{}
   Returns the first element of SEQUENCE. Signals a type-error if SEQUENCE is
 not a sequence, or is an empty sequence.
 \end{function}
 
-\begin{function}{last-elt}{sequence}{alexandria}{}
+\begin{function}{last-elt}{sequence}{cl-ext}{}
   Returns the last element of SEQUENCE. Signals a type-error if SEQUENCE is
 not a proper sequence, or is an empty sequence.
 \end{function}
 
-\begin{function}{starts-with}{object sequence \key test key}{alexandria}{}
+\begin{function}{starts-with}{object sequence \key test key}{cl-ext}{}
   Returns true if SEQUENCE is a sequence whose first element is EQL to OBJECT.
 Returns NIL if the SEQUENCE is not a sequence or is an empty sequence.
 \end{function}
 
-\begin{function}{starts-with-subseq}{prefix sequence \rest args \key return-suffix \akeys}{alexandria}{}
+\begin{function}{starts-with-subseq}{prefix sequence \rest args \key return-suffix \akeys}{cl-ext}{}
   Test whether the first elements of SEQUENCE are the same (as per TEST) as the elements of PREFIX.
 
 If RETURN-SUFFIX is T the functions returns, as a second value, a
 displaced array pointing to the sequence after PREFIX.
 \end{function}
 
-\begin{function}{ends-with}{object sequence \key test key}{alexandria}{}
+\begin{function}{ends-with}{object sequence \key test key}{cl-ext}{}
   Returns true if SEQUENCE is a sequence whose last element is EQL to OBJECT.
 Returns NIL if the SEQUENCE is not a sequence or is an empty sequence. Signals
 an error if SEQUENCE is an improper list.
 \end{function}
 
-\begin{function}{ends-with-subseq}{suffix sequence \key test}{alexandria}{}
+\begin{function}{ends-with-subseq}{suffix sequence \key test}{cl-ext}{}
   Test whether SEQUENCE ends with SUFFIX. In other words: return true if
 the last (length SUFFIX) elements of SEQUENCE are equal to SUFFIX.
 \end{function}
 
-\begin{function}{map-combinations}{function sequence \key start end length copy}{alexandria}{}
+\begin{function}{map-combinations}{function sequence \key start end length copy}{cl-ext}{}
   Calls FUNCTION with each combination of LENGTH constructable from the
 elements of the subsequence of SEQUENCE delimited by START and END. START
 defaults to 0, END to length of SEQUENCE, and LENGTH to the length of the
@@ -314,7 +314,7 @@ false all combinations are EQ to each other, in which case consequences are
 specified if a combination is modified by FUNCTION.
 \end{function}
 
-\begin{function}{map-derangements}{function sequence \key start end copy}{alexandria}{}
+\begin{function}{map-derangements}{function sequence \key start end copy}{cl-ext}{}
   Calls FUNCTION with each derangement of the subsequence of SEQUENCE denoted
 by the bounding index designators START and END. Derangement is a permutation
 of the sequence where no element remains in place. SEQUENCE is not modified,
@@ -322,39 +322,39 @@ but individual derangements are EQ to each other. Consequences are unspecified
 if calling FUNCTION modifies either the derangement or SEQUENCE.
 \end{function}
 
-\begin{function}{map-permutations}{function sequence \key start end length copy}{alexandria}{}
+\begin{function}{map-permutations}{function sequence \key start end length copy}{cl-ext}{}
   Calls function with each permutation of LENGTH constructable
 from the subsequence of SEQUENCE delimited by START and END. START
 defaults to 0, END to length of the sequence, and LENGTH to the
 length of the delimited subsequence.
 \end{function}
 
-\begin{macro}{remf-keywords}{place \rest keywords \env env}{arnesi}{}
+\begin{macro}{remf-keywords}{place \rest keywords \env env}{cl-ext}{}
   Creates a copy of PLIST without the properties identified by KEYWORDS.
 \end{macro}
 
-\begin{function}{remove-keywords}{plist \rest keywords}{arnesi}{}
+\begin{function}{remove-keywords}{plist \rest keywords}{cl-ext}{}
   Creates a copy of PLIST without the listed KEYWORDS.
 \end{function}
 
-\begin{function}{tail}{seq \op how-many}{arnesi}{}
+\begin{function}{tail}{seq \op how-many}{cl-ext}{}
   Returns the last HOW-MANY elements of the sequence SEQ. HOW-MANY is
   greater than (length SEQ) then all of SEQ is returned.
 \end{function}
 
-\begin{function}{head}{seq \op how-many}{arnesi}{}
+\begin{function}{head}{seq \op how-many}{cl-ext}{}
   Returns the first HOW-MANY elements of SEQ.
 \end{function}
 
-\begin{function}{but-head}{seq \op how-many}{arnesi}{}
+\begin{function}{but-head}{seq \op how-many}{cl-ext}{}
   Returns SEQ with the first HOW-MANY elements removed.
 \end{function}
 
-\begin{function}{but-tail}{seq \op how-many}{arnesi}{}
+\begin{function}{but-tail}{seq \op how-many}{cl-ext}{}
   Returns SEQ with the last HOW-MANY elements removed.
 \end{function}
 
-\begin{function}{read-sequence*}{sequence stream \key start end}{arnesi}{}
+\begin{function}{read-sequence*}{sequence stream \key start end}{cl-ext}{}
   Like READ-SEQUENCE except the sequence is returned as well.
 
 The second value returned is READ-SEQUENCE's primary value, the
@@ -362,7 +362,7 @@ primary value returned by READ-SEQUENCE* is the medified
 sequence.
 \end{function}
 
-\begin{function}{levenshtein-distance}{source target \key test}{arnesi}{}
+\begin{function}{levenshtein-distance}{source target \key test}{cl-ext}{}
   Levenshtein distance is a metric for measuring the amount of
   difference between two sequences.
 \end{function}

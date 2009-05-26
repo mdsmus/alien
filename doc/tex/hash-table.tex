@@ -117,7 +117,7 @@ for.
 \section{Extensions}
 \label{sec:extensions}
 
-\begin{function}{copy-hash-table}{table \key key test size rehash-size rehash-threshold}{alexandria}{}
+\begin{function}{copy-hash-table}{table \key key test size rehash-size rehash-threshold}{cl-ext}{}
   Returns a copy of hash table TABLE, with the same keys and values
 as the TABLE. The copy has the same properties as the original, unless
 overridden by the keyword arguments.
@@ -127,52 +127,52 @@ is invoked on the value. As KEY defaults to CL:IDENTITY, a shallow
 copy is returned by default.
 \end{function}
 
-\begin{function}{maphash-keys}{hash-table}{kroger}{}
+\begin{function}{maphash-keys}{hash-table}{cl-ext}{}
   Like MAPHASH, but calls FUNCTION with each key in the hash table TABLE.
 \end{function}
 
-\begin{function}{maphash-values}{hash-table}{kroger}{}
+\begin{function}{maphash-values}{hash-table}{cl-ext}{}
   Like MAPHASH, but calls FUNCTION with each value in the hash table TABLE.
 \end{function}
 
-\begin{function}{plist-to-hash}{plist \rest hash-table-initargs}{alexandria}{}
+\begin{function}{plist-to-hash}{plist \rest hash-table-initargs}{cl-ext}{}
   Returns a hash table containing the keys and values of the property list
 PLIST. Hash table is initialized using the HASH-TABLE-INITARGS.
 \end{function}
 
-\begin{function}{alist-to-hash}{alist \rest hash-table-initargs}{kroger}{}
+\begin{function}{alist-to-hash}{alist \rest hash-table-initargs}{cl-ext}{}
   Returns a hash table containing the keys and values of the association list
 ALIST. Hash table is initialized using the HASH-TABLE-INITARGS.
 \end{function}
 
-\begin{function}{hash-to-alist}{hash-table}{arnesi}{}
+\begin{function}{hash-to-alist}{hash-table}{cl-ext}{}
   Returns an association list containing the keys and values of hash
   table.
 \end{function}
 
-\begin{function}{hash-to-plist}{hash-table}{kroger}{}
+\begin{function}{hash-to-plist}{hash-table}{cl-ext}{}
   Returns a property list containing the keys and values of hash
   table.
 \end{function}
 
-\begin{function}{hash-table-keys}{table}{arnesi}{}
+\begin{function}{hash-table-keys}{table}{cl-ext}{}
   Returns a list containing the keys of hash table TABLE.
 \end{function}
 
-\begin{function}{hash-table-values}{table}{arnesi}{}
+\begin{function}{hash-table-values}{table}{cl-ext}{}
   Returns a list containing the values of hash table TABLE.
 \end{function}
 
-\begin{function}{ensure-gethash}{key hash-table \op default}{alexandria}{}
+\begin{function}{ensure-gethash}{key hash-table \op default}{cl-ext}{}
   Like GETHASH, but if KEY is not found in the HASH-TABLE saves the DEFAULT
 under key before returning it. Secondary return value is true if key was
 already in the table.
 \end{function}
 
-\begin{function}{build-hash-table}{hash-spec inital-contents}{arnesi}{}
+\begin{function}{build-hash-table}{hash-spec inital-contents}{cl-ext}{}
   Create a hash table containing ``INITAL-CONTENTS''.
 \end{function}
 
-\begin{macro}{deflookup-table}{name \key var reader writer rem-er at-redefinition documentation test initial-contents}{arnesi}{}
+\begin{macro}{deflookup-table}{name \key var reader writer rem-er at-redefinition documentation test initial-contents}{cl-ext}{}
   Creates a hash table and the associated accessors.
 \end{macro}

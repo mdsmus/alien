@@ -247,7 +247,7 @@ be a lambda expression.
 \section{Extensions}
 \label{sec:extensions}
 
-\begin{macro}{defclass-struct}{name-and-options supers \rest slots}{arnesi}{}
+\begin{macro}{defclass-struct}{name-and-options supers \rest slots}{cl-ext}{}
   DEFCLASS with a DEFSTRUCT api.
 
 NAME-AND-OPTIONS:
@@ -265,7 +265,7 @@ SLOTS - a list of slot forms:
   ( name [ init-arg ] [ slot-options* ] )
 \end{macro}
 
-\begin{macro}{defprint-object}{self \body body}{arnesi}{}
+\begin{macro}{defprint-object}{self \body body}{cl-ext}{}
   Define a print-object method using print-unreadable-object.
   An example:
   (defprint-object (self parenscript-dispatcher)
@@ -280,7 +280,7 @@ SLOTS - a list of slot forms:
   the variable and accessor name are the same.
 \end{macro}
 
-\begin{function}{class-name-of}{obj}{arnesi}{}
+\begin{function}{class-name-of}{obj}{cl-ext}{}
   
 \end{function}
 

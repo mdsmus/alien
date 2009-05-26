@@ -8,13 +8,13 @@
 \label{sec:extensions}
 
 \begin{macro}{with-input-from-file}{stream-name file-name \rest args
-    \key direction \akeys \body body}{alexandria}{}
+    \key direction \akeys \body body}{cl-ext}{}
   Evaluate BODY with STREAM-NAME bound to an input-stream from file
 FILE-NAME. ARGS is passed directly to open.
 \end{macro}
 
 \begin{macro}{with-output-to-file}{stream-name file-name \rest args
-    \key direction \akeys \body body}{alexandria}{}
+    \key direction \akeys \body body}{cl-ext}{}
   Evaluate BODY with STREAM-NAME to an output stream on the file
 FILE-NAME. ARGS is sent as is to the call te open. It will supersed
 file-name if it exists.
@@ -24,7 +24,7 @@ file-name if it exists.
 \end{devnote}
 \end{macro}
 
-\begin{function}{write-string-into-file}{string pathname \key if-exists if-does-not-exist external-format}{alexandria}{}
+\begin{function}{write-string-into-file}{string pathname \key if-exists if-does-not-exist external-format}{cl-ext}{}
   Write STRING to PATHNAME.
 
 The EXTERNAL-FORMAT parameter will be passed to
@@ -32,7 +32,7 @@ ENCODING-KEYWORD-TO-NATIVE, see ENCODING-KEYWORD-TO-NATIVE to
 possible values.
 \end{function}
 
-\begin{function}{read-file-into-string}{pathname \key buffer-size external-format}{alexandria}{}
+\begin{function}{read-file-into-string}{pathname \key buffer-size external-format}{cl-ext}{}
   Return the contents of PATHNAME as a fresh string.
 
 The file specified by PATHNAME will be read one ELEMENT-TYPE
@@ -44,11 +44,11 @@ ENCODING-KEYWORD-TO-NATIVE, see ENCODING-KEYWORD-TO-NATIVE to
 possible values.
 \end{function}
 
-\begin{function}{copy-file}{from to \key if-to-exists element-type}{alexandria}{}
+\begin{function}{copy-file}{from to \key if-to-exists element-type}{cl-ext}{}
   
 \end{function}
 
-\begin{function}{copy-stream}{input output \op element-type}{alexandria}{}
+\begin{function}{copy-stream}{input output \op element-type}{cl-ext}{}
   Reads data from FROM and writes it to TO. Both FROM and TO must be streams,
 they will be passed to read-sequence/write-sequence and must have compatable
 element-types.

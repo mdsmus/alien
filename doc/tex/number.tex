@@ -157,7 +157,7 @@ the first.
 \section{Extensions}
 \label{sec:extensions-1}
 
-\begin{function}{clamp}{number min max}{alexandria}{}
+\begin{function}{clamp}{number min max}{cl-ext}{}
   Clamps the NUMBER into [MIN, MAX] range. Returns MIN if NUMBER
   lesser then MIN and MAX if NUMBER is greater then MAX, otherwise
   returns NUMBER. This is a convenient way of limiting values to a set
@@ -168,43 +168,43 @@ the first.
   \end{devnote}
 \end{function}
 
-\begin{macro}{maxf}{place \rest numbers \env env}{alexandria}{}
+\begin{macro}{maxf}{place \rest numbers \env env}{cl-ext}{}
   Modify-macro for MAX. Sets place designated by the first argument to the
 maximum of its original value and NUMBERS.
 \end{macro}
 
-\begin{macro}{minf}{place \rest numbers \env env}{alexandria}{}
+\begin{macro}{minf}{place \rest numbers \env env}{cl-ext}{}
   Modify-macro for MIN. Sets place designated by the first argument to the
 minimum of its original value and NUMBERS.
 \end{macro}
 
-\begin{macro}{mulf}{place b \env env}{arnesi}{}
+\begin{macro}{mulf}{place b \env env}{cl-ext}{}
   SETF NUM to the result of (* NUM B).
 \end{macro}
 
-\begin{macro}{divf}{place b \env env}{arnesi}{}
+\begin{macro}{divf}{place b \env env}{cl-ext}{}
   SETF NUM to the result of (/ NUM B).
 \end{macro}
 
-\begin{function}{lerp}{v a b}{alexandria}{}
+\begin{function}{lerp}{v a b}{cl-ext}{}
   Returns the result of linear interpolation between A and B, using the
 interpolation coefficient V.
 \end{function}
 
-\begin{function}{factorial}{n}{alexandria}{}
+\begin{function}{factorial}{n}{cl-ext}{}
   Factorial of non-negative integer N. The function \fun{!} is an
   alternative name.
 \end{function}
 
-\begin{function}{mean}{sample}{alexandria}{}
+\begin{function}{mean}{sample}{cl-ext}{}
   Returns the mean of SAMPLE. SAMPLE must be a sequence of numbers.
 \end{function}
 
-\begin{function}{median}{sample}{alexandria}{}
+\begin{function}{median}{sample}{cl-ext}{}
   Returns median of SAMPLE. SAMPLE must be a sequence of real numbers.
 \end{function}
 
-\begin{function}{variance}{sample \key biased}{alexandria}{}
+\begin{function}{variance}{sample \key biased}{cl-ext}{}
   Variance of SAMPLE. Returns the biased variance if BIASED is true (the default),
 and the unbiased estimator of variance if BIASED is false. SAMPLE must be a
 sequence of numbers.
@@ -238,7 +238,7 @@ sequence of numbers.
 \label{sec:exp-extensions}
 
 %%% FIXME: 10^
-\begin{function}{10}{n}{arnesi}{}
+\begin{function}{10}{n}{cl-ext}{}
   Return 10 to the \var{n}.
 \end{function}
 
@@ -790,318 +790,318 @@ See also \fun{random-state-p}
 \section{Other extensions}
 \label{sec:other-extensions}
 
-\begin{function}{gaussian-random}{\op min max}{alexandria}{}
+\begin{function}{gaussian-random}{\op min max}{cl-ext}{}
   Returns two gaussian random double floats as the primary and secondary value,
 optionally constrained by MIN and MAX. Gaussian random numbers form a standard
 normal distribution around 0.0d0.
 \end{function}
 
-\begin{function}{binomial-coefficient}{n k}{alexandria}{}
+\begin{function}{binomial-coefficient}{n k}{cl-ext}{}
   Binomial coefficient of N and K, also expressed as N choose K. This is the
 number of K element combinations given N choises. N must be equal to or
 greater then K.
 \end{function}
 
-\begin{function}{count-permutations}{n \op k}{alexandria}{}
+\begin{function}{count-permutations}{n \op k}{cl-ext}{}
   Number of K element permutations for a sequence of N objects.
 R defaults to N
 \end{function}
 
-\begin{function}{subfactorial}{n}{alexandria}{}
+\begin{function}{subfactorial}{n}{cl-ext}{}
   Subfactorial of the non-negative integer N.
 \end{function}
 
-\begin{function}{standard-deviation}{sample \key biased}{alexandria}{}
+\begin{function}{standard-deviation}{sample \key biased}{cl-ext}{}
   Standard deviation of SAMPLE. Returns the biased standard deviation if
 BIASED is true (the default), and the square root of the unbiased estimator
 for variance if BIASED is false (which is not the same as the unbiased
 estimator for standard deviation). SAMPLE must be a sequence of numbers.
 \end{function}
 
-\begin{type}{negative-double-float}{}{alexandria}{}
+\begin{type}{negative-double-float}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{negative-double-float-p}{n}{alexandria}{}
+\begin{function}{negative-double-float-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{negative-fixnum}{}{alexandria}{}
+\begin{type}{negative-fixnum}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{negative-fixnum-p}{n}{alexandria}{}
+\begin{function}{negative-fixnum-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{negative-float}{}{alexandria}{}
+\begin{type}{negative-float}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{negative-float-p}{n}{alexandria}{}
+\begin{function}{negative-float-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{negative-integer}{}{alexandria}{}
+\begin{type}{negative-integer}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{negative-integer-p}{n}{alexandria}{}
+\begin{function}{negative-integer-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{negative-long-float}{}{alexandria}{}
+\begin{type}{negative-long-float}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{negative-long-float-p}{n}{alexandria}{}
+\begin{function}{negative-long-float-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{negative-rational}{}{alexandria}{}
+\begin{type}{negative-rational}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{negative-rational-p}{n}{alexandria}{}
+\begin{function}{negative-rational-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{negative-real}{}{alexandria}{}
+\begin{type}{negative-real}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{negative-real-p}{n}{alexandria}{}
+\begin{function}{negative-real-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{negative-short-float}{}{alexandria}{}
+\begin{type}{negative-short-float}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{negative-short-float-p}{n}{alexandria}{}
+\begin{function}{negative-short-float-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{negative-single-float}{}{alexandria}{}
+\begin{type}{negative-single-float}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{negative-single-float-p}{n}{alexandria}{}
+\begin{function}{negative-single-float-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{non-negative-double-float}{}{alexandria}{}
+\begin{type}{non-negative-double-float}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{non-negative-double-float-p}{n}{alexandria}{}
+\begin{function}{non-negative-double-float-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{non-negative-fixnum}{}{alexandria}{}
+\begin{type}{non-negative-fixnum}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{non-negative-fixnum-p}{n}{alexandria}{}
+\begin{function}{non-negative-fixnum-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{non-negative-float}{}{alexandria}{}
+\begin{type}{non-negative-float}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{non-negative-float-p}{n}{alexandria}{}
+\begin{function}{non-negative-float-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{non-negative-integer}{}{alexandria}{}
+\begin{type}{non-negative-integer}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{non-negative-integer-p}{n}{alexandria}{}
+\begin{function}{non-negative-integer-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{non-negative-long-float}{}{alexandria}{}
+\begin{type}{non-negative-long-float}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{non-negative-long-float-p}{n}{alexandria}{}
+\begin{function}{non-negative-long-float-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{non-negative-rational}{}{alexandria}{}
+\begin{type}{non-negative-rational}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{non-negative-rational-p}{n}{alexandria}{}
+\begin{function}{non-negative-rational-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{non-negative-real}{}{alexandria}{}
+\begin{type}{non-negative-real}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{non-negative-real-p}{n}{alexandria}{}
+\begin{function}{non-negative-real-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{non-negative-short-float}{}{alexandria}{}
+\begin{type}{non-negative-short-float}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{non-negative-short-float-p}{n}{alexandria}{}
+\begin{function}{non-negative-short-float-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{non-negative-single-float}{}{alexandria}{}
+\begin{type}{non-negative-single-float}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{non-negative-single-float-p}{n}{alexandria}{}
+\begin{function}{non-negative-single-float-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{non-positive-double-float}{}{alexandria}{}
+\begin{type}{non-positive-double-float}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{non-positive-double-float-p}{n}{alexandria}{}
+\begin{function}{non-positive-double-float-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{non-positive-fixnum}{}{alexandria}{}
+\begin{type}{non-positive-fixnum}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{non-positive-fixnum-p}{n}{alexandria}{}
+\begin{function}{non-positive-fixnum-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{non-positive-float}{}{alexandria}{}
+\begin{type}{non-positive-float}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{non-positive-float-p}{n}{alexandria}{}
+\begin{function}{non-positive-float-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{non-positive-integer}{}{alexandria}{}
+\begin{type}{non-positive-integer}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{non-positive-integer-p}{n}{alexandria}{}
+\begin{function}{non-positive-integer-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{non-positive-long-float}{}{alexandria}{}
+\begin{type}{non-positive-long-float}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{non-positive-long-float-p}{n}{alexandria}{}
+\begin{function}{non-positive-long-float-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{non-positive-rational}{}{alexandria}{}
+\begin{type}{non-positive-rational}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{non-positive-rational-p}{n}{alexandria}{}
+\begin{function}{non-positive-rational-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{non-positive-real}{}{alexandria}{}
+\begin{type}{non-positive-real}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{non-positive-real-p}{n}{alexandria}{}
+\begin{function}{non-positive-real-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{non-positive-short-float}{}{alexandria}{}
+\begin{type}{non-positive-short-float}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{non-positive-short-float-p}{n}{alexandria}{}
+\begin{function}{non-positive-short-float-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{non-positive-single-float}{}{alexandria}{}
+\begin{type}{non-positive-single-float}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{non-positive-single-float-p}{n}{alexandria}{}
+\begin{function}{non-positive-single-float-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{positive-double-float}{}{alexandria}{}
+\begin{type}{positive-double-float}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{positive-double-float-p}{n}{alexandria}{}
+\begin{function}{positive-double-float-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{positive-fixnum}{}{alexandria}{}
+\begin{type}{positive-fixnum}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{positive-fixnum-p}{n}{alexandria}{}
+\begin{function}{positive-fixnum-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{positive-float}{}{alexandria}{}
+\begin{type}{positive-float}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{positive-float-p}{n}{alexandria}{}
+\begin{function}{positive-float-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{positive-integer}{}{alexandria}{}
+\begin{type}{positive-integer}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{positive-integer-p}{n}{alexandria}{}
+\begin{function}{positive-integer-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{positive-long-float}{}{alexandria}{}
+\begin{type}{positive-long-float}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{positive-long-float-p}{n}{alexandria}{}
+\begin{function}{positive-long-float-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{positive-rational}{}{alexandria}{}
+\begin{type}{positive-rational}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{positive-rational-p}{n}{alexandria}{}
+\begin{function}{positive-rational-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{positive-real}{}{alexandria}{}
+\begin{type}{positive-real}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{positive-real-p}{n}{alexandria}{}
+\begin{function}{positive-real-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{positive-short-float}{}{alexandria}{}
+\begin{type}{positive-short-float}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{positive-short-float-p}{n}{alexandria}{}
+\begin{function}{positive-short-float-p}{n}{cl-ext}{}
   
 \end{function}
 
-\begin{type}{positive-single-float}{}{alexandria}{}
+\begin{type}{positive-single-float}{}{cl-ext}{}
   
 \end{type}
 
-\begin{function}{positive-single-float-p}{n}{alexandria}{}
+\begin{function}{positive-single-float-p}{n}{cl-ext}{}
   
 \end{function}
