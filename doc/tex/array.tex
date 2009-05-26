@@ -1,168 +1,168 @@
 \chapter{Arrays}
 
-\begin{accessor}{aref}{array \rest subscripts}{}{}
+\begin{accessor}{aref}{array \rest subscripts}
   Return the element of the ARRAY specified by the SUBSCRIPTS.
 \end{accessor}
 
-\begin{accessor}{bit}{bit-array \rest subscripts}{}{}
+\begin{accessor}{bit}{bit-array \rest subscripts}
   Return the bit from the BIT-ARRAY at the specified SUBSCRIPTS.
 \end{accessor}
 
-\begin{accessor}{fill-pointer}{vector}{}{}
+\begin{accessor}{fill-pointer}{vector}
   Return the FILL-POINTER of the given VECTOR.
 \end{accessor}
 
-\begin{accessor}{row-major-aref}{array index}{}{}
+\begin{accessor}{row-major-aref}{array index}
   Return the element of array corressponding to the row-major index. This is
    SETF'able.
 \end{accessor}
 
-\begin{accessor}{sbit}{simple-bit-array \rest subscripts}{}{}
+\begin{accessor}{sbit}{simple-bit-array \rest subscripts}
   Return the bit from SIMPLE-BIT-ARRAY at the specified SUBSCRIPTS.
 \end{accessor}
 
-\begin{accessor}{svref}{simple-vector index}{}{}
+\begin{accessor}{svref}{simple-vector index}
   Return the INDEX'th element of the given Simple-Vector.
 \end{accessor}
 
-\begin{constant}{array-dimension-limit}{}{}{}
+\begin{constant}{array-dimension-limit}{}
   
 \end{constant}
 
-\begin{constant}{array-rank-limit}{}{}{}
+\begin{constant}{array-rank-limit}{}
   
 \end{constant}
 
-\begin{constant}{array-total-size-limit}{}{}{}
+\begin{constant}{array-total-size-limit}{}
   
 \end{constant}
 
 \begin{function}{adjust-array}{array dimensions \key element-type initial-element initial-contents
- fill-pointer displaced-to displaced-index-offset}{}{}
+ fill-pointer displaced-to displaced-index-offset}
   Adjust ARRAY's dimensions to the given DIMENSIONS and stuff.
 \end{function}
 
-\begin{function}{adjustable-array-p}{array}{}{}
+\begin{function}{adjustable-array-p}{array}
   Return T if (ADJUST-ARRAY ARRAY...) would return an array identical
    to the argument, this happens for complex arrays.
 \end{function}
 
-\begin{function}{array-dimension}{array axis-number}{}{}
+\begin{function}{array-dimension}{array axis-number}
   Return the length of dimension AXIS-NUMBER of ARRAY.
 \end{function}
 
-\begin{function}{array-dimensions}{array}{}{}
+\begin{function}{array-dimensions}{array}
   Return a list whose elements are the dimensions of the array
 \end{function}
 
-\begin{function}{array-displacement}{array}{}{}
+\begin{function}{array-displacement}{array}
   Return the values of :DISPLACED-TO and :DISPLACED-INDEX-offset
    options to MAKE-ARRAY, or NIL and 0 if not a displaced array.
 \end{function}
 
-\begin{function}{array-element-type}{array}{}{}
+\begin{function}{array-element-type}{array}
   Return the type of the elements of the array
 \end{function}
 
-\begin{function}{array-has-fill-pointer-p}{array}{}{}
+\begin{function}{array-has-fill-pointer-p}{array}
   Return T if the given ARRAY has a fill pointer, or NIL otherwise.
 \end{function}
 
-\begin{function}{array-in-bounds-p}{array \rest subscripts}{}{}
+\begin{function}{array-in-bounds-p}{array \rest subscripts}
   Return T if the SUBSCIPTS are in bounds for the ARRAY, NIL otherwise.
 \end{function}
 
-\begin{function}{array-rank}{array}{}{}
+\begin{function}{array-rank}{array}
   Return the number of dimensions of ARRAY.
 \end{function}
 
-\begin{function}{array-row-major-index}{array \rest subscripts}{}{}
+\begin{function}{array-row-major-index}{array \rest subscripts}
   
 \end{function}
 
-\begin{function}{array-total-size}{array}{}{}
+\begin{function}{array-total-size}{array}
   Return the total number of elements in the Array.
 \end{function}
 
-\begin{function}{arrayp}{object}{}{}
+\begin{function}{arrayp}{object}
   Return true if OBJECT is an ARRAY, and NIL otherwise.
 \end{function}
 
-\begin{function}{bit-and}{bit-array-1 bit-array-2 \op result-bit-array}{}{}
+\begin{function}{bit-and}{bit-array-1 bit-array-2 \op result-bit-array}
   Perform a bit-wise LOGAND on the elements of BIT-ARRAY-1 and BIT-ARRAY-2,
   putting the results in RESULT-BIT-ARRAY. If RESULT-BIT-ARRAY is T,
   BIT-ARRAY-1 is used. If RESULT-BIT-ARRAY is NIL or omitted, a new array is
   created. All the arrays must have the same rank and dimensions.
 \end{function}
 
-\begin{function}{bit-andc1}{bit-array-1 bit-array-2 \op result-bit-array}{}{}
+\begin{function}{bit-andc1}{bit-array-1 bit-array-2 \op result-bit-array}
   Perform a bit-wise LOGANDC1 on the elements of BIT-ARRAY-1 and BIT-ARRAY-2,
   putting the results in RESULT-BIT-ARRAY. If RESULT-BIT-ARRAY is T,
   BIT-ARRAY-1 is used. If RESULT-BIT-ARRAY is NIL or omitted, a new array is
   created. All the arrays must have the same rank and dimensions.
 \end{function}
 
-\begin{function}{bit-andc2}{bit-array-1 bit-array-2 \op result-bit-array}{}{}
+\begin{function}{bit-andc2}{bit-array-1 bit-array-2 \op result-bit-array}
   Perform a bit-wise LOGANDC2 on the elements of BIT-ARRAY-1 and BIT-ARRAY-2,
   putting the results in RESULT-BIT-ARRAY. If RESULT-BIT-ARRAY is T,
   BIT-ARRAY-1 is used. If RESULT-BIT-ARRAY is NIL or omitted, a new array is
   created. All the arrays must have the same rank and dimensions.
 \end{function}
 
-\begin{function}{bit-eqv}{bit-array-1 bit-array-2 \op result-bit-array}{}{}
+\begin{function}{bit-eqv}{bit-array-1 bit-array-2 \op result-bit-array}
   Perform a bit-wise LOGEQV on the elements of BIT-ARRAY-1 and BIT-ARRAY-2,
   putting the results in RESULT-BIT-ARRAY. If RESULT-BIT-ARRAY is T,
   BIT-ARRAY-1 is used. If RESULT-BIT-ARRAY is NIL or omitted, a new array is
   created. All the arrays must have the same rank and dimensions.
 \end{function}
 
-\begin{function}{bit-ior}{bit-array-1 bit-array-2 \op result-bit-array}{}{}
+\begin{function}{bit-ior}{bit-array-1 bit-array-2 \op result-bit-array}
   Perform a bit-wise LOGIOR on the elements of BIT-ARRAY-1 and BIT-ARRAY-2,
   putting the results in RESULT-BIT-ARRAY. If RESULT-BIT-ARRAY is T,
   BIT-ARRAY-1 is used. If RESULT-BIT-ARRAY is NIL or omitted, a new array is
   created. All the arrays must have the same rank and dimensions.
 \end{function}
 
-\begin{function}{bit-nand}{bit-array-1 bit-array-2 \op result-bit-array}{}{}
+\begin{function}{bit-nand}{bit-array-1 bit-array-2 \op result-bit-array}
   Perform a bit-wise LOGNAND on the elements of BIT-ARRAY-1 and BIT-ARRAY-2,
   putting the results in RESULT-BIT-ARRAY. If RESULT-BIT-ARRAY is T,
   BIT-ARRAY-1 is used. If RESULT-BIT-ARRAY is NIL or omitted, a new array is
   created. All the arrays must have the same rank and dimensions.
 \end{function}
 
-\begin{function}{bit-nor}{bit-array-1 bit-array-2 \op result-bit-array}{}{}
+\begin{function}{bit-nor}{bit-array-1 bit-array-2 \op result-bit-array}
   Perform a bit-wise LOGNOR on the elements of BIT-ARRAY-1 and BIT-ARRAY-2,
   putting the results in RESULT-BIT-ARRAY. If RESULT-BIT-ARRAY is T,
   BIT-ARRAY-1 is used. If RESULT-BIT-ARRAY is NIL or omitted, a new array is
   created. All the arrays must have the same rank and dimensions.
 \end{function}
 
-\begin{function}{bit-not}{bit-array \op result-bit-array}{}{}
+\begin{function}{bit-not}{bit-array \op result-bit-array}
   Performs a bit-wise logical NOT on the elements of BIT-ARRAY,
   putting the results in RESULT-BIT-ARRAY. If RESULT-BIT-ARRAY is T,
   BIT-ARRAY is used. If RESULT-BIT-ARRAY is NIL or omitted, a new array is
   created. Both arrays must have the same rank and dimensions.
 \end{function}
 
-\begin{function}{bit-orc1}{bit-array-1 bit-array-2 \op result-bit-array}{}{}
+\begin{function}{bit-orc1}{bit-array-1 bit-array-2 \op result-bit-array}
   Perform a bit-wise LOGORC1 on the elements of BIT-ARRAY-1 and BIT-ARRAY-2,
   putting the results in RESULT-BIT-ARRAY. If RESULT-BIT-ARRAY is T,
   BIT-ARRAY-1 is used. If RESULT-BIT-ARRAY is NIL or omitted, a new array is
   created. All the arrays must have the same rank and dimensions.
 \end{function}
 
-\begin{function}{bit-orc2}{bit-array-1 bit-array-2 \op result-bit-array}{}{}
+\begin{function}{bit-orc2}{bit-array-1 bit-array-2 \op result-bit-array}
   Perform a bit-wise LOGORC2 on the elements of BIT-ARRAY-1 and BIT-ARRAY-2,
   putting the results in RESULT-BIT-ARRAY. If RESULT-BIT-ARRAY is T,
   BIT-ARRAY-1 is used. If RESULT-BIT-ARRAY is NIL or omitted, a new array is
   created. All the arrays must have the same rank and dimensions.
 \end{function}
 
-\begin{function}{bit-vector-p}{object}{}{}
+\begin{function}{bit-vector-p}{object}
   Return true if OBJECT is a BIT-VECTOR, and NIL otherwise.
 \end{function}
 
-\begin{function}{bit-xor}{bit-array-1 bit-array-2 \op result-bit-array}{}{}
+\begin{function}{bit-xor}{bit-array-1 bit-array-2 \op result-bit-array}
   Perform a bit-wise LOGXOR on the elements of BIT-ARRAY-1 and BIT-ARRAY-2,
   putting the results in RESULT-BIT-ARRAY. If RESULT-BIT-ARRAY is T,
   BIT-ARRAY-1 is used. If RESULT-BIT-ARRAY is NIL or omitted, a new array is
@@ -170,69 +170,69 @@
 \end{function}
 
 \begin{function}{make-array}{dimensions \key element-type initial-element initial-contents adjustable
- fill-pointer displaced-to displaced-index-offset}{}{}
+ fill-pointer displaced-to displaced-index-offset}
   
 \end{function}
 
-\begin{function}{simple-bit-vector-p}{object}{}{}
+\begin{function}{simple-bit-vector-p}{object}
   Return true if OBJECT is a SIMPLE-BIT-VECTOR, and NIL otherwise.
 \end{function}
 
-\begin{function}{simple-vector-p}{object}{}{}
+\begin{function}{simple-vector-p}{object}
   Return true if OBJECT is a SIMPLE-VECTOR, and NIL otherwise.
 \end{function}
 
-\begin{function}{upgraded-array-element-type}{spec \op environment}{}{}
+\begin{function}{upgraded-array-element-type}{spec \op environment}
   Return the element type that will actually be used to implement an array
    with the specifier :ELEMENT-TYPE Spec.
 \end{function}
 
-\begin{function}{vector}{\rest objects}{}{}
+\begin{function}{vector}{\rest objects}
   Construct a SIMPLE-VECTOR from the given objects.
 \end{function}
 
-\begin{function}{vector-pop}{array}{}{}
+\begin{function}{vector-pop}{array}
   Decrease the fill pointer by 1 and return the element pointed to by the
   new fill pointer.
 \end{function}
 
-\begin{function}{vector-push}{new-el array}{}{}
+\begin{function}{vector-push}{new-el array}
   Attempt to set the element of ARRAY designated by its fill pointer
    to NEW-EL, and increment the fill pointer by one. If the fill pointer is
    too large, NIL is returned, otherwise the index of the pushed element is
    returned.
 \end{function}
 
-\begin{function}{vector-push-extend}{new-element vector \op min-extension}{}{}
+\begin{function}{vector-push-extend}{new-element vector \op min-extension}
   
 \end{function}
 
-\begin{function}{vectorp}{object}{}{}
+\begin{function}{vectorp}{object}
   Return true if OBJECT is a VECTOR, and NIL otherwise.
 \end{function}
 
-\begin{class}{array}{}{}{}
+\begin{class}{array}{}
   
 \end{class}
 
-\begin{class}{bit-vector}{}{}{}
+\begin{class}{bit-vector}{}
   
 \end{class}
 
-\begin{class}{vector}{\rest objects}{}{}
+\begin{class}{vector}{\rest objects}
   Construct a SIMPLE-VECTOR from the given objects.
 \end{class}
 
 \section{Extensions}
 \label{sec:extensions}
 
-\begin{function}{copy-array}{array \key element-type fill-pointer adjustable}{cl-ext}{}
+\begin{function}{copy-array}{array \key element-type fill-pointer adjustable}[cl-ext]
   Returns an undisplaced copy of ARRAY, with same fill-pointer
 and adjustability (if any) as the original, unless overridden by
 the keyword arguments.
 \end{function}
 
-\begin{function}{make-displaced-array}{array \op start end}{cl-ext}{}
+\begin{function}{make-displaced-array}{array \op start end}[cl-ext]
   
 \end{function}
 

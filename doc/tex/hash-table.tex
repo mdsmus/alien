@@ -1,43 +1,43 @@
 \chapter{Hash Tables}
 
-\begin{accessor}{gethash}{key hash-table \op default}{}{}
+\begin{accessor}{gethash}{key hash-table \op default}
   Finds the entry in HASH-TABLE whose key is KEY and returns the
 associated value and T as multiple values, or returns DEFAULT and NIL
 if there is no such entry. Entries can be added using SETF.
 \end{accessor}
 
-\begin{function}{clrhash}{hash-table}{}{}
+\begin{function}{clrhash}{hash-table}
   This removes all the entries from HASH-TABLE and returns the hash
 table itself.
 \end{function}
 
-\begin{function}{hash-table-count}{hash-table}{}{}
+\begin{function}{hash-table-count}{hash-table}
   Return the number of entries in the given HASH-TABLE.
 \end{function}
 
-\begin{function}{hash-table-p}{object}{}{}
+\begin{function}{hash-table-p}{object}
   
 \end{function}
 
-\begin{function}{hash-table-rehash-size}{instance}{}{}
+\begin{function}{hash-table-rehash-size}{instance}
   Return the rehash-size HASH-TABLE was created with.
 \end{function}
 
-\begin{function}{hash-table-rehash-threshold}{instance}{}{}
+\begin{function}{hash-table-rehash-threshold}{instance}
   Return the rehash-threshold HASH-TABLE was created with.
 \end{function}
 
-\begin{function}{hash-table-size}{hash-table}{}{}
+\begin{function}{hash-table-size}{hash-table}
   Return a size that can be used with MAKE-HASH-TABLE to create a hash
    table that can hold however many entries HASH-TABLE can hold without
    having to be grown.
 \end{function}
 
-\begin{function}{hash-table-test}{instance}{}{}
+\begin{function}{hash-table-test}{instance}
   Return the test HASH-TABLE was created with.
 \end{function}
 
-\begin{function}{make-hash-table}{\key test size rehash-size rehash-threshold weakness synchronized}{}{}
+\begin{function}{make-hash-table}{\key test size rehash-size rehash-threshold weakness synchronized}
   Create and return a new hash table. The keywords are as follows:
      :TEST -- Indicates what kind of test to use.
      :SIZE -- A hint as to how many elements will be put in this hash
@@ -72,7 +72,7 @@ table itself.
        removed in the future.
 \end{function}
 
-\begin{function}{maphash}{function-designator hash-table}{}{}
+\begin{function}{maphash}{function-designator hash-table}
   For each entry in HASH-TABLE, call the designated two-argument function on
 the key and value of the entry. Return NIL.
 
@@ -84,16 +84,16 @@ another thread during iteration, use eg. SB-EXT:WITH-LOCKED-HASH-TABLE
 to protect the MAPHASH call.
 \end{function}
 
-\begin{function}{remhash}{key hash-table}{}{}
+\begin{function}{remhash}{key hash-table}
   Remove the entry in HASH-TABLE associated with KEY. Return T if
 there was such an entry, or NIL if not.
 \end{function}
 
-\begin{function}{sxhash}{x}{}{}
+\begin{function}{sxhash}{x}
   
 \end{function}
 
-\begin{macro}{with-hash-table-iterator}{name \body body}{}{}
+\begin{macro}{with-hash-table-iterator}{name \body body}
   WITH-HASH-TABLE-ITERATOR ((name hash-table) \&body body)
 
 Provides a method of manually looping over the elements of a hash-table. NAME
@@ -110,14 +110,14 @@ use eg. SB-EXT:WITH-LOCKED-HASH-TABLE to protect the WITH-HASH-TABLE-ITERATOR
 for.
 \end{macro}
 
-\begin{class}{hash-table}{}{}{}
+\begin{class}{hash-table}{}
   
 \end{class}
 
 \section{Extensions}
 \label{sec:extensions}
 
-\begin{function}{copy-hash-table}{table \key key test size rehash-size rehash-threshold}{cl-ext}{}
+\begin{function}{copy-hash-table}{table \key key test size rehash-size rehash-threshold}[cl-ext]
   Returns a copy of hash table TABLE, with the same keys and values
 as the TABLE. The copy has the same properties as the original, unless
 overridden by the keyword arguments.
@@ -127,52 +127,52 @@ is invoked on the value. As KEY defaults to CL:IDENTITY, a shallow
 copy is returned by default.
 \end{function}
 
-\begin{function}{maphash-keys}{hash-table}{cl-ext}{}
+\begin{function}{maphash-keys}{hash-table}[cl-ext]
   Like MAPHASH, but calls FUNCTION with each key in the hash table TABLE.
 \end{function}
 
-\begin{function}{maphash-values}{hash-table}{cl-ext}{}
+\begin{function}{maphash-values}{hash-table}[cl-ext]
   Like MAPHASH, but calls FUNCTION with each value in the hash table TABLE.
 \end{function}
 
-\begin{function}{plist-to-hash}{plist \rest hash-table-initargs}{cl-ext}{}
+\begin{function}{plist-to-hash}{plist \rest hash-table-initargs}[cl-ext]
   Returns a hash table containing the keys and values of the property list
 PLIST. Hash table is initialized using the HASH-TABLE-INITARGS.
 \end{function}
 
-\begin{function}{alist-to-hash}{alist \rest hash-table-initargs}{cl-ext}{}
+\begin{function}{alist-to-hash}{alist \rest hash-table-initargs}[cl-ext]
   Returns a hash table containing the keys and values of the association list
 ALIST. Hash table is initialized using the HASH-TABLE-INITARGS.
 \end{function}
 
-\begin{function}{hash-to-alist}{hash-table}{cl-ext}{}
+\begin{function}{hash-to-alist}{hash-table}[cl-ext]
   Returns an association list containing the keys and values of hash
   table.
 \end{function}
 
-\begin{function}{hash-to-plist}{hash-table}{cl-ext}{}
+\begin{function}{hash-to-plist}{hash-table}[cl-ext]
   Returns a property list containing the keys and values of hash
   table.
 \end{function}
 
-\begin{function}{hash-table-keys}{table}{cl-ext}{}
+\begin{function}{hash-table-keys}{table}[cl-ext]
   Returns a list containing the keys of hash table TABLE.
 \end{function}
 
-\begin{function}{hash-table-values}{table}{cl-ext}{}
+\begin{function}{hash-table-values}{table}[cl-ext]
   Returns a list containing the values of hash table TABLE.
 \end{function}
 
-\begin{function}{ensure-gethash}{key hash-table \op default}{cl-ext}{}
+\begin{function}{ensure-gethash}{key hash-table \op default}[cl-ext]
   Like GETHASH, but if KEY is not found in the HASH-TABLE saves the DEFAULT
 under key before returning it. Secondary return value is true if key was
 already in the table.
 \end{function}
 
-\begin{function}{build-hash-table}{hash-spec inital-contents}{cl-ext}{}
+\begin{function}{build-hash-table}{hash-spec inital-contents}[cl-ext]
   Create a hash table containing ``INITAL-CONTENTS''.
 \end{function}
 
-\begin{macro}{deflookup-table}{name \key var reader writer rem-er at-redefinition documentation test initial-contents}{cl-ext}{}
+\begin{macro}{deflookup-table}{name \key var reader writer rem-er at-redefinition documentation test initial-contents}[cl-ext]
   Creates a hash table and the associated accessors.
 \end{macro}

@@ -1,46 +1,46 @@
 \chapter{External Environment}
 
-\begin{constant}{internal-time-units-per-second}{}{}{}
+\begin{constant}{internal-time-units-per-second}{}
   
 \end{constant}
 
-\begin{function}{apropos}{string-designator \op package external-only}{}{}
+\begin{function}{apropos}{string-designator \op package external-only}
   Briefly describe all symbols which contain the specified STRING.
   If PACKAGE is supplied then only describe symbols present in
   that package. If EXTERNAL-ONLY then only describe
   external symbols in the specified package.
 \end{function}
 
-\begin{function}{apropos-list}{string-designator \op package-designator external-only}{}{}
+\begin{function}{apropos-list}{string-designator \op package-designator external-only}
   Like APROPOS, except that it returns a list of the symbols found instead
   of describing them.
 \end{function}
 
-\begin{function}{decode-universal-time}{universal-time \op time-zone}{}{}
+\begin{function}{decode-universal-time}{universal-time \op time-zone}
   Converts a universal-time to decoded time format returning the following
    nine values: second, minute, hour, date, month, year, day of week (0 =
    Monday), T (daylight savings time) or NIL (standard time), and timezone.
    Completely ignores daylight-savings-time when time-zone is supplied.
 \end{function}
 
-\begin{function}{describe}{x \op stream-designator}{}{}
+\begin{function}{describe}{x \op stream-designator}
   Print a description of the object X.
 \end{function}
 
-\begin{function}{disassemble}{object \key stream use-labels}{}{}
+\begin{function}{disassemble}{object \key stream use-labels}
   Disassemble the compiled code associated with OBJECT, which can be a
   function, a lambda expression, or a symbol with a function definition. If
   it is not already compiled, the compiler is called to produce something to
   disassemble.
 \end{function}
 
-\begin{function}{dribble}{\op pathname \key if-exists}{}{}
+\begin{function}{dribble}{\op pathname \key if-exists}
   With a file name as an argument, dribble opens the file and sends a
   record of further I/O to that file. Without an argument, it closes
   the dribble file, and quits logging.
 \end{function}
 
-\begin{function}{ed}{\op x}{}{}
+\begin{function}{ed}{\op x}
   Starts the editor (on a file or a function if named).  Functions
 from the list *ED-FUNCTIONS* are called in order with X as an argument
 until one of them returns non-NIL; these functions are responsible for
@@ -48,63 +48,63 @@ signalling a FILE-ERROR to indicate failure to perform an operation on
 the file system.
 \end{function}
 
-\begin{function}{encode-universal-time}{second minute hour date month year \op time-zone}{}{}
+\begin{function}{encode-universal-time}{second minute hour date month year \op time-zone}
   The time values specified in decoded format are converted to
    universal time, which is returned.
 \end{function}
 
-\begin{function}{get-decoded-time}{}{}{}
+\begin{function}{get-decoded-time}{}
   Return nine values specifying the current time as follows:
    second, minute, hour, date, month, year, day of week (0 = Monday), T
    (daylight savings times) or NIL (standard time), and timezone.
 \end{function}
 
-\begin{function}{get-internal-real-time}{}{}{}
+\begin{function}{get-internal-real-time}{}
   Return the real time ("wallclock time") since startup in the internal
 time format. (See INTERNAL-TIME-UNITS-PER-SECOND.)
 \end{function}
 
-\begin{function}{get-internal-run-time}{}{}{}
+\begin{function}{get-internal-run-time}{}
   Return the run time used by the process in the internal time format. (See
 INTERNAL-TIME-UNITS-PER-SECOND.) This is useful for finding CPU usage.
 Includes both "system" and "user" time.
 \end{function}
 
-\begin{function}{get-universal-time}{}{}{}
+\begin{function}{get-universal-time}{}
   Return a single integer for the current time of day in universal time
 format.
 \end{function}
 
-\begin{function}{inspect}{object}{}{}
+\begin{function}{inspect}{object}
   
 \end{function}
 
-\begin{function}{lisp-implementation-type}{}{}{}
+\begin{function}{lisp-implementation-type}{}
   
 \end{function}
 
-\begin{function}{lisp-implementation-version}{}{}{}
+\begin{function}{lisp-implementation-version}{}
   
 \end{function}
 
-\begin{function}{long-site-name}{}{}{}
+\begin{function}{long-site-name}{}
   Return a string with the long form of the site name, or NIL if not known.
 \end{function}
 
-\begin{function}{machine-instance}{}{}{}
+\begin{function}{machine-instance}{}
   Return a string giving the name of the local machine.
 \end{function}
 
-\begin{function}{machine-type}{}{}{}
+\begin{function}{machine-type}{}
   Return a string describing the type of the local machine.
 \end{function}
 
-\begin{function}{machine-version}{}{}{}
+\begin{function}{machine-version}{}
   Return a string describing the version of the computer hardware we
 are running on, or NIL if we can't find any useful information.
 \end{function}
 
-\begin{function}{room}{\op verbosity}{}{}
+\begin{function}{room}{\op verbosity}
   Print to *STANDARD-OUTPUT* information about the state of internal
   storage and its management. The optional argument controls the
   verbosity of output. If it is T, ROOM prints out a maximal amount of
@@ -113,49 +113,49 @@ are running on, or NIL if we can't find any useful information.
   an intermediate amount of information.
 \end{function}
 
-\begin{function}{short-site-name}{}{}{}
+\begin{function}{short-site-name}{}
   Return a string with the abbreviated site name, or NIL if not known.
 \end{function}
 
-\begin{function}{sleep}{n}{}{}
+\begin{function}{sleep}{n}
   This function causes execution to be suspended for N seconds. N may
   be any non-negative, non-complex number.
 \end{function}
 
-\begin{function}{software-type}{}{}{}
+\begin{function}{software-type}{}
   Return a string describing the supporting software.
 \end{function}
 
-\begin{function}{software-version}{}{}{}
+\begin{function}{software-version}{}
   Return a string describing version of the supporting software, or NIL
   if not available.
 \end{function}
 
-\begin{function}{user-homedir-pathname}{\op host}{}{}
+\begin{function}{user-homedir-pathname}{\op host}
   Return the home directory of the user as a pathname. If the HOME
 environment variable has been specified, the directory it designates
 is returned; otherwise obtains the home directory from the operating
 system.
 \end{function}
 
-\begin{generic}{describe-object}{x stream}{}{}
+\begin{generic}{describe-object}{x stream}
   
 \end{generic}
 
-\begin{generic}{documentation}{slotd doc-type}{}{}
+\begin{generic}{documentation}{slotd doc-type}
   Return the documentation string of Doc-Type for X, or NIL if
   none exists. System doc-types are VARIABLE, FUNCTION, STRUCTURE, TYPE,
   SETF, and T.
 \end{generic}
 
-\begin{macro}{step}{form}{}{}
+\begin{macro}{step}{form}
   The form is evaluated with single stepping enabled. Function calls
 outside the lexical scope of the form can be stepped into only if the
 functions in question have been compiled with sufficient DEBUG policy
 to be at least partially steppable.
 \end{macro}
 
-\begin{macro}{time}{form}{}{}
+\begin{macro}{time}{form}
   Execute FORM and print timing information on *TRACE-OUTPUT*.
 
 On some hardware platforms estimated processor cycle counts are
@@ -173,7 +173,7 @@ even when the process is halted -- which is to say that cycles pass
 normally during operations like SLEEP.
 \end{macro}
 
-\begin{macro}{trace}{\rest specs}{}{}
+\begin{macro}{trace}{\rest specs}
   TRACE {Option Global-Value}* {Name {Option Value}*}*
 
 TRACE is a debugging tool that provides information when specified
@@ -264,69 +264,69 @@ SB-DEBUG:VAR and SB-DEBUG:ARG can be used. The -AFTER and -ALL forms
 are evaluated in the null environment.
 \end{macro}
 
-\begin{macro}{untrace}{\rest specs}{}{}
+\begin{macro}{untrace}{\rest specs}
   Remove tracing from the specified functions. Untraces all
 functions when called with no arguments.
 \end{macro}
 
-\begin{variable}{*}{\rest args}{}{}
+\begin{variable}{*}{\rest args}
   Return the product of its arguments. With no args, returns 1.
 \end{variable}
 
-\begin{variable}{**}{}{}{}
+\begin{variable}{**}{}
   
 \end{variable}
 
-\begin{variable}{***}{}{}{}
+\begin{variable}{***}{}
   
 \end{variable}
 
-\begin{variable}{+}{\rest args}{}{}
+\begin{variable}{+}{\rest args}
   Return the sum of its arguments. With no args, returns 0.
 \end{variable}
 
-\begin{variable}{++}{}{}{}
+\begin{variable}{++}{}
   
 \end{variable}
 
-\begin{variable}{+++}{}{}{}
+\begin{variable}{+++}{}
   
 \end{variable}
 
-\begin{variable}{-}{number \rest more-numbers}{}{}
+\begin{variable}{-}{number \rest more-numbers}
   Subtract the second and all subsequent arguments from the first;
   or with one argument, negate the first argument.
 \end{variable}
 
-\begin{variable}{/}{number \rest more-numbers}{}{}
+\begin{variable}{/}{number \rest more-numbers}
   Divide the first argument by each of the following arguments, in turn.
   With one argument, return reciprocal.
 \end{variable}
 
-\begin{variable}{//}{}{}{}
+\begin{variable}{//}{}
   
 \end{variable}
 
-\begin{variable}{///}{}{}{}
+\begin{variable}{///}{}
   
 \end{variable}
 
 \section{Extensions}
 \label{sec:extensions}
 
-\begin{function}{quit}{\op exit-code}{cl-ext}{}
+\begin{function}{quit}{\op exit-code}[cl-ext]
   
 \end{function}
 
-\begin{function}{getenv}{var}{cl-ext}{}
+\begin{function}{getenv}{var}[cl-ext]
   
 \end{function}
 
-\begin{function}{argv}{var}{cl-ext}{}
+\begin{function}{argv}{var}[cl-ext]
   
 \end{function}
 
-\begin{macro}{def-special-environment}{name \key \rest vars}{cl-ext}{}
+\begin{macro}{def-special-environment}{name \key \rest vars}[cl-ext]
   Define two macros for dealing with groups or related special variables.
 
 ACCESSOR is defined as a macro: (defmacro ACCESSOR (VARS \&rest
@@ -343,7 +343,7 @@ which is the concatenation of "WITH-" NAME. BINDER is built as
 "BIND-" and BINDER* is BINDER "*".
 \end{macro}
 
-\begin{function}{collect-timing}{lambda}{cl-ext}{}
+\begin{function}{collect-timing}{lambda}[cl-ext]
   Executes LAMBDA and returns a timing-info object specifying
   how long execution took and how much memory was used.
 

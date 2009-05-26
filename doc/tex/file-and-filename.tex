@@ -1,10 +1,10 @@
 \section{Files}
 
-\begin{function}{delete-file}{file}{}{}
+\begin{function}{delete-file}{file}
   Delete the specified FILE.
 \end{function}
 
-\begin{function}{directory}{pathname \key resolve-symlinks}{}{}
+\begin{function}{directory}{pathname \key resolve-symlinks}
   Return a list of PATHNAMEs, each the TRUENAME of a file that matched the
    given pathname. Note that the interaction between this ANSI-specified
    TRUENAMEing and the semantics of the Unix filesystem (symbolic links..)
@@ -13,40 +13,40 @@
    symbolic links in matching filenames.
 \end{function}
 
-\begin{function}{ensure-directories-exist}{pathspec \key verbose mode}{}{}
+\begin{function}{ensure-directories-exist}{pathspec \key verbose mode}
   Test whether the directories containing the specified file
   actually exist, and attempt to create them if they do not.
   The MODE argument is a CMUCL/SBCL-specific extension to control
   the Unix permission bits.
 \end{function}
 
-\begin{function}{file-author}{pathspec}{}{}
+\begin{function}{file-author}{pathspec}
   Return the author of the file specified by PATHSPEC. Signal an
 error of type FILE-ERROR if no such file exists, or if PATHSPEC
 is a wild pathname.
 \end{function}
 
-\begin{function}{file-error-pathname}{condition}{}{}
+\begin{function}{file-error-pathname}{condition}
   
 \end{function}
 
-\begin{function}{file-write-date}{pathspec}{}{}
+\begin{function}{file-write-date}{pathspec}
   Return the write date of the file specified by PATHSPEC.
 An error of type FILE-ERROR is signaled if no such file exists,
 or if PATHSPEC is a wild pathname.
 \end{function}
 
-\begin{function}{probe-file}{pathspec}{}{}
+\begin{function}{probe-file}{pathspec}
   Return the truename of PATHSPEC if the truename can be found,
 or NIL otherwise.  See TRUENAME for more information.
 \end{function}
 
-\begin{function}{rename-file}{file new-name}{}{}
+\begin{function}{rename-file}{file new-name}
   Rename FILE to have the specified NEW-NAME. If FILE is a stream open to a
   file, then the associated file is renamed.
 \end{function}
 
-\begin{function}{truename}{pathspec}{}{}
+\begin{function}{truename}{pathspec}
   If PATHSPEC is a pathname that names an existing file, return
 a pathname that denotes a canonicalized name for the file.  If
 pathspec is a stream associated with a file, return a pathname
@@ -64,110 +64,110 @@ broken symlink itself.
 
 \section{Filenames}
 
-\begin{accessor}{logical-pathname-translations}{host}{}{}
+\begin{accessor}{logical-pathname-translations}{host}
   Return the (logical) host object argument's list of translations.
 \end{accessor}
 
-\begin{function}{directory-namestring}{pathname}{}{}
+\begin{function}{directory-namestring}{pathname}
   Return a string representation of the directories used in the pathname.
 \end{function}
 
-\begin{function}{enough-namestring}{pathname \op defaults}{}{}
+\begin{function}{enough-namestring}{pathname \op defaults}
   Return an abbreviated pathname sufficent to identify the pathname relative
    to the defaults.
 \end{function}
 
-\begin{function}{file-namestring}{pathname}{}{}
+\begin{function}{file-namestring}{pathname}
   Return a string representation of the name used in the pathname.
 \end{function}
 
-\begin{function}{host-namestring}{pathname}{}{}
+\begin{function}{host-namestring}{pathname}
   Return a string representation of the name of the host in the pathname.
 \end{function}
 
-\begin{function}{load-logical-pathname-translations}{host}{}{}
+\begin{function}{load-logical-pathname-translations}{host}
   
 \end{function}
 
-\begin{function}{logical-pathname}{pathspec}{}{}
+\begin{function}{logical-pathname}{pathspec}
   Converts the pathspec argument to a logical-pathname and returns it.
 \end{function}
 
-\begin{function}{make-pathname}{\key host device directory name type version defaults case}{}{}
+\begin{function}{make-pathname}{\key host device directory name type version defaults case}
   Makes a new pathname from the component arguments. Note that host is
 a host-structure or string.
 \end{function}
 
-\begin{function}{merge-pathnames}{pathname \op defaults default-version}{}{}
+\begin{function}{merge-pathnames}{pathname \op defaults default-version}
   Construct a filled in pathname by completing the unspecified components
    from the defaults.
 \end{function}
 
-\begin{function}{namestring}{pathname}{}{}
+\begin{function}{namestring}{pathname}
   Construct the full (name)string form of the pathname.
 \end{function}
 
-\begin{function}{parse-namestring}{thing \op host defaults \key start end junk-allowed}{}{}
+\begin{function}{parse-namestring}{thing \op host defaults \key start end junk-allowed}
   
 \end{function}
 
-\begin{function}{pathname}{pathspec}{}{}
+\begin{function}{pathname}{pathspec}
   Convert PATHSPEC (a pathname designator) into a pathname.
 \end{function}
 
-\begin{function}{pathname-device}{pathname \key case}{}{}
+\begin{function}{pathname-device}{pathname \key case}
   Return PATHNAME's device.
 \end{function}
 
-\begin{function}{pathname-directory}{pathname \key case}{}{}
+\begin{function}{pathname-directory}{pathname \key case}
   Return PATHNAME's directory.
 \end{function}
 
-\begin{function}{pathname-host}{pathname \key case}{}{}
+\begin{function}{pathname-host}{pathname \key case}
   Return PATHNAME's host.
 \end{function}
 
-\begin{function}{pathname-match-p}{in-pathname in-wildname}{}{}
+\begin{function}{pathname-match-p}{in-pathname in-wildname}
   Pathname matches the wildname template?
 \end{function}
 
-\begin{function}{pathname-name}{pathname \key case}{}{}
+\begin{function}{pathname-name}{pathname \key case}
   Return PATHNAME's name.
 \end{function}
 
-\begin{function}{pathname-type}{pathname \key case}{}{}
+\begin{function}{pathname-type}{pathname \key case}
   Return PATHNAME's type.
 \end{function}
 
-\begin{function}{pathname-version}{pathname}{}{}
+\begin{function}{pathname-version}{pathname}
   Return PATHNAME's version.
 \end{function}
 
-\begin{function}{pathnamep}{object}{}{}
+\begin{function}{pathnamep}{object}
   
 \end{function}
 
-\begin{function}{translate-logical-pathname}{pathname \key}{}{}
+\begin{function}{translate-logical-pathname}{pathname \key}
   Translate PATHNAME to a physical pathname, which is returned.
 \end{function}
 
-\begin{function}{translate-pathname}{source from-wildname to-wildname \key}{}{}
+\begin{function}{translate-pathname}{source from-wildname to-wildname \key}
   Use the source pathname to translate the from-wildname's wild and
    unspecified elements into a completed to-pathname based on the to-wildname.
 \end{function}
 
-\begin{function}{wild-pathname-p}{pathname \op field-key}{}{}
+\begin{function}{wild-pathname-p}{pathname \op field-key}
   Predicate for determining whether pathname contains any wildcards.
 \end{function}
 
-\begin{class}{logical-pathname}{pathspec}{}{}
+\begin{class}{logical-pathname}{pathspec}
   Converts the pathspec argument to a logical-pathname and returns it.
 \end{class}
 
-\begin{class}{pathname}{pathspec}{}{}
+\begin{class}{pathname}{pathspec}
   Convert PATHSPEC (a pathname designator) into a pathname.
 \end{class}
 
-\begin{variable}{*default-pathname-defaults*}{}{}{}
+\begin{variable}{*default-pathname-defaults*}{}
   
 \end{variable}

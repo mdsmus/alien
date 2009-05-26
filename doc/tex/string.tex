@@ -1,152 +1,152 @@
 \chapter{Strings}
 
-\begin{function}{parse-integer}{string \key start end radix junk-allowed}{}{}
+\begin{function}{parse-integer}{string \key start end radix junk-allowed}
   Examine the substring of string delimited by start and end
   (default to the beginning and end of the string)  It skips over
   whitespace characters and then tries to parse an integer. The
   radix parameter must be between 2 and 36.
 \end{function}
 
-\begin{accessor}{char}{string index}{}{}
+\begin{accessor}{char}{string index}
   Given a string and a non-negative integer index less than the length of
   the string, returns the character object representing the character at
   that position in the string.
 \end{accessor}
 
-\begin{accessor}{schar}{string index}{}{}
+\begin{accessor}{schar}{string index}
   SCHAR returns the character object at an indexed position in a string
    just as CHAR does, except the string must be a simple-string.
 \end{accessor}
 
-\begin{function}{make-string}{count \key element-type (initial-element fill-char)}{}{}
+\begin{function}{make-string}{count \key element-type (initial-element fill-char)}
   Given a character count and an optional fill character, makes and returns a
 new string COUNT long filled with the fill character.
 \end{function}
 
-\begin{function}{nstring-capitalize}{string \key start end}{}{}
+\begin{function}{nstring-capitalize}{string \key start end}
   
 \end{function}
 
-\begin{function}{nstring-downcase}{string \key start end}{}{}
+\begin{function}{nstring-downcase}{string \key start end}
   
 \end{function}
 
-\begin{function}{nstring-upcase}{string \key start end}{}{}
+\begin{function}{nstring-upcase}{string \key start end}
   
 \end{function}
 
-\begin{function}{simple-string-p}{object}{}{}
+\begin{function}{simple-string-p}{object}
   Return true if OBJECT is a SIMPLE-STRING, and NIL otherwise.
 \end{function}
 
-\begin{function}{string}{x}{}{}
+\begin{function}{string}{x}
   Coerces X into a string. If X is a string, X is returned. If X is a
    symbol, X's pname is returned. If X is a character then a one element
    string containing that character is returned. If X cannot be coerced
    into a string, an error occurs.
 \end{function}
 
-\begin{function}{string-capitalize}{string \key start end}{}{}
+\begin{function}{string-capitalize}{string \key start end}
   
 \end{function}
 
-\begin{function}{string-downcase}{string \key start end}{}{}
+\begin{function}{string-downcase}{string \key start end}
   
 \end{function}
 
-\begin{function}{string-equal}{string1 string2 \key start1 end1 start2 end2}{}{}
+\begin{function}{string-equal}{string1 string2 \key start1 end1 start2 end2}
   Given two strings (string1 and string2), and optional integers start1,
   start2, end1 and end2, compares characters in string1 to characters in
   string2 (using char-equal).
 \end{function}
 
-\begin{function}{string-greaterp}{string1 string2 \key start1 end1 start2 end2}{}{}
+\begin{function}{string-greaterp}{string1 string2 \key start1 end1 start2 end2}
   Given two strings, if the first string is lexicographically greater than
   the second string, returns the longest common prefix (using char-equal)
   of the two strings. Otherwise, returns ().
 \end{function}
 
-\begin{function}{string-left-trim}{char-bag string}{}{}
+\begin{function}{string-left-trim}{char-bag string}
   
 \end{function}
 
-\begin{function}{string-lessp}{string1 string2 \key start1 end1 start2 end2}{}{}
+\begin{function}{string-lessp}{string1 string2 \key start1 end1 start2 end2}
   Given two strings, if the first string is lexicographically less than
   the second string, returns the longest common prefix (using char-equal)
   of the two strings. Otherwise, returns ().
 \end{function}
 
-\begin{function}{string-not-equal}{string1 string2 \key start1 end1 start2 end2}{}{}
+\begin{function}{string-not-equal}{string1 string2 \key start1 end1 start2 end2}
   Given two strings, if the first string is not lexicographically equal
   to the second string, returns the longest common prefix (using char-equal)
   of the two strings. Otherwise, returns ().
 \end{function}
 
-\begin{function}{string-not-greaterp}{string1 string2 \key start1 end1 start2 end2}{}{}
+\begin{function}{string-not-greaterp}{string1 string2 \key start1 end1 start2 end2}
   Given two strings, if the first string is lexicographically less than
   or equal to the second string, returns the longest common prefix
   (using char-equal) of the two strings. Otherwise, returns ().
 \end{function}
 
-\begin{function}{string-not-lessp}{string1 string2 \key start1 end1 start2 end2}{}{}
+\begin{function}{string-not-lessp}{string1 string2 \key start1 end1 start2 end2}
   Given two strings, if the first string is lexicographically greater
   than or equal to the second string, returns the longest common prefix
   (using char-equal) of the two strings. Otherwise, returns ().
 \end{function}
 
-\begin{function}{string-right-trim}{char-bag string}{}{}
+\begin{function}{string-right-trim}{char-bag string}
   
 \end{function}
 
-\begin{function}{string-trim}{char-bag string}{}{}
+\begin{function}{string-trim}{char-bag string}
   
 \end{function}
 
-\begin{function}{string-upcase}{string \key start end}{}{}
+\begin{function}{string-upcase}{string \key start end}
   
 \end{function}
 
-\begin{function}{string/=}{string1 string2 \key start1 end1 start2 end2}{}{}
+\begin{function}{string/=}{string1 string2 \key start1 end1 start2 end2}
   Given two strings, if the first string is not lexicographically equal
   to the second string, returns the longest common prefix (using char=)
   of the two strings. Otherwise, returns ().
 \end{function}
 
-\begin{function}{string<}{string1 string2 \key start1 end1 start2 end2}{}{}
+\begin{function}{string<}{string1 string2 \key start1 end1 start2 end2}
   Given two strings, if the first string is lexicographically less than
   the second string, returns the longest common prefix (using char=)
   of the two strings. Otherwise, returns ().
 \end{function}
 
-\begin{function}{string<=}{string1 string2 \key start1 end1 start2 end2}{}{}
+\begin{function}{string<=}{string1 string2 \key start1 end1 start2 end2}
   Given two strings, if the first string is lexicographically less than
   or equal to the second string, returns the longest common prefix
   (using char=) of the two strings. Otherwise, returns ().
 \end{function}
 
-\begin{function}{string=}{string1 string2 \key start1 end1 start2 end2}{}{}
+\begin{function}{string=}{string1 string2 \key start1 end1 start2 end2}
   Given two strings (string1 and string2), and optional integers start1,
   start2, end1 and end2, compares characters in string1 to characters in
   string2 (using char=).
 \end{function}
 
-\begin{function}{string>}{string1 string2 \key start1 end1 start2 end2}{}{}
+\begin{function}{string>}{string1 string2 \key start1 end1 start2 end2}
   Given two strings, if the first string is lexicographically greater than
   the second string, returns the longest common prefix (using char=)
   of the two strings. Otherwise, returns ().
 \end{function}
 
-\begin{function}{string>=}{string1 string2 \key start1 end1 start2 end2}{}{}
+\begin{function}{string>=}{string1 string2 \key start1 end1 start2 end2}
   Given two strings, if the first string is lexicographically greater
   than or equal to the second string, returns the longest common prefix
   (using char=) of the two strings. Otherwise, returns ().
 \end{function}
 
-\begin{function}{stringp}{object}{}{}
+\begin{function}{stringp}{object}
   Return true if OBJECT is a STRING, and NIL otherwise.
 \end{function}
 
-\begin{class}{string}{x}{}{}
+\begin{class}{string}{x}
   Coerces X into a string. If X is a string, X is returned. If X is a
    symbol, X's pname is returned. If X is a character then a one element
    string containing that character is returned. If X cannot be coerced
@@ -156,60 +156,60 @@ new string COUNT long filled with the fill character.
 \section{String extensions}
 \label{sec:string-extensions}
 
-\begin{function}{parse-float}{float-string \key start end radix junk-allowed type decimal-character}{cl-ext}{}
+\begin{function}{parse-float}{float-string \key start end radix junk-allowed type decimal-character}[cl-ext]
 \end{function}
 
-\begin{type}{string-designator}{}{cl-ext}{}
+\begin{type}{string-designator}{}[cl-ext]
   A string designator type. A string designator is either a string, a
   symbol, or a character.
 \end{type}
 
-\begin{constant}{+lower-case-ascii-alphabet+}{}{cl-ext}{}
+\begin{constant}{+lower-case-ascii-alphabet+}{}[cl-ext]
   All the lower case letters in 7 bit ASCII.
 \end{constant}
 
-\begin{constant}{+upper-case-ascii-alphabet+}{}{cl-ext}{}
+\begin{constant}{+upper-case-ascii-alphabet+}{}[cl-ext]
   All the upper case letters in 7 bit ASCII.
 \end{constant}
 
-\begin{constant}{+alphanumeric-ascii-alphabet+}{}{cl-ext}{}
+\begin{constant}{+alphanumeric-ascii-alphabet+}{}[cl-ext]
   All the letters and numbers in 7 bit ASCII.
 \end{constant}
 
-\begin{constant}{+ascii-alphabet+}{}{cl-ext}{}
+\begin{constant}{+ascii-alphabet+}{}[cl-ext]
   All letters in 7 bit ASCII.
 \end{constant}
 
-\begin{constant}{+base64-alphabet+}{}{cl-ext}{}
+\begin{constant}{+base64-alphabet+}{}[cl-ext]
   All the characters allowed in base64 encoding.
 \end{constant}
 
-\begin{function}{random-string}{\op length alphabet}{cl-ext}{}
+\begin{function}{random-string}{\op length alphabet}[cl-ext]
   Returns a random alphabetic string. The returned string will contain
   LENGTH characters chosen from the vector ALPHABET.
 \end{function}
 
-\begin{function}{strcat}{\rest items}{cl-ext}{}
+\begin{function}{strcat}{\rest items}[cl-ext]
   Returns a fresh string consisting of ITEMS concat'd together.
 \end{function}
 
-\begin{function}{strcat*}{string-designators}{cl-ext}{}
+\begin{function}{strcat*}{string-designators}[cl-ext]
   Concatenate all the strings in STRING-DESIGNATORS.
 \end{function}
 
-\begin{function}{join-strings}{list}{cl-ext}{}
+\begin{function}{join-strings}{list}[cl-ext]
   Concatenate strings.
 \end{function}
 
-\begin{function}{fold-strings}{}{cl-ext}{}
+\begin{function}{fold-strings}{}[cl-ext]
   
 \end{function}
 
-\begin{function}{octets-to-string}{octets encoding}{cl-ext}{}
+\begin{function}{octets-to-string}{octets encoding}[cl-ext]
   
 \end{function}
 
-\begin{function}{string-to-octets}{string encoding}{cl-ext}{}
+\begin{function}{string-to-octets}{string encoding}[cl-ext]
   Convert STRING, a list string, a vector of bytes according to ENCODING.
 
 ENCODING is a keyword representing the desired character
@@ -222,7 +222,7 @@ On CLISP we intern the ENCODING symbol in the CHARSET package and
 pass that. On SBCL we simply pass the keyword.
 \end{function}
 
-\begin{function}{encoding-keyword-to-native}{encoding}{cl-ext}{}
+\begin{function}{encoding-keyword-to-native}{encoding}[cl-ext]
   Convert ENCODING, a keyword, to an object the native list
 accepts as an encoding.
 
@@ -231,23 +231,23 @@ corresponding encodings. Any other keyword is passed, as is, to
 the underlying lisp.
 \end{function}
 
-\begin{function}{string-from-array}{array \key start end}{cl-ext}{}
+\begin{function}{string-from-array}{array \key start end}[cl-ext]
   Assuming ARRAY is an array of ASCII chars encoded as bytes return
 the corresponding string. Respect the C convention of null terminating
 strings. START and END specify the zero indexed offsets of a sub range
 of ARRAY.
 \end{function}
 
-\begin{function}{empty-string-p}{string}{cl-ext}{}
+\begin{function}{empty-string-p}{string}[cl-ext]
   Indicates, if a given string is empty (or being nil)
 \end{function}
 
-\begin{function}{split-tabs}{string}{cl-ext}{}
+\begin{function}{split-tabs}{string}[cl-ext]
   Utility function to split a string by tabs and remove empty
   subsequences.
 \end{function}
 
-\begin{function}{split-newline}{string}{cl-ext}{}
+\begin{function}{split-newline}{string}[cl-ext]
   Utility function to split a string by newlines and remove empty
   subsequences.
 \end{function}

@@ -1,6 +1,6 @@
 \chapter{Iteration}
 
-\begin{macro}{do}{varlist endlist \body body}{}{}
+\begin{macro}{do}{varlist endlist \body body}
   DO ({(Var [Init] [Step])}*) (Test Exit-Form*) Declaration* Form*
   Iteration construct. Each Var is initialized in parallel to the value of the
   specified Init form. On subsequent iterations, the Vars are assigned the
@@ -11,7 +11,7 @@
   used as an alternate exit mechanism.
 \end{macro}
 
-\begin{macro}{do*}{varlist endlist \body body}{}{}
+\begin{macro}{do*}{varlist endlist \body body}
   DO* ({(Var [Init] [Step])}*) (Test Exit-Form*) Declaration* Form*
   Iteration construct. Each Var is initialized sequentially (like LET*) to the
   value of the specified Init form. On subsequent iterations, the Vars are
@@ -22,15 +22,15 @@
   allowing RETURN to be used as an laternate exit mechanism.
 \end{macro}
 
-\begin{macro}{dolist}{var \body body \env env}{}{}
+\begin{macro}{dolist}{var \body body \env env}
   
 \end{macro}
 
-\begin{macro}{dotimes}{var \body body}{}{}
+\begin{macro}{dotimes}{var \body body}
   
 \end{macro}
 
-\begin{macro}{loop}{\env env \rest keywords-and-forms}{}{}
+\begin{macro}{loop}{\env env \rest keywords-and-forms}
   
 \end{macro}
 

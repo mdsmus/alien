@@ -1,11 +1,11 @@
 
 \chapter{Structures}
 
-\begin{function}{copy-structure}{structure}{}{}
+\begin{function}{copy-structure}{structure}
   Return a copy of STRUCTURE with the same (EQL) slot values.
 \end{function}
 
-\begin{macro}{defstruct}{name-and-options \rest slot-descriptions}{}{}
+\begin{macro}{defstruct}{name-and-options \rest slot-descriptions}
   DEFSTRUCT {Name | (Name Option*)} {Slot | (Slot [Default] {Key Value}*)}
    Define the structure type Name. Instances are created by MAKE-<name>,
    which takes \&KEY arguments allowing initial slot values to the specified.

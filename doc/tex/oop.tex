@@ -1,103 +1,103 @@
 \chapter{Object oriented programming}
 
-\begin{accessor}{find-class}{symbol \op errorp environment}{}{}
+\begin{accessor}{find-class}{symbol \op errorp environment}
   
 \end{accessor}
 
-\begin{function}{class-of}{x}{}{}
+\begin{function}{class-of}{x}
   
 \end{function}
 
-\begin{function}{ensure-generic-function}{fun-name \rest all-keys \key environment source-location \akeys}{}{}
+\begin{function}{ensure-generic-function}{fun-name \rest all-keys \key environment source-location \akeys}
   
 \end{function}
 
-\begin{function}{make-load-form-saving-slots}{object \key slot-names environment}{}{}
+\begin{function}{make-load-form-saving-slots}{object \key slot-names environment}
   
 \end{function}
 
-\begin{function}{slot-boundp}{object slot-name}{}{}
+\begin{function}{slot-boundp}{object slot-name}
   
 \end{function}
 
-\begin{function}{slot-exists-p}{object slot-name}{}{}
+\begin{function}{slot-exists-p}{object slot-name}
   
 \end{function}
 
-\begin{function}{slot-makunbound}{object slot-name}{}{}
+\begin{function}{slot-makunbound}{object slot-name}
   
 \end{function}
 
-\begin{function}{slot-value}{object slot-name}{}{}
+\begin{function}{slot-value}{object slot-name}
   
 \end{function}
 
-\begin{function}{unbound-slot-instance}{condition}{}{}
+\begin{function}{unbound-slot-instance}{condition}
   
 \end{function}
 
-\begin{generic}{add-method}{generic-function method}{}{}
+\begin{generic}{add-method}{generic-function method}
   
 \end{generic}
 
-\begin{generic}{allocate-instance}{class \rest initargs}{}{}
+\begin{generic}{allocate-instance}{class \rest initargs}
   
 \end{generic}
 
-\begin{generic}{change-class}{instance new-class-name \rest initargs \akeys}{}{}
+\begin{generic}{change-class}{instance new-class-name \rest initargs \akeys}
   
 \end{generic}
 
-\begin{generic}{class-name}{class}{}{}
+\begin{generic}{class-name}{class}
   
 \end{generic}
 
-\begin{generic}{compute-applicable-methods}{generic-function arguments}{}{}
+\begin{generic}{compute-applicable-methods}{generic-function arguments}
   
 \end{generic}
 
-\begin{generic}{find-method}{generic-function qualifiers specializers \op errorp}{}{}
+\begin{generic}{find-method}{generic-function qualifiers specializers \op errorp}
   
 \end{generic}
 
-\begin{generic}{function-keywords}{method}{}{}
+\begin{generic}{function-keywords}{method}
   
 \end{generic}
 
-\begin{generic}{initialize-instance}{gf \key lambda-list argument-precedence-order \akeys}{}{}
+\begin{generic}{initialize-instance}{gf \key lambda-list argument-precedence-order \akeys}
   
 \end{generic}
 
-\begin{generic}{make-instance}{class \rest initargs \akeys}{}{}
+\begin{generic}{make-instance}{class \rest initargs \akeys}
   
 \end{generic}
 
-\begin{generic}{make-instances-obsolete}{class}{}{}
+\begin{generic}{make-instances-obsolete}{class}
   
 \end{generic}
 
-\begin{generic}{make-load-form}{object \op environment}{}{}
+\begin{generic}{make-load-form}{object \op environment}
   
 \end{generic}
 
-\begin{generic}{method-qualifiers}{m}{}{}
+\begin{generic}{method-qualifiers}{m}
   
 \end{generic}
 
-\begin{generic}{no-applicable-method}{generic-function \rest args}{}{}
+\begin{generic}{no-applicable-method}{generic-function \rest args}
   
 \end{generic}
 
-\begin{generic}{no-next-method}{generic-function method \rest args}{}{}
+\begin{generic}{no-next-method}{generic-function method \rest args}
   
 \end{generic}
 
 \begin{generic}{reinitialize-instance}{gf \rest args \key direct-superclasses lambda-list argument-precedence-order
- \akeys}{}{}
+ \akeys}
   
 \end{generic}
 
-\begin{generic}{remove-method}{generic-function method}{}{}
+\begin{generic}{remove-method}{generic-function method}
   
 \end{generic}
 
@@ -105,47 +105,47 @@
  declarations argument-precedence-order lambda-list name slot-definition
  slot-name definition-source direct-default-initargs direct-slots
  direct-superclasses force type protocol allocation allocation-class qualifiers
- specializers function (method-cell method-cell) \akeys}{}{}
+ specializers function (method-cell method-cell) \akeys}
   
 \end{generic}
 
-\begin{generic}{slot-missing}{class instance slot-name operation \op new-value}{}{}
+\begin{generic}{slot-missing}{class instance slot-name operation \op new-value}
   
 \end{generic}
 
-\begin{generic}{slot-unbound}{class instance slot-name}{}{}
+\begin{generic}{slot-unbound}{class instance slot-name}
   
 \end{generic}
 
-\begin{generic}{update-instance-for-different-class}{previous current \rest initargs}{}{}
+\begin{generic}{update-instance-for-different-class}{previous current \rest initargs}
   
 \end{generic}
 
-\begin{generic}{update-instance-for-redefined-class}{instance added-slots discarded-slots property-list \rest initargs}{}{}
+\begin{generic}{update-instance-for-redefined-class}{instance added-slots discarded-slots property-list \rest initargs}
   
 \end{generic}
 
-\begin{macro}{defclass}{\env env name direct-superclasses direct-slots \rest options}{}{}
+\begin{macro}{defclass}{\env env name direct-superclasses direct-slots \rest options}
   
 \end{macro}
 
-\begin{macro}{defgeneric}{fun-name lambda-list \body options}{}{}
+\begin{macro}{defgeneric}{fun-name lambda-list \body options}
   
 \end{macro}
 
-\begin{macro}{define-method-combination}{\whole form \rest args}{}{}
+\begin{macro}{define-method-combination}{\whole form \rest args}
   
 \end{macro}
 
-\begin{macro}{defmethod}{\rest args}{}{}
+\begin{macro}{defmethod}{\rest args}
   
 \end{macro}
 
-\begin{macro}{with-accessors}{slots instance \body body}{}{}
+\begin{macro}{with-accessors}{slots instance \body body}
   
 \end{macro}
 
-\begin{macro}{with-slots}{slots instance \body body}{}{}
+\begin{macro}{with-slots}{slots instance \body body}
   
 \end{macro}
 
@@ -153,101 +153,101 @@
 
 \section{Types and Classes}
 
-\begin{function}{upgraded-complex-part-type}{spec \op environment}{}{}
+\begin{function}{upgraded-complex-part-type}{spec \op environment}
   Return the element type of the most specialized COMPLEX number type that
    can hold parts of type SPEC.
 \end{function}
 
-\begin{class}{standard-object}{}{}{}
+\begin{class}{standard-object}{}
   
 \end{class}
 
-\begin{class}{structure-object}{}{}{}
+\begin{class}{structure-object}{}
   
 \end{class}
 
-\begin{function}{coerce}{object output-type-spec}{}{}
+\begin{function}{coerce}{object output-type-spec}
   Coerce the Object to an object of type Output-Type-Spec.
 \end{function}
 
-\begin{function}{subtypep}{type1 type2 \op environment}{}{}
+\begin{function}{subtypep}{type1 type2 \op environment}
   Return two values indicating the relationship between type1 and type2.
   If values are T and T, type1 definitely is a subtype of type2.
   If values are NIL and T, type1 definitely is not a subtype of type2.
   If values are NIL and NIL, it couldn't be determined.
 \end{function}
 
-\begin{function}{type-error-datum}{condition}{}{}
+\begin{function}{type-error-datum}{condition}
   
 \end{function}
 
-\begin{function}{type-error-expected-type}{condition}{}{}
+\begin{function}{type-error-expected-type}{condition}
   
 \end{function}
 
-\begin{function}{type-of}{object}{}{}
+\begin{function}{type-of}{object}
   Return the type of OBJECT.
 \end{function}
 
-\begin{function}{typep}{object type \op environment}{}{}
+\begin{function}{typep}{object type \op environment}
   Is OBJECT of type TYPE?
 \end{function}
 
-\begin{macro}{deftype}{name lambda-list \body body}{}{}
+\begin{macro}{deftype}{name lambda-list \body body}
   Define a new type, with syntax like DEFMACRO.
 \end{macro}
 
-\begin{class}{built-in-class}{}{}{}
+\begin{class}{built-in-class}{}
   
 \end{class}
 
-\begin{class}{class}{}{}{}
+\begin{class}{class}{}
   
 \end{class}
 
-\begin{class}{function}{thing}{}{}
+\begin{class}{function}{thing}
   FUNCTION name
 
 Return the lexically apparent definition of the function NAME. NAME may also
 be a lambda expression.
 \end{class}
 
-\begin{class}{generic-function}{}{}{}
+\begin{class}{generic-function}{}
   
 \end{class}
 
-\begin{class}{method}{}{}{}
+\begin{class}{method}{}
   
 \end{class}
 
-\begin{class}{method-combination}{}{}{}
+\begin{class}{method-combination}{}
   
 \end{class}
 
-\begin{class}{standard-class}{}{}{}
+\begin{class}{standard-class}{}
   
 \end{class}
 
-\begin{class}{standard-generic-function}{}{}{}
+\begin{class}{standard-generic-function}{}
   
 \end{class}
 
-\begin{class}{standard-method}{}{}{}
+\begin{class}{standard-method}{}
   
 \end{class}
 
-\begin{class}{structure-class}{}{}{}
+\begin{class}{structure-class}{}
   
 \end{class}
 
-\begin{class}{t}{}{}{}
+\begin{class}{t}{}
   
 \end{class}
 
 \section{Extensions}
 \label{sec:extensions}
 
-\begin{macro}{defclass-struct}{name-and-options supers \rest slots}{cl-ext}{}
+\begin{macro}{defclass-struct}{name-and-options supers \rest slots}[cl-ext]
   DEFCLASS with a DEFSTRUCT api.
 
 NAME-AND-OPTIONS:
@@ -265,7 +265,7 @@ SLOTS - a list of slot forms:
   ( name [ init-arg ] [ slot-options* ] )
 \end{macro}
 
-\begin{macro}{defprint-object}{self \body body}{cl-ext}{}
+\begin{macro}{defprint-object}{self \body body}[cl-ext]
   Define a print-object method using print-unreadable-object.
   An example:
   (defprint-object (self parenscript-dispatcher)
@@ -275,12 +275,12 @@ SLOTS - a list of slot forms:
     (princ (parenscript-file self)))
 \end{macro}
 
-\begin{macro}{with-accessors*}{accessor-names object \body body}{}{}
+\begin{macro}{with-accessors*}{accessor-names object \body body}
   Just like WITH-ACCESSORS, but if the slot-entry is a symbol assume
   the variable and accessor name are the same.
 \end{macro}
 
-\begin{function}{class-name-of}{obj}{cl-ext}{}
+\begin{function}{class-name-of}{obj}[cl-ext]
   
 \end{function}
 

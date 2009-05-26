@@ -245,11 +245,6 @@
   \end{block}
 }
 
-% \newenvironment{function}[4]{
-%   %% name, args, module, packagename, short-label, longname, plural
-%   \makeStartEnv{#1}{#2}{#3}{#4}{fun}{function}{Functions}}
-% {\makeEndEnv}
-
 \newenvironmentx{function}[4][1,4]{
   %% name, args, module, [alternate label]
   %% short-label, longname, plural
@@ -257,35 +252,35 @@
 {\makeEndEnv}
 
 \newenvironmentx{class}[4][1,4]{
-  \makeStartEnv{#2}{#3}{#4}{}{class}{class}{Classes}}
+  \makeStartEnv{#2}{#3}{#4}{#1}{class}{class}{Classes}}
 {\makeEndEnv}
 
 \newenvironmentx{constant}[4][1,4]{
-  \makeStartEnv{#2}{#3}{#4}{}{const}{constant}{Constants}}
+  \makeStartEnv{#2}{#3}{#4}{#1}{const}{constant}{Constants}}
 {\makeEndEnv}
 
 \newenvironmentx{variable}[4][1,4]{
-  \makeStartEnv{#2}{#3}{#4}{}{var}{variable}{Variables}}
+  \makeStartEnv{#2}{#3}{#4}{#1}{var}{variable}{Variables}}
 {\makeEndEnv}
 
 \newenvironmentx{specialop}[4][1,4]{
-  \makeStartEnv{#2}{#3}{#4}{}{specialop}{special operator}{Special Operators}}
+  \makeStartEnv{#2}{#3}{#4}{#1}{specialop}{special operator}{Special Operators}}
 {\makeEndEnv}
 
 \newenvironmentx{generic}[4][1,4]{
-  \makeStartEnv{#2}{#3}{#4}{}{genfun}{generic functions}{Generic Functions}}
+  \makeStartEnv{#2}{#3}{#4}{#1}{genfun}{generic functions}{Generic Functions}}
 {\makeEndEnv}
 
 \newenvironmentx{accessor}[4][1,4]{
-  \makeStartEnv{#2}{#3}{#4}{}{acc}{accessor}{Accessors}}
+  \makeStartEnv{#2}{#3}{#4}{#1}{acc}{accessor}{Accessors}}
 {\makeEndEnv}
 
 \newenvironmentx{macro}[4][1,4]{
-  \makeStartEnv{#2}{#3}{#4}{}{mac}{macro}{Macros}}
+  \makeStartEnv{#2}{#3}{#4}{#1}{mac}{macro}{Macros}}
 {\makeEndEnv}
 
 \newenvironmentx{type}[4][1,4]{
-  \makeStartEnv{#2}{#3}{#4}{}{type}{type}{Types}}
+  \makeStartEnv{#2}{#3}{#4}{#1}{type}{type}{Types}}
 {\makeEndEnv}
 
 \lstnewenvironment{lisp}
