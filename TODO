@@ -1,5 +1,6 @@
 ; -*- org -*-
 
+* make function concat that works with strigs, lists, vectors, etc
 * http://www.cliki.net/Common Lisp Utilities
 * checkout
 
