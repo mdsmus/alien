@@ -1,5 +1,5 @@
 NAME = cl-dist-manual
-TEXSRCS = $(wildcard tex/*.tex)
+TEXSRCS = $(wildcard cha*.tex)
 LISPSRC =  $(wildcard lisp/*.lisp)
 OTHER +=  $(patsubst %.lisp,%.tex,$(notdir $(wildcard lisp/*.lisp)))
 USE_PDFLATEX = 1
