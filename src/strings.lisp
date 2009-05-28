@@ -51,11 +51,11 @@ the vector ALPHABET.
 
 ;;; A "faster" version for string concatenating.
 ;;; Could use just (apply #'concatenate 'string list), but that's quite slow
-(defun join-strings (list)
-  (let* ((length (reduce #'+ list :key #'length))
+(defun join-strings (&rest strings)
+  (let* ((length (reduce #'+ strings :key #'length))
          (result (make-string length)))
     (loop
-       for string in list
+       for string in strings
        for start = 0 then end
        for end = (+ start (length string))
        while string
