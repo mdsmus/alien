@@ -149,15 +149,20 @@
 
 \newenvironment{header}{}{}
 
-\newcommand{\strong}[1]{{\bf #1}}
-\newcommand{\code}[1]{\texttt{#1}}
-\newcommand{\bfcode}[1]{\code{\bfseries#1}}
-\newcommand{\samp}[1]{`\code{#1}'}
-\newcommand{\email}[1]{\textsf{#1}}
-
+%% typesetting styles
 \newcommand{\var}[1]{\texttt{#1}}
-\newcommand{\fun}[1]{\textbf{\hyperref[fun:#1]{#1}}}
-\newcommand{\args}[1]{\textit{#1}}
+%\newcommand{\fun}[1]{\textbf{#1}}
+
+%% typesetting styles with cross-reference
+\newcommand{\varr}[1]{\texttt{\hyperref[var:#1]{#1}}}
+\newcommand{\typer}[1]{\texttt{\hyperref[type:#1]{#1}}}
+\newcommand{\funr}[1]{\textbf{\hyperref[fun:#1]{#1}}}
+\newcommand{\classr}[1]{\textbf{\hyperref[class:#1]{#1}}}
+\newcommand{\consr}[1]{\textbf{\hyperref[cons:#1]{#1}}}
+\newcommand{\genfunr}[1]{\textbf{\hyperref[genfun:#1]{#1}}}
+\newcommand{\accr}[1]{\textbf{\hyperref[acc:#1]{#1}}}
+\newcommand{\macr}[1]{\textbf{\hyperref[mac:#1]{#1}}}
+
 \newcommand{\funmark}[1]{\textsf{\hfill[#1]}}
 
 \newenvironment{block}
@@ -224,14 +229,11 @@
   \ifthenelse{\equal{#4}{}}{\label{#5:#1}}{\label{#5:#4}}
   % basic index, without module name
   \index{#6!#1}
-  \ifthenelse{\equal{#3}{}}
-  {}
-  {\ifthenelse{\equal{#4}{}}{\label{#3:#1}}{\label{#3:#4}}}
 }
 
 \newcommand{\fundef}[4]{
   %% name, args, packagename, fun-type
-  \ifthenelse{\equal{#3}{cl-ext}}{\textbf{\underline{#1}}}{\textbf{#1}}\hspace{2ex}\args{#2}\funmark{#4}
+  \ifthenelse{\equal{#3}{cl-ext}}{\textbf{\underline{#1}}}{\textbf{#1}}\hspace{2ex}\textit{#2}\funmark{#4}
 }
 
 \newcommand{\makeStartEnv}[7]{
