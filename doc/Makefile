@@ -5,10 +5,11 @@ OTHER +=  $(patsubst %.lisp,%.tex,$(notdir $(wildcard lisp/*.lisp)))
 USE_PDFLATEX = 1
 clean_ext = .4ct .4tc .aux .css .dvi .html .idv .lg .log .out .tmp .xref .bbl .blg .idx
 CLEAN_FILES +=  $(foreach ext, $(clean_ext), $(addsuffix $(ext), $(NAME)))
+CLEAN_FILES +=  $(wildcard lisp-color/*.tex)
 
 vpath %.sty config
 vpath %.lisp lisp
-vpath %.lisp-color lisp-color
+vpath %.tex examples-color
 
 pdf: $(OTHER) lisp.sty
 
