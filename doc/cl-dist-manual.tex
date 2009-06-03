@@ -2288,6 +2288,14 @@ provided plist.
   
 \end{macro}
 
+\begin{macro}{remf-keywords}{place \rest keywords \env env}[cl-ext]
+  Creates a copy of PLIST without the properties identified by KEYWORDS.
+\end{macro}
+
+\begin{function}{remove-keywords}{plist \rest keywords}[cl-ext]
+  Creates a copy of PLIST without the listed KEYWORDS.
+\end{function}
+
 \begin{function}{plist-to-alist}{plist}[cl-ext]
   Returns an association list containing the same keys and values as the
 property list PLIST in the same order.
@@ -2384,341 +2392,102 @@ In other words, returns the product of LIST and MORE-LISTS using FUNCTION.
 \chapter{Sequences}
 \label{cha:sequences}
 
+\begin{type}{proper-sequence}{}[cl-ext]
+  
+\end{type}
+
+\section{Predicates}
+\label{sec:sequence-predicates}
+
+\begin{function}{emptyp}{sequence}[cl-ext]
+  Returns true if SEQUENCE is an empty sequence. Signals an error if
+  SEQUENCE is not a sequence
+\end{function}
+
+\begin{function}{every}{pred first-seq \rest more-seqs}
+  Apply PREDICATE to the 0-indexed elements of the sequences, then
+  possibly to those with index 1, and so on. Return NIL as soon
+  as any invocation of PREDICATE returns NIL, or T if every invocation
+  is non-NIL.
+\end{function}
+
+\begin{function}{some}{pred first-seq \rest more-seqs}
+  Apply PREDICATE to the 0-indexed elements of the sequences, then
+  possibly to those with index 1, and so on. Return the first
+  non-NIL value encountered, or NIL if the end of any sequence is reached.
+\end{function}
+
+\begin{function}{notany}{pred first-seq \rest more-seqs}
+  Apply PREDICATE to the 0-indexed elements of the sequences, then
+  possibly to those with index 1, and so on. Return NIL as soon
+  as any invocation of PREDICATE returns a non-NIL value, or T if the end
+  of any sequence is reached.
+\end{function}
+
+\begin{function}{notevery}{pred first-seq \rest more-seqs}
+  Apply PREDICATE to 0-indexed elements of the sequences, then
+  possibly to those with index 1, and so on. Return T as soon
+  as any invocation of PREDICATE returns NIL, or NIL if every invocation
+  is non-NIL.
+\end{function}
+
+\begin{function}{mismatch}{sequence1 sequence2 \rest args \key from-end test test-not start1 end1 start2
+    end2 key}
+  The specified subsequences of SEQUENCE1 and SEQUENCE2 are compared
+  element-wise. If they are of equal length and match in every element, the
+  result is NIL. Otherwise, the result is a non-negative integer, the index
+  within SEQUENCE1 of the leftmost position at which they fail to match; or,
+  if one is shorter than and a matching prefix of the other, the index within
+  SEQUENCE1 beyond the last position tested is returned. If a non-NIL
+  :FROM-END argument is given, then one plus the index of the rightmost
+  position in which the sequences differ is returned.
+\end{function}
+
+\section{Simple sequence functions}
+\label{sec:simple-sequ-funct}
+
 \begin{accessor}{elt}{sequence index}
   Return the element of SEQUENCE specified by INDEX.
 \end{accessor}
 
+\begin{function}{first-elt}{sequence}[cl-ext]
+  Returns the first element of SEQUENCE. Signals a type-error if SEQUENCE is
+  not a sequence, or is an empty sequence.
+\end{function}
+
+\begin{function}{last-elt}{sequence}[cl-ext]
+  Returns the last element of SEQUENCE. Signals a type-error if SEQUENCE is
+  not a proper sequence, or is an empty sequence.
+\end{function}
+
+\begin{function}{random-elt}{sequence \key start end}[cl-ext]
+  Returns a random element from SEQUENCE bounded by START and END.
+  Signals an error if the SEQUENCE is not a proper sequence.
+\end{function}
+
 \begin{accessor}{subseq}{sequence start \op end}
   Return a copy of a subsequence of SEQUENCE starting with element number
-   START and continuing to the end of SEQUENCE or the optional END.
+  START and continuing to the end of SEQUENCE or the optional END.
 \end{accessor}
-
-\begin{function}{concatenate}{output-type-spec \rest sequences}
-  Return a new sequence of all the argument sequences concatenated together
-  which shares no structure with the original argument sequences of the
-  specified OUTPUT-TYPE-SPEC.
-\end{function}
 
 \begin{function}{copy-seq}{sequence}
   Return a copy of SEQUENCE which is EQUAL to SEQUENCE but not EQ.
 \end{function}
 
-\begin{function}{count}{item sequence \rest args \key from-end start end key test test-not}
-  Return the number of elements in SEQUENCE satisfying a test with ITEM,
-   which defaults to EQL.
-\end{function}
-
-\begin{function}{count-if}{pred sequence \rest args \key from-end start end key}
-  Return the number of elements in SEQUENCE satisfying PRED(el).
-\end{function}
-
-\begin{function}{count-if-not}{pred sequence \rest args \key from-end start end key}
-  Return the number of elements in SEQUENCE not satisfying TEST(el).
-\end{function}
-
-\begin{function}{delete}{item sequence \rest args \key from-end test test-not start end count key}
-  Return a sequence formed by destructively removing the specified ITEM from
-  the given SEQUENCE.
-\end{function}
-
-\begin{function}{delete-duplicates}{sequence \rest args \key test test-not start end from-end key}
-  The elements of SEQUENCE are examined, and if any two match, one is
-   discarded. The resulting sequence, which may be formed by destroying the
-   given sequence, is returned.
-
-   The :TEST-NOT argument is deprecated.
-\end{function}
-
-\begin{function}{delete-if}{predicate sequence \rest args \key from-end start key end count}
-  Return a sequence formed by destructively removing the elements satisfying
-  the specified PREDICATE from the given SEQUENCE.
-\end{function}
-
-\begin{function}{delete-if-not}{predicate sequence \rest args \key from-end start end key count}
-  Return a sequence formed by destructively removing the elements not
-  satisfying the specified PREDICATE from the given SEQUENCE.
-\end{function}
-
-\begin{function}{fill}{sequence item \key start end}
-  Replace the specified elements of SEQUENCE with ITEM.
-\end{function}
-
-\begin{function}{find}{item sequence \rest args \key from-end start end key test test-not}
-  
-\end{function}
-
-\begin{function}{find-if}{predicate sequence \rest args \key from-end start end key}
-  
-\end{function}
-
-\begin{function}{find-if-not}{predicate sequence \rest args \key from-end start end key}
-  
+\begin{function}{copy-sequence}{type sequence}[cl-ext]
+  Returns a fresh sequence of TYPE, which has the same elements as
+  SEQUENCE.
 \end{function}
 
 \begin{function}{length}{sequence}
   Return an integer that is the length of SEQUENCE.
 \end{function}
 
-\begin{function}{make-sequence}{type length \key initial-element}
-  Return a sequence of the given TYPE and LENGTH, with elements initialized
-  to INITIAL-ELEMENT.
-\end{function}
-
-\begin{function}{map}{result-type function first-sequence \rest more-sequences}
-  
-\end{function}
-
-\begin{function}{map-into}{result-sequence function \rest sequences}
-  
-\end{function}
-
-\begin{function}{merge}{result-type sequence1 sequence2 predicate \key key}
-  Merge the sequences SEQUENCE1 and SEQUENCE2 destructively into a
-   sequence of type RESULT-TYPE using PREDICATE to order the elements.
-\end{function}
-
-\begin{function}{mismatch}{sequence1 sequence2 \rest args \key from-end test test-not start1 end1 start2
- end2 key}
-  The specified subsequences of SEQUENCE1 and SEQUENCE2 are compared
-   element-wise. If they are of equal length and match in every element, the
-   result is NIL. Otherwise, the result is a non-negative integer, the index
-   within SEQUENCE1 of the leftmost position at which they fail to match; or,
-   if one is shorter than and a matching prefix of the other, the index within
-   SEQUENCE1 beyond the last position tested is returned. If a non-NIL
-   :FROM-END argument is given, then one plus the index of the rightmost
-   position in which the sequences differ is returned.
-\end{function}
-
-\begin{function}{nreverse}{sequence}
-  Return a sequence of the same elements in reverse order; the argument
-   is destroyed.
-\end{function}
-
-\begin{function}{nsubstitute}{new old sequence \rest args \key from-end test test-not end count key start}
-  Return a sequence of the same kind as SEQUENCE with the same elements
-  except that all elements equal to OLD are replaced with NEW. SEQUENCE
-  may be destructively modified.
-\end{function}
-
-\begin{function}{nsubstitute-if}{new predicate sequence \rest args \key from-end start end count key}
-  Return a sequence of the same kind as SEQUENCE with the same elements
-   except that all elements satisfying PREDICATE are replaced with NEW.
-   SEQUENCE may be destructively modified.
-\end{function}
-
-\begin{function}{nsubstitute-if-not}{new predicate sequence \rest args \key from-end start end count key}
-  Return a sequence of the same kind as SEQUENCE with the same elements
-   except that all elements not satisfying PREDICATE are replaced with NEW.
-   SEQUENCE may be destructively modified.
-\end{function}
-
-\begin{function}{position}{item sequence \rest args \key from-end start end key test test-not}
-  
-\end{function}
-
-\begin{function}{position-if}{predicate sequence \rest args \key from-end start end key}
-  
-\end{function}
-
-\begin{function}{position-if-not}{predicate sequence \rest args \key from-end start end key}
-  
-\end{function}
-
-\begin{function}{reduce}{function sequence \rest args \key key from-end start end initial-value}
-  
-\end{function}
-
-\begin{function}{remove}{item sequence \rest args \key from-end test test-not start end count key}
-  Return a copy of SEQUENCE with elements satisfying the test (default is
-   EQL) with ITEM removed.
-\end{function}
-
-\begin{function}{remove-duplicates}{sequence \rest args \key test test-not start end from-end key}
-  The elements of SEQUENCE are compared pairwise, and if any two match,
-   the one occurring earlier is discarded, unless FROM-END is true, in
-   which case the one later in the sequence is discarded. The resulting
-   sequence is returned.
-
-   The :TEST-NOT argument is deprecated.
-\end{function}
-
-\begin{function}{remove-if}{predicate sequence \rest args \key from-end start end count key}
-  Return a copy of sequence with elements satisfying PREDICATE removed.
-\end{function}
-
-\begin{function}{remove-if-not}{predicate sequence \rest args \key from-end start end count key}
-  Return a copy of sequence with elements not satisfying PREDICATE removed.
-\end{function}
-
-\begin{function}{replace}{sequence1 sequence2 \rest args \key start1 end1 start2 end2}
-  The target sequence is destructively modified by copying successive
-   elements into it from the source sequence.
-\end{function}
-
-\begin{function}{reverse}{sequence}
-  Return a new sequence containing the same elements but in reverse order.
-\end{function}
-
-\begin{function}{search}{sequence1 sequence2 \rest args \key from-end test test-not start1 end1 start2
- end2 key}
-  
-\end{function}
-
-\begin{function}{sort}{sequence predicate \rest args \key key}
-  Destructively sort SEQUENCE. PREDICATE should return non-NIL if
-   ARG1 is to precede ARG2.
-\end{function}
-
-\begin{function}{stable-sort}{sequence predicate \rest args \key key}
-  Destructively sort SEQUENCE. PREDICATE should return non-NIL if
-   ARG1 is to precede ARG2.
-\end{function}
-
-\begin{function}{substitute}{new old sequence \rest args \key from-end test test-not start count end key}
-  Return a sequence of the same kind as SEQUENCE with the same elements,
-  except that all elements equal to OLD are replaced with NEW.
-\end{function}
-
-\begin{function}{substitute-if}{new predicate sequence \rest args \key from-end start end count key}
-  Return a sequence of the same kind as SEQUENCE with the same elements
-  except that all elements satisfying the PRED are replaced with NEW.
-\end{function}
-
-\begin{function}{substitute-if-not}{new predicate sequence \rest args \key from-end start end count key}
-  Return a sequence of the same kind as SEQUENCE with the same elements
-  except that all elements not satisfying the PRED are replaced with NEW.
-\end{function}
-
-\begin{class}{sequence}{}
-  
-\end{class}
-
-\section{Sequence extensions}
-\label{sec:sequence-extensions}
-
-\begin{function}{rotate}{sequence \op n}[cl-ext]
-  Returns a sequence of the same type as SEQUENCE, with the elements of
-SEQUENCE rotated by N: N elements are moved from the end of the sequence to
-the front if N is positive, and -N elements moved from the front to the end if
-N is negative. SEQUENCE must be a proper sequence. N must be an integer,
-defaulting to 1. If absolute value of N is greater then the length of the
-sequence, the results are identical to calling ROTATE with (* (SIGNUM N) (MOD
-N (LENGTH SEQUENCE))). The original sequence may be destructively altered, and
-result sequence may share structure with it.
-\end{function}
-
-\begin{function}{shuffle}{sequence \key start end}[cl-ext]
-  Returns a random permutation of SEQUENCE bounded by START and END.
-Permuted sequence may share storage with the original one. Signals an
-error if SEQUENCE is not a proper sequence.
-\end{function}
-
-\begin{function}{random-elt}{sequence \key start end}[cl-ext]
-  Returns a random element from SEQUENCE bounded by START and END. Signals an
-error if the SEQUENCE is not a proper sequence.
-\end{function}
-
-\begin{macro}{removef}{place item \rest remove-keywords \env env}[cl-ext]
-  Modify-macro for REMOVE. Sets place designated by the first argument to
-the result of calling REMOVE with ITEM, place, and the REMOVE-KEYWORDS.
-\end{macro}
-
-\begin{macro}{deletef}{place item \rest remove-keywords \env env}[cl-ext]
-  Modify-macro for DELETE. Sets place designated by the first argument to
-the result of calling DELETE with ITEM, place, and the REMOVE-KEYWORDS.
-\end{macro}
-
-\begin{type}{proper-sequence}{}[cl-ext]
-  
-\end{type}
-
-\begin{function}{emptyp}{sequence}[cl-ext]
-  Returns true if SEQUENCE is an empty sequence. Signals an error if SEQUENCE
-is not a sequence
-\end{function}
-
 \begin{function}{length=}{\rest sequences}[cl-ext]
-  Takes any number of sequences or integers in any order. Returns true iff
-the length of all the sequences and the integers are equal. Hint: there's a
-compiler macro that expands into more efficient code if the first argument
-is a literal integer.
-\end{function}
-
-\begin{function}{sequence-of-length-p}{sequence length}[cl-ext]
-  Return true if SEQUENCE is a sequence of length LENGTH. Signals an error if
-SEQUENCE is not a sequence. Returns FALSE for circular lists.
-\end{function}
-
-\begin{function}{copy-sequence}{type sequence}[cl-ext]
-  Returns a fresh sequence of TYPE, which has the same elements as
-SEQUENCE.
-\end{function}
-
-\begin{function}{first-elt}{sequence}[cl-ext]
-  Returns the first element of SEQUENCE. Signals a type-error if SEQUENCE is
-not a sequence, or is an empty sequence.
-\end{function}
-
-\begin{function}{last-elt}{sequence}[cl-ext]
-  Returns the last element of SEQUENCE. Signals a type-error if SEQUENCE is
-not a proper sequence, or is an empty sequence.
-\end{function}
-
-\begin{function}{starts-with}{object sequence \key test key}[cl-ext]
-  Returns true if SEQUENCE is a sequence whose first element is EQL to OBJECT.
-Returns NIL if the SEQUENCE is not a sequence or is an empty sequence.
-\end{function}
-
-\begin{function}{starts-with-subseq}{prefix sequence \rest args \key return-suffix \akeys}[cl-ext]
-  Test whether the first elements of SEQUENCE are the same (as per TEST) as the elements of PREFIX.
-
-If RETURN-SUFFIX is T the functions returns, as a second value, a
-displaced array pointing to the sequence after PREFIX.
-\end{function}
-
-\begin{function}{ends-with}{object sequence \key test key}[cl-ext]
-  Returns true if SEQUENCE is a sequence whose last element is EQL to OBJECT.
-Returns NIL if the SEQUENCE is not a sequence or is an empty sequence. Signals
-an error if SEQUENCE is an improper list.
-\end{function}
-
-\begin{function}{ends-with-subseq}{suffix sequence \key test}[cl-ext]
-  Test whether SEQUENCE ends with SUFFIX. In other words: return true if
-the last (length SUFFIX) elements of SEQUENCE are equal to SUFFIX.
-\end{function}
-
-\begin{function}{map-combinations}{function sequence \key start end length copy}[cl-ext]
-  Calls FUNCTION with each combination of LENGTH constructable from the
-elements of the subsequence of SEQUENCE delimited by START and END. START
-defaults to 0, END to length of SEQUENCE, and LENGTH to the length of the
-delimited subsequence. (So unless LENGTH is specified there is only a single
-combination, which has the same elements as the delimited subsequence.) If
-COPY is true (the default) each combination is freshly allocated. If COPY is
-false all combinations are EQ to each other, in which case consequences are
-specified if a combination is modified by FUNCTION.
-\end{function}
-
-\begin{function}{map-derangements}{function sequence \key start end copy}[cl-ext]
-  Calls FUNCTION with each derangement of the subsequence of SEQUENCE denoted
-by the bounding index designators START and END. Derangement is a permutation
-of the sequence where no element remains in place. SEQUENCE is not modified,
-but individual derangements are EQ to each other. Consequences are unspecified
-if calling FUNCTION modifies either the derangement or SEQUENCE.
-\end{function}
-
-\begin{function}{map-permutations}{function sequence \key start end length copy}[cl-ext]
-  Calls function with each permutation of LENGTH constructable
-from the subsequence of SEQUENCE delimited by START and END. START
-defaults to 0, END to length of the sequence, and LENGTH to the
-length of the delimited subsequence.
-\end{function}
-
-\begin{macro}{remf-keywords}{place \rest keywords \env env}[cl-ext]
-  Creates a copy of PLIST without the properties identified by KEYWORDS.
-\end{macro}
-
-\begin{function}{remove-keywords}{plist \rest keywords}[cl-ext]
-  Creates a copy of PLIST without the listed KEYWORDS.
+  Takes any number of sequences or integers in any order. Returns true
+  iff the length of all the sequences and the integers are equal.
+  Hint: there's a compiler macro that expands into more efficient code
+  if the first argument is a literal integer.
 \end{function}
 
 \begin{function}{tail}{seq \op how-many}[cl-ext]
@@ -2738,12 +2507,63 @@ length of the delimited subsequence.
   Returns SEQ with the last HOW-MANY elements removed.
 \end{function}
 
+\begin{function}{sequence-of-length-p}{sequence length}[cl-ext]
+  Return true if SEQUENCE is a sequence of length LENGTH. Signals an error if
+  SEQUENCE is not a sequence. Returns FALSE for circular lists.
+\end{function}
+
+\begin{function}{reverse}{sequence}
+  Return a new sequence containing the same elements but in reverse order.
+\end{function}
+
+\begin{function}{nreverse}{sequence}
+  Return a sequence of the same elements in reverse order; the argument
+  is destroyed.
+\end{function}
+
+\begin{function}{make-sequence}{type length \key initial-element}
+  Return a sequence of the given TYPE and LENGTH, with elements initialized
+  to INITIAL-ELEMENT.
+\end{function}
+
+\begin{function}{starts-with}{object sequence \key test key}[cl-ext]
+  Returns true if SEQUENCE is a sequence whose first element is EQL to OBJECT.
+  Returns NIL if the SEQUENCE is not a sequence or is an empty sequence.
+\end{function}
+
+\begin{function}{starts-with-subseq}{prefix sequence \rest args \key return-suffix \akeys}[cl-ext]
+  Test whether the first elements of SEQUENCE are the same (as per TEST) as the elements of PREFIX.
+
+  If RETURN-SUFFIX is T the functions returns, as a second value, a
+  displaced array pointing to the sequence after PREFIX.
+\end{function}
+
+\begin{function}{ends-with}{object sequence \key test key}[cl-ext]
+  Returns true if SEQUENCE is a sequence whose last element is EQL to OBJECT.
+  Returns NIL if the SEQUENCE is not a sequence or is an empty sequence. Signals
+  an error if SEQUENCE is an improper list.
+\end{function}
+
+\begin{function}{ends-with-subseq}{suffix sequence \key test}[cl-ext]
+  Test whether SEQUENCE ends with SUFFIX. In other words: return true if
+  the last (length SUFFIX) elements of SEQUENCE are equal to SUFFIX.
+\end{function}
+
+\begin{function}{read-sequence}{seq stream \key start end}
+  Destructively modify SEQ by reading elements from STREAM.
+  That part of SEQ bounded by START and END is destructively modified by
+  copying successive elements into it from STREAM. If the end of file
+  for STREAM is reached before copying all elements of the subsequence,
+  then the extra elements near the end of sequence are not updated, and
+  the index of the next element is returned.
+\end{function}
+
 \begin{function}{read-sequence*}{sequence stream \key start end}[cl-ext]
   Like READ-SEQUENCE except the sequence is returned as well.
 
-The second value returned is READ-SEQUENCE's primary value, the
-primary value returned by READ-SEQUENCE* is the medified
-sequence.
+  The second value returned is READ-SEQUENCE's primary value, the
+  primary value returned by READ-SEQUENCE* is the medified
+  sequence.
 \end{function}
 
 \begin{function}{levenshtein-distance}{source target \key test}[cl-ext]
@@ -2751,33 +2571,266 @@ sequence.
   difference between two sequences.
 \end{function}
 
+\section{Concatenating, Mapping, and Reducing Sequences}
+\label{sec:conc-mapp-reduc}
+
+\begin{function}{concatenate}{output-type-spec \rest sequences}
+  Return a new sequence of all the argument sequences concatenated together
+  which shares no structure with the original argument sequences of the
+  specified OUTPUT-TYPE-SPEC.
+\end{function}
+
+\begin{function}{map}{result-type function first-sequence \rest more-sequences}
+  
+\end{function}
+
+\begin{function}{map-into}{result-sequence function \rest sequences}
+  
+\end{function}
+
+\begin{function}{reduce}{function sequence \rest args \key key from-end start end initial-value}
+  
+\end{function}
+
+\begin{function}{map-combinations}{function sequence \key start end length copy}[cl-ext]
+  Calls FUNCTION with each combination of LENGTH constructable from the
+  elements of the subsequence of SEQUENCE delimited by START and END. START
+  defaults to 0, END to length of SEQUENCE, and LENGTH to the length of the
+  delimited subsequence. (So unless LENGTH is specified there is only a single
+  combination, which has the same elements as the delimited subsequence.) If
+  COPY is true (the default) each combination is freshly allocated. If COPY is
+  false all combinations are EQ to each other, in which case consequences are
+  specified if a combination is modified by FUNCTION.
+\end{function}
+
+\begin{function}{map-derangements}{function sequence \key start end copy}[cl-ext]
+  Calls FUNCTION with each derangement of the subsequence of SEQUENCE denoted
+  by the bounding index designators START and END. Derangement is a permutation
+  of the sequence where no element remains in place. SEQUENCE is not modified,
+  but individual derangements are EQ to each other. Consequences are unspecified
+  if calling FUNCTION modifies either the derangement or SEQUENCE.
+\end{function}
+
+\begin{function}{map-permutations}{function sequence \key start end length copy}[cl-ext]
+  Calls function with each permutation of LENGTH constructable
+  from the subsequence of SEQUENCE delimited by START and END. START
+  defaults to 0, END to length of the sequence, and LENGTH to the
+  length of the delimited subsequence.
+\end{function}
+
+\section{Filtering and modifying sequences}
+\label{sec:filt-modify-sequ}
+
+\begin{function}{fill}{sequence item \key start end}
+  Replace the specified elements of SEQUENCE with ITEM.
+\end{function}
+
+\begin{function}{replace}{sequence1 sequence2 \rest args \key start1 end1 start2 end2}
+  The target sequence is destructively modified by copying successive
+  elements into it from the source sequence.
+\end{function}
+
+\begin{function}{remove}{item sequence \rest args \key from-end test test-not start end count key}
+  Return a copy of SEQUENCE with elements satisfying the test (default is
+  EQL) with ITEM removed.
+\end{function}
+
+\begin{function}{remove-if}{predicate sequence \rest args \key from-end start end count key}
+  Return a copy of sequence with elements satisfying PREDICATE removed.
+\end{function}
+
+\begin{function}{remove-if-not}{predicate sequence \rest args \key from-end start end count key}
+  Return a copy of sequence with elements not satisfying PREDICATE removed.
+\end{function}
+
+\begin{macro}{removef}{place item \rest remove-keywords \env env}[cl-ext]
+  Modify-macro for REMOVE. Sets place designated by the first argument
+  to the result of calling REMOVE with ITEM, place, and the
+  REMOVE-KEYWORDS.
+\end{macro}
+
+\begin{function}{delete}{item sequence \rest args \key from-end test test-not start end count key}
+  Return a sequence formed by destructively removing the specified ITEM from
+  the given SEQUENCE.
+\end{function}
+
+\begin{function}{delete-if}{predicate sequence \rest args \key from-end start key end count}
+  Return a sequence formed by destructively removing the elements satisfying
+  the specified PREDICATE from the given SEQUENCE.
+\end{function}
+
+\begin{function}{delete-if-not}{predicate sequence \rest args \key from-end start end key count}
+  Return a sequence formed by destructively removing the elements not
+  satisfying the specified PREDICATE from the given SEQUENCE.
+\end{function}
+
+\begin{macro}{deletef}{place item \rest remove-keywords \env env}[cl-ext]
+  Modify-macro for DELETE. Sets place designated by the first argument
+  to the result of calling DELETE with ITEM, place, and the
+  REMOVE-KEYWORDS.
+\end{macro}
+
+\begin{function}{remove-duplicates}{sequence \rest args \key test test-not start end from-end key}
+  The elements of SEQUENCE are compared pairwise, and if any two match,
+  the one occurring earlier is discarded, unless FROM-END is true, in
+  which case the one later in the sequence is discarded. The resulting
+  sequence is returned.
+
+  The :TEST-NOT argument is deprecated.
+\end{function}
+
+\begin{function}{delete-duplicates}{sequence \rest args \key test test-not start end from-end key}
+  The elements of SEQUENCE are examined, and if any two match, one is
+  discarded. The resulting sequence, which may be formed by destroying the
+  given sequence, is returned.
+
+  The :TEST-NOT argument is deprecated.
+\end{function}
+
+\begin{function}{substitute}{new old sequence \rest args \key from-end test test-not start count end key}
+  Return a sequence of the same kind as SEQUENCE with the same elements,
+  except that all elements equal to OLD are replaced with NEW.
+\end{function}
+
+\begin{function}{substitute-if}{new predicate sequence \rest args \key from-end start end count key}
+  Return a sequence of the same kind as SEQUENCE with the same elements
+  except that all elements satisfying the PRED are replaced with NEW.
+\end{function}
+
+\begin{function}{substitute-if-not}{new predicate sequence \rest args \key from-end start end count key}
+  Return a sequence of the same kind as SEQUENCE with the same elements
+  except that all elements not satisfying the PRED are replaced with NEW.
+\end{function}
+
+\begin{function}{nsubstitute}{new old sequence \rest args \key from-end test test-not end count key start}
+  Return a sequence of the same kind as SEQUENCE with the same elements
+  except that all elements equal to OLD are replaced with NEW. SEQUENCE
+  may be destructively modified.
+\end{function}
+
+\begin{function}{nsubstitute-if}{new predicate sequence \rest args \key from-end start end count key}
+  Return a sequence of the same kind as SEQUENCE with the same elements
+  except that all elements satisfying PREDICATE are replaced with NEW.
+  SEQUENCE may be destructively modified.
+\end{function}
+
+\begin{function}{nsubstitute-if-not}{new predicate sequence \rest args \key from-end start end count key}
+  Return a sequence of the same kind as SEQUENCE with the same elements
+  except that all elements not satisfying PREDICATE are replaced with NEW.
+  SEQUENCE may be destructively modified.
+\end{function}
+
+\begin{function}{rotate}{sequence \op n}[cl-ext]
+  Returns a sequence of the same type as SEQUENCE, with the elements
+  of SEQUENCE rotated by N: N elements are moved from the end of the
+  sequence to the front if N is positive, and -N elements moved from
+  the front to the end if N is negative. SEQUENCE must be a proper
+  sequence. N must be an integer, defaulting to 1. If absolute value
+  of N is greater then the length of the sequence, the results are
+  identical to calling ROTATE with (* (SIGNUM N) (MOD N (LENGTH
+  SEQUENCE))). The original sequence may be destructively altered, and
+  result sequence may share structure with it.
+\end{function}
+
+\begin{function}{shuffle}{sequence \key start end}[cl-ext]
+  Returns a random permutation of SEQUENCE bounded by START and END.
+  Permuted sequence may share storage with the original one. Signals
+  an error if SEQUENCE is not a proper sequence.
+\end{function}
+
+\section{Searching sequences}
+\label{sec:searching-sequences}
+
+\begin{function}{search}{sequence1 sequence2 \rest args \key from-end test test-not start1 end1 start2
+    end2 key}
+  
+\end{function}
+
+\begin{function}{find}{item sequence \rest args \key from-end start end key test test-not}
+  
+\end{function}
+
+\begin{function}{find-if}{predicate sequence \rest args \key from-end start end key}
+  
+\end{function}
+
+\begin{function}{find-if-not}{predicate sequence \rest args \key from-end start end key}
+  
+\end{function}
+
+\begin{function}{position}{item sequence \rest args \key from-end start end key test test-not}
+  
+\end{function}
+
+\begin{function}{position-if}{predicate sequence \rest args \key from-end start end key}
+  
+\end{function}
+
+\begin{function}{position-if-not}{predicate sequence \rest args \key from-end start end key}
+  
+\end{function}
+
+\begin{function}{count}{item sequence \rest args \key from-end start end key test test-not}
+  Return the number of elements in SEQUENCE satisfying a test with ITEM,
+  which defaults to EQL.
+\end{function}
+
+\begin{function}{count-if}{pred sequence \rest args \key from-end start end key}
+  Return the number of elements in SEQUENCE satisfying PRED(el).
+\end{function}
+
+\begin{function}{count-if-not}{pred sequence \rest args \key from-end start end key}
+  Return the number of elements in SEQUENCE not satisfying TEST(el).
+\end{function}
+
+\section{Sorting and Merging}
+\label{sec:sorting-merging}
+
+\begin{function}{sort}{sequence predicate \rest args \key key}
+  Destructively sort SEQUENCE. PREDICATE should return non-NIL if
+  ARG1 is to precede ARG2.
+\end{function}
+
+\begin{function}{stable-sort}{sequence predicate \rest args \key key}
+  Destructively sort SEQUENCE. PREDICATE should return non-NIL if
+  ARG1 is to precede ARG2.
+\end{function}
+
+\begin{function}{merge}{result-type sequence1 sequence2 predicate \key key}
+  Merge the sequences SEQUENCE1 and SEQUENCE2 destructively into a
+  sequence of type RESULT-TYPE using PREDICATE to order the elements.
+\end{function}
+
+\section{Splitting sequences}
+\label{sec:splitting-sequences}
+
 \begin{function}{split-sequence}{delimiter seq \key count
     remove-empty-subseqs from-end start end test test-not key}
   Return a list of subsequences in seq delimited by delimiter.
 
-If :remove-empty-subseqs is NIL, empty subsequences will be included
-in the result; otherwise they will be discarded.  All other keywords
-work analogously to those for CL:SUBSTITUTE.  In particular, the
-behaviour of :from-end is possibly different from other versions of
-this function; :from-end values of NIL and T are equivalent unless
-:count is supplied. The second return value is an index suitable as an
-argument to CL:SUBSEQ into the sequence indicating where processing
-stopped.
+  If :remove-empty-subseqs is NIL, empty subsequences will be included
+  in the result; otherwise they will be discarded.  All other keywords
+  work analogously to those for CL:SUBSTITUTE.  In particular, the
+  behaviour of :from-end is possibly different from other versions of
+  this function; :from-end values of NIL and T are equivalent unless
+  :count is supplied. The second return value is an index suitable as an
+  argument to CL:SUBSEQ into the sequence indicating where processing
+  stopped.
 \end{function}
 
 \begin{function}{split-sequence-if}{predicate seq \key count
     remove-empty-subseqs from-end start end key}
-Return a list of subsequences in seq delimited by items satisfying
-predicate.
+  Return a list of subsequences in seq delimited by items satisfying
+  predicate.
 
-If :remove-empty-subseqs is NIL, empty subsequences will be included
-in the result; otherwise they will be discarded.  All other keywords
-work analogously to those for CL:SUBSTITUTE-IF.  In particular, the
-behaviour of :from-end is possibly different from other versions of
-this function; :from-end values of NIL and T are equivalent unless
-:count is supplied. The second return value is an index suitable as an
-argument to CL:SUBSEQ into the sequence indicating where processing
-stopped.  
+  If :remove-empty-subseqs is NIL, empty subsequences will be included
+  in the result; otherwise they will be discarded.  All other keywords
+  work analogously to those for CL:SUBSTITUTE-IF.  In particular, the
+  behaviour of :from-end is possibly different from other versions of
+  this function; :from-end values of NIL and T are equivalent unless
+  :count is supplied. The second return value is an index suitable as an
+  argument to CL:SUBSEQ into the sequence indicating where processing
+  stopped.  
 \end{function}
 
 \begin{function}{split-sequence-if-not}{predicate seq \key count
@@ -2794,7 +2847,6 @@ stopped.
   suitable as an argument to CL:SUBSEQ into the sequence indicating
   where processing stopped.
 \end{function}
-
 
 
 \chapter{Hash Tables}
@@ -3385,6 +3437,8 @@ line break.
 
 \section{Streams}
 
+See also \funr{read-sequence}
+
 \begin{function}{broadcast-stream-streams}{instance}
   
 \end{function}
@@ -3529,15 +3583,6 @@ benefit of the function GET-OUTPUT-STREAM-STRING.
 
 \begin{function}{read-line}{\op stream eof-error-p eof-value recursive-p}
   
-\end{function}
-
-\begin{function}{read-sequence}{seq stream \key start end}
-  Destructively modify SEQ by reading elements from STREAM.
-  That part of SEQ bounded by START and END is destructively modified by
-  copying successive elements into it from STREAM. If the end of file
-  for STREAM is reached before copying all elements of the subsequence,
-  then the extra elements near the end of sequence are not updated, and
-  the index of the next element is returned.
 \end{function}
 
 \begin{function}{stream-element-type}{stream}
@@ -4173,13 +4218,6 @@ length and have identical components. Other arrays must be EQ to be EQUAL.
   
 \end{function}
 
-\begin{function}{every}{pred first-seq \rest more-seqs}
-  Apply PREDICATE to the 0-indexed elements of the sequences, then
-   possibly to those with index 1, and so on. Return NIL as soon
-   as any invocation of PREDICATE returns NIL, or T if every invocation
-   is non-NIL.
-\end{function}
-
 \begin{function}{fboundp}{name}
   Return true if name has a global function definition.
 \end{function}
@@ -4216,26 +4254,6 @@ length and have identical components. Other arrays must be EQ to be EQUAL.
 
 \begin{function}{not}{object}
   Return T if X is NIL, otherwise return NIL.
-\end{function}
-
-\begin{function}{notany}{pred first-seq \rest more-seqs}
-  Apply PREDICATE to the 0-indexed elements of the sequences, then
-   possibly to those with index 1, and so on. Return NIL as soon
-   as any invocation of PREDICATE returns a non-NIL value, or T if the end
-   of any sequence is reached.
-\end{function}
-
-\begin{function}{notevery}{pred first-seq \rest more-seqs}
-  Apply PREDICATE to 0-indexed elements of the sequences, then
-   possibly to those with index 1, and so on. Return T as soon
-   as any invocation of PREDICATE returns NIL, or NIL if every invocation
-   is non-NIL.
-\end{function}
-
-\begin{function}{some}{pred first-seq \rest more-seqs}
-  Apply PREDICATE to the 0-indexed elements of the sequences, then
-   possibly to those with index 1, and so on. Return the first
-   non-NIL value encountered, or NIL if the end of any sequence is reached.
 \end{function}
 
 \begin{function}{values-list}{list}

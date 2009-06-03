@@ -1,0 +1,1 @@
+(merge 'string "FOO" "bar" #'char-lessp) => "baFOOr"
