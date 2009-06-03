@@ -7,6 +7,23 @@
 (defparameter *verbose-failures* nil
   "T if we should print the expression failing, NIL otherwise.")
 
+(defun partitionx (list &rest lambdas)
+  (let ((collectors (mapcar (lambda (l)
+                              (cons (if (and (symbolp l)
+					     (member l (list :otherwise t)
+                                                     :test #'string=))
+                                        (constantly t)
+                                        l)
+                                    (make-collector)))
+                            lambdas)))
+    (dolist (item list)
+      (block item
+        (dolist* ((test-func . collector-func) collectors)
+          (when (funcall test-func item)
+            (funcall collector-func item)
+            (return-from item)))))
+    (mapcar #'funcall (mapcar #'cdr collectors))))
+
 ;;;; Just as important as defining and runnig the tests is
 ;;;; understanding the results. FiveAM provides the function EXPLAIN
 ;;;; which prints a human readable summary (number passed, number

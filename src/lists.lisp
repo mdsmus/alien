@@ -395,23 +395,6 @@ Examples:
   "Is x a list of length 1?"
   (and (consp x) (null (cdr x))))
 
-(defun partitionx (list &rest lambdas)
-  (let ((collectors (mapcar (lambda (l)
-                              (cons (if (and (symbolp l)
-					     (member l (list :otherwise t)
-                                                     :test #'string=))
-                                        (constantly t)
-                                        l)
-                                    (make-collector)))
-                            lambdas)))
-    (dolist (item list)
-      (block item
-        (dolist* ((test-func . collector-func) collectors)
-          (when (funcall test-func item)
-            (funcall collector-func item)
-            (return-from item)))))
-    (mapcar #'funcall (mapcar #'cdr collectors))))
-
 (defun make-pairs (list)
   (loop for x from 0 to (1- (length list)) by 2
         collect (subseq list x (+ x 2))))
