@@ -398,3 +398,9 @@ Examples:
 (defun make-pairs (list)
   (loop for x from 0 to (1- (length list)) by 2
         collect (subseq list x (+ x 2))))
+
+(defun list-to-alist (list)
+  (loop for x from 0 to (1- (length list)) by 2
+        for key = (nth x list)
+        for data = (nth (1+ x) list)
+        nconc (acons key data nil)))

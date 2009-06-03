@@ -106,7 +106,7 @@
    #:push*
    #:append1
    #:length=1
-   #:partitionx
+   #:list-to-alist
    ;; sequences
    #:rotate
    #:shuffle
