@@ -1,0 +1,1 @@
+(hash-table-test (make-hash-table :test #'equal)) => EQUAL

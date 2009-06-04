@@ -2851,88 +2851,84 @@ In other words, returns the product of LIST and MORE-LISTS using FUNCTION.
 
 \chapter{Hash Tables}
 
+\section{Predicate}
+\label{sec:hashtable-predicate}
+
+\begin{function}{hash-table-p}{object}
+  
+\end{function}
+
+\section{Hash table creation}
+\label{sec:hash-table-creation}
+
+\begin{function}{make-hash-table}{\key test size rehash-size rehash-threshold weakness synchronized}
+  Create and return a new hash table. The keywords are as follows:
+  \begin{description}
+  \item [:TEST] Indicates what kind of test to use.
+  \item [:SIZE] A hint as to how many elements will be put in this hash
+    table.
+  \item [:REHASH-SIZE] Indicates how to expand the table when it
+    fills up. If an integer, add space for that many elements. If a
+    floating point number (which must be greater than 1.0),
+    multiply the size by that amount.
+  \item [:REHASH-THRESHOLD] Indicates how dense the table can become before
+    forcing a rehash. Can be any positive number <=1, with density
+    approaching zero as the threshold approaches 0. Density 1 means an
+    average of one entry per bucket.
+  \item [:WEAKNESS] If NIL (the default) it is a normal non-weak hash table.
+    If one of :KEY, :VALUE, :KEY-AND-VALUE, :KEY-OR-VALUE it is a weak
+    hash table.
+    Depending on the type of weakness the lack of references to the
+    key and the value may allow for removal of the entry. If WEAKNESS
+    is :KEY and the key would otherwise be garbage the entry is eligible
+    for removal from the hash table. Similarly, if WEAKNESS is :VALUE
+    the life of an entry depends on its value's references. If WEAKNESS
+    is :KEY-AND-VALUE and either the key or the value would otherwise be
+    garbage the entry can be removed. If WEAKNESS is :KEY-OR-VALUE and
+    both the key and the value would otherwise be garbage the entry can
+    be removed.
+  \item [:SYNCHRONIZED] If NIL (the default), the hash-table may
+    have multiple concurrent readers, but results are undefined if
+    a thread writes to the hash-table concurrently with another
+    reader or writer. If T, all concurrent accesses are safe, but
+    note that CLHS 3.6 (Traversal Rules and Side Effects) remains
+    in force. See also: SB-EXT:WITH-LOCKED-HASH-TABLE. This keyword
+    argument is experimental, and may change incompatibly or be
+    removed in the future.
+  \end{description}
+\end{function}
+
+\begin{function}{build-hash-table}{hash-spec inital-contents}[cl-ext]
+  Create a hash table containing ``INITAL-CONTENTS''.
+\end{function}
+
+\begin{macro}{deflookup-table}{name \key var reader writer rem-er at-redefinition documentation test initial-contents}[cl-ext]
+  Creates a hash table and the associated accessors.
+\end{macro}
+
+\begin{function}{copy-hash-table}{table \key key test size rehash-size rehash-threshold}[cl-ext]
+  Returns a copy of hash table TABLE, with the same keys and values
+as the TABLE. The copy has the same properties as the original, unless
+overridden by the keyword arguments.
+
+Before each of the original values is set into the new hash-table, KEY
+is invoked on the value. As KEY defaults to CL:IDENTITY, a shallow
+copy is returned by default.
+\end{function}
+
+\section{Hash table access and modification}
+\label{sec:hash-table-access}
+
 \begin{accessor}{gethash}{key hash-table \op default}
   Finds the entry in HASH-TABLE whose key is KEY and returns the
 associated value and T as multiple values, or returns DEFAULT and NIL
 if there is no such entry. Entries can be added using SETF.
 \end{accessor}
 
-\begin{function}{clrhash}{hash-table}
-  This removes all the entries from HASH-TABLE and returns the hash
-table itself.
-\end{function}
-
-\begin{function}{hash-table-count}{hash-table}
-  Return the number of entries in the given HASH-TABLE.
-\end{function}
-
-\begin{function}{hash-table-p}{object}
-  
-\end{function}
-
-\begin{function}{hash-table-rehash-size}{instance}
-  Return the rehash-size HASH-TABLE was created with.
-\end{function}
-
-\begin{function}{hash-table-rehash-threshold}{instance}
-  Return the rehash-threshold HASH-TABLE was created with.
-\end{function}
-
-\begin{function}{hash-table-size}{hash-table}
-  Return a size that can be used with MAKE-HASH-TABLE to create a hash
-   table that can hold however many entries HASH-TABLE can hold without
-   having to be grown.
-\end{function}
-
-\begin{function}{hash-table-test}{instance}
-  Return the test HASH-TABLE was created with.
-\end{function}
-
-\begin{function}{make-hash-table}{\key test size rehash-size rehash-threshold weakness synchronized}
-  Create and return a new hash table. The keywords are as follows:
-     :TEST -- Indicates what kind of test to use.
-     :SIZE -- A hint as to how many elements will be put in this hash
-       table.
-     :REHASH-SIZE -- Indicates how to expand the table when it fills up.
-       If an integer, add space for that many elements. If a floating
-       point number (which must be greater than 1.0), multiply the size
-       by that amount.
-     :REHASH-THRESHOLD -- Indicates how dense the table can become before
-       forcing a rehash. Can be any positive number <=1, with density
-       approaching zero as the threshold approaches 0. Density 1 means an
-       average of one entry per bucket.
-     :WEAKNESS -- If NIL (the default) it is a normal non-weak hash table.
-       If one of :KEY, :VALUE, :KEY-AND-VALUE, :KEY-OR-VALUE it is a weak
-       hash table.
-       Depending on the type of weakness the lack of references to the
-       key and the value may allow for removal of the entry. If WEAKNESS
-       is :KEY and the key would otherwise be garbage the entry is eligible
-       for removal from the hash table. Similarly, if WEAKNESS is :VALUE
-       the life of an entry depends on its value's references. If WEAKNESS
-       is :KEY-AND-VALUE and either the key or the value would otherwise be
-       garbage the entry can be removed. If WEAKNESS is :KEY-OR-VALUE and
-       both the key and the value would otherwise be garbage the entry can
-       be removed.
-     :SYNCHRONIZED -- If NIL (the default), the hash-table may have
-       multiple concurrent readers, but results are undefined if a
-       thread writes to the hash-table concurrently with another
-       reader or writer. If T, all concurrent accesses are safe, but
-       note that CLHS 3.6 (Traversal Rules and Side Effects) remains
-       in force. See also: SB-EXT:WITH-LOCKED-HASH-TABLE. This keyword
-       argument is experimental, and may change incompatibly or be
-       removed in the future.
-\end{function}
-
-\begin{function}{maphash}{function-designator hash-table}
-  For each entry in HASH-TABLE, call the designated two-argument function on
-the key and value of the entry. Return NIL.
-
-Consequences are undefined if HASH-TABLE is mutated during the call to
-MAPHASH, except for changing or removing elements corresponding to the
-current key. The applies to all threads, not just the current one --
-even for synchronized hash-tables. If the table may be mutated by
-another thread during iteration, use eg. SB-EXT:WITH-LOCKED-HASH-TABLE
-to protect the MAPHASH call.
+\begin{function}{ensure-gethash}{key hash-table \op default}[cl-ext]
+  Like GETHASH, but if KEY is not found in the HASH-TABLE saves the DEFAULT
+under key before returning it. Secondary return value is true if key was
+already in the table.
 \end{function}
 
 \begin{function}{remhash}{key hash-table}
@@ -2940,9 +2936,21 @@ to protect the MAPHASH call.
 there was such an entry, or NIL if not.
 \end{function}
 
-\begin{function}{sxhash}{x}
-  
+\begin{function}{clrhash}{hash-table}
+  This removes all the entries from HASH-TABLE and returns the hash
+table itself.
 \end{function}
+
+\begin{function}{hash-table-keys}{table}[cl-ext]
+  Returns a list containing the keys of hash table TABLE.
+\end{function}
+
+\begin{function}{hash-table-values}{table}[cl-ext]
+  Returns a list containing the values of hash table TABLE.
+\end{function}
+
+\section{Hash table mapping and iteration}
+\label{sec:hash-table-mapping}
 
 \begin{macro}{with-hash-table-iterator}{name \body body}
   WITH-HASH-TABLE-ITERATOR ((name hash-table) \&body body)
@@ -2961,21 +2969,16 @@ use eg. SB-EXT:WITH-LOCKED-HASH-TABLE to protect the WITH-HASH-TABLE-ITERATOR
 for.
 \end{macro}
 
-\begin{class}{hash-table}{}
-  
-\end{class}
+\begin{function}{maphash}{function-designator hash-table}
+  For each entry in HASH-TABLE, call the designated two-argument function on
+the key and value of the entry. Return NIL.
 
-\section{Extensions}
-\label{sec:extensions}
-
-\begin{function}{copy-hash-table}{table \key key test size rehash-size rehash-threshold}[cl-ext]
-  Returns a copy of hash table TABLE, with the same keys and values
-as the TABLE. The copy has the same properties as the original, unless
-overridden by the keyword arguments.
-
-Before each of the original values is set into the new hash-table, KEY
-is invoked on the value. As KEY defaults to CL:IDENTITY, a shallow
-copy is returned by default.
+Consequences are undefined if HASH-TABLE is mutated during the call to
+MAPHASH, except for changing or removing elements corresponding to the
+current key. The applies to all threads, not just the current one --
+even for synchronized hash-tables. If the table may be mutated by
+another thread during iteration, use eg. SB-EXT:WITH-LOCKED-HASH-TABLE
+to protect the MAPHASH call.
 \end{function}
 
 \begin{function}{maphash-keys}{hash-table}[cl-ext]
@@ -2985,6 +2988,34 @@ copy is returned by default.
 \begin{function}{maphash-values}{hash-table}[cl-ext]
   Like MAPHASH, but calls FUNCTION with each value in the hash table TABLE.
 \end{function}
+
+\section{Hash table information}
+\label{sec:hash-table-inform}
+
+\begin{function}{hash-table-count}{hash-table}
+  Return the number of entries in the given HASH-TABLE.
+\end{function}
+
+\begin{function}{hash-table-rehash-size}{instance}
+  Return the rehash-size HASH-TABLE was created with.
+\end{function}
+
+\begin{function}{hash-table-rehash-threshold}{instance}
+  Return the rehash-threshold HASH-TABLE was created with.
+\end{function}
+
+\begin{function}{hash-table-size}{hash-table}
+  Return a size that can be used with MAKE-HASH-TABLE to create a hash
+   table that can hold however many entries HASH-TABLE can hold without
+   having to be grown.
+\end{function}
+
+\begin{function}{hash-table-test}{instance}
+  Return the test function HASH-TABLE was created with.
+\end{function}
+
+\section{Hash table conversion}
+\label{sec:hash-table-conv}
 
 \begin{function}{plist-to-hash}{plist \rest hash-table-initargs}[cl-ext]
   Returns a hash table containing the keys and values of the property list
@@ -3006,30 +3037,12 @@ ALIST. Hash table is initialized using the HASH-TABLE-INITARGS.
   table.
 \end{function}
 
-\begin{function}{hash-table-keys}{table}[cl-ext]
-  Returns a list containing the keys of hash table TABLE.
+\section{Primitive hash function}
+\label{sec:prim-hash-funct}
+
+\begin{function}{sxhash}{x}
+  Returns an implementation dependent hash code for an object.
 \end{function}
-
-\begin{function}{hash-table-values}{table}[cl-ext]
-  Returns a list containing the values of hash table TABLE.
-\end{function}
-
-\begin{function}{ensure-gethash}{key hash-table \op default}[cl-ext]
-  Like GETHASH, but if KEY is not found in the HASH-TABLE saves the DEFAULT
-under key before returning it. Secondary return value is true if key was
-already in the table.
-\end{function}
-
-\begin{function}{build-hash-table}{hash-spec inital-contents}[cl-ext]
-  Create a hash table containing ``INITAL-CONTENTS''.
-\end{function}
-
-\begin{macro}{deflookup-table}{name \key var reader writer rem-er at-redefinition documentation test initial-contents}[cl-ext]
-  Creates a hash table and the associated accessors.
-\end{macro}
-
-
-
 
 \chapter{Structures}
 
@@ -4059,8 +4072,6 @@ current list of values.
 \begin{function}{mapcar2}{function1 function2 list}[cl-ext]
   Utility function to apply to functions to each element of a list.
 \end{function}
-
-
 
 
 \section{Macros}
@@ -6547,4 +6558,10 @@ email, json, mailbox, mime, etc
 \printindex
 
 \end{document}
+
+ 	
+
+%%% Local Variables:
+%%% TeX-source-specials-mode: 1
+%%% End:
 
