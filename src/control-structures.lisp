@@ -223,18 +223,19 @@ equal under TEST to result of evaluating INITIAL-VALUE."
      ,@(when documentation `(,documentation))))
 
 (defmacro if-bind (var test &body then/else)
-  "Anaphoric IF control structure.
+  "Anaphoric IF control structure for multiple values.
 
-VAR (a symbol) will be bound to the primary value of TEST. If
-TEST returns a true value then THEN will be executed, otherwise
+VAR (a symbol) will be bound to the primary value of TEST.  If
+TEST's second value is true then THEN will be executed, otherwise
 ELSE will be executed."
   (assert (first then/else)
           (then/else)
           "IF-BIND missing THEN clause.")
   (destructuring-bind (then &optional else)
       then/else
-    `(let ((,var ,test))
-       (if ,var ,then ,else))))
+    (with-unique-names (bool)
+      `(multiple-value-bind (,var ,bool) ,test
+	 (if ,bool ,then ,else)))))
 
 (defmacro aif (test then &optional else)
   "Just like IF-BIND but the var is always IT."
@@ -276,27 +277,6 @@ ELSE will be executed."
     (forms (first forms))
     (t 't)))
 
-(defmacro if2-bind (var test &body then/else)
-  "Anaphoric IF control structure for multiple values.
-
-VAR (a symbol) will be bound to the primary value of TEST.  If
-TEST's second value is true then THEN will be executed, otherwise
-ELSE will be executed."
-  (assert (first then/else)
-          (then/else)
-          "IF-BIND missing THEN clause.")
-  (destructuring-bind (then &optional else)
-      then/else
-    (with-unique-names (bool)
-      `(multiple-value-bind (,var ,bool) ,test
-	 (if ,bool ,then ,else)))))
-
-(defmacro aif2 (test then &optional else)
-  "Just like IF-BIND but the var is always IT.
-
-Very useful with functions like GETHASH."
-  `(if2-bind it ,test ,then ,else))
-
 (defmacro while* (test &body body)
   "Repeat BODY while TEST is true.
 
@@ -327,20 +307,6 @@ You may exit the loop with (RETURN-FROM UNTIL)."
 	    (progn ,@body)
 	    (return-from until)))))
 
-(defmacro acond2 (&rest clauses)
-  (if (null clauses)
-      nil
-      (with-unique-names (val foundp)
-        (destructuring-bind ((test &rest progn) &rest others)
-            clauses
-          `(multiple-value-bind (,val ,foundp)
-               ,test
-             (if (or ,val ,foundp)
-                 (let ((it ,val))
-                   (declare (ignorable it))
-                   ,@progn)
-                 (acond2 ,@others)))))))
-
 (defun varsymp (x)
   (and (symbolp x) (eq (aref (symbol-name x) 0) #\?)))
 
@@ -353,16 +319,15 @@ You may exit the loop with (RETURN-FROM UNTIL)."
       (values (cdr b) b))))
 
 (defun list-match (x y &optional binds)
-  (acond2
-    ((or (eql x y) (eql x '_) (eql y '_))
-     (values binds t))
-    ((binding x binds) (list-match it y binds))
-    ((binding y binds) (list-match x it binds))
-    ((varsymp x) (values (cons (cons x y) binds) t))
-    ((varsymp y) (values (cons (cons y x) binds) t))
-    ((and (consp x) (consp y) (list-match (car x) (car y) binds))
-     (list-match (cdr x) (cdr y) it))
-    (t (values nil nil))))
+  (acond ((or (eql x y) (eql x '_) (eql y '_))
+          (values binds t))
+         ((binding x binds) (list-match it y binds))
+         ((binding y binds) (list-match x it binds))
+         ((varsymp x) (values (cons (cons x y) binds) t))
+         ((varsymp y) (values (cons (cons y x) binds) t))
+         ((and (consp x) (consp y) (list-match (car x) (car y) binds))
+          (list-match (cdr x) (cdr y) it))
+         (t (values nil nil))))
 
 (defun vars (match-spec)
   (let ((vars nil))

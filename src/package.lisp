@@ -42,12 +42,9 @@
    #:acond
    #:aand
    #:and-bind
-   #:if2-bind
-   #:aif2
    #:while*
    #:until*
    #:awhile
-   #:acond2
    #:varsymp
    #:binding
    #:list-match-case
