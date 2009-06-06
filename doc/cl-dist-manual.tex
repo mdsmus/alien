@@ -3194,6 +3194,12 @@ benefit of the function GET-OUTPUT-STREAM-STRING.
   
 \end{macro}
 
+\begin{function}{copy-stream}{input output \op element-type}[cl-ext]
+  Reads data from FROM and writes it to TO. Both FROM and TO must be streams,
+they will be passed to read-sequence/write-sequence and must have compatable
+element-types.
+\end{function}
+
 \section{Operations on streams}
 \label{sec:operations-streams}
 
@@ -3516,6 +3522,10 @@ See also \funr{parse-integer} and \funr{read-sequence}.
   
 \end{function}
 
+\begin{function}{write-sequence}{seq stream \key start end}
+  Write the elements of SEQ bounded by START and END to STREAM.
+\end{function}
+
 \begin{function}{terpri}{\op stream}
   
 \end{function}
@@ -3597,24 +3607,153 @@ See also \funr{parse-integer} and \funr{read-sequence}.
    YES or NO.
 \end{function}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{File system interface}
+\label{cha:file-syst-interf}
 
-\begin{function}{print-not-readable-object}{condition}
+\section{Filenames}
+\label{sec:filenames}
+
+Extended wildcards
+
+\begin{function}{wild-pathname-p}{pathname \op field-key}
+  Predicate for determining whether pathname contains any wildcards.
+\end{function}
+
+\begin{function}{pathname-match-p}{in-pathname in-wildname}
+  Pathname matches the wildname template?
+\end{function}
+
+\begin{function}{translate-pathname}{source from-wildname to-wildname \key}
+  Use the source pathname to translate the from-wildname's wild and
+   unspecified elements into a completed to-pathname based on the to-wildname.
+\end{function}
+
+Logical pathnames
+
+\begin{function}{translate-logical-pathname}{pathname \key}
+  Translate PATHNAME to a physical pathname, which is returned.
+\end{function}
+
+\begin{class}{logical-pathname}{pathspec}
+  Converts the pathspec argument to a logical-pathname and returns it.
+\end{class}
+
+\begin{accessor}{logical-pathname-translations}{host}
+  Return the (logical) host object argument's list of translations.
+\end{accessor}
+
+\begin{function}{logical-pathname}{pathspec}
+  Converts the pathspec argument to a logical-pathname and returns it.
+\end{function}
+
+\begin{function}{load-logical-pathname-translations}{host}
   
 \end{function}
 
-\begin{function}{file-length}{stream}
+\begin{function}{compile-file-pathname}{input-file \key output-file \akeys}
+  Return a pathname describing what file COMPILE-FILE would write to given
+   these arguments.
+\end{function}
+
+Pathname functions
+
+\begin{variable}{*default-pathname-defaults*}{}
+  
+\end{variable}
+
+\begin{function}{pathnamep}{object}
   
 \end{function}
 
-\begin{function}{file-position}{stream \op position}
+\begin{function}{pathname}{pathspec}
+  Convert PATHSPEC (a pathname designator) into a pathname.
+\end{function}
+
+\begin{function}{truename}{pathspec}
+  If PATHSPEC is a pathname that names an existing file, return
+a pathname that denotes a canonicalized name for the file.  If
+pathspec is a stream associated with a file, return a pathname
+that denotes a canonicalized name for the file associated with
+the stream.
+
+An error of type FILE-ERROR is signalled if no such file exists
+or if the file system is such that a canonicalized file name
+cannot be determined or if the pathname is wild.
+
+Under Unix, the TRUENAME of a symlink that links to itself or to
+a file that doesn't exist is considered to be the name of the
+broken symlink itself.
+\end{function}
+
+\begin{function}{parse-namestring}{thing \op host defaults \key start end junk-allowed}
   
 \end{function}
 
-\begin{function}{file-string-length}{stream object}
-  
+\begin{function}{merge-pathnames}{pathname \op defaults default-version}
+  Construct a filled in pathname by completing the unspecified components
+   from the defaults.
 \end{function}
+
+\begin{function}{make-pathname}{\key host device directory name type version defaults case}
+  Makes a new pathname from the component arguments. Note that host is
+a host-structure or string.
+\end{function}
+
+\begin{function}{pathname-device}{pathname \key case}
+  Return PATHNAME's device.
+\end{function}
+
+\begin{function}{pathname-directory}{pathname \key case}
+  Return PATHNAME's directory.
+\end{function}
+
+\begin{function}{pathname-host}{pathname \key case}
+  Return PATHNAME's host.
+\end{function}
+
+\begin{function}{pathname-name}{pathname \key case}
+  Return PATHNAME's name.
+\end{function}
+
+\begin{function}{pathname-type}{pathname \key case}
+  Return PATHNAME's type.
+\end{function}
+
+\begin{function}{pathname-version}{pathname}
+  Return PATHNAME's version.
+\end{function}
+
+\begin{function}{namestring}{pathname}
+  Construct the full (name)string form of the pathname.
+\end{function}
+
+\begin{function}{file-namestring}{pathname}
+  Return a string representation of the name used in the pathname.
+\end{function}
+
+\begin{function}{host-namestring}{pathname}
+  Return a string representation of the name of the host in the pathname.
+\end{function}
+
+\begin{function}{directory-namestring}{pathname}
+  Return a string representation of the directories used in the pathname.
+\end{function}
+
+\begin{function}{enough-namestring}{pathname \op defaults}
+  Return an abbreviated pathname sufficent to identify the pathname relative
+   to the defaults.
+\end{function}
+
+\begin{function}{user-homedir-pathname}{\op host}
+  Return the home directory of the user as a pathname. If the HOME
+environment variable has been specified, the directory it designates
+is returned; otherwise obtains the home directory from the operating
+system.
+\end{function}
+
+\section{Dealing with files}
+\label{sec:dealing-with-files}
 
 \begin{function}{open}{filename \key direction element-type if-exists if-does-not-exist
  external-format \aux direction if-does-not-exist if-exists}
@@ -3628,20 +3767,9 @@ See also \funr{parse-integer} and \funr{read-sequence}.
   See the manual for details.
 \end{function}
 
-\begin{function}{stream-error-stream}{condition}
-  
-\end{function}
-
-\begin{function}{write-sequence}{seq stream \key start end}
-  Write the elements of SEQ bounded by START and END to STREAM.
-\end{function}
-
 \begin{macro}{with-open-file}{stream \body body}
   
 \end{macro}
-
-\section{Extensions}
-\label{sec:extensions}
 
 \begin{macro}{with-input-from-file}{stream-name file-name \rest args
     \key direction \akeys \body body}[cl-ext]
@@ -3680,31 +3808,18 @@ ENCODING-KEYWORD-TO-NATIVE, see ENCODING-KEYWORD-TO-NATIVE to
 possible values.
 \end{function}
 
-\begin{function}{copy-file}{from to \key if-to-exists element-type}[cl-ext]
-  
+\begin{function}{rename-file}{file new-name}
+  Rename FILE to have the specified NEW-NAME. If FILE is a stream open to a
+  file, then the associated file is renamed.
 \end{function}
-
-\begin{function}{copy-stream}{input output \op element-type}[cl-ext]
-  Reads data from FROM and writes it to TO. Both FROM and TO must be streams,
-they will be passed to read-sequence/write-sequence and must have compatable
-element-types.
-\end{function}
-
-
-
-\section{Files}
 
 \begin{function}{delete-file}{file}
   Delete the specified FILE.
 \end{function}
 
-\begin{function}{directory}{pathname \key resolve-symlinks}
-  Return a list of PATHNAMEs, each the TRUENAME of a file that matched the
-   given pathname. Note that the interaction between this ANSI-specified
-   TRUENAMEing and the semantics of the Unix filesystem (symbolic links..)
-   means this function can sometimes return files which don't have the same
-   directory as PATHNAME.  If :RESOLVE-SYMLINKS is NIL, don't resolve
-   symbolic links in matching filenames.
+\begin{function}{probe-file}{pathspec}
+  Return the truename of PATHSPEC if the truename can be found,
+or NIL otherwise.  See TRUENAME for more information.
 \end{function}
 
 \begin{function}{ensure-directories-exist}{pathspec \key verbose mode}
@@ -3714,13 +3829,7 @@ element-types.
   the Unix permission bits.
 \end{function}
 
-\begin{function}{file-author}{pathspec}
-  Return the author of the file specified by PATHSPEC. Signal an
-error of type FILE-ERROR if no such file exists, or if PATHSPEC
-is a wild pathname.
-\end{function}
-
-\begin{function}{file-error-pathname}{condition}
+\begin{function}{copy-file}{from to \key if-to-exists element-type}[cl-ext]
   
 \end{function}
 
@@ -3730,143 +3839,41 @@ An error of type FILE-ERROR is signaled if no such file exists,
 or if PATHSPEC is a wild pathname.
 \end{function}
 
-\begin{function}{probe-file}{pathspec}
-  Return the truename of PATHSPEC if the truename can be found,
-or NIL otherwise.  See TRUENAME for more information.
+\begin{function}{file-author}{pathspec}
+  Return the author of the file specified by PATHSPEC. Signal an
+error of type FILE-ERROR if no such file exists, or if PATHSPEC
+is a wild pathname.
 \end{function}
 
-\begin{function}{rename-file}{file new-name}
-  Rename FILE to have the specified NEW-NAME. If FILE is a stream open to a
-  file, then the associated file is renamed.
-\end{function}
-
-\begin{function}{truename}{pathspec}
-  If PATHSPEC is a pathname that names an existing file, return
-a pathname that denotes a canonicalized name for the file.  If
-pathspec is a stream associated with a file, return a pathname
-that denotes a canonicalized name for the file associated with
-the stream.
-
-An error of type FILE-ERROR is signalled if no such file exists
-or if the file system is such that a canonicalized file name
-cannot be determined or if the pathname is wild.
-
-Under Unix, the TRUENAME of a symlink that links to itself or to
-a file that doesn't exist is considered to be the name of the
-broken symlink itself.
-\end{function}
-
-\section{Filenames}
-
-\begin{accessor}{logical-pathname-translations}{host}
-  Return the (logical) host object argument's list of translations.
-\end{accessor}
-
-\begin{function}{directory-namestring}{pathname}
-  Return a string representation of the directories used in the pathname.
-\end{function}
-
-\begin{function}{enough-namestring}{pathname \op defaults}
-  Return an abbreviated pathname sufficent to identify the pathname relative
-   to the defaults.
-\end{function}
-
-\begin{function}{file-namestring}{pathname}
-  Return a string representation of the name used in the pathname.
-\end{function}
-
-\begin{function}{host-namestring}{pathname}
-  Return a string representation of the name of the host in the pathname.
-\end{function}
-
-\begin{function}{load-logical-pathname-translations}{host}
+\begin{function}{file-position}{stream \op position}
   
 \end{function}
 
-\begin{function}{logical-pathname}{pathspec}
-  Converts the pathspec argument to a logical-pathname and returns it.
-\end{function}
-
-\begin{function}{make-pathname}{\key host device directory name type version defaults case}
-  Makes a new pathname from the component arguments. Note that host is
-a host-structure or string.
-\end{function}
-
-\begin{function}{merge-pathnames}{pathname \op defaults default-version}
-  Construct a filled in pathname by completing the unspecified components
-   from the defaults.
-\end{function}
-
-\begin{function}{namestring}{pathname}
-  Construct the full (name)string form of the pathname.
-\end{function}
-
-\begin{function}{parse-namestring}{thing \op host defaults \key start end junk-allowed}
+\begin{function}{file-length}{stream}
   
 \end{function}
 
-\begin{function}{pathname}{pathspec}
-  Convert PATHSPEC (a pathname designator) into a pathname.
-\end{function}
-
-\begin{function}{pathname-device}{pathname \key case}
-  Return PATHNAME's device.
-\end{function}
-
-\begin{function}{pathname-directory}{pathname \key case}
-  Return PATHNAME's directory.
-\end{function}
-
-\begin{function}{pathname-host}{pathname \key case}
-  Return PATHNAME's host.
-\end{function}
-
-\begin{function}{pathname-match-p}{in-pathname in-wildname}
-  Pathname matches the wildname template?
-\end{function}
-
-\begin{function}{pathname-name}{pathname \key case}
-  Return PATHNAME's name.
-\end{function}
-
-\begin{function}{pathname-type}{pathname \key case}
-  Return PATHNAME's type.
-\end{function}
-
-\begin{function}{pathname-version}{pathname}
-  Return PATHNAME's version.
-\end{function}
-
-\begin{function}{pathnamep}{object}
+\begin{function}{file-string-length}{stream object}
   
 \end{function}
 
-\begin{function}{translate-logical-pathname}{pathname \key}
-  Translate PATHNAME to a physical pathname, which is returned.
+Loading files
+
+See \funr{load}, \funr{make-load-form} and
+\funr{make-load-form-saving-slots}
+
+Accessing directories
+
+\begin{function}{directory}{pathname \key resolve-symlinks}
+  Return a list of PATHNAMEs, each the TRUENAME of a file that matched the
+   given pathname. Note that the interaction between this ANSI-secified
+   TRUENAMEing and the semantics of the Unix filesystem (symbolic links..)
+   means this function can sometimes return files which don't have the same
+   directory as PATHNAME.  If :RESOLVE-SYMLINKS is NIL, don't resolve
+   symbolic links in matching filenames.
 \end{function}
 
-\begin{function}{translate-pathname}{source from-wildname to-wildname \key}
-  Use the source pathname to translate the from-wildname's wild and
-   unspecified elements into a completed to-pathname based on the to-wildname.
-\end{function}
-
-\begin{function}{wild-pathname-p}{pathname \op field-key}
-  Predicate for determining whether pathname contains any wildcards.
-\end{function}
-
-\begin{class}{logical-pathname}{pathspec}
-  Converts the pathspec argument to a logical-pathname and returns it.
-\end{class}
-
-\begin{class}{pathname}{pathspec}
-  Convert PATHSPEC (a pathname designator) into a pathname.
-\end{class}
-
-\begin{variable}{*default-pathname-defaults*}{}
-  
-\end{variable}
-
-
+
 \chapter{Pretty printing}
 \label{cha:pretty-printing}
 
@@ -5557,11 +5564,6 @@ returning its filename.
      derived from the input file name. (non-standard)
 \end{function}
 
-\begin{function}{compile-file-pathname}{input-file \key output-file \akeys}
-  Return a pathname describing what file COMPILE-FILE would write to given
-   these arguments.
-\end{function}
-
 \begin{function}{load}{pathspec \key verbose print if-does-not-exist external-format}
   Load the file given by FILESPEC into the Lisp environment, returning
    T on success.
@@ -5783,10 +5785,20 @@ producing a symbol in the current package.
   
 \end{function}
 
-
-
 
 \chapter{Conditions, restarts and Errors}
+
+\begin{function}{print-not-readable-object}{condition}
+  
+\end{function}
+
+\begin{function}{stream-error-stream}{condition}
+  
+\end{function}
+
+\begin{function}{file-error-pathname}{condition}
+  
+\end{function}
 
 \begin{function}{arithmetic-error-operands}{condition}
   
@@ -6180,13 +6192,6 @@ are running on, or NIL if we can't find any useful information.
 \begin{function}{software-version}{}
   Return a string describing version of the supporting software, or NIL
   if not available.
-\end{function}
-
-\begin{function}{user-homedir-pathname}{\op host}
-  Return the home directory of the user as a pathname. If the HOME
-environment variable has been specified, the directory it designates
-is returned; otherwise obtains the home directory from the operating
-system.
 \end{function}
 
 \begin{generic}{describe-object}{x stream}
