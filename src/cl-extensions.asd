@@ -22,5 +22,6 @@
                (:file "oop")
                (:file "types")
                (:file "0-optional-names")
+               (:file "infix")
                ))
 
