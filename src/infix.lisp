@@ -167,13 +167,15 @@
 ;;; operators with all the info on them, and also NOT have the list of
 ;;; operators in the comment, where they are likely to become wrong when
 ;;; changes are made to the code. For example, something like:
-;; (define-infix-operators
-;;   ([  30                           :matchfix aref :end ])
-;;   (*  20 :infix *                                       )
-;;   (+  10 :infix +        :prefix +                      )
-;;   (&  10 :infix and                                     )
-;;   (+= 10 :infix #'+=-operator                           )
-;;   ...)
+#|
+(define-infix-operators
+  ([  30                           :matchfix aref :end ])
+  (*  20 :infix *                                       )
+  (+  10 :infix +        :prefix +                      )
+  (&  10 :infix and                                     )
+  (+= 10 :infix #'+=-operator                           )
+  ...)
+|#
 
 ;;; ********************************
 ;;; Change Log *********************
@@ -289,23 +291,28 @@
 (defparameter *infix-readtable* (copy-readtable nil))
 (defparameter *normal-readtable* (copy-readtable nil))
 
+(defmacro infix-error (format-string &rest args)
+  `(let ((*readtable* *normal-readtable*)) 
+     (error ,format-string ,@args)))
+
 (defun infix-reader (stream subchar arg)
   ;; Read either #I(...) or #I"..."
   (declare (ignore arg subchar))
-  (let ((first-char (peek-char nil stream t nil t)))
-    (cond ((char= first-char #\space)
-	   (read-char stream)		; skip over whitespace
-	   (infix-reader stream nil nil))
-	  ((char= first-char #\")
-	   ;; Read double-quote-delimited infix expressions.
-	   (string->prefix (read stream t nil t)))
-	  ((char= first-char #\()
-	   (read-char stream)		; get rid of opening left parenthesis
-	   (let ((*readtable* *infix-readtable*)
-		 (*normal-readtable* *readtable*))
-	     (read-infix stream)))
-	  (t
-	   (infix-error "Infix expression starts with ~A" first-char)))))
+  (let ((*read-suppress* nil))
+    (let ((first-char (peek-char nil stream t nil t)))
+      (cond ((char= first-char #\space)
+             (read-char stream)		; skip over whitespace
+             (infix-reader stream nil nil))
+            ((char= first-char #\")
+             ;; Read double-quote-delimited infix expressions.
+             (string->prefix (read stream t nil t)))
+            ((char= first-char #\()
+             (read-char stream)		; get rid of opening left parenthesis
+             (let ((*readtable* *infix-readtable*)
+                   (*normal-readtable* *readtable*))
+               (read-infix stream)))
+            (t
+             (infix-error "Infix expression starts with ~A" first-char))))))
 
 (set-dispatch-macro-character #\# #\I #'infix-reader *readtable*) ; was #\# #\$
 
@@ -316,10 +323,6 @@
       (with-input-from-string (stream (concatenate 'string "#I(" string ")"))
 	(read stream))
       string))
-
-(defmacro infix-error (format-string &rest args)
-  `(let ((*readtable* *normal-readtable*)) 
-     (error ,format-string ,@args)))
 
 (defun read-infix (stream)
   (let* ((result (gather-superiors '\) stream)) ; %infix-end-token%
