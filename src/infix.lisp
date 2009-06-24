@@ -168,7 +168,7 @@
 ;;; operators in the comment, where they are likely to become wrong when
 ;;; changes are made to the code. For example, something like:
 #|
-(define-infix-operators
+\(define-infix-operators
   ([  30                           :matchfix aref :end ])
   (*  20 :infix *                                       )
   (+  10 :infix +        :prefix +                      )
