@@ -322,6 +322,10 @@ Example:
       (traverse tree))
     (nreverse list)))
 
+(defun unflatten (list n)
+  (loop for x from 0 to (1- (/ (length list) n)) collect
+        (subseq list (* n x) (* n (1+ x)))))
+
 (defmacro dolist* ((iterator list &optional return-value) &body body)
   "Like DOLIST but destructuring-binds the elements of LIST.
 
