@@ -408,3 +408,6 @@ Examples:
         for key = (nth x list)
         for data = (nth (1+ x) list)
         nconc (acons key data nil)))
+
+(defun transpose-list (m)
+  (apply #'mapcar #'list m))

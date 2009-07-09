@@ -97,6 +97,7 @@
    #:set-equal
    #:map-product
    #:flatten
+   #:unflatten
    #:dolist*
    #:partition
    #:dotree
@@ -104,6 +105,7 @@
    #:append1
    #:length=1
    #:list-to-alist
+   #:transpose-list
    ;; sequences
    #:rotate
    #:shuffle
