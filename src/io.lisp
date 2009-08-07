@@ -74,3 +74,43 @@ element-types."
         while (= bytes-read buffer-size)
         do (write-sequence buffer output)
         finally (write-sequence buffer output :end bytes-read)))
+
+(defun chdir (&optional dir)
+  "Change directory and set default pathname"
+  (cond
+    ((not (null dir))
+     (when (and (typep dir 'logical-pathname)
+                (translate-logical-pathname dir))
+       (setq dir (translate-logical-pathname dir)))
+     (when (stringp dir)
+       (setq dir (parse-namestring dir)))
+     #+allegro (excl:chdir dir)
+     #+clisp (#+lisp=cl ext:cd #-lisp=cl lisp:cd dir)
+     #+(or cmu scl) (setf (ext:default-directory) dir)
+     #+cormanlisp (ccl:set-current-directory dir)
+     #+(and mcl (not openmcl)) (ccl:set-mac-default-directory dir)
+     #+openmcl (ccl:cwd dir)
+     #+gcl (si:chdir dir)
+     #+lispworks (hcl:change-directory dir)
+     (setq cl:*default-pathname-defaults* dir))
+    (t
+     (let ((dir
+            #+allegro (excl:current-directory)
+            #+clisp (#+lisp=cl ext:default-directory #-lisp=cl lisp:default-directory)
+            #+(or cmu scl) (ext:default-directory)
+            #+sbcl (sb-unix:posix-getcwd/)
+            #+cormanlisp (ccl:get-current-directory)
+            #+lispworks (hcl:get-working-directory)
+            #+mcl (ccl:mac-default-directory)
+            #-(or allegro clisp cmu scl cormanlisp mcl sbcl lispworks) (truename ".")))
+       (when (stringp dir)
+         (setq dir (parse-namestring dir)))
+       dir))))
+
+(defmacro with-dir (directory &body body)
+  (with-gensyms (original-dir)
+    `(let ((,original-dir (chdir)))
+       (progn
+         (chdir ,directory)
+         ,@body
+         (chdir ,original-dir)))))

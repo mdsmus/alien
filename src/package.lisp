@@ -193,6 +193,8 @@
    #:write-string-into-file
    #:copy-file
    #:copy-stream
+   #:chdir
+   #:with-dir
    ;; math
    #:10^
    #:parse-float

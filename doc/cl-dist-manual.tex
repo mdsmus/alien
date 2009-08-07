@@ -3878,6 +3878,15 @@ is a wild pathname.
   
 \end{function}
 
+\begin{function}{chdir}{dir}[cl-ext]
+  Change directory and set default pathname.
+\end{function}
+
+\begin{macro}{with-dir}{directory \body body}[cl-ext]
+  Execute body after changing directory. Change back to previous
+  directory after executing body.
+\end{macro}
+
 Loading files
 
 See \funr{load}, \funr{make-load-form} and
