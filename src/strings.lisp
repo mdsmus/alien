@@ -49,6 +49,12 @@ the vector ALPHABET.
         (when str
           (princ str stream))))))
 
+(defun stringify (exp)
+  "Coerce argument to a string."
+  (cond ((stringp exp) exp)
+	((symbolp exp) (symbol-name exp))
+	(t (format nil "~A" exp))))
+
 ;;; A "faster" version for string concatenating.
 ;;; Could use just (apply #'concatenate 'string list), but that's quite slow
 (defun join-strings (&rest strings)
