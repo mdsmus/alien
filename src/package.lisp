@@ -144,6 +144,7 @@
    #:+alphanumeric-ascii-alphabet+
    #:+ascii-alphabet+
    #:random-string
+   #:stringify
    #:strcat
    #:strcat*
    #:join-strings
