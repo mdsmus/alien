@@ -283,8 +283,11 @@ of ARRAY."
   (or (null string)
       (zerop (length string))))
 
-(defun split-tabs (string)
+(defun split-tab (string)
   (split-sequence #\Tab string :remove-empty-subseqs t))
+
+(defun split-space (string)
+  (split-sequence #\Space string :remove-empty-subseqs t))
 
 (defun split-newline (string)
   (split-sequence #\Newline string :remove-empty-subseqs t))

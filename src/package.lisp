@@ -154,7 +154,8 @@
    #:encoding-keyword-to-native
    #:string-from-array
    #:empty-string-p
-   #:split-tabs
+   #:split-tab
+   #:split-space
    #:split-newline
    #:replace-all
    ;; functions
