@@ -109,9 +109,10 @@ element-types."
        dir))))
 
 (defmacro with-dir (directory &body body)
-  (with-gensyms (original-dir)
+  (with-gensyms (original-dir result)
     `(let ((,original-dir (chdir)))
        (progn
          (chdir ,directory)
-         ,@body
-         (chdir ,original-dir)))))
+         (let ((,result ,@body))
+           (chdir ,original-dir)
+           ,result)))))
