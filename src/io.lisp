@@ -86,6 +86,7 @@ element-types."
        (setq dir (parse-namestring dir)))
      #+allegro (excl:chdir dir)
      #+clisp (#+lisp=cl ext:cd #-lisp=cl lisp:cd dir)
+     #+sbcl(sb-posix:chdir (pathname dir))
      #+(or cmu scl) (setf (ext:default-directory) dir)
      #+cormanlisp (ccl:set-current-directory dir)
      #+(and mcl (not openmcl)) (ccl:set-mac-default-directory dir)
