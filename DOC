@@ -1,0 +1,20 @@
+; -*- org -*-
+
+* features
+** if lisp file exists will load it by default as example
+** examples are lisp files, easy to load and check
+** devnote to document where functions came from and what we did to
+   them. mainly for cl-dist creators and not for the users
+* goals
+** reduce symbol conflicts
+** be able to use just a single :use :cl-ext (and reduce conflicts)
+** easy of use (scripting, etc)
+** documentation in one place
+* why hand-made documentation?
+  - it's easier to use things like sections, subsections
+  - superior way of editing documents (using auctex instead of docstrings)
+  - documentation in one place (for common lisp, libraries, etc)
+* thanks
+** many organizational from cltl (order, titles, but no content)
+** many things from python documentation project
+** docstrings and args from sbcl

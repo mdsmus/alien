@@ -1,0 +1,56 @@
+; -*- org -*-
+
+* Basic libraries
+asdf-binary-locations http://www.cliki.net/ASDF-Binary-Locations
+cffi http://www.cliki.net/CFFI
+arnesi http://common-lisp.net/project/bese/arnesi.html
+fiveam http://common-lisp.net/project/bese/FiveAM.html
+alexandria http://common-lisp.net/project/alexandria/
+cl-ppcre http://weitz.de/files/cl-ppcre.tar.gz
+CL-UTILITIES http://common-lisp.net/project/cl-utilities/
+Metatilities http://common-lisp.net/project/cl-containers/metatilities/
+split-sequence http://www.cliki.net/SPLIT-SEQUENCE
+series http://series.sourceforge.net/
+ch-util http://cyrusharmon.org/static/releases/ch-util_0.3.10.tar.gz
+http://www.cs.unm.edu/~madhu/clisp/isc/sequence-search-replace.lisp
+cl-fad http://weitz.de/files/cl-fad.tar.gz
+iterate http://common-lisp.net/project/iterate/
+
+### http://www.cliki.net/Current recommended libraries
+
+* Main language
+** DONE Syntax
+** DONE Numbers
+** DONE Characters
+** DONE Strings
+** DONE Arrays and vectors
+** DONE Lists
+** DONE Sequences
+** DONE Hash Tables
+** DONE Structures
+** DONE Streams
+** DONE Input and Output
+** DONE File system interface
+** DONE Pretty printing
+** DONE Functions
+** DONE Control Structures
+** Iteration
+** Object oriented programming
+** Types
+** Packages and Symbols
+** Conditions, restarts and Errors
+** External Environment
+** Debugging and Profiling
+** Compilation and evaluation
+* Libraries
+** HTML and XML processing
+** GUI programming
+** Threads
+** Data persistance
+** Data Compression and Archiving
+** Generic Operating System Services
+** File Formats
+** Cryptographic Services
+** Internationalization
+** Development Tools
+** Internet Data Handling

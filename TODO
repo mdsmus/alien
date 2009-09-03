@@ -78,7 +78,6 @@ Admittedly the functional approach doesn't work on macros, but I think doing tha
 * better tableofcontents
 * better header and footer
 * be able to print A4, letter, B&W, color
-* DONE B15 colorize code in pdf {2}
 * better colors for code in pdf
 * B16 colorize code in html {2}
 * smaller spacing between items
