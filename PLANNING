@@ -1,16 +1,11 @@
 ; -*- org -*-
 
 * read stuff in @to-read
-* Feature request
-** hierarquical packages
-   http://www.tfeb.org/lisp/hax.html#HIERARCHICAL-PACKAGES
-** decimal number
-   http://www.cliki.net/DECIMAL-NUMBER
-** audio formats
-   http://www3.telus.net/public/thomasw2/cl-alsa.html
-** access alsa/oss
-   http://www3.telus.net/public/thomasw2/cl-alsa.html
 * Basic utils (merge with main soon)
+** merge port
+   http://clocc.sourceforge.net/dist/port.html
+** merge memoize
+   http://www.tfeb.org/lisp/hax.html#MEMOIZE
 ** merge paip
    http://norvig.com/paip/auxfns.lisp
 ** merge aima
@@ -19,7 +14,6 @@
    http://common-lisp.net/project/trivial-shell/
 ** extremum
    http://www.cliki.net/EXTREMUM
-** SB-ROTATE-BYTE
 ** parse number
    http://www.cliki.net/PARSE-NUMBER
 ** file/OS
@@ -37,30 +31,7 @@
    http://common-lisp.net/project/cl-syntax-sugar/
 ** defclass*
    http://common-lisp.net/project/defclass-star/
-* Check out (test)
-  http://common-lisp.net/project/metabang-bind/
-  http://common-lisp.net/project/cl-graph/
-  http://common-lisp.net/project/cl-containers/
-  http://common-lisp.net/project/metacopy/
-  http://www.cliki.net/MatLisp
-  http://common-lisp.net/project/lisplab/
-  http://cl-heresy.sourceforge.net/Heresy.htm
-  http://www.cliki.net/fare-matcher
-  http://www.tfeb.org/lisp/hax.html#CONDUITS
-  http://www.cliki.net/Linedit
-  http://common-lisp.net/project/cl-match/doc/clmatch.htm
-  http://blog.viridian-project.de/cl-i18n/
-  http://www.cliki.net/cl-future
-  http://www.cliki.net/Binary-types
-  http://common-lisp.net/project/cl-unification/
-** math
-   http://www.cliki.net/lisp-matrix
-   http://common-lisp.net/project/cl-mathstats/
-   http://common-lisp.net/project/cl-variates/
-   http://common-lisp.net/project/gsll/
-   http://www.cliki.net/array-operations
-   http://cyrusharmon.org/projects?project=clem
-* Main language
+* Organize main language (documentation)
 ** DONE Syntax
 ** DONE Numbers
 ** DONE Characters
@@ -93,11 +64,11 @@
 ** Graphical User Interfaces
    http://www.cliki.net/Ltk
    http://phil.nullable.eu/
-   http://www.cliki.net/cl-cairo2
 ** Network programming
    http://www.cliki.net/USOCKET
    http://common-lisp.net/project/cl-plus-ssl/
-** Internet data
+** Internet data and protocols
+   http://common-lisp.net/project/rfc2388/
    http://www.cliki.net/mel-base
    http://common-lisp.net/project/cl-json/
    http://www.cliki.net/CL-MIME
@@ -126,8 +97,7 @@
    http://www.cliki.net/cl-prevalence
    http://common-lisp.net/project/cl-rdbms/
    http://www.cliki.net/CLSQL
-** Parser
-   http://common-lisp.net/project/cl-walker/
+   http://common-lisp.net/project/cl-sqlite/
 ** Data Compression and Archiving
    http://www.xach.com/lisp/salza2/
    http://www.cliki.net/archive
@@ -135,31 +105,24 @@
    http://common-lisp.net/project/cl-muproc/
    http://common-lisp.net/project/bordeaux-threads/
    http://common-lisp.net/project/cl-stm/
-** ?? (spath vs s-query)
-   http://www.defmacro.org/ramblings/s-query.html
-   http://www.cliki.net/spath
-   http://www.cliki.net/Screamer
-   http://www.tfeb.org/lisp/hax.html#MEMOIZE
-*** date and time
-   http://common-lisp.net/project/cl-date-calc/index.html
 ** Operating System Services
 *** time
+    http://common-lisp.net/project/cl-date-calc/index.html
     http://common-lisp.net/project/local-time/
     http://code.google.com/p/cl-period/wiki/API
-*** os
 *** Streams
     http://weitz.de/flexi-streams/
     http://weitz.de/chunga/
 *** optparse
     http://common-lisp.net/project/cl-cli-parser/
+    http://common-lisp.net/gitweb?p=projects/qitab/command-line-arguments.git;a=summary
 *** logging
     http://common-lisp.net/project/log5/
     http://common-lisp.net/project/cl-syslog/
-*** getpassword
-*** plataform data
 *** Interface with C
     http://www.cliki.net/CFFI
 ** graphics
+   http://www.cliki.net/cl-cairo2
    http://common-lisp.net/project/cl-jpeg/
    http://www.xach.com/lisp/zpng/
    http://www.xach.com/lisp/vecto/
@@ -176,15 +139,74 @@
    http://www.cliki.net/MD5
    http://method-combination.net/lisp/ironclad/
 ** Internationalization
+   http://blog.viridian-project.de/cl-i18n/
    http://www.cliki.net/cl-l10n
 ** Development Tools
+*** profiling
+    http://www.artfulcode.net/articles/profiling-lisp-application/
+    http://www-users.cs.umn.edu/~gini/lisp/profile.html
+    http://www-users.cs.umn.edu/~gini/lisp/metering.cl
 *** Unit Testing
     http://common-lisp.net/project/bese/FiveAM.html
-** Internet Data and protocols
-   http://common-lisp.net/project/rfc2388/
-** System dependency (build systems)
-   http://www.cliki.net/asdf
-   http://www.cliki.net/ASDF-Binary-Locations
+*** System dependency (build systems)
+    http://www.cliki.net/asdf
+    http://www.cliki.net/ASDF-Binary-Locations
+    http://www.common-lisp.org/project/xcvb/
+    http://xach.livejournal.com/191187.html
+    http://datlisp.blogspot.com/2009/01/minor-asdf-inconvenience.html
+    http://boinkor.net/archives/2007/01/explaining_some_features_of_as.html
+** s-expressions (spath vs s-query)
+   http://common-lisp.net/project/cl-walker/
+   http://www.defmacro.org/ramblings/s-query.html
+   http://www.cliki.net/spath
+** lazy programming
+   http://common-lisp.net/project/clazy/
+   http://cl-heresy.sourceforge.net/Heresy.htm
+** nondeterministic programming
+   http://www.cliki.net/Screamer
 ** Series
    http://series.sourceforge.net/
+* Check out (test)
+  http://www.cliki.net/cl-configuration
+  http://www.cliki.net/cl-environment
+  http://common-lisp.net/project/metabang-bind/
+  http://common-lisp.net/project/cl-graph/
+  http://common-lisp.net/project/cl-containers/
+  http://common-lisp.net/project/metacopy/
+  http://www.cliki.net/MatLisp
+  http://common-lisp.net/project/lisplab/
+  http://www.cliki.net/fare-matcher
+  http://www.tfeb.org/lisp/hax.html#CONDUITS
+  http://www.cliki.net/Linedit
+  http://common-lisp.net/project/cl-match/doc/clmatch.htm
+  http://www.cliki.net/cl-future
+  http://www.cliki.net/Binary-types
+  http://common-lisp.net/project/cl-unification/
+** math
+   http://www.cliki.net/lisp-matrix
+   http://common-lisp.net/project/cl-mathstats/
+   http://common-lisp.net/project/cl-variates/
+   http://common-lisp.net/project/gsll/
+   http://www.cliki.net/array-operations
+   http://cyrusharmon.org/projects?project=clem
+* Feature request
+** os
+  http://docs.python.org/library/os.html
+** plataform data
+   http://docs.python.org/library/platform.html
+** getpassword
+   http://docs.python.org/library/getpass.html
+** SB-ROTATE-BYTE
+** hierarquical packages
+   http://www.tfeb.org/lisp/hax.html#HIERARCHICAL-PACKAGES
+** decimal number
+   http://www.cliki.net/DECIMAL-NUMBER
+** audio formats
+   http://www3.telus.net/public/thomasw2/cl-alsa.html
+** access alsa/oss
+   http://www3.telus.net/public/thomasw2/cl-alsa.html
+* Meta
+  Things that may be interesting to the project
 
+  http://www.cliki.net/Benchmarks
+  http://common-lisp.net/gitweb?p=projects/qitab/poiu.git;a=summary
