@@ -3,6 +3,16 @@
 (defun 10^ (n)
   (expt 10 n))
 
+(defun expt-mod (n exponent modulus)
+  "As (mod (expt n exponent) modulus), but more efficient."
+  (declare (optimize (speed 3) (safety 0) (space 0) (debug 0)))  
+  (loop with result = 1
+        for i of-type fixnum from 0 below (integer-length exponent)
+        for sqr = n then (mod (* sqr sqr) modulus)
+        when (logbitp i exponent) do
+        (setf result (mod (* result sqr) modulus))
+        finally (return result)))
+
 (defun radix-values (radix)
   (assert (<= 2 radix 35)
           (radix)

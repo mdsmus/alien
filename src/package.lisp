@@ -198,6 +198,7 @@
    #:with-dir
    ;; math
    #:10^
+   #:expt-mod
    #:parse-float
    #:mulf
    #:divf
