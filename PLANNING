@@ -1,6 +1,30 @@
 ; -*- org -*-
 
 * read stuff in @to-read
+* Organize main language (documentation)
+** DONE Syntax
+** DONE Numbers
+** DONE Characters
+** DONE Strings
+** DONE Arrays and vectors
+** DONE Lists
+** DONE Sequences
+** DONE Hash Tables
+** DONE Structures
+** DONE Streams
+** DONE Input and Output
+** DONE File system interface
+** DONE Pretty printing
+** DONE Functions
+** DONE Control Structures
+** Iteration (1)
+** Object oriented programming (4)
+** Types (3)
+** Packages and Symbols (5)
+** Conditions, restarts and Errors (4)
+** External Environment (4)
+** Debugging and Profiling (?)
+** Compilation and evaluation (2)
 * Basic utils (merge with main soon)
 ** merge port
    http://clocc.sourceforge.net/dist/port.html
@@ -31,30 +55,6 @@
    http://common-lisp.net/project/cl-syntax-sugar/
 ** defclass*
    http://common-lisp.net/project/defclass-star/
-* Organize main language (documentation)
-** DONE Syntax
-** DONE Numbers
-** DONE Characters
-** DONE Strings
-** DONE Arrays and vectors
-** DONE Lists
-** DONE Sequences
-** DONE Hash Tables
-** DONE Structures
-** DONE Streams
-** DONE Input and Output
-** DONE File system interface
-** DONE Pretty printing
-** DONE Functions
-** DONE Control Structures
-** Iteration
-** Object oriented programming
-** Types
-** Packages and Symbols
-** Conditions, restarts and Errors
-** External Environment
-** Debugging and Profiling
-** Compilation and evaluation
 * Libraries
 ** HTML, XML processing (test cxml, s-xml, xmls)
    http://www.cliki.net/CXML
@@ -166,7 +166,7 @@
    http://www.cliki.net/Screamer
 ** Series
    http://series.sourceforge.net/
-* Check out (test)
+* Check out (1.0)
   http://www.cliki.net/cl-configuration
   http://www.cliki.net/cl-environment
   http://common-lisp.net/project/metabang-bind/
@@ -189,7 +189,7 @@
    http://common-lisp.net/project/gsll/
    http://www.cliki.net/array-operations
    http://cyrusharmon.org/projects?project=clem
-* Feature request
+* Feature request (1.0)
 ** os
   http://docs.python.org/library/os.html
 ** plataform data
