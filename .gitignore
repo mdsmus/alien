@@ -4,3 +4,14 @@ codigo-baixado-temp/*
 lisp-color
 arnesi
 cl-utils
+doc/cl-dist-manual.aux
+doc/cl-dist-manual.idx
+doc/cl-dist-manual.idx.old
+doc/cl-dist-manual.ilg
+doc/cl-dist-manual.ind
+doc/cl-dist-manual.ind.old
+doc/cl-dist-manual.log
+doc/cl-dist-manual.out
+doc/cl-dist-manual.toc
+doc/cl-dist-manual.toc.old
+doc/xargs.sty
