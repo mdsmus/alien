@@ -1,22 +1,28 @@
 ; -*- org -*-
 
-* Basic libraries
-asdf-binary-locations http://www.cliki.net/ASDF-Binary-Locations
-cffi http://www.cliki.net/CFFI
-arnesi http://common-lisp.net/project/bese/arnesi.html
-fiveam http://common-lisp.net/project/bese/FiveAM.html
-alexandria http://common-lisp.net/project/alexandria/
-cl-ppcre http://weitz.de/files/cl-ppcre.tar.gz
-CL-UTILITIES http://common-lisp.net/project/cl-utilities/
-Metatilities http://common-lisp.net/project/cl-containers/metatilities/
-split-sequence http://www.cliki.net/SPLIT-SEQUENCE
-series http://series.sourceforge.net/
-ch-util http://cyrusharmon.org/static/releases/ch-util_0.3.10.tar.gz
-http://www.cs.unm.edu/~madhu/clisp/isc/sequence-search-replace.lisp
-cl-fad http://weitz.de/files/cl-fad.tar.gz
-iterate http://common-lisp.net/project/iterate/
+* Feature request
+** decimal number
+http://www.cliki.net/DECIMAL-NUMBER
+* Basic utils
+** extremum
+   http://www.cliki.net/EXTREMUM
+** SB-ROTATE-BYTE
+** parse number
+   http://www.cliki.net/PARSE-NUMBER
+** file/OS
+   http://weitz.de/files/cl-fad.tar.gz
+   http://common-lisp.net/project/osicat/
+** merge metatilities
+   darcs get http://common-lisp.net/project/metatilities  
+   darcs get http://common-lisp.net/project/metatilities-base  
+   darcs get http://common-lisp.net/project/moptilities 
+** merge iterator
+   http://common-lisp.net/project/iterate/
+** merge ch-util 
+   http://cyrusharmon.org/static/releases/ch-util_0.3.10.tar.gz
 
-### http://www.cliki.net/Current recommended libraries
+series http://series.sourceforge.net/
+
 
 * Main language
 ** DONE Syntax
@@ -43,14 +49,56 @@ iterate http://common-lisp.net/project/iterate/
 ** Debugging and Profiling
 ** Compilation and evaluation
 * Libraries
-** HTML and XML processing
+** HTML and XML processing (test cxml, s-xml, xmls)
+   http://www.cliki.net/CXML
+   http://www.cliki.net/closure-html
+   http://www.cliki.net/S-XML
+   http://www.cliki.net/XMLS
+** web programming
+   http://weitz.de/hunchentoot/
+   http://weitz.de/cl-who/
+   http://weitz.de/html-template/
+   http://weitz.de/drakma/
 ** GUI programming
+   http://www.cliki.net/Ltk
+** Network programming
+   http://www.cliki.net/USOCKET
+   http://common-lisp.net/project/cl-plus-ssl/
+** Streams
+   http://weitz.de/flexi-streams/
+   http://weitz.de/chunga/
 ** Threads
+   http://common-lisp.net/project/bordeaux-threads/
+** Regular expressions
+   http://weitz.de/files/cl-ppcre.tar.gz
 ** Data persistance
+   http://common-lisp.net/project/cl-perec/
+** Database (choose)
+   http://common-lisp.net/project/cl-rdbms/
+   http://www.cliki.net/CLSQL
 ** Data Compression and Archiving
+   http://www.xach.com/lisp/salza2/
+   http://www.cliki.net/archive
 ** Generic Operating System Services
+** Image
+   http://common-lisp.net/project/cl-jpeg/
+   http://www.xach.com/lisp/zpng/
+   http://www.xach.com/lisp/vecto/
+   http://www.xach.com/lisp/skippy/
 ** File Formats
 ** Cryptographic Services
+   http://www.cliki.net/MD5
+   http://www.cliki.net/cl-base64
 ** Internationalization
+   http://www.cliki.net/cl-l10n
+   http://www.cliki.net/cl-unicode
 ** Development Tools
 ** Internet Data Handling
+   http://common-lisp.net/project/rfc2388/
+** Interface with C
+   http://www.cliki.net/CFFI
+** Control system dependency (build systems)
+   http://www.cliki.net/asdf
+   http://www.cliki.net/ASDF-Binary-Locations
+** Unit Testing
+   http://common-lisp.net/project/bese/FiveAM.html
