@@ -4441,6 +4441,8 @@ be a lambda expression.
 \section{Assignment}
 \label{sec:assignment}
 
+See also \funr{setf}.
+
 \begin{specialop}{setq}{\rest pairs}
 \end{specialop}
 
@@ -4923,6 +4925,39 @@ due to normal completion or a non-local exit such as THROW).
 \chapter{Iteration}
 \label{cha:iteration}
 
+See also mapping (section \ref{sec:mapping}) and filtering (section
+\ref{sec:filt-modify-sequ}).
+
+\section{Simple iteration}
+\label{sec:simple-iteration}
+
+See also \funr{do-range}
+
+\begin{macro}{dolist}{var \body body \env env}
+  
+\end{macro}
+
+\begin{macro}{dotimes}{var \body body}
+  
+\end{macro}
+
+\begin{macro}{dolist*}{iterator \body body}[cl-ext]
+  Like DOLIST but destructuring-binds the elements of LIST.
+
+If ITERATOR is a symbol then dolist* is just like dolist EXCEPT
+that it creates a fresh binding.
+\end{macro}
+
+\section{Loop}
+\label{sec:loop}
+
+\begin{macro}{loop}{\env env \rest keywords-and-forms}
+  
+\end{macro}
+
+\section{General iteration}
+\label{sec:general-iteration}
+
 \begin{macro}{do}{varlist endlist \body body}
   DO ({(Var [Init] [Step])}*) (Test Exit-Form*) Declaration* Form*
   Iteration construct. Each Var is initialized in parallel to the value of the
@@ -4945,33 +4980,8 @@ due to normal completion or a non-local exit such as THROW).
   allowing RETURN to be used as an laternate exit mechanism.
 \end{macro}
 
-\begin{macro}{dolist}{var \body body \env env}
-  
-\end{macro}
-
-\begin{macro}{dotimes}{var \body body}
-  
-\end{macro}
-
-\begin{macro}{loop}{\env env \rest keywords-and-forms}
-  
-\end{macro}
-
-See also \funr{do-range}
-
-\begin{macro}{dolist*}{iterator \body body}[cl-ext]
-  Like DOLIST but destructuring-binds the elements of LIST.
-
-If ITERATOR is a symbol then dolist* is just like dolist EXCEPT
-that it creates a fresh binding.
-\end{macro}
-
-\begin{specialop}{go}{tag}
-  GO tag
-
-Transfer control to the named TAG in the lexically enclosing TAGBODY. This is
-constrained to be used only within the dynamic extent of the TAGBODY.
-\end{specialop}
+\section{The program feature}
+\label{sec:program-feature}
 
 \begin{specialop}{tagbody}{\rest statements}
   TAGBODY {tag | statement}*
@@ -4991,6 +5001,12 @@ must be a list. Other objects are illegal within the body.
   
 \end{macro}
 
+\begin{specialop}{go}{tag}
+  GO tag
+
+Transfer control to the named TAG in the lexically enclosing TAGBODY. This is
+constrained to be used only within the dynamic extent of the TAGBODY.
+\end{specialop}
 
 \chapter{Object oriented programming}
 
