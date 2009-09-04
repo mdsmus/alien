@@ -13,6 +13,8 @@ vpath %.tex examples-color
 
 pdf: $(OTHER) lisp.sty
 
+ps: $(OTHER) lisp.sty
+
 view-pdf: pdf
 	gv -page=7 -resize $(NAME).pdf
 
@@ -20,7 +22,7 @@ foo: $(NAME).tex
 	htlatex $< "site,uni-html4" " -cunihtf"
 
 %.tex: %.lisp
-	pygmentize -f latex $< > examples-color/$@
+	pygmentize -f latex "$<" > examples-color/$@
 
 include ~/.latexmk
 
