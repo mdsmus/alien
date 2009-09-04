@@ -21,3 +21,5 @@ doc/xargs.sty
 doc/cl-dist-manual.dvi
 doc/cl-dist-manual.pdf
 doc/cl-dist-manual.ps
+doc/cl-dist-manual.bbl
+doc/cl-dist-manual.blg
