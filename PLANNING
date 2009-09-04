@@ -5,7 +5,7 @@
 ** better documentation for loop, do, and tagbody/etc (iteration)
 ** Check functions with PG book
 ** better chapter on types
-* Organize main language (documentation)
+* DONE Organize main language (documentation)
 ** DONE Syntax
 ** DONE Numbers
 ** DONE Characters
@@ -26,9 +26,9 @@
 ** DONE Types (3)
 ** DONE Packages and Symbols (5)
 ** DONE Conditions, restarts and Errors (4)
-** External Environment (4)
-** Debugging and Profiling (?)
-** Compilation and evaluation (2)
+** DONE External Environment (4)
+** DONE Debugging and Profiling (?)
+** DONE Compilation and evaluation (2)
 * Basic utils (merge with main soon)
 ** merge port
    http://clocc.sourceforge.net/dist/port.html
