@@ -1,6 +1,10 @@
 ; -*- org -*-
 
 * read stuff in @to-read
+* TO DO
+** better documentation for loop, do, and tagbody/etc (iteration)
+** Check functions with PG book
+** better chapter on types
 * Organize main language (documentation)
 ** DONE Syntax
 ** DONE Numbers
@@ -17,10 +21,10 @@
 ** DONE Pretty printing
 ** DONE Functions
 ** DONE Control Structures
-** Iteration (1)
-** Object oriented programming (4)
-** Types (3)
-** Packages and Symbols (5)
+** DONE Iteration (1)
+** DONE Object oriented programming (4)
+** DONE Types (3)
+** DONE Packages and Symbols (5)
 ** Conditions, restarts and Errors (4)
 ** External Environment (4)
 ** Debugging and Profiling (?)
@@ -74,6 +78,7 @@
    http://www.cliki.net/CL-MIME
    http://www.cliki.net/cl-base64
 ** Internet Protocols and Support
+   http://common-lisp.net/project/s-xml-rpc/
    http://www.cliki.net/lisp-cgi-utils
    http://www.cliki.net/CL-SMTP
    http://weitz.de/hunchentoot/

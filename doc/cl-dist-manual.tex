@@ -1,4 +1,4 @@
-\documentclass[10pt,english]{book}
+\index{\documentclass}\documentclass[10pt,english]{book}
 \usepackage{lisp}
 
 \makeindex
@@ -620,6 +620,11 @@ on complex numbers.
 
 \begin{function}{imagpart}{number}
   Extract the imaginary part of a number.
+\end{function}
+
+\begin{function}{upgraded-complex-part-type}{spec \op environment}
+  Return the element type of the most specialized COMPLEX number type that
+   can hold parts of type SPEC.
 \end{function}
 
 \section{Logic operations}
@@ -2272,6 +2277,25 @@ either argument.
   Return the first cons in ALIST whose CDR does not satisfy PREDICATE.
   If KEY is supplied, apply it to the CDR of each cons before testing.
 \end{function}
+
+\begin{accessor}{get}{symbol indicator \op default}
+  Look on the property list of SYMBOL for the specified INDICATOR. If this
+  is found, return the associated value, else return DEFAULT.
+\end{accessor}
+
+\begin{function}{remprop}{symbol indicator}
+  Look on property list of SYMBOL for property with specified
+  INDICATOR. If found, splice this indicator and its value out of
+  the plist, and return the tail of the original list starting with
+  INDICATOR. If not found, return () with no side effects.
+
+  NOTE: The ANSI specification requires REMPROP to return true (not false)
+  or false (the symbol NIL). Portable code should not rely on any other value.
+\end{function}
+
+\begin{accessor}{symbol-plist}{symbol}
+  Return SYMBOL's property list.
+\end{accessor}
 
 \begin{accessor}{getf}{place indicator \op default}
   Search the property list stored in Place for an indicator EQ to INDICATOR.
@@ -5227,23 +5251,15 @@ SLOTS - a list of slot forms:
 \chapter{Types}
 \label{cha:types}
 
+Se also Declarations, 
+
 \section{Types and Classes}
+\label{sec:types-classes}
 
-\begin{function}{upgraded-complex-part-type}{spec \op environment}
-  Return the element type of the most specialized COMPLEX number type that
-   can hold parts of type SPEC.
-\end{function}
+For any class there is always a type with the same name.
 
-\begin{class}{standard-object}{}
-  
-\end{class}
-
-\begin{class}{structure-object}{}
-  
-\end{class}
-
-\begin{function}{coerce}{object output-type-spec}
-  Coerce the Object to an object of type Output-Type-Spec.
+\begin{function}{typep}{object type \op environment}
+  Is OBJECT of type TYPE?
 \end{function}
 
 \begin{function}{subtypep}{type1 type2 \op environment}
@@ -5253,78 +5269,39 @@ SLOTS - a list of slot forms:
   If values are NIL and NIL, it couldn't be determined.
 \end{function}
 
-\begin{function}{type-error-datum}{condition}
-  
+\begin{function}{type=}{type1 type2}[cl-ext]
+  Returns a primary value of T is TYPE1 and TYPE2 are the same type,
+and a secondary value that is true is the type equality could be reliably
+determined: primary value of NIL and secondary value of T indicates that the
+types are not equivalent.
 \end{function}
 
-\begin{function}{type-error-expected-type}{condition}
-  
+\begin{function}{coerce}{object output-type-spec}
+  Coerce the Object to an object of type Output-Type-Spec.
 \end{function}
+
+\begin{macro}{coercef}{place type-spec \env env}[cl-ext]
+  Modify-macro for COERCE.
+\end{macro}
 
 \begin{function}{type-of}{object}
   Return the type of OBJECT.
 \end{function}
 
-\begin{function}{typep}{object type \op environment}
-  Is OBJECT of type TYPE?
+\begin{function}{of-type}{type}[cl-ext]
+  Returns a function of one argument, which returns true when its argument is
+of TYPE.
 \end{function}
 
 \begin{macro}{deftype}{name lambda-list \body body}
   Define a new type, with syntax like DEFMACRO.
 \end{macro}
 
-\begin{class}{built-in-class}{}
-  
-\end{class}
+\section{Sub-interval Numerical Types}
+\label{sec:sub-interv-numer}
 
-\begin{class}{class}{}
-  
-\end{class}
-
-\begin{class}{function}{thing}
-  FUNCTION name
-
-Return the lexically apparent definition of the function NAME. NAME may also
-be a lambda expression.
-\end{class}
-
-\begin{class}{generic-function}{}
-  
-\end{class}
-
-\begin{class}{method}{}
-  
-\end{class}
-
-\begin{class}{method-combination}{}
-  
-\end{class}
-
-\begin{class}{standard-class}{}
-  
-\end{class}
-
-\begin{class}{standard-generic-function}{}
-  
-\end{class}
-
-\begin{class}{standard-method}{}
-  
-\end{class}
-
-\begin{class}{structure-class}{}
-  
-\end{class}
-
-\begin{class}{t}{}
-  
-\end{class}
-
-\section{Extensions}
-\label{sec:extensions}
-
-Check http://cdr.eurolisp.org/document/5/extra-num-types.html for the
-types frob generates.
+Sub-interval numerical types is described in
+\cite{antoniotti08:subinterval}.
 
 \begin{type}{negative-double-float}{}[cl-ext]
   
@@ -5478,138 +5455,32 @@ types frob generates.
   
 \end{type}
 
-\begin{function}{of-type}{type}[cl-ext]
-  Returns a function of one argument, which returns true when its argument is
-of TYPE.
-\end{function}
-
-\begin{function}{type=}{type1 type2}[cl-ext]
-  Returns a primary value of T is TYPE1 and TYPE2 are the same type,
-and a secondary value that is true is the type equality could be reliably
-determined: primary value of NIL and secondary value of T indicates that the
-types are not equivalent.
-\end{function}
-
-\begin{macro}{coercef}{place type-spec \env env}[cl-ext]
-  Modify-macro for COERCE.
-\end{macro}
-
 
 
 \chapter{Packages and Symbols}
+\label{cha:packages-symbols}
 
-\section{Packages}
+\section{Predicates}
+\label{sec:predicates}
 
-\begin{function}{delete-package}{package-designator}
-  Delete the package designated by PACKAGE-DESIGNATOR from the package
-  system data structures.
-\end{function}
-
-\begin{function}{export}{symbols \op package}
-  Exports SYMBOLS from PACKAGE, checking that no name conflicts result.
-\end{function}
-
-\begin{function}{find-all-symbols}{string-or-symbol}
-  Return a list of all symbols in the system having the specified name.
-\end{function}
-
-\begin{function}{find-package}{package-designator}
-  
-\end{function}
-
-\begin{function}{find-symbol}{name \op package}
-  Return the symbol named STRING in PACKAGE. If such a symbol is found
-  then the second value is :INTERNAL, :EXTERNAL or :INHERITED to indicate
-  how the symbol is accessible. If no symbol is found then both values
-  are NIL.
-\end{function}
-
-\begin{function}{import}{symbols \op package}
-  Make SYMBOLS accessible as internal symbols in PACKAGE. If a symbol is
-already accessible then it has no effect. If a name conflict would result from
-the importation, then a correctable error is signalled.
-\end{function}
-
-\begin{function}{intern}{name \op package}
-  Return a symbol in PACKAGE having the specified NAME, creating it
-  if necessary.
-\end{function}
-
-\begin{function}{list-all-packages}{}
-  Return a list of all existing packages.
-\end{function}
-
-\begin{function}{make-package}{name \key use nicknames internal-symbols external-symbols}
-  Make a new package having the specified NAME, NICKNAMES, and USE
-list. :INTERNAL-SYMBOLS and :EXTERNAL-SYMBOLS are estimates for the number of
-internal and external symbols which will ultimately be present in the package.
-The default value of USE is implementation-dependent, and in this
-implementation it is NIL.
-\end{function}
-
-\begin{function}{package-error-package}{condition}
-  
-\end{function}
-
-\begin{function}{package-name}{package-designator}
-  
-\end{function}
-
-\begin{function}{package-nicknames}{x}
-  
-\end{function}
-
-\begin{function}{package-shadowing-symbols}{x}
-  
-\end{function}
-
-\begin{function}{package-use-list}{x}
-  
-\end{function}
-
-\begin{function}{package-used-by-list}{x}
-  
+\begin{function}{symbolp}{object}
+  Return true if OBJECT is a SYMBOL, and NIL otherwise.
 \end{function}
 
 \begin{function}{packagep}{object}
   
 \end{function}
 
-\begin{function}{rename-package}{package name \op nicknames}
-  Changes the name and nicknames for a package.
+\begin{function}{keywordp}{object}
+  Return true if Object is a symbol in the "KEYWORD" package.
 \end{function}
 
-\begin{function}{shadow}{symbols \op package}
-  Make an internal symbol in PACKAGE with the same name as each of the
-specified SYMBOLS. If a symbol with the given name is already present in
-PACKAGE, then the existing symbol is placed in the shadowing symbols list if
-it is not already present.
-\end{function}
+\section{Packages}
+\label{sec:packages}
 
-\begin{function}{shadowing-import}{symbols \op package}
-  Import SYMBOLS into package, disregarding any name conflict. If
-  a symbol of the same name is present, then it is uninterned.
-\end{function}
-
-\begin{function}{unexport}{symbols \op package}
-  Makes SYMBOLS no longer exported from PACKAGE.
-\end{function}
-
-\begin{function}{unintern}{symbol \op package}
-  Makes SYMBOL no longer present in PACKAGE. If SYMBOL was present then T is
-returned, otherwise NIL. If PACKAGE is SYMBOL's home package, then it is made
-uninterned.
-\end{function}
-
-\begin{function}{unuse-package}{packages-to-unuse \op package}
-  Remove PACKAGES-TO-UNUSE from the USE list for PACKAGE.
-\end{function}
-
-\begin{function}{use-package}{packages-to-use \op package}
-  Add all the PACKAGES-TO-USE to the use list for PACKAGE so that the
-external symbols of the used packages are accessible as internal symbols in
-PACKAGE.
-\end{function}
+\begin{variable}{*package*}{}
+  
+\end{variable}
 
 \begin{macro}{defpackage}{package \rest options}
   Defines a new package called PACKAGE. Each of OPTIONS should be one of the
@@ -5629,10 +5500,121 @@ PACKAGE.
    times.
 \end{macro}
 
-\begin{macro}{do-all-symbols}{var \body body-decls}
-  DO-ALL-SYMBOLS (VAR [RESULT-FORM]) {DECLARATION}* {TAG | FORM}*
-   Executes the FORMs once for each symbol in every package with VAR bound
-   to the current symbol.
+\begin{function}{make-package}{name \key use nicknames internal-symbols external-symbols}
+  Make a new package having the specified NAME, NICKNAMES, and USE
+list. :INTERNAL-SYMBOLS and :EXTERNAL-SYMBOLS are estimates for the number of
+internal and external symbols which will ultimately be present in the package.
+The default value of USE is implementation-dependent, and in this
+implementation it is NIL.
+\end{function}
+
+\begin{function}{rename-package}{package name \op nicknames}
+  Changes the name and nicknames for a package.
+\end{function}
+
+\begin{macro}{in-package}{string-designator}
+  
+\end{macro}
+
+\begin{function}{use-package}{packages-to-use \op package}
+  Add all the PACKAGES-TO-USE to the use list for PACKAGE so that the
+external symbols of the used packages are accessible as internal symbols in
+PACKAGE.
+\end{function}
+
+\begin{function}{unuse-package}{packages-to-unuse \op package}
+  Remove PACKAGES-TO-UNUSE from the USE list for PACKAGE.
+\end{function}
+
+\begin{function}{package-use-list}{x}
+  
+\end{function}
+
+\begin{function}{package-used-by-list}{x}
+  
+\end{function}
+
+\begin{function}{delete-package}{package-designator}
+  Delete the package designated by PACKAGE-DESIGNATOR from the package
+  system data structures.
+\end{function}
+
+\begin{function}{list-all-packages}{}
+  Return a list of all existing packages.
+\end{function}
+
+\begin{function}{package-name}{package-designator}
+  
+\end{function}
+
+\begin{function}{package-nicknames}{x}
+  
+\end{function}
+
+\begin{function}{find-package}{package-designator}
+  
+\end{function}
+
+\begin{function}{find-all-symbols}{string-or-symbol}
+  Return a list of all symbols in the system having the specified name.
+\end{function}
+
+\begin{function}{intern}{name \op package}
+  Return a symbol in PACKAGE having the specified NAME, creating it
+  if necessary.
+\end{function}
+
+\begin{function}{intern-concat}{string-designators \op package}[cl-ext]
+  
+\end{function}
+
+\begin{function}{find-symbol}{name \op package}
+  Return the symbol named STRING in PACKAGE. If such a symbol is found
+  then the second value is :INTERNAL, :EXTERNAL or :INHERITED to indicate
+  how the symbol is accessible. If no symbol is found then both values
+  are NIL.
+\end{function}
+
+\begin{function}{unintern}{symbol \op package}
+  Makes SYMBOL no longer present in PACKAGE. If SYMBOL was present then T is
+returned, otherwise NIL. If PACKAGE is SYMBOL's home package, then it is made
+uninterned.
+\end{function}
+
+\begin{function}{import}{symbols \op package}
+  Make SYMBOLS accessible as internal symbols in PACKAGE. If a symbol is
+already accessible then it has no effect. If a name conflict would result from
+the importation, then a correctable error is signalled.
+\end{function}
+
+\begin{function}{shadowing-import}{symbols \op package}
+  Import SYMBOLS into package, disregarding any name conflict. If
+  a symbol of the same name is present, then it is uninterned.
+\end{function}
+
+\begin{function}{shadow}{symbols \op package}
+  Make an internal symbol in PACKAGE with the same name as each of the
+specified SYMBOLS. If a symbol with the given name is already present in
+PACKAGE, then the existing symbol is placed in the shadowing symbols list if
+it is not already present.
+\end{function}
+
+\begin{function}{package-shadowing-symbols}{x}
+  
+\end{function}
+
+\begin{function}{export}{symbols \op package}
+  Exports SYMBOLS from PACKAGE, checking that no name conflicts result.
+\end{function}
+
+\begin{function}{unexport}{symbols \op package}
+  Makes SYMBOLS no longer exported from PACKAGE.
+\end{function}
+
+\begin{macro}{do-symbols}{var \body body-decls}
+  DO-SYMBOLS (VAR [PACKAGE [RESULT-FORM]]) {DECLARATION}* {TAG | FORM}*
+   Executes the FORMs at least once for each symbol accessible in the given
+   PACKAGE with VAR bound to the current symbol.
 \end{macro}
 
 \begin{macro}{do-external-symbols}{var \body body-decls}
@@ -5641,14 +5623,10 @@ PACKAGE.
    VAR bound to the current symbol.
 \end{macro}
 
-\begin{macro}{do-symbols}{var \body body-decls}
-  DO-SYMBOLS (VAR [PACKAGE [RESULT-FORM]]) {DECLARATION}* {TAG | FORM}*
-   Executes the FORMs at least once for each symbol accessible in the given
-   PACKAGE with VAR bound to the current symbol.
-\end{macro}
-
-\begin{macro}{in-package}{string-designator}
-  
+\begin{macro}{do-all-symbols}{var \body body-decls}
+  DO-ALL-SYMBOLS (VAR [RESULT-FORM]) {DECLARATION}* {TAG | FORM}*
+   Executes the FORMs once for each symbol in every package with VAR bound
+   to the current symbol.
 \end{macro}
 
 \begin{macro}{with-package-iterator}{mname \body body}
@@ -5658,50 +5636,12 @@ one, from the packages in PACKAGE-LIST. SYMBOL-TYPES may be any
 of :INHERITED :EXTERNAL :INTERNAL.
 \end{macro}
 
-\begin{class}{package}{}
-  
-\end{class}
+\section{Modules}
+\label{sec:modules}
 
-\begin{variable}{*package*}{}
+\begin{variable}{*modules*}{}
   
 \end{variable}
-
-\section{system}
-
-\begin{function}{compile-file}{input-file \key output-file (verbose *compile-verbose*)
- (print *compile-print*) external-format trace-file
- (block-compile *block-compile-arg*)}
-  Compile INPUT-FILE, producing a corresponding fasl file and
-returning its filename.
-
-  :PRINT
-     If true, a message per non-macroexpanded top level form is printed
-     to *STANDARD-OUTPUT*. Top level forms that whose subforms are
-     processed as top level forms (eg. EVAL-WHEN, MACROLET, PROGN) receive
-     no such message, but their subforms do.
-
-     As an extension to ANSI, if :PRINT is :top-level-forms, a message
-     per top level form after macroexpansion is printed to *STANDARD-OUTPUT*.
-     For example, compiling an IN-PACKAGE form will result in a message about
-     a top level SETQ in addition to the message about the IN-PACKAGE form'
-     itself.
-
-     Both forms of reporting obey the SB-EXT:*COMPILER-PRINT-VARIABLE-ALIST*.
-
-  :BLOCK-COMPILE
-     Though COMPILE-FILE accepts an additional :BLOCK-COMPILE
-     argument, it is not currently supported. (non-standard)
-
-  :TRACE-FILE
-     If given, internal data structures are dumped to the specified
-     file, or if a value of T is given, to a file of *.trace type
-     derived from the input file name. (non-standard)
-\end{function}
-
-\begin{function}{load}{pathspec \key verbose print if-does-not-exist external-format}
-  Load the file given by FILESPEC into the Lisp environment, returning
-   T on success.
-\end{function}
 
 \begin{function}{provide}{module-name}
   Adds a new module name to *MODULES* indicating that it has been loaded.
@@ -5718,148 +5658,23 @@ returning its filename.
    module.
 \end{function}
 
-\begin{macro}{with-compilation-unit}{options \body body}
-  WITH-COMPILATION-UNIT ({Key Value}*) Form*
-  This form affects compilations that take place within its dynamic extent. It
-  is intended to be wrapped around the compilation of all files in the same
-  system. These keywords are defined:
-
-    :OVERRIDE Boolean-Form
-        One of the effects of this form is to delay undefined warnings
-        until the end of the form, instead of giving them at the end of each
-        compilation. If OVERRIDE is NIL (the default), then the outermost
-        WITH-COMPILATION-UNIT form grabs the undefined warnings. Specifying
-        OVERRIDE true causes that form to grab any enclosed warnings, even if
-        it is enclosed by another WITH-COMPILATION-UNIT.
-
-    :SOURCE-PLIST Plist-Form
-        Attaches the value returned by the Plist-Form to internal debug-source
-        information of functions compiled in within the dynamic contour.
-        Primarily for use by development environments, in order to eg. associate
-        function definitions with editor-buffers. Can be accessed as
-        SB-INTROSPECT:DEFINITION-SOURCE-PLIST. If multiple, nested
-        WITH-COMPILATION-UNITs provide :SOURCE-PLISTs, they are appended
-        togather, innermost left. If  Unaffected by :OVERRIDE.
-\end{macro}
-
-\begin{variable}{*compile-file-pathname*}{}
-  
-\end{variable}
-
-\begin{variable}{*compile-file-truename*}{}
-  
-\end{variable}
-
-\begin{variable}{*compile-print*}{}
-  
-\end{variable}
-
-\begin{variable}{*compile-verbose*}{}
-  
-\end{variable}
-
-\begin{variable}{*features*}{}
-  
-\end{variable}
-
-\begin{variable}{*load-pathname*}{}
-  
-\end{variable}
-
-\begin{variable}{*load-print*}{}
-  
-\end{variable}
-
-\begin{variable}{*load-truename*}{}
-  
-\end{variable}
-
-\begin{variable}{*load-verbose*}{}
-  
-\end{variable}
-
-\begin{variable}{*modules*}{}
-  
-\end{variable}
-
 \section{Symbols}
+\label{sec:symbols}
 
-\begin{accessor}{get}{symbol indicator \op default}
-  Look on the property list of SYMBOL for the specified INDICATOR. If this
-  is found, return the associated value, else return DEFAULT.
-\end{accessor}
+See also \accr{symbol-value} and \accr{symbol-function}.
 
-
-\begin{accessor}{symbol-plist}{symbol}
-  Return SYMBOL's property list.
-\end{accessor}
-
-
-\begin{function}{copy-symbol}{symbol \op copy-props \aux new-symbol}
-  Make and return a new uninterned symbol with the same print name
-  as SYMBOL. If COPY-PROPS is false, the new symbol is neither bound
-  nor fbound and has no properties, else it has a copy of SYMBOL's
-  function, value and property list.
-\end{function}
-
-\begin{function}{gensym}{\op thing}
-  Creates a new uninterned symbol whose name is a prefix string (defaults
-   to "G"), followed by a decimal number. Thing, when supplied, will
-   alter the prefix if it is a string, or be used for the decimal number
-   if it is a number, of this symbol. The default value of the number is
-   the current value of *gensym-counter* which is incremented each time
-   it is used.
-\end{function}
-
-\begin{function}{gentemp}{\op prefix package}
-  Creates a new symbol interned in package PACKAGE with the given PREFIX.
-\end{function}
-
-\begin{function}{keywordp}{object}
-  Return true if Object is a symbol in the "KEYWORD" package.
-\end{function}
-
-\begin{function}{make-symbol}{string}
-  Make and return a new symbol with the STRING as its print name.
-\end{function}
-
-\begin{function}{remprop}{symbol indicator}
-  Look on property list of SYMBOL for property with specified
-  INDICATOR. If found, splice this indicator and its value out of
-  the plist, and return the tail of the original list starting with
-  INDICATOR. If not found, return () with no side effects.
-
-  NOTE: The ANSI specification requires REMPROP to return true (not false)
-  or false (the symbol NIL). Portable code should not rely on any other value.
-\end{function}
+\subsection{Print name}
+\label{sec:print-name}
 
 \begin{function}{symbol-name}{symbol}
   Return SYMBOL's name as a string.
 \end{function}
 
-\begin{function}{symbol-package}{symbol}
-  Return the package SYMBOL was interned in, or NIL if none.
-\end{function}
+\subsection{Creating symbols}
+\label{sec:creating-symbols}
 
-\begin{function}{symbolp}{object}
-  Return true if OBJECT is a SYMBOL, and NIL otherwise.
-\end{function}
-
-\begin{class}{symbol}{}
-  
-\end{class}
-
-\begin{variable}{*gensym-counter*}{}
-  
-\end{variable}
-
-\section{Extensions}
-\label{sec:extensions}
-
-\begin{function}{featurep}{feature-expression}[cl-ext]
-  Returns T if the argument matches the state of the *FEATURES*
-list and NIL if it does not. FEATURE-EXPRESSION can be any atom
-or list acceptable to the reader macros \#+ and \#-.
+\begin{function}{make-symbol}{string}
+  Make and return a new symbol with the STRING as its print name.
 \end{function}
 
 \begin{function}{ensure-symbol}{name \op package}[cl-ext]
@@ -5877,8 +5692,29 @@ package, and otherwise returns a symbol interned in the package designated by
 PACKAGE.
 \end{function}
 
+\begin{function}{symbolicate}{\rest things}[cl-ext]
+  Concatenate together the names of some strings and symbols,
+producing a symbol in the current package.
+\end{function}
+
 \begin{function}{make-keyword}{name}[cl-ext]
   Interns the string designated by NAME in the KEYWORD package.
+\end{function}
+
+\begin{function}{copy-symbol}{symbol \op copy-props \aux new-symbol}
+  Make and return a new uninterned symbol with the same print name
+  as SYMBOL. If COPY-PROPS is false, the new symbol is neither bound
+  nor fbound and has no properties, else it has a copy of SYMBOL's
+  function, value and property list.
+\end{function}
+
+\begin{function}{gensym}{\op thing}
+  Creates a new uninterned symbol whose name is a prefix string (defaults
+   to "G"), followed by a decimal number. Thing, when supplied, will
+   alter the prefix if it is a string, or be used for the decimal number
+   if it is a number, of this symbol. The default value of the number is
+   the current value of *gensym-counter* which is incremented each time
+   it is used.
 \end{function}
 
 \begin{function}{make-gensym}{name}[cl-ext]
@@ -5892,17 +5728,24 @@ string as the argument.
 using the second (optional, defaulting to "G") argument.
 \end{function}
 
-\begin{function}{symbolicate}{\rest things}[cl-ext]
-  Concatenate together the names of some strings and symbols,
-producing a symbol in the current package.
+\begin{variable}{*gensym-counter*}{}
+  
+\end{variable}
+
+\begin{function}{gentemp}{\op prefix package}
+  Creates a new symbol interned in package PACKAGE with the given PREFIX.
 \end{function}
 
-\begin{function}{intern-concat}{string-designators \op package}[cl-ext]
-  
+\begin{function}{symbol-package}{symbol}
+  Return the package SYMBOL was interned in, or NIL if none.
 \end{function}
 
 
 \chapter{Conditions, restarts and Errors}
+
+\begin{function}{package-error-package}{condition}
+  
+\end{function}
 
 \begin{function}{unbound-slot-instance}{condition}
   
@@ -6529,6 +6372,109 @@ various \%collect-timing definitions for details.
   Return true if OBJECT is a COMPILED-FUNCTION, and NIL otherwise.
 \end{function}
 
+\section{system}
+
+\begin{function}{compile-file}{input-file \key output-file (verbose *compile-verbose*)
+ (print *compile-print*) external-format trace-file
+ (block-compile *block-compile-arg*)}
+  Compile INPUT-FILE, producing a corresponding fasl file and
+returning its filename.
+
+  :PRINT
+     If true, a message per non-macroexpanded top level form is printed
+     to *STANDARD-OUTPUT*. Top level forms that whose subforms are
+     processed as top level forms (eg. EVAL-WHEN, MACROLET, PROGN) receive
+     no such message, but their subforms do.
+
+     As an extension to ANSI, if :PRINT is :top-level-forms, a message
+     per top level form after macroexpansion is printed to *STANDARD-OUTPUT*.
+     For example, compiling an IN-PACKAGE form will result in a message about
+     a top level SETQ in addition to the message about the IN-PACKAGE form'
+     itself.
+
+     Both forms of reporting obey the SB-EXT:*COMPILER-PRINT-VARIABLE-ALIST*.
+
+  :BLOCK-COMPILE
+     Though COMPILE-FILE accepts an additional :BLOCK-COMPILE
+     argument, it is not currently supported. (non-standard)
+
+  :TRACE-FILE
+     If given, internal data structures are dumped to the specified
+     file, or if a value of T is given, to a file of *.trace type
+     derived from the input file name. (non-standard)
+\end{function}
+
+\begin{function}{load}{pathspec \key verbose print if-does-not-exist external-format}
+  Load the file given by FILESPEC into the Lisp environment, returning
+   T on success.
+\end{function}
+
+\begin{macro}{with-compilation-unit}{options \body body}
+  WITH-COMPILATION-UNIT ({Key Value}*) Form*
+  This form affects compilations that take place within its dynamic extent. It
+  is intended to be wrapped around the compilation of all files in the same
+  system. These keywords are defined:
+
+    :OVERRIDE Boolean-Form
+        One of the effects of this form is to delay undefined warnings
+        until the end of the form, instead of giving them at the end of each
+        compilation. If OVERRIDE is NIL (the default), then the outermost
+        WITH-COMPILATION-UNIT form grabs the undefined warnings. Specifying
+        OVERRIDE true causes that form to grab any enclosed warnings, even if
+        it is enclosed by another WITH-COMPILATION-UNIT.
+
+    :SOURCE-PLIST Plist-Form
+        Attaches the value returned by the Plist-Form to internal debug-source
+        information of functions compiled in within the dynamic contour.
+        Primarily for use by development environments, in order to eg. associate
+        function definitions with editor-buffers. Can be accessed as
+        SB-INTROSPECT:DEFINITION-SOURCE-PLIST. If multiple, nested
+        WITH-COMPILATION-UNITs provide :SOURCE-PLISTs, they are appended
+        togather, innermost left. If  Unaffected by :OVERRIDE.
+\end{macro}
+
+\begin{variable}{*compile-file-pathname*}{}
+  
+\end{variable}
+
+\begin{variable}{*compile-file-truename*}{}
+  
+\end{variable}
+
+\begin{variable}{*compile-print*}{}
+  
+\end{variable}
+
+\begin{variable}{*compile-verbose*}{}
+  
+\end{variable}
+
+\begin{variable}{*features*}{}
+  
+\end{variable}
+
+\begin{function}{featurep}{feature-expression}[cl-ext]
+  Returns T if the argument matches the state of the *FEATURES*
+list and NIL if it does not. FEATURE-EXPRESSION can be any atom
+or list acceptable to the reader macros \#+ and \#-.
+\end{function}
+
+\begin{variable}{*load-pathname*}{}
+  
+\end{variable}
+
+\begin{variable}{*load-print*}{}
+  
+\end{variable}
+
+\begin{variable}{*load-truename*}{}
+  
+\end{variable}
+
+\begin{variable}{*load-verbose*}{}
+  
+\end{variable}
+
 \section{Compilation}
 
 \begin{function}{make-load-form-saving-slots}{object \key slot-names environment}
@@ -6683,6 +6629,8 @@ email, json, mailbox, mime, etc
 
 \printindex
 
+\bibliographystyle{plain}
+\bibliography{bibliography}
 \end{document}
 
  	
