@@ -4025,6 +4025,14 @@ line break.
    the \~{}\%/.../ format directive.
 \end{function}
 
+\begin{generic}{print-object}{object stream}
+  
+\end{generic}
+
+\begin{macro}{defprint-object}{self \body body}[cl-ext]
+  Define a print-object method using print-unreadable-object.
+\end{macro}
+
 \section{Format interface}
 \label{sec:form-direct-interf}
 
@@ -4441,7 +4449,7 @@ be a lambda expression.
 \section{Assignment}
 \label{sec:assignment}
 
-See also \funr{setf}.
+See also \macr{setf}.
 
 \begin{specialop}{setq}{\rest pairs}
 \end{specialop}
@@ -4931,7 +4939,7 @@ See also mapping (section \ref{sec:mapping}) and filtering (section
 \section{Simple iteration}
 \label{sec:simple-iteration}
 
-See also \funr{do-range}
+See also \macr{do-range}
 
 \begin{macro}{dolist}{var \body body \env env}
   
@@ -5009,80 +5017,64 @@ constrained to be used only within the dynamic extent of the TAGBODY.
 \end{specialop}
 
 \chapter{Object oriented programming}
+\label{cha:object-orient-progr}
 
-\begin{generic}{print-object}{object stream}
+See also \genfunr{print-object}.
+
+\section{Classes}
+\label{sec:classes}
+
+\begin{macro}{defclass}{\env env name direct-superclasses direct-slots \rest options}
   
-\end{generic}
+\end{macro}
+
+\begin{macro}{defclass-struct}{name-and-options supers \rest slots}[cl-ext]
+  Define a class in a similar way structures are defined
+
+NAME-AND-OPTIONS:
+
+  name-symbol |
+  ( name-symbol [ (:conc-name conc-name ) ]
+                [ (:predicate predicate-name ) ]
+                class-option* )
+
+SUPERS - a list of super classes passed directly to DEFCLASS.
+
+SLOTS - a list of slot forms:
+
+  name |
+  ( name [ init-arg ] [ slot-options* ] )
+\end{macro}
 
 \begin{accessor}{find-class}{symbol \op errorp environment}
   
 \end{accessor}
 
+\begin{generic}{class-name}{class}
+  
+\end{generic}
+
 \begin{function}{class-of}{x}
   
 \end{function}
 
-\begin{function}{ensure-generic-function}{fun-name \rest all-keys \key environment source-location \akeys}
+\begin{function}{class-name-of}{obj}[cl-ext]
   
 \end{function}
-
-\begin{function}{make-load-form-saving-slots}{object \key slot-names environment}
-  
-\end{function}
-
-\begin{function}{slot-boundp}{object slot-name}
-  
-\end{function}
-
-\begin{function}{slot-exists-p}{object slot-name}
-  
-\end{function}
-
-\begin{function}{slot-makunbound}{object slot-name}
-  
-\end{function}
-
-\begin{function}{slot-value}{object slot-name}
-  
-\end{function}
-
-\begin{function}{unbound-slot-instance}{condition}
-  
-\end{function}
-
-\begin{generic}{add-method}{generic-function method}
-  
-\end{generic}
-
-\begin{generic}{allocate-instance}{class \rest initargs}
-  
-\end{generic}
 
 \begin{generic}{change-class}{instance new-class-name \rest initargs \akeys}
   
 \end{generic}
 
-\begin{generic}{class-name}{class}
-  
-\end{generic}
-
-\begin{generic}{compute-applicable-methods}{generic-function arguments}
-  
-\end{generic}
-
-\begin{generic}{find-method}{generic-function qualifiers specializers \op errorp}
-  
-\end{generic}
-
-\begin{generic}{function-keywords}{method}
-  
-\end{generic}
-
-\begin{generic}{initialize-instance}{gf \key lambda-list argument-precedence-order \akeys}
-  
-\end{generic}
+\subsection{Class instances}
+\label{sec:class-instances}
 
 \begin{generic}{make-instance}{class \rest initargs \akeys}
+  
+\end{generic}
+
+\begin{generic}{reinitialize-instance}{gf \rest args \key
+    direct-superclasses lambda-list argument-precedence-order \akeys}
   
 \end{generic}
 
@@ -5090,44 +5082,7 @@ constrained to be used only within the dynamic extent of the TAGBODY.
   
 \end{generic}
 
-\begin{generic}{make-load-form}{object \op environment}
-  
-\end{generic}
-
-\begin{generic}{method-qualifiers}{m}
-  
-\end{generic}
-
-\begin{generic}{no-applicable-method}{generic-function \rest args}
-  
-\end{generic}
-
-\begin{generic}{no-next-method}{generic-function method \rest args}
-  
-\end{generic}
-
-\begin{generic}{reinitialize-instance}{gf \rest args \key direct-superclasses lambda-list argument-precedence-order
- \akeys}
-  
-\end{generic}
-
-\begin{generic}{remove-method}{generic-function method}
-  
-\end{generic}
-
-\begin{generic}{shared-initialize}{generic-function slot-names \key method-combination method-class documentation
- declarations argument-precedence-order lambda-list name slot-definition
- slot-name definition-source direct-default-initargs direct-slots
- direct-superclasses force type protocol allocation allocation-class qualifiers
- specializers function (method-cell method-cell) \akeys}
-  
-\end{generic}
-
-\begin{generic}{slot-missing}{class instance slot-name operation \op new-value}
-  
-\end{generic}
-
-\begin{generic}{slot-unbound}{class instance slot-name}
+\begin{generic}{initialize-instance}{gf \key lambda-list argument-precedence-order \akeys}
   
 \end{generic}
 
@@ -5139,19 +5094,30 @@ constrained to be used only within the dynamic extent of the TAGBODY.
   
 \end{generic}
 
-\begin{macro}{defclass}{\env env name direct-superclasses direct-slots \rest options}
+\begin{generic}{allocate-instance}{class \rest initargs}
   
-\end{macro}
+\end{generic}
 
-\begin{macro}{defgeneric}{fun-name lambda-list \body options}
+\subsection{Class slots}
+\label{sec:class-slots}
+
+\begin{function}{slot-exists-p}{object slot-name}
   
-\end{macro}
+\end{function}
 
-\begin{macro}{define-method-combination}{\whole form \rest args}
+\begin{function}{slot-boundp}{object slot-name}
   
-\end{macro}
+\end{function}
 
-\begin{macro}{defmethod}{\rest args}
+\begin{function}{slot-value}{object slot-name}
+  
+\end{function}
+
+\begin{function}{slot-makunbound}{object slot-name}
+  
+\end{function}
+
+\begin{macro}{with-slots}{slots instance \body body}
   
 \end{macro}
 
@@ -5159,11 +5125,107 @@ constrained to be used only within the dynamic extent of the TAGBODY.
   
 \end{macro}
 
-\begin{macro}{with-slots}{slots instance \body body}
+\begin{macro}{with-accessors*}{accessor-names object \body body}
+  Just like WITH-ACCESSORS, but if the slot-entry is a symbol assume
+  the variable and accessor name are the same.
+\end{macro}
+
+\begin{generic}{slot-missing}{class instance slot-name operation \op new-value}
+  
+\end{generic}
+
+\begin{generic}{slot-unbound}{class instance slot-name}
+  
+\end{generic}
+
+\begin{generic}{shared-initialize}{generic-function slot-names \key
+    method-combination method-class documentation declarations
+    argument-precedence-order lambda-list name slot-definition
+    slot-name definition-source direct-default-initargs direct-slots
+    direct-superclasses force type protocol allocation
+    allocation-class qualifiers specializers function (method-cell
+    method-cell) \akeys}
+  
+\end{generic}
+
+\subsection{Generic functions and methods}
+\label{sec:generic-functions}
+
+\begin{function}{generic-method-p}{}
+  
+\end{function}
+
+\begin{macro}{defgeneric}{fun-name lambda-list \body options}
   
 \end{macro}
 
-\section{Classes}
+\begin{function}{ensure-generic-function}{fun-name \rest all-keys \key environment source-location \akeys}
+  
+\end{function}
+
+\begin{macro}{defmethod}{\rest args}
+  
+\end{macro}
+
+\begin{generic}{add-method}{generic-function method}
+  
+\end{generic}
+
+\begin{generic}{remove-method}{generic-function method}
+  
+\end{generic}
+
+\begin{generic}{find-method}{generic-function qualifiers specializers \op errorp}
+  
+\end{generic}
+
+\begin{generic}{compute-applicable-methods}{generic-function arguments}
+  
+\end{generic}
+
+\begin{function}{call-next-method}{\rest args}
+  
+\end{function}
+
+\begin{generic}{no-applicable-method}{generic-function \rest args}
+  
+\end{generic}
+
+\begin{generic}{no-next-method}{generic-function method \rest args}
+  
+\end{generic}
+
+\begin{function}{invalid-method-error}{method format-control \rest format-arguments}
+  
+\end{function}
+
+\begin{function}{method-combination-error}{format-control \rest format-arguments}
+  
+\end{function}
+
+\begin{generic}{function-keywords}{method}
+  
+\end{generic}
+
+\begin{generic}{method-qualifiers}{m}
+  
+\end{generic}
+
+\subsection{Method combination}
+\label{sec:method-combination}
+
+\begin{macro}{define-method-combination}{\whole form \rest args}
+  
+\end{macro}
+
+\begin{macro}{call-method}{method \op next-method-list}
+  
+\end{macro}
+
+
+
+\chapter{Types}
+\label{cha:types}
 
 \section{Types and Classes}
 
@@ -5257,53 +5319,6 @@ be a lambda expression.
 \begin{class}{t}{}
   
 \end{class}
-
-\section{Extensions}
-\label{sec:extensions}
-
-\begin{macro}{defclass-struct}{name-and-options supers \rest slots}[cl-ext]
-  DEFCLASS with a DEFSTRUCT api.
-
-NAME-AND-OPTIONS:
-
-  name-symbol |
-  ( name-symbol [ (:conc-name conc-name ) ]
-                [ (:predicate predicate-name ) ]
-                class-option* )
-
-SUPERS - a list of super classes passed directly to DEFCLASS.
-
-SLOTS - a list of slot forms:
-
-  name |
-  ( name [ init-arg ] [ slot-options* ] )
-\end{macro}
-
-\begin{macro}{defprint-object}{self \body body}[cl-ext]
-  Define a print-object method using print-unreadable-object.
-  An example:
-  (defprint-object (self parenscript-dispatcher)
-    (when (cachep self)
-      (princ "cached")
-      (princ " "))
-    (princ (parenscript-file self)))
-\end{macro}
-
-\begin{macro}{with-accessors*}{accessor-names object \body body}
-  Just like WITH-ACCESSORS, but if the slot-entry is a symbol assume
-  the variable and accessor name are the same.
-\end{macro}
-
-\begin{function}{class-name-of}{obj}[cl-ext]
-  
-\end{function}
-
-
-
-
-
-\chapter{Types}
-\label{cha:types}
 
 \section{Extensions}
 \label{sec:extensions}
@@ -5889,6 +5904,10 @@ producing a symbol in the current package.
 
 \chapter{Conditions, restarts and Errors}
 
+\begin{function}{unbound-slot-instance}{condition}
+  
+\end{function}
+
 \begin{function}{print-not-readable-object}{condition}
   
 \end{function}
@@ -5950,10 +5969,6 @@ returned. If CONDITION is specified and not NIL, then only restarts associated
 with that condition (or with no condition) will be returned.
 \end{function}
 
-\begin{function}{invalid-method-error}{method format-control \rest format-arguments}
-  
-\end{function}
-
 \begin{function}{invoke-debugger}{condition}
   Enter the debugger.
 \end{function}
@@ -5972,10 +5987,6 @@ with that condition (or with no condition) will be returned.
 
 \begin{function}{make-condition}{type \rest args}
   Make an instance of a condition object using the specified initargs.
-\end{function}
-
-\begin{function}{method-combination-error}{format-control \rest format-arguments}
-  
 \end{function}
 
 \begin{function}{muffle-warning}{\op condition}
@@ -6519,6 +6530,15 @@ various \%collect-timing definitions for details.
 \end{function}
 
 \section{Compilation}
+
+\begin{function}{make-load-form-saving-slots}{object \key slot-names environment}
+  
+\end{function}
+
+\begin{generic}{make-load-form}{object \op environment}
+  
+\end{generic}
+
 
 \section{Declarations}
 

@@ -1,0 +1,5 @@
+(defprint-object (self parenscript-dispatcher)
+  (when (cachep self)
+    (princ "cached")
+    (princ " "))
+  (princ (parenscript-file self)))
