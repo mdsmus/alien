@@ -1,7 +1,7 @@
 (in-package :asdf)
 
 (defsystem :cl-extensions
-  :version "1.0"
+  :version "0.1"
   :licence "Public Domain / 0-clause MIT"
   :serial t
   :depends-on (#+sbcl :sb-posix :cl-fad)
