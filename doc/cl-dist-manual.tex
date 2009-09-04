@@ -4953,6 +4953,15 @@ evaluated whenever the dynamic scope of the PROTECTED form is exited (either
 due to normal completion or a non-local exit such as THROW).
 \end{specialop}
 
+\begin{macro}{unwind-protect-case}{\op protected-form \body clauses}[cl-ext]
+  Like CL:UNWIND-PROTECT, but you can specify the circumstances that
+the cleanup CLAUSES are run.
+
+ABORT-FLAG is the name of a variable that will be bound to T in
+CLAUSES if the PROTECTED-FORM aborted preemptively, and to NIL
+otherwise.
+\end{macro}
+
 
 \chapter{Iteration}
 \label{cha:iteration}
@@ -5292,6 +5301,13 @@ types are not equivalent.
   Returns a function of one argument, which returns true when its argument is
 of TYPE.
 \end{function}
+
+\begin{macro}{check-type}{place type \op type-string \env env}
+  Signal a restartable error of type TYPE-ERROR if the value of PLACE
+is not of the specified type. If an error is signalled and the restart
+is used to return, this can only return if the STORE-VALUE restart is
+invoked. In that case it will store into PLACE and start over.
+\end{macro}
 
 \begin{macro}{deftype}{name lambda-list \body body}
   Define a new type, with syntax like DEFMACRO.
@@ -5741,149 +5757,9 @@ using the second (optional, defaulting to "G") argument.
 \end{function}
 
 
+
 \chapter{Conditions, restarts and Errors}
-
-\begin{function}{package-error-package}{condition}
-  
-\end{function}
-
-\begin{function}{unbound-slot-instance}{condition}
-  
-\end{function}
-
-\begin{function}{print-not-readable-object}{condition}
-  
-\end{function}
-
-\begin{function}{stream-error-stream}{condition}
-  
-\end{function}
-
-\begin{function}{file-error-pathname}{condition}
-  
-\end{function}
-
-\begin{function}{arithmetic-error-operands}{condition}
-  
-\end{function}
-
-\begin{function}{arithmetic-error-operation}{condition}
-  
-\end{function}
-
-\begin{function}{abort}{\op condition}
-  Transfer control to a restart named ABORT, signalling a CONTROL-ERROR if
-   none exists.
-\end{function}
-
-\begin{function}{break}{\op datum \rest arguments}
-  Print a message and invoke the debugger without allowing any possibility
-   of condition handling occurring.
-\end{function}
-
-\begin{function}{cell-error-name}{condition}
-  
-\end{function}
-
-\begin{function}{cerror}{continue-string datum \rest arguments}
-  
-\end{function}
-
-\begin{function}{compute-restarts}{\op condition}
-  Return a list of all the currently active restarts ordered from most recently
-established to less recently established. If CONDITION is specified, then only
-restarts associated with CONDITION (or with no condition) will be returned.
-\end{function}
-
-\begin{function}{continue}{\op condition}
-  Transfer control to a restart named CONTINUE, or return NIL if none exists.
-\end{function}
-
-\begin{function}{error}{datum \rest arguments}
-  Invoke the signal facility on a condition formed from DATUM and ARGUMENTS.
-  If the condition is not handled, the debugger is invoked.
-\end{function}
-
-\begin{function}{find-restart}{identifier \op condition}
-  Return the first restart identified by IDENTIFIER. If IDENTIFIER is a symbol,
-then the innermost applicable restart with that name is returned. If IDENTIFIER
-is a restart, it is returned if it is currently active. Otherwise NIL is
-returned. If CONDITION is specified and not NIL, then only restarts associated
-with that condition (or with no condition) will be returned.
-\end{function}
-
-\begin{function}{invoke-debugger}{condition}
-  Enter the debugger.
-\end{function}
-
-\begin{function}{invoke-restart}{restart \rest values}
-  Calls the function associated with the given restart, passing any given
-   arguments. If the argument restart is not a restart or a currently active
-   non-nil restart name, then a CONTROL-ERROR is signalled.
-\end{function}
-
-\begin{function}{invoke-restart-interactively}{restart}
-  Calls the function associated with the given restart, prompting for any
-   necessary arguments. If the argument restart is not a restart or a
-   currently active non-NIL restart name, then a CONTROL-ERROR is signalled.
-\end{function}
-
-\begin{function}{make-condition}{type \rest args}
-  Make an instance of a condition object using the specified initargs.
-\end{function}
-
-\begin{function}{muffle-warning}{\op condition}
-  Transfer control to a restart named MUFFLE-WARNING, signalling a
-   CONTROL-ERROR if none exists.
-\end{function}
-
-\begin{function}{restart-name}{instance}
-  Return the name of the given restart object.
-\end{function}
-
-\begin{function}{signal}{datum \rest arguments}
-  Invokes the signal facility on a condition formed from DATUM and
-   ARGUMENTS. If the condition is not handled, NIL is returned. If
-   (TYPEP condition *BREAK-ON-SIGNALS*) is true, the debugger is invoked
-   before any signalling is done.
-\end{function}
-
-\begin{function}{simple-condition-format-arguments}{condition}
-  
-\end{function}
-
-\begin{function}{simple-condition-format-control}{condition}
-  
-\end{function}
-
-\begin{function}{store-value}{value \op condition}
-  Transfer control and VALUE to a restart named STORE-VALUE, or return NIL if
-   none exists.
-\end{function}
-
-\begin{function}{use-value}{value \op condition}
-  Transfer control and VALUE to a restart named USE-VALUE, or return NIL if
-   none exists.
-\end{function}
-
-\begin{function}{warn}{datum \rest arguments}
-  Warn about a situation by signalling a condition formed by DATUM and
-   ARGUMENTS. While the condition is being signaled, a MUFFLE-WARNING restart
-   exists that causes WARN to immediately return NIL.
-\end{function}
-
-\begin{macro}{assert}{test-form \op places datum \rest arguments}
-  Signals an error if the value of test-form is nil. Continuing from this
-   error using the CONTINUE restart will allow the user to alter the value of
-   some locations known to SETF, starting over with test-form. Returns NIL.
-\end{macro}
-
-\begin{macro}{check-type}{place type \op type-string \env env}
-  Signal a restartable error of type TYPE-ERROR if the value of PLACE
-is not of the specified type. If an error is signalled and the restart
-is used to return, this can only return if the STORE-VALUE restart is
-invoked. In that case it will store into PLACE and start over.
-\end{macro}
+\label{cha:cond-rest-errors}
 
 \begin{macro}{define-condition}{name \rest \rest \body options}
   DEFINE-CONDITION Name (Parent-Type*) (Slot-Spec*) Option*
@@ -5905,13 +5781,50 @@ invoked. In that case it will store into PLACE and start over.
    SLOT-VALUE may not be used on condition objects.
 \end{macro}
 
-\begin{macro}{handler-bind}{bindings \body forms}
-  (HANDLER-BIND ( {(type handler)}* )  body)
+\begin{function}{make-condition}{type \rest args}
+  Make an instance of a condition object using the specified initargs.
+\end{function}
 
-Executes body in a dynamic context where the given handler bindings are in
-effect. Each handler must take the condition being signalled as an argument.
-The bindings are searched first to last in the event of a signalled
-condition.
+\begin{function}{signal}{datum \rest arguments}
+  Invokes the signal facility on a condition formed from DATUM and
+   ARGUMENTS. If the condition is not handled, NIL is returned. If
+   (TYPEP condition *BREAK-ON-SIGNALS*) is true, the debugger is invoked
+   before any signalling is done.
+\end{function}
+
+\begin{function}{warn}{datum \rest arguments}
+  Warn about a situation by signalling a condition formed by DATUM and
+   ARGUMENTS. While the condition is being signaled, a MUFFLE-WARNING restart
+   exists that causes WARN to immediately return NIL.
+\end{function}
+
+\begin{function}{error}{datum \rest arguments}
+  Invoke the signal facility on a condition formed from DATUM and ARGUMENTS.
+  If the condition is not handled, the debugger is invoked.
+\end{function}
+
+\begin{function}{cerror}{continue-string datum \rest arguments}
+  
+\end{function}
+
+\begin{macro}{ignore-errors}{\rest forms}
+  Execute FORMS handling ERROR conditions, returning the result of the last
+  form, or (VALUES NIL the-ERROR-that-was-caught) if an ERROR was handled.
+\end{macro}
+
+\begin{macro}{ignore-some-conditions}{\rest \body body}[cl-ext]
+  Similar to CL:IGNORE-ERRORS but the (unevaluated) CONDITIONS
+list determines which specific conditions are to be ignored.
+\end{macro}
+
+\begin{function}{invoke-debugger}{condition}
+  Enter the debugger.
+\end{function}
+
+\begin{macro}{assert}{test-form \op places datum \rest arguments}
+  Signals an error if the value of test-form is nil. Continuing from this
+   error using the CONTINUE restart will allow the user to alter the value of
+   some locations known to SETF, starting over with test-form. Returns NIL.
 \end{macro}
 
 \begin{macro}{handler-case}{form \rest cases}
@@ -5924,15 +5837,21 @@ MULTIPLE-VALUE-CALL. The :NO-ERROR clause accepts more than one var
 specification.
 \end{macro}
 
-\begin{macro}{ignore-errors}{\rest forms}
-  Execute FORMS handling ERROR conditions, returning the result of the last
-  form, or (VALUES NIL the-ERROR-that-was-caught) if an ERROR was handled.
+\begin{macro}{handler-bind}{bindings \body forms}
+  (HANDLER-BIND ( {(type handler)}* )  body)
+
+Executes body in a dynamic context where the given handler bindings are in
+effect. Each handler must take the condition being signalled as an argument.
+The bindings are searched first to last in the event of a signalled
+condition.
 \end{macro}
 
-\begin{macro}{restart-bind}{bindings \body forms}
-  Executes forms in a dynamic context where the given restart bindings are
-   in effect. Users probably want to use RESTART-CASE. When clauses contain
-   the same restart name, FIND-RESTART will find the first such clause.
+\begin{macro}{with-simple-restart}{restart-name \body forms}
+  (WITH-SIMPLE-RESTART (restart-name format-string format-arguments)
+   body)
+   If restart-name is not invoked, then all values returned by forms are
+   returned. If control is transferred to this restart, it immediately
+   returns the values NIL and T.
 \end{macro}
 
 \begin{macro}{restart-case}{expression \body clauses \env env}
@@ -5946,6 +5865,66 @@ specification.
    the new restarts.
 \end{macro}
 
+\begin{macro}{restart-bind}{bindings \body forms}
+  Executes forms in a dynamic context where the given restart bindings are
+   in effect. Users probably want to use RESTART-CASE. When clauses contain
+   the same restart name, FIND-RESTART will find the first such clause.
+\end{macro}
+
+\begin{function}{invoke-restart}{restart \rest values}
+  Calls the function associated with the given restart, passing any given
+   arguments. If the argument restart is not a restart or a currently active
+   non-nil restart name, then a CONTROL-ERROR is signalled.
+\end{function}
+
+\begin{function}{invoke-restart-interactively}{restart}
+  Calls the function associated with the given restart, prompting for any
+   necessary arguments. If the argument restart is not a restart or a
+   currently active non-NIL restart name, then a CONTROL-ERROR is signalled.
+\end{function}
+
+\begin{function}{compute-restarts}{\op condition}
+  Return a list of all the currently active restarts ordered from most recently
+established to less recently established. If CONDITION is specified, then only
+restarts associated with CONDITION (or with no condition) will be returned.
+\end{function}
+
+\begin{function}{find-restart}{identifier \op condition}
+  Return the first restart identified by IDENTIFIER. If IDENTIFIER is a symbol,
+then the innermost applicable restart with that name is returned. If IDENTIFIER
+is a restart, it is returned if it is currently active. Otherwise NIL is
+returned. If CONDITION is specified and not NIL, then only restarts associated
+with that condition (or with no condition) will be returned.
+\end{function}
+
+\begin{function}{restart-name}{instance}
+  Return the name of the given restart object.
+\end{function}
+
+\begin{function}{abort}{\op condition}
+  Transfer control to a restart named ABORT, signalling a CONTROL-ERROR if
+   none exists.
+\end{function}
+
+\begin{function}{muffle-warning}{\op condition}
+  Transfer control to a restart named MUFFLE-WARNING, signalling a
+   CONTROL-ERROR if none exists.
+\end{function}
+
+\begin{function}{continue}{\op condition}
+  Transfer control to a restart named CONTINUE, or return NIL if none exists.
+\end{function}
+
+\begin{function}{store-value}{value \op condition}
+  Transfer control and VALUE to a restart named STORE-VALUE, or return NIL if
+   none exists.
+\end{function}
+
+\begin{function}{use-value}{value \op condition}
+  Transfer control and VALUE to a restart named USE-VALUE, or return NIL if
+   none exists.
+\end{function}
+
 \begin{macro}{with-condition-restarts}{condition-form restarts-form \body body}
   Evaluates the BODY in a dynamic environment where the restarts in the list
    RESTARTS-FORM are associated with the condition returned by CONDITION-FORM.
@@ -5953,33 +5932,58 @@ specification.
    to the error currently being debugged. See also RESTART-CASE.
 \end{macro}
 
-\begin{macro}{with-simple-restart}{restart-name \body forms}
-  (WITH-SIMPLE-RESTART (restart-name format-string format-arguments)
-   body)
-   If restart-name is not invoked, then all values returned by forms are
-   returned. If control is transferred to this restart, it immediately
-   returns the values NIL and T.
-\end{macro}
-
-\begin{class}{restart}{}
-  
-\end{class}
-
-\begin{variable}{*break-on-signals*}{}
-  
-\end{variable}
-
-\begin{variable}{*debugger-hook*}{}
-  
-\end{variable}
-
-\section{Extensions}
-\label{sec:extensions}
-
 \begin{function}{required-argument}{\op name}[cl-ext]
   Signals an error for a missing argument of NAME. Intended for
 use as an initialization form for structure and class-slots, and
 a default value for required keyword arguments.
+\end{function}
+
+\begin{function}{arithmetic-error-operands}{condition}
+  
+\end{function}
+
+\begin{function}{arithmetic-error-operation}{condition}
+  
+\end{function}
+
+\begin{function}{cell-error-name}{condition}
+  
+\end{function}
+
+\begin{function}{unbound-slot-instance}{condition}
+  
+\end{function}
+
+\begin{function}{print-not-readable-object}{condition}
+  
+\end{function}
+
+\begin{function}{package-error-package}{condition}
+  
+\end{function}
+
+\begin{function}{file-error-pathname}{condition}
+  
+\end{function}
+
+\begin{function}{stream-error-stream}{condition}
+  
+\end{function}
+
+\begin{function}{type-error-datum}{condition}
+  
+\end{function}
+
+\begin{function}{type-error-expected-type}{}
+  
+\end{function}
+
+\begin{function}{simple-condition-format-arguments}{condition}
+  
+\end{function}
+
+\begin{function}{simple-condition-format-control}{condition}
+  
 \end{function}
 
 these functions also have conditions with the same name:
@@ -6000,22 +6004,16 @@ these functions also have conditions with the same name:
   
 \end{function}
 
-\begin{macro}{unwind-protect-case}{\op protected-form \body clauses}[cl-ext]
-  Like CL:UNWIND-PROTECT, but you can specify the circumstances that
-the cleanup CLAUSES are run.
+\begin{variable}{*break-on-signals*}{}
+  
+\end{variable}
 
-ABORT-FLAG is the name of a variable that will be bound to T in
-CLAUSES if the PROTECTED-FORM aborted preemptively, and to NIL
-otherwise.
-\end{macro}
-
-\begin{macro}{ignore-some-conditions}{\rest \body body}[cl-ext]
-  Similar to CL:IGNORE-ERRORS but the (unevaluated) CONDITIONS
-list determines which specific conditions are to be ignored.
-\end{macro}
-
+\begin{variable}{*debugger-hook*}{}
+  
+\end{variable}
 
 
+
 \chapter{External Environment}
 
 \begin{constant}{internal-time-units-per-second}{}
@@ -6364,6 +6362,11 @@ various \%collect-timing definitions for details.
 
 
 \chapter{Debugging and Profiling}
+
+\begin{function}{break}{\op datum \rest arguments}
+  Print a message and invoke the debugger without allowing any possibility
+  of condition handling occurring.
+\end{function}
 
 
 \chapter{Compilation and evaluation}
