@@ -27,7 +27,7 @@
 ;;; NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 ;;; SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-(in-package :regexp)
+(in-package :cl-ppcre)
 
 (defun create-hash-table-from-test-function (test-function start end)
   "Creates and returns a hash table representing all characters with

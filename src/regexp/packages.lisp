@@ -29,8 +29,8 @@
 
 (in-package :cl-user)
 
-(defpackage :regexp
-  (:nicknames :re)
+(defpackage :cl-ppcre
+  (:nicknames :ppcre :regexp :re)
   #+:genera
   (:shadowing-import-from :common-lisp :lambda :simple-string :string)
   (:use #-:genera :cl #+:genera :future-common-lisp)

@@ -33,7 +33,7 @@
 ;;; NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 ;;; SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-(in-package :regexp)
+(in-package :cl-ppcre)
 
 (defmacro incf-after (place &optional (delta 1) &environment env)
   "Utility macro inspired by C's \"place++\", i.e. first return the

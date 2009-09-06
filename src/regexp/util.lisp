@@ -30,7 +30,7 @@
 ;;; NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 ;;; SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-(in-package :regexp)
+(in-package :cl-ppcre)
 
 (defmacro defconstant (name value &optional doc)
   "Make sure VALUE is evaluated only once \(to appease SBCL)."

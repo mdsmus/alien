@@ -31,40 +31,38 @@
 
 (in-package :cl-user)
 
-(defpackage :regexp-asd
+(defpackage :cl-ppcre-asd
   (:use :cl :asdf))
 
-(in-package :regexp-asd)
+(in-package :cl-ppcre-asd)
 
 (defsystem :regexp
   :version "2.0.1"
   :serial t
   :components ((:module "regexp"
-                        :serial t
-                        :components
-                        ((:file "packages")
-                         (:file "specials")
-                         (:file "util")
-                         (:file "errors")
-                         (:file "charset")
-                         (:file "charmap")
-                         (:file "chartest")
-                         #-:use-acl-regexp2-engine
-                         (:file "lexer")
-                         #-:use-acl-regexp2-engine
-                         (:file "parser")
-                         #-:use-acl-regexp2-engine
-                         (:file "regex-class")
-                         #-:use-acl-regexp2-engine
-                         (:file "regex-class-util")
-                         #-:use-acl-regexp2-engine
-                         (:file "convert")
-                         #-:use-acl-regexp2-engine
-                         (:file "optimize")
-                         #-:use-acl-regexp2-engine
-                         (:file "closures")
-                         #-:use-acl-regexp2-engine
-                         (:file "repetition-closures")
-                         #-:use-acl-regexp2-engine
-                         (:file "scanner")
-                         (:file "api")))))
+                        :components ((:file "packages")
+                                     (:file "specials")
+                                     (:file "util")
+                                     (:file "errors")
+                                     (:file "charset")
+                                     (:file "charmap")
+                                     (:file "chartest")
+                                     #-:use-acl-regexp2-engine
+                                     (:file "lexer")
+                                     #-:use-acl-regexp2-engine
+                                     (:file "parser")
+                                     #-:use-acl-regexp2-engine
+                                     (:file "regex-class")
+                                     #-:use-acl-regexp2-engine
+                                     (:file "regex-class-util")
+                                     #-:use-acl-regexp2-engine
+                                     (:file "convert")
+                                     #-:use-acl-regexp2-engine
+                                     (:file "optimize")
+                                     #-:use-acl-regexp2-engine
+                                     (:file "closures")
+                                     #-:use-acl-regexp2-engine
+                                     (:file "repetition-closures")
+                                     #-:use-acl-regexp2-engine
+                                     (:file "scanner")
+                                     (:file "api")))))
