@@ -2,7 +2,7 @@
   :version "0.1"
   :licence "Public Domain / 0-clause MIT"
   :serial t
-  :depends-on (#+sbcl :sb-posix :cl-fad)
+  :depends-on (#+sbcl :sb-posix)
   :components ((:file "package")
                (:file "macros")
                (:file "arrays")
