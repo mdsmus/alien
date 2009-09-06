@@ -5,60 +5,36 @@
 ** better documentation for loop, do, and tagbody/etc (iteration)
 ** Check functions with PG book
 ** better chapter on types
-* DONE Organize main language (documentation)
-** DONE Syntax
-** DONE Numbers
-** DONE Characters
-** DONE Strings
-** DONE Arrays and vectors
-** DONE Lists
-** DONE Sequences
-** DONE Hash Tables
-** DONE Structures
-** DONE Streams
-** DONE Input and Output
-** DONE File system interface
-** DONE Pretty printing
-** DONE Functions
-** DONE Control Structures
-** DONE Iteration (1)
-** DONE Object oriented programming (4)
-** DONE Types (3)
-** DONE Packages and Symbols (5)
-** DONE Conditions, restarts and Errors (4)
-** DONE External Environment (4)
-** DONE Debugging and Profiling (?)
-** DONE Compilation and evaluation (2)
 * Basic utils (merge with main soon)
-** merge port
-   http://clocc.sourceforge.net/dist/port.html
 ** merge memoize
    http://www.tfeb.org/lisp/hax.html#MEMOIZE
-** merge paip
-   http://norvig.com/paip/auxfns.lisp
-** merge aima
-   http://aima.cs.berkeley.edu/lisp/utilities/utilities.lisp
+** parse number
+   http://www.cliki.net/PARSE-NUMBER
+** iterator
+   http://common-lisp.net/project/iterate/
+** defclass*
+   http://common-lisp.net/project/defclass-star/
+** file/OS
+   http://weitz.de/files/cl-fad.tar.gz
+   http://common-lisp.net/project/osicat/
 ** shell
    http://common-lisp.net/project/trivial-shell/
 ** extremum
    http://www.cliki.net/EXTREMUM
-** parse number
-   http://www.cliki.net/PARSE-NUMBER
-** file/OS
-   http://weitz.de/files/cl-fad.tar.gz
-   http://common-lisp.net/project/osicat/
-** merge metatilities
-   darcs get http://common-lisp.net/project/metatilities  
-   darcs get http://common-lisp.net/project/metatilities-base  
-   darcs get http://common-lisp.net/project/moptilities 
-** iterator
-   http://common-lisp.net/project/iterate/
 ** ch-util 
    http://cyrusharmon.org/static/releases/ch-util_0.3.10.tar.gz
 ** sugar
    http://common-lisp.net/project/cl-syntax-sugar/
-** defclass*
-   http://common-lisp.net/project/defclass-star/
+** port
+   http://clocc.sourceforge.net/dist/port.html
+** merge paip
+   http://norvig.com/paip/auxfns.lisp
+** merge metatilities
+   darcs get http://common-lisp.net/project/metatilities  
+   darcs get http://common-lisp.net/project/metatilities-base  
+   darcs get http://common-lisp.net/project/moptilities 
+** merge aima
+   http://aima.cs.berkeley.edu/lisp/utilities/utilities.lisp
 * Libraries
 ** HTML, XML processing (test cxml, s-xml, xmls)
    http://www.cliki.net/CXML
@@ -215,3 +191,27 @@
 
   http://www.cliki.net/Benchmarks
   http://common-lisp.net/gitweb?p=projects/qitab/poiu.git;a=summary
+* DONE Organize main language (documentation)
+** DONE Syntax
+** DONE Numbers
+** DONE Characters
+** DONE Strings
+** DONE Arrays and vectors
+** DONE Lists
+** DONE Sequences
+** DONE Hash Tables
+** DONE Structures
+** DONE Streams
+** DONE Input and Output
+** DONE File system interface
+** DONE Pretty printing
+** DONE Functions
+** DONE Control Structures
+** DONE Iteration (1)
+** DONE Object oriented programming (4)
+** DONE Types (3)
+** DONE Packages and Symbols (5)
+** DONE Conditions, restarts and Errors (4)
+** DONE External Environment (4)
+** DONE Debugging and Profiling (?)
+** DONE Compilation and evaluation (2)

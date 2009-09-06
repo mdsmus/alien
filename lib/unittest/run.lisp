@@ -1,6 +1,6 @@
 ;; -*- lisp -*-
 
-(in-package :it.bese.FiveAM)
+(in-package :unittest)
 
 ;;;; * Running Tests
 
@@ -40,7 +40,7 @@
   "T if we should drop into a debugger on a failing check, NIL otherwise.")
 
 (defun import-testing-symbols (package-designator)
-  (import '(5am::is 5am::is-true 5am::is-false 5am::signals 5am::finishes)
+  (import '(unittest::is unittest::is-true unittest::is-false unittest::signals unittest::finishes)
 	  package-designator))
 
 (defparameter *run-queue* '()

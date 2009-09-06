@@ -1,6 +1,6 @@
 ;; -*- lisp -*-
 
-(in-package :it.bese.FiveAM)
+(in-package :unittest)
 
 ;;;; * Test Suites
 
