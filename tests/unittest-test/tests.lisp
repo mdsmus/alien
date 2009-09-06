@@ -1,8 +1,13 @@
 ;;;; -*- lisp -*-
 
-(in-package :it.bese.FiveAM)
+(defpackage :unittest-test
+  (:use :cl :unittest))
 
-(in-suite :it.bese.FiveAM)
+(in-package :unittest-test)
+
+(def-suite :unittest-test)
+
+(in-suite :unittest-test)
 
 (def-suite test-suite :description "Suite for tests which should fail.")
 

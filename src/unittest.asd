@@ -4,11 +4,12 @@
     :serial t
     :depends-on (:cl-extensions)
     :components ((:module "unittest"
-                          :components ((:static-file "fiveam.asd")
-                                       (:file "packages")
+                          :components ((:file "packages")
                                        (:file "check")
                                        (:file "classes")
                                        (:file "explain")
                                        (:file "fixture")
                                        (:file "random")
-                                       (:file "test")))))
+                                       (:file "test")
+                                       (:file "suite")
+                                       (:file "run")))))

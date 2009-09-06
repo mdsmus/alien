@@ -40,6 +40,7 @@
   :version "2.0.1"
   :serial t
   :components ((:module "regexp"
+                        :serial t
                         :components ((:file "packages")
                                      (:file "specials")
                                      (:file "util")

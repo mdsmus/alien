@@ -1,7 +1,6 @@
-
 (defsystem :regexp-test
-  :depends-on (:regexp :flexi-streams)
-  :components ((:module "regexp/test"
+  :depends-on (:alien :flexi-streams)
+  :components ((:module "regexp-test"
                         :serial t
                         :components ((:file "packages")
                                      (:file "tests")
@@ -9,4 +8,4 @@
 
 (defmethod perform ((o test-op) (c (eql (find-system :regexp))))
   (operate 'load-op :regexp-test)
-  (funcall (intern (symbol-name :run-all-tests) (find-package :regexp-test))))
+  (funcall (intern (symbol-name :run-all-tests) (find-package :cl-ppcre-test))))
