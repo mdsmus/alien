@@ -1,7 +1,7 @@
 (defsystem :unittest-test
     :author "Edward Marco Baringer <mb@bese.it>"
     :serial t
-    :depends-on (:alien)
+    :depends-on (:unittest)
     :components ((:module "unittest-test"
                           :components (
                                        ;(:file "suite")
