@@ -15,6 +15,7 @@
 ** defclass*
    http://common-lisp.net/project/defclass-star/
 ** file/OS
+   http://bimib.disco.unimib.it/people/Marco.Antoniotti/Projects/CL/NAPS/html/
    http://weitz.de/files/cl-fad.tar.gz
    http://common-lisp.net/project/osicat/
 ** shell
@@ -67,6 +68,7 @@
 ** Multimedia
    http://www.cliki.net/midi
 ** Strings
+   http://common-lisp.net/project/babel/
    http://weitz.de/files/cl-ppcre.tar.gz
    http://www.cliki.net/CL-DIFFLIB
    http://www.cliki.net/cl-unicode
