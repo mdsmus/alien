@@ -1,6 +1,7 @@
 cmu-lisp-mirror/*
 codigo-baixado-temp/*
 *.fasl
+*.lx32fsl
 lisp-color
 arnesi
 cl-utils
