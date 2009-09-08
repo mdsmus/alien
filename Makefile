@@ -1,4 +1,5 @@
 SBCL = sbcl --script
+CCL = ccl -n -b -l
 
 load: load-sbcl load-ccl
 
@@ -6,10 +7,13 @@ load-sbcl:
 	$(SBCL) load-sbcl.lisp
 
 load-ccl:
-	ccl -n -Q -b -l load-ccl.lisp
+	$(CCL) load-ccl.lisp
 
-run-test-sbcl:
+test-sbcl:
 	$(SBCL) load-test-sbcl.lisp
+
+test-ccl:
+	$(CCL) load-test-ccl.lisp
 
 clean:
 	find -name *.fasl -exec rm {} \;
