@@ -2,11 +2,6 @@
 
 (in-package :unittest)
 
-;;;; * Analyzing the results
-
-(defparameter *verbose-failures* nil
-  "T if we should print the expression failing, NIL otherwise.")
-
 (defun partitionx (list &rest lambdas)
   (let ((collectors (mapcar (lambda (l)
                               (cons (if (and (symbolp l)
@@ -23,6 +18,11 @@
             (funcall collector-func item)
             (return-from item)))))
     (mapcar #'funcall (mapcar #'cdr collectors))))
+
+;;;; * Analyzing the results
+
+(defparameter *verbose-failures* nil
+  "T if we should print the expression failing, NIL otherwise.")
 
 ;;;; Just as important as defining and runnig the tests is
 ;;;; understanding the results. FiveAM provides the function EXPLAIN
