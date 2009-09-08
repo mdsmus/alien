@@ -27,4 +27,5 @@
 
 (defalias make-instance new)
 
-(setf (symbol-function '!) #'factorial)
+;; conflicts with unittest
+;;(setf (symbol-function '!) #'factorial)

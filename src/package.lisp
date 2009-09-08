@@ -234,7 +234,6 @@
    #:defmacalias
    #:fun
    #:new
-   #:!
    ))
 
 (in-package :cl-extensions)
