@@ -351,9 +351,10 @@ MINOR-PAGE-FAULTS is ignored."
 
 (defun binding (x binds)
   (labels ((recbind (x binds)
-             (aif (assoc x binds)
+             (let ((it (assoc x binds)))
+              (if it
                   (or (recbind (cdr it) binds)
-                      it))))
+                      it)))))
     (let ((b (recbind x binds)))
       (values (cdr b) b))))
 
@@ -370,10 +371,6 @@ ELSE will be executed."
       then/else
     `(let ((,var ,test))
        (if ,var ,then ,else))))
-
-(defmacro aif (test then &optional else)
-  "Just like IF-BIND but the var is always IT."
-  `(if-bind it ,test ,then ,else))
 
 (defun list-match (x y &optional binds)
   (acond2
