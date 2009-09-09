@@ -399,10 +399,12 @@ Examples:
   "Is x a list of length 1?"
   (and (consp x) (null (cdr x))))
 
+;; FIXME: make it more efficient
 (defun make-pairs (list)
   (loop for x from 0 to (1- (length list)) by 2
         collect (subseq list x (+ x 2))))
 
+;; FIXME: make it more efficient
 (defun list-to-alist (list)
   (loop for x from 0 to (1- (length list)) by 2
         for key = (nth x list)

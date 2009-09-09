@@ -329,17 +329,17 @@ You may exit the loop with (RETURN-FROM UNTIL)."
           (list-match (cdr x) (cdr y) it))
          (t (values nil nil))))
 
-(defun vars (match-spec)
+(defun %vars (match-spec)
   (let ((vars nil))
     (labels ((find-vars (spec)
                (cond
                  ((null spec) nil)
-                 ((varsymp spec) (push spec vars))
+                 ((varsymp spec) (push spec %vars))
                  ((consp spec)
                   (find-vars (car spec))
                   (find-vars (cdr spec))))))
       (find-vars match-spec))
-    (delete-duplicates vars)))
+    (delete-duplicates %vars)))
 
 (defmacro list-match-case (target &body clauses)
   (if clauses
@@ -353,8 +353,8 @@ You may exit the loop with (RETURN-FROM UNTIL)."
                (if ,success
                    (let ,(mapcar (lambda (var)
                                    `(,var (cdr (assoc ',var ,binds))))
-                                 (vars test))
-                     (declare (ignorable ,@(vars test)))
+                                 (%vars test))
+                     (declare (ignorable ,@(%vars test)))
                      ,@progn)
                    (list-match-case ,tgt ,@others))))))
       nil))

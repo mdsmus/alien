@@ -234,6 +234,3 @@ current list of values."
       `(with-collector ,(ensure-list (car names))
          (with-collectors ,(cdr names) ,@body))
       `(progn ,@body)))
-
-(defun mapcar2 (fn1 fn2 list)
-  (mapcar (lambda (x) (funcall fn1 (funcall fn2 x))) list))

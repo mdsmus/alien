@@ -21,4 +21,3 @@ the keyword arguments."
               :element-type (array-element-type array)
               :displaced-to array
               :displaced-index-offset start))
-
