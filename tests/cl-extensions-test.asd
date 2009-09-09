@@ -10,7 +10,6 @@
                                      (:file "conditions")
                                      (:file "control-structures")
                                      (:file "packages-and-symbols")
-                                     (:file "evaluation")
                                      (:file "lists")
                                      (:file "sequences")
                                      (:file "strings")
@@ -20,5 +19,4 @@
                                      (:file "math")
                                      (:file "oop")
                                      (:file "types")
-                                     (:file "0-optional-names")
                                      ))))
