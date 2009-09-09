@@ -334,12 +334,12 @@ You may exit the loop with (RETURN-FROM UNTIL)."
     (labels ((find-vars (spec)
                (cond
                  ((null spec) nil)
-                 ((varsymp spec) (push spec %vars))
+                 ((varsymp spec) (push spec vars))
                  ((consp spec)
                   (find-vars (car spec))
                   (find-vars (cdr spec))))))
       (find-vars match-spec))
-    (delete-duplicates %vars)))
+    (delete-duplicates vars)))
 
 (defmacro list-match-case (target &body clauses)
   (if clauses
