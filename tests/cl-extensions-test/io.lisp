@@ -1,3 +1,7 @@
+(in-package :cl-ext-test)
+
+(in-suite :cl-ext-tests)
+
 ;; with-input-from-file
 ;; with-output-to-file
 ;; read-file-into-string

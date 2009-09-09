@@ -1,3 +1,7 @@
+(in-package :cl-ext-test)
+
+(in-suite :cl-ext-tests)
+
 (test required-argument.1
   (is (multiple-value-bind (res err)
           (ignore-errors (required-argument))

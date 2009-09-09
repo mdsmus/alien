@@ -1,3 +1,7 @@
+(in-package :cl-ext-test)
+
+(in-suite :cl-ext-tests)
+
 ;; awhile
 ;; while*
 ;; until*

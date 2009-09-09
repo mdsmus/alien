@@ -1,3 +1,7 @@
+(in-package :cl-ext-test)
+
+(in-suite :cl-ext-tests)
+
 ;; ensure-gethash
 ;; build-hash-table
 ;; deflookup-table
