@@ -1,3 +1,11 @@
+;;;                 Copyright 1989 by Jonathan Amsterdam
+;;;         Adapted to ANSI Common Lisp in 2003 by Andreas Fuchs
+
+iterate
+
+;;; An ITERATE driver for postgresql queries via PG (http://cliki.net/pg)
+;;;           Written by Andreas Fuchs <asf@boinkor.net>
+
 Author: Matthew Danish -- mrd.debian.org
 
    #:parse-number
