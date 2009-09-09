@@ -20,4 +20,5 @@
                (:file "math")
                (:file "oop")
                (:file "types")
+               (:file "iterate")
                (:file "0-optional-names")))

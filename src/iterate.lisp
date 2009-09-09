@@ -121,6 +121,14 @@
 
 (declaim (declaration declare-variables))
 
+;;; work around sbcl's obnoxious standard compliance
+(defmacro defconst (name value &optional doc)
+   `(eval-when (:compile-toplevel :load-toplevel :execute)
+      (unless (boundp ',name)
+        ,(if doc
+             `(defconstant ,name ,value ,doc)
+           `(defconstant ,name ,value)))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Constants and global variables.
 (defconst version "1.4" "Current version of Iterate")
@@ -3601,6 +3609,7 @@ e.g. (DSETQ (VALUES (a . b) nil c) form)"
 
 (defvar *in-pg-transaction* nil)
 
+#|
 (defmacro with-pg-cursor (cursor connection query &body body)
   (let ((conn (gensym))
         (begin-transaction (gensym))
@@ -3631,6 +3640,7 @@ e.g. (DSETQ (VALUES (a . b) nil c) form)"
                                     test
                                     setq)
                         :variable var-spec)))
+|#
 
 ;;;;;;; For Gnu Emacs ;;;;;;;
 ;;; Local variables:

@@ -2,13 +2,14 @@
 
 * read stuff in @to-read
 * TO DO
+** install PG (http://cliki.net/pg) and uncomment iterate code at end
 ** better documentation for loop, do, and tagbody/etc (iteration)
 ** Check functions with PG book
 ** better chapter on types
 * Basic utils (merge with main soon)
 ** DONE parse number
    http://www.cliki.net/PARSE-NUMBER
-** iterator
+** DONE iterator
    http://common-lisp.net/project/iterate/
 ** defclass*
    http://common-lisp.net/project/defclass-star/
