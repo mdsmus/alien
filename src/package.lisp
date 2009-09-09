@@ -215,6 +215,10 @@
    #:binaminal-coefficient
    #:subfactorial
    #:count-permutations
+   #:invalid-number
+   #:parse-number
+   #:parse-real-number
+   #:parse-positive-real-number
    ;; oop
    #:defclass-struct
    #:generate-defclass

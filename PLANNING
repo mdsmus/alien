@@ -6,9 +6,7 @@
 ** Check functions with PG book
 ** better chapter on types
 * Basic utils (merge with main soon)
-** merge memoize
-   http://www.tfeb.org/lisp/hax.html#MEMOIZE
-** parse number
+** DONE parse number
    http://www.cliki.net/PARSE-NUMBER
 ** iterator
    http://common-lisp.net/project/iterate/
@@ -125,6 +123,8 @@
    http://blog.viridian-project.de/cl-i18n/
    http://www.cliki.net/cl-l10n
 ** Development Tools
+*** memoize
+    http://www.tfeb.org/lisp/hax.html#MEMOIZE
 *** profiling
     http://www.artfulcode.net/articles/profiling-lisp-application/
     http://www-users.cs.umn.edu/~gini/lisp/profile.html

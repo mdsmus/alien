@@ -1,3 +1,9 @@
+Author: Matthew Danish -- mrd.debian.org
+
+   #:parse-number
+   #:parse-real-number
+   #:parse-positive-real-number
+
 Jochen Schmidt 
 
 expt-mod
