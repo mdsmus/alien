@@ -1,34 +1,34 @@
-;;;                 Copyright 1989 by Jonathan Amsterdam
-;;;         Adapted to ANSI Common Lisp in 2003 by Andreas Fuchs
+; -*- org -*-
 
+* Edmund Weitz
+** cl-fad 0.6.2
+   :copy-file
+   :delete-directory-and-files
+   :directory-exists-p
+   :directory-pathname-p
+   :file-exists-p
+   :list-directory
+   :pathname-as-directory
+   :pathname-as-file
+   :walk-directory
+* Jonathan Amsterdam and Andreas Fuchs
 iterate
-
-;;; An ITERATE driver for postgresql queries via PG (http://cliki.net/pg)
-;;;           Written by Andreas Fuchs <asf@boinkor.net>
-
-Author: Matthew Danish -- mrd.debian.org
-
+* Andreas Fuchs <asf@boinkor.net>
+ITERATE driver for postgresql queries via PG (http://cliki.net/pg)
+* Matthew Danish -- mrd.debian.org
    #:parse-number
    #:parse-real-number
    #:parse-positive-real-number
-
-Jochen Schmidt 
-
-expt-mod
-
-Kevin M. Rosenberg
-
-chdir (original cwd)
-
-aima:
-
-stringify
-
-The SPLIT-SEQUENCE code was based on Arthur Lemmens' in
-http://groups.google.com/groups?as_umsgid=39F36F1A.B8F19D20%40simplex.nl
-
-kroger:
-
+* Jochen Schmidt 
+  expt-mod
+* Kevin M. Rosenberg
+  chdir (original cwd)
+* aima:
+  stringify
+* Arthur Lemmens
+  The SPLIT-SEQUENCE
+  http://groups.google.com/groups?as_umsgid=39F36F1A.B8F19D20%40simplex.nl
+* kroger:
 with-dir
 transpose-list
 unflatten
@@ -42,9 +42,8 @@ append1
 empty-string-p
 split-tabs
 split-newline
-
-The following functions, macros, and variables were derived from
-arnesi:
+* arnesi:
+The following functions, macros, and variables were derived from arnesi
 
 +alphanumeric-ascii-alphabet+
 +ascii-alphabet+
@@ -118,9 +117,8 @@ while*
 with-collectors
 with-collector
 with-reducer
-
-The following functions, macros, and variables were derived from
-alexandria:
+* alexandria
+The following functions, macros, and variables were derived from alexandria
 
 alist-to-plist
 appendf
@@ -136,7 +134,6 @@ coercef
 compose
 conjoin
 copy-array
-copy-file
 copy-hash-table
 copy-sequence
 copy-stream
@@ -303,27 +300,3 @@ with-gensyms
 with-unique-names
 write-string-into-file
 xor
-
-* infix
-
-;;; Copyright (c) 1993 by Mark Kantrowitz. All rights reserved.
-;;;
-;;; Use and copying of this software and preparation of derivative works
-;;; based upon this software are permitted, so long as the following
-;;; conditions are met:
-;;;      o no fees or compensation are charged for use, copies, 
-;;;        distribution or access to this software
-;;;      o this copyright notice is included intact.
-;;; This software is made available AS IS, and no warranty is made about
-;;; the software or its performance.
-;;;
-;;; In no event will the author(s) or their institutions be liable to you for
-;;; damages, including lost profits, lost monies, or other special, incidental
-;;; or consequential damages, arising out of or in connection with the use or
-;;; inability to use (including but not limited to loss of data or data being
-;;; rendered inaccurate or losses sustained by third parties or a failure of
-;;; the program to operate as documented) the program, or for any claim by
-;;; any other party, whether in an action of contract, negligence, or 
-;;; other tortious action.
-;;;
-;;; Please send bug reports, comments and suggestions to mkant@cs.cmu.edu.

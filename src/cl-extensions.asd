@@ -2,7 +2,8 @@
   :version "0.1"
   :licence "Public Domain / 0-clause MIT"
   :serial t
-  :depends-on (#+sbcl :sb-posix)
+  :depends-on (#+sbcl :sb-posix
+               #+allegro :osi)
   :components ((:file "package")
                (:file "macros")
                (:file "arrays")
@@ -16,6 +17,8 @@
                (:file "strings")
                (:file "function")
                (:file "hash-tables")
+               #+:cormanlisp (:file "corman")
+               #+:openmcl (:file "openmcl")
                (:file "io")
                (:file "math")
                (:file "oop")

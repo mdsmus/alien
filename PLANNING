@@ -2,6 +2,8 @@
 
 * read stuff in @to-read
 * TO DO
+** merge cl-fad tests
+** deal with hyperdoc in cl-fad (and the rest)
 ** install PG (http://cliki.net/pg) and uncomment iterate code at end
 ** better documentation for loop, do, and tagbody/etc (iteration)
 ** Check functions with PG book
@@ -11,22 +13,18 @@
    http://www.cliki.net/PARSE-NUMBER
 ** DONE iterator
    http://common-lisp.net/project/iterate/
-** defclass*
-   http://common-lisp.net/project/defclass-star/
 ** file/OS
    http://bimib.disco.unimib.it/people/Marco.Antoniotti/Projects/CL/NAPS/html/
    http://weitz.de/files/cl-fad.tar.gz
    http://common-lisp.net/project/osicat/
+** port
+   http://clocc.sourceforge.net/dist/port.html
 ** shell
    http://common-lisp.net/project/trivial-shell/
-** extremum
-   http://www.cliki.net/EXTREMUM
 ** ch-util 
    http://cyrusharmon.org/static/releases/ch-util_0.3.10.tar.gz
 ** sugar
    http://common-lisp.net/project/cl-syntax-sugar/
-** port
-   http://clocc.sourceforge.net/dist/port.html
 ** merge paip
    http://norvig.com/paip/auxfns.lisp
 ** merge metatilities
@@ -35,6 +33,8 @@
    darcs get http://common-lisp.net/project/moptilities 
 ** merge aima
    http://aima.cs.berkeley.edu/lisp/utilities/utilities.lisp
+** defclass*
+   http://common-lisp.net/project/defclass-star/
 * Libraries
 ** HTML, XML processing (test cxml, s-xml, xmls)
    http://www.cliki.net/CXML
@@ -151,6 +151,7 @@
 ** Series
    http://series.sourceforge.net/
 * Check out (1.0)
+  http://www.cliki.net/EXTREMUM
   http://www.cliki.net/cl-configuration
   http://www.cliki.net/cl-environment
   http://common-lisp.net/project/metabang-bind/

@@ -1,6 +1,11 @@
 (defpackage #:cl-extensions
   (:nicknames :cl-ext)
   (:use :cl)
+  #+:allegro
+  (:shadow :copy-file
+           :delete-directory-and-files)
+  #+:abcl
+  (:shadow :list-directory)
   (:export
    ;; macros
    #:with-gensyms
@@ -187,7 +192,7 @@
    #:buld-hash-table
    #:make-lookup-name
    #:deflookup-table
-   ;; io
+   ;; io, files and pathnames
    #:with-input-from-file
    #:with-output-to-file
    #:read-file-into-string
@@ -196,6 +201,16 @@
    #:copy-stream
    #:chdir
    #:with-dir
+   #:copy-file
+   #:copy-stream
+   #:delete-directory-and-files
+   #:directory-exists-p
+   #:directory-pathname-p
+   #:file-exists-p
+   #:list-directory
+   #:pathname-as-directory
+   #:pathname-as-file
+   #:walk-directory
    ;; math
    #:10^
    #:expt-mod

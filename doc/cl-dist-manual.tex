@@ -3684,10 +3684,8 @@ See also \funr{parse-integer} and \funr{read-sequence}.
 \chapter{File system interface}
 \label{cha:file-syst-interf}
 
-\section{Filenames}
-\label{sec:filenames}
-
-Extended wildcards
+\section{Predicates}
+\label{sec:predicates-3}
 
 \begin{function}{wild-pathname-p}{pathname \op field-key}
   Predicate for determining whether pathname contains any wildcards.
@@ -3696,6 +3694,35 @@ Extended wildcards
 \begin{function}{pathname-match-p}{in-pathname in-wildname}
   Pathname matches the wildname template?
 \end{function}
+
+\begin{function}{pathnamep}{object}
+  
+\end{function}
+
+\begin{function}{directory-pathname-p}{pathspec}[cl-ext]
+  Returns NIL if PATHSPEC (a pathname designator) does not designate a
+  directory, PATHSPEC otherwise. It is irrelevant whether file or
+  directory designated by PATHSPEC does actually exist.
+\end{function}
+
+\begin{function}{directory-exists-p}{pathspec}[cl-ext]
+  Checks whether the file named by the pathname designator PATHSPEC
+  exists and if it is a directory. Returns its truename if this is the
+  case, NIL otherwise. The truename is returned in directory form as
+  if by PATHNAME-AS-DIRECTORY.
+\end{function}
+
+\begin{function}{file-exists-p}{pathspec}[cl-ext]
+  Checks whether the file named by the pathname designator PATHSPEC
+  exists and returns its truename if this is the case, NIL otherwise.
+  The truename is returned in ``canonical'' form, i.e. the truename of
+  a directory is returned as if by PATHNAME-AS-DIRECTORY.
+\end{function}
+
+\section{Filenames}
+\label{sec:filenames}
+
+Extended wildcards
 
 \begin{function}{translate-pathname}{source from-wildname to-wildname \key}
   Use the source pathname to translate the from-wildname's wild and
@@ -3730,10 +3757,6 @@ Pathname functions
   
 \end{variable}
 
-\begin{function}{pathnamep}{object}
-  
-\end{function}
-
 \begin{function}{pathname}{pathspec}
   Convert PATHSPEC (a pathname designator) into a pathname.
 \end{function}
@@ -3766,6 +3789,15 @@ broken symlink itself.
 \begin{function}{make-pathname}{\key host device directory name type version defaults case}
   Makes a new pathname from the component arguments. Note that host is
 a host-structure or string.
+\end{function}
+
+\begin{function}{pathname-as-file}{pathname}[cl-ext]
+  Converts the non-wild pathname designator PATHNAME to file form.
+\end{function}
+
+\begin{function}{pathname-as-directory}{pathspec}[cl-ext]
+  Converts the non-wild pathname designator PATHSPEC to directory
+form.
 \end{function}
 
 \begin{function}{pathname-device}{pathname \key case}
@@ -3823,6 +3855,9 @@ system.
 \section{Dealing with files}
 \label{sec:dealing-with-files}
 
+\subsection{Reading and writing files}
+\label{sec:read-writ}
+
 \begin{function}{open}{filename \key direction element-type if-exists if-does-not-exist
  external-format \aux direction if-does-not-exist if-exists}
   Return a stream which reads from or writes to FILENAME.
@@ -3876,6 +3911,9 @@ ENCODING-KEYWORD-TO-NATIVE, see ENCODING-KEYWORD-TO-NATIVE to
 possible values.
 \end{function}
 
+\subsection{Operations on files}
+\label{sec:operations-files}
+
 \begin{function}{rename-file}{file new-name}
   Rename FILE to have the specified NEW-NAME. If FILE is a stream open to a
   file, then the associated file is renamed.
@@ -3883,6 +3921,14 @@ possible values.
 
 \begin{function}{delete-file}{file}
   Delete the specified FILE.
+\end{function}
+
+\begin{function}{delete-directory-and-files}{dirname \key if-does-not-exist}[cl-ext]
+  Recursively deletes all files and directories within the directory
+  designated by the non-wild pathname designator DIRNAME including
+  DIRNAME itself. IF-DOES-NOT-EXIST must be one of :ERROR or :IGNORE
+  where :ERROR means that an error will be signaled if the directory
+  DIRNAME does not exist.
 \end{function}
 
 \begin{function}{probe-file}{pathspec}
@@ -3898,7 +3944,10 @@ or NIL otherwise.  See TRUENAME for more information.
 \end{function}
 
 \begin{function}{copy-file}{from to \key if-to-exists element-type}[cl-ext]
-  
+  Copies the file designated by the non-wild pathname designator FROM
+  to the file designated by the non-wild pathname designator TO. If
+  OVERWRITE is true overwrites the file designtated by TO if it
+  exists.
 \end{function}
 
 \begin{function}{file-write-date}{pathspec}
@@ -3948,6 +3997,32 @@ Accessing directories
    means this function can sometimes return files which don't have the same
    directory as PATHNAME.  If :RESOLVE-SYMLINKS is NIL, don't resolve
    symbolic links in matching filenames.
+\end{function}
+
+\begin{function}{walk-directory}{dirname fn \key directories
+    if-does-not-exist test}[cl-ext]
+  Recursively applies the function FN to all files within the
+  directory named by the non-wild pathname designator DIRNAME and all
+  of its sub-directories. FN will only be applied to files for which
+  the function TEST returns a true value. If DIRECTORIES is not NIL,
+  FN and TEST are applied to directories as well. If DIRECTORIES is
+  :DEPTH-FIRST, FN will be applied to the directory's contents first.
+  If DIRECTORIES is :BREADTH-FIRST and TEST returns NIL, the
+  directory's content will be skipped. IF-DOES-NOT-EXIST must be one
+  of :ERROR or :IGNORE where :ERROR means that an error will be
+  signaled if the directory DIRNAME does not exist.
+\end{function}
+
+\begin{function}{list-directory}{dirname}[cl-ext]
+  Returns a fresh list of pathnames corresponding to the truenames of
+  all files within the directory named by the non-wild pathname
+  designator DIRNAME. The pathnames of sub-directories are returned in
+  directory form---see \funr{pathname-as-directory}
+\end{function}
+
+\begin{function}{directory-wildcard}{dirname}[cl-ext]
+  Returns a wild pathname designator that designates all files within
+  the directory named by the non-wild pathname designator DIRNAME.
 \end{function}
 
 
