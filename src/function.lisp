@@ -234,3 +234,7 @@ current list of values."
       `(with-collector ,(ensure-list (car names))
          (with-collectors ,(cdr names) ,@body))
       `(progn ,@body)))
+
+(defmacro funcall-if (fn arg)
+    (once-only (fn)
+	       `(if ,fn (funcall ,fn ,arg) ,arg)))

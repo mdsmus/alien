@@ -719,3 +719,10 @@ stopped."
             finally (return (values subseqs right))))))
 
 (pushnew :split-sequence *features*)
+
+(defun member-equal (item list)
+  (member item list :test #'equal))
+
+(defun sort* (seq pred &key key) 
+  "Sort without altering the sequence"
+  (sort (copy-seq seq) pred :key key))

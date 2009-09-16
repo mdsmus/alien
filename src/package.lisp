@@ -130,6 +130,9 @@
    #:length=1
    #:list-to-alist
    #:transpose-list
+   #:find-anywhere
+   #:find-all
+   #:maybe-add
    ;; sequences
    #:rotate
    #:shuffle
@@ -161,6 +164,8 @@
    #:split-sequence
    #:split-sequence-if
    #:split-sequence-if-not
+   #:member-equal
+   #:sort*
    ;; strings
    #:+lower-case-ascii-alphabet+
    #:+upper-case-ascii-alphabet+
@@ -197,6 +202,7 @@
    #:make-pusher
    #:with-collector
    #:with-collectors
+   #:funcall-if
    ;; hash tables
    #:copy-hash-table
    #:maphash-keys

@@ -2,6 +2,8 @@
 
 * read stuff in @to-read
 * TO DO
+** merge osicat (has to deal with ffi)
+   http://common-lisp.net/project/osicat/
 ** merge cl-fad tests
 ** deal with hyperdoc in cl-fad (and the rest)
 ** install PG (http://cliki.net/pg) and uncomment iterate code at end
@@ -15,14 +17,12 @@
    http://common-lisp.net/project/iterate/
 ** DONE port
    http://clocc.sourceforge.net/dist/port.html
-** file/OS
-   http://common-lisp.net/project/osicat/
 ** shell
    http://common-lisp.net/project/trivial-shell/
 ** ch-util 
    http://cyrusharmon.org/static/releases/ch-util_0.3.10.tar.gz
-** sugar
-   http://common-lisp.net/project/cl-syntax-sugar/
+** decide between alert and paip debug
+   http://www-cgi.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/ext/alerts/alerts.cl
 ** merge paip
    http://norvig.com/paip/auxfns.lisp
 ** merge metatilities
@@ -149,6 +149,9 @@
 ** Series
    http://series.sourceforge.net/
 * Check out (1.0)
+  sugar is interesting, but having to put code to enable syntax is a
+  PITA I think
+  http://common-lisp.net/project/cl-syntax-sugar/
   http://www.cliki.net/EXTREMUM
   http://www.cliki.net/cl-configuration
   http://www.cliki.net/cl-environment

@@ -48,8 +48,14 @@ ITERATE driver for postgresql queries via PG (http://cliki.net/pg)
   expt-mod
 * Kevin M. Rosenberg
   chdir (original cwd)
-* aima:
+* peter norvig
+  funcall-if
   stringify
+  find-anywhere
+  find-all
+  maybe-add
+  member-equal
+  sort*
 * Arthur Lemmens
   The SPLIT-SEQUENCE
   http://groups.google.com/groups?as_umsgid=39F36F1A.B8F19D20%40simplex.nl

@@ -2166,6 +2166,10 @@ every element of LIST2 matches some element of LIST1. Otherwise returns false.
   Return tail of LIST beginning with first element not satisfying TEST.
 \end{function}
 
+\begin{function}{member-equal}{item list}[cl-ext]
+  
+\end{function}
+
 \begin{function}{adjoin}{item list \key key test test-not}
   Add ITEM to LIST unless it is already a member
 \end{function}
@@ -2831,6 +2835,15 @@ In other words, returns the product of LIST and MORE-LISTS using FUNCTION.
   
 \end{function}
 
+\begin{function}{find-anywhere}{item tree}[cl-ext]
+  Does item occur anywhere in tree?
+\end{function}
+
+\begin{function}{find-all}{item sequence \rest keyword-args \key test test-not \akeys}[cl-ext]
+  Find all those elements of sequence that match item, according to
+  the keywords. Doesn't alter sequence.
+\end{function}
+
 \begin{function}{position}{item sequence \rest args \key from-end start end key test test-not}
   
 \end{function}
@@ -2862,6 +2875,10 @@ In other words, returns the product of LIST and MORE-LISTS using FUNCTION.
 \begin{function}{sort}{sequence predicate \rest args \key key}
   Destructively sort SEQUENCE. PREDICATE should return non-NIL if
   ARG1 is to precede ARG2.
+\end{function}
+
+\begin{function}{sort*}{sequence predicate \key key}[cl-ext]
+  Sort without altering the sequence.
 \end{function}
 
 \begin{function}{stable-sort}{sequence predicate \rest args \key key}
@@ -4686,6 +4703,10 @@ See also \macr{setf}.
 
 \begin{function}{funcall}{function \rest arguments}
   Call FUNCTION with the given ARGUMENTS.
+\end{function}
+
+\begin{function}{funcall-if}{function argument}[cl-ext]
+
 \end{function}
 
 \begin{constant}{call-arguments-limit}{}
