@@ -544,3 +544,24 @@ R defaults to N"
 				      :start start
 				      :end end
 				      :radix radix))))))))
+
+(defun square (x) (* x x))
+
+(defun sum (numbers &optional (key #'identity))
+  "Add up all the numbers; if KEY is given, apply it to each number first."
+  (if (null numbers)
+      0
+      (+ (funcall key (first numbers)) (sum (rest numbers) key))))
+
+(defun between (x y z)
+  "Predicate; return t iff number x is between numbers y and z."
+  (or (<= y x z) (>= y x z)))
+
+(defun dot-product (l1 l2 &aux (sum 0)) ;;; dot product of two lists
+  (mapc #'(lambda (x1 x2) (incf sum (* x1 x2))) l1 l2)
+  sum)
+
+(defun random-integer (from to)
+  "Return an integer chosen at random from the given interval."
+  (+ from (random (+ 1 (- to from)))))
+

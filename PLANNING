@@ -23,7 +23,7 @@
    http://cyrusharmon.org/static/releases/ch-util_0.3.10.tar.gz
 ** decide between alert and paip debug
    http://www-cgi.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/ext/alerts/alerts.cl
-** merge paip
+** DONE merge paip
    http://norvig.com/paip/auxfns.lisp
 ** merge metatilities
    darcs get http://common-lisp.net/project/metatilities  

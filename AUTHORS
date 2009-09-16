@@ -56,6 +56,11 @@ ITERATE driver for postgresql queries via PG (http://cliki.net/pg)
   maybe-add
   member-equal
   sort*
+  square
+  sum
+  between
+  dot-product
+  print-grid
 * Arthur Lemmens
   The SPLIT-SEQUENCE
   http://groups.google.com/groups?as_umsgid=39F36F1A.B8F19D20%40simplex.nl

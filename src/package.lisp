@@ -19,6 +19,7 @@
    ;; arrays
    #:copy-array
    #:make-displaced-array
+   #:print-grid
    ;; conditions
    #:required-argument
    #:simple-style-warning
@@ -259,6 +260,11 @@
    #:parse-number
    #:parse-real-number
    #:parse-positive-real-number
+   #:running-average
+   #:square
+   #:sum
+   #:between
+   #:dot-product
    ;; oop
    #:defclass-struct
    #:generate-defclass

@@ -324,6 +324,10 @@ minimum of its original value and NUMBERS.
   Return NUMBER - 1.
 \end{function}
 
+\begin{function}{square}{n}[cl-ext]
+  Return $n^2$
+\end{function}
+
 \begin{macro}{decf}{place \op delta \env env}
   The first argument is some location holding a number. This number is
   decremented by the second argument, DELTA, which defaults to 1.
@@ -372,10 +376,13 @@ minimum of its original value and NUMBERS.
   boundary.
 \end{function}
 
-%%% FIXME, ! as function
+\begin{function}{sum}{numbers \op key}[cl-ext]
+  Add up all the numbers; if KEY is given, apply it to each number
+  first.
+\end{function}
+
 \begin{function}{factorial}{n}[cl-ext]
-  Factorial of non-negative integer N. The function ! is an
-  alternative name.
+  Factorial of non-negative integer N.
 \end{function}
 
 \begin{function}{subfactorial}{n}[cl-ext]
@@ -399,6 +406,14 @@ interpolation coefficient V.
   Variance of SAMPLE. Returns the biased variance if BIASED is true (the default),
 and the unbiased estimator of variance if BIASED is false. SAMPLE must be a
 sequence of numbers.
+\end{function}
+
+\begin{function}{between}{x y z}[cl-ext]
+  Predicate; return t iff number x is between numbers y and z.
+\end{function}
+
+\begin{function}{dot-product}{l1 l2 \aux sum}[cl-ext]
+  Dot product of two lists.
 \end{function}
 
 \section{Exponential and Logarithmic Functions}
@@ -823,6 +838,10 @@ See also \funr{random-state-p}
 
 \begin{function}{random}{arg \op state}
   
+\end{function}
+
+\begin{function}{random-integer}{from to}[cl-ext]
+  Return an integer chosen at random from the given interval.
 \end{function}
 
 \begin{function}{make-random-state}{\op state}
@@ -1602,6 +1621,10 @@ the keyword arguments.
   Return the element of array corressponding to the row-major index. This is
    SETF'able.
 \end{accessor}
+
+\begin{function}{print-grid}{array \key stream key width}[cl-ext]
+  Print the contents of a 2-D array, numbering the edges.
+\end{function}
 
 \section{Functions on Arrays of Bits}
 \label{sec:funct-arrays-bits}
@@ -3545,6 +3568,8 @@ See also \funr{parse-integer} and \funr{read-sequence}.
 
 \section{Output to character streams}
 \label{sec:outp-char-stre}
+
+See also \funr{print-grid}.
 
 \begin{function}{write}{object \key stream escape radix base circle
     pretty level length case array gensym readably right-margin
