@@ -222,6 +222,34 @@ equal under TEST to result of evaluating INITIAL-VALUE."
   `(defconstant ,name (%reevaluate-constant ',name ,initial-value ,test)
      ,@(when documentation `(,documentation))))
 
+(defun variable-special-p (symbol)
+  "Return T if the symbol names a global special variable."
+  #+(and allegro (not (version>= 6))) (clos::variable-special-p symbol nil)
+  #+(and allegro (version>= 6)) (excl::variable-special-p symbol nil)
+  #+clisp (sys::special-variable-p symbol)
+  #+cmu (walker:variable-globally-special-p symbol)
+  #+gcl (si:specialp symbol)
+  #+lispworks (eq :special (hcl:variable-information symbol))
+  #+lucid (system:proclaimed-special-p symbol)
+  #+sbcl (sb-walker:var-globally-special-p symbol)
+  #-(or allegro clisp cmu gcl lispworks lucid sbcl)
+  (error 'not-implemented :proc (list 'variable-special-p symbol)))
+
+(defun variable-not-special (symbol)
+  "Undo the global special declaration.
+This returns a _new_ symbol with the same name, package,
+fdefinition, and plist as the argument.
+This can be confused by imported symbols.
+Also, (FUNCTION-LAMBDA-EXPRESSION (FDEFINITION NEW))
+will return the OLD (uninterned!) symbol as its 3rd value.
+BEWARE!"
+  (let ((pack (symbol-package symbol)) var)
+    (unintern symbol)
+    (setq var (intern (symbol-name symbol) pack))
+    (when (fboundp symbol) (setf (fdefinition var) (fdefinition symbol)))
+    (setf (symbol-plist var) (symbol-plist symbol))
+    var))
+
 (defmacro if-bind (var test &body then/else)
   "Anaphoric IF control structure for multiple values.
 
@@ -362,3 +390,12 @@ You may exit the loop with (RETURN-FROM UNTIL)."
 (defmacro let1 (var val &body body)
   `(let ((,var ,val))
      ,@body))
+
+(defmacro defsubst (name arglist &body body)
+  "Declare an inline defun."
+  `(progn (declaim (inline ,name)) (defun ,name ,arglist ,@body)))
+
+(defmacro defcustom (name type init doc)
+  "Define a typed global variable."
+  `(progn (declaim (type ,type ,name))
+    (defvar ,name (the ,type ,init) ,doc)))

@@ -64,11 +64,30 @@
    #:symbolicate
    #:intern-concat
    ;; environment
+   #:defsubst
+   #:defcustom
+   #:mkdir
+   #:rmdir
+   #:default-directory
+   #:run-prog
+   #:pipe-output
+   #:pipe-input
+   #:close-pipe
+   #:with-open-pipe
    #:quit
    #:getenv
    #:argv
    #:def-special-environment
    #:collect-timing
+   #:arglist
+   #:class-slot-list
+   #:class-slot-initargs
+   #:structure-slots
+   #:structure-keyword-constructor
+   #:structure-boa-constructors
+   #:structure-copier
+   #:structure-predicate
+   #:sysinfo
    ;; evaluation
    #:eval-always
    ;; lists

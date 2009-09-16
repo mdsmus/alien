@@ -71,6 +71,36 @@ element-types."
         do (write-sequence buffer output)
         finally (write-sequence buffer output :end bytes-read)))
 
+(defun mkdir (dir)
+  #+allegro (excl:make-directory dir)
+  #+clisp (#+lisp=cl ext:make-dir #-lisp=cl lisp:make-dir dir)
+  #+cmu (unix:unix-mkdir (directory-namestring dir) #o777)
+  #+lispworks (system:make-directory dir)
+  #+sbcl (sb-unix:unix-mkdir (directory-namestring dir) #o777)
+  #-(or allegro clisp cmu lispworks sbcl)
+  (error 'not-implemented :proc (list 'mkdir dir)))
+
+(defun rmdir (dir)
+  #+allegro (excl:delete-directory dir)
+  #+clisp (#+lisp=cl ext:delete-dir #-lisp=cl lisp:delete-dir dir)
+  #+cmu (unix:unix-rmdir dir)
+  #+lispworks
+  ;; `lw:delete-directory' is present in LWW 4.1.20 but not on LWL 4.1.0
+  (if (fboundp 'lw::delete-directory)
+      (lw::delete-directory dir)
+      (delete-file dir))
+  #-(or allegro clisp cmu lispworks) (delete-file dir))
+
+(defun default-directory ()
+  "The default directory."
+  #+allegro (excl:current-directory)
+  #+clisp (#+lisp=cl ext:default-directory #-lisp=cl lisp:default-directory)
+  #+cmu (ext:default-directory)
+  #+cormanlisp (ccl:get-current-directory)
+  #+lispworks (hcl:get-working-directory)
+  #+lucid (lcl:working-directory)
+  #-(or allegro clisp cmu cormanlisp lispworks lucid) (truename "."))
+
 (defun chdir (&optional dir)
   "Change directory and set default pathname"
   (cond

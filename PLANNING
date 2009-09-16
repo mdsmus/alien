@@ -13,12 +13,10 @@
    http://www.cliki.net/PARSE-NUMBER
 ** DONE iterator
    http://common-lisp.net/project/iterate/
-** file/OS
-   http://bimib.disco.unimib.it/people/Marco.Antoniotti/Projects/CL/NAPS/html/
-   http://weitz.de/files/cl-fad.tar.gz
-   http://common-lisp.net/project/osicat/
-** port
+** DONE port
    http://clocc.sourceforge.net/dist/port.html
+** file/OS
+   http://common-lisp.net/project/osicat/
 ** shell
    http://common-lisp.net/project/trivial-shell/
 ** ch-util 

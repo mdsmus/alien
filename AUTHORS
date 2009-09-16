@@ -1,5 +1,30 @@
 ; -*- org -*-
 
+* sam steingold
+defsubst
+defcustom
+quit
+mkdir
+rmdir
+default-directory
+run-prog
+pipe-output
+pipe-input
+close-pipe
+with-open-pipe
+variable-special-p
+variable-not-special
+arglist (renamed to function-lambda-list)
+class-slot-list
+class-slot-initargs
+structure-slots
+structure-keyword-constructor
+structure-boa-constructors
+structure-copier
+structure-predicate
+sysinfo
+* ;;; Copyright (c) 2007, Luis Oliveira  <loliveira@common-lisp.net>
+osicat 725fd246adb79a87f4ac48309012e298654a1e15
 * Edmund Weitz
 ** cl-fad 0.6.2
    :copy-file
@@ -99,7 +124,6 @@ parse-float
 partitionx
 partition
 push*
-quit
 random-string
 read-sequence*
 rebinding

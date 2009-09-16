@@ -1,4 +1,4 @@
-\index{\documentclass}\documentclass[10pt,english]{book}
+\documentclass[10pt,english]{book}
 \usepackage{lisp}
 
 \makeindex
@@ -3974,6 +3974,18 @@ is a wild pathname.
   
 \end{function}
 
+\begin{function}{mkdir}{dir}[cl-ext]
+  
+\end{function}
+
+\begin{function}{rmdir}{dir}[cl-ext]
+  
+\end{function}
+
+\begin{function}{default-directory}{}[cl-ext]
+  
+\end{function}
+
 \begin{function}{chdir}{dir}[cl-ext]
   Change directory and set default pathname.
 \end{function}
@@ -4414,6 +4426,18 @@ Signals an error if NAME is already a constant variable whose value is not
 equal under TEST to result of evaluating INITIAL-VALUE.
 \end{macro}
 
+\begin{function}{variable-special-p}{symbol}[cl-ext]
+  Return T if the symbol names a global special variable.
+\end{function}
+
+\begin{function}{variable-not-special}{symbol}[cl-ext]
+  Undo the global special declaration. This returns a \emph{new}
+  symbol with the same name, package, fdefinition, and plist as the
+  argument. This can be confused by imported symbols. Also,
+  (FUNCTION-LAMBDA-EXPRESSION (FDEFINITION NEW)) will return the OLD
+  (uninterned!) symbol as its 3rd value. BEWARE!
+\end{function}
+
 \begin{macro}{defparameter}{var val \op doc}
   Define a parameter that is not normally changed by the program,
   but that may be changed without causing an error. Declare the
@@ -4427,6 +4451,14 @@ equal under TEST to result of evaluating INITIAL-VALUE.
   SPECIAL and, optionally, initialize it. If the variable already has a
   value, the old value is not clobbered. The third argument is an optional
   documentation string for the variable.
+\end{macro}
+
+\begin{macro}{defsubst}{name arglist \body body}[cl-ext]
+  Declare an inline defun.
+\end{macro}
+
+\begin{macro}{defcustom}{name type init doc}[cl-ext]
+  Define a typed global variable.
 \end{macro}
 
 \begin{macro}{def-special-environment}{name \key \rest vars}[cl-ext]
@@ -5287,8 +5319,43 @@ SLOTS - a list of slot forms:
     direct-superclasses force type protocol allocation
     allocation-class qualifiers specializers function (method-cell
     method-cell) \akeys}
-  
 \end{generic}
+
+\begin{function}{class-slot-list}{class \op all}[cl-ext]
+  Return the list of slots of a CLASS. CLASS can be a symbol, a class
+  object (as returned by \funr{class-of}) or an instance of a class.
+  If the second optional argument ALL is non-NIL (default), all slots
+  are returned, otherwise only the slots with :allocation type
+  :instance are returned.
+\end{function}
+
+\begin{function}{class-slot-initargs}{class \op all}[cl-ext]
+  Return the list of initargs of a CLASS. CLASS can be a symbol, a
+  class object (as returned by \funr{class-of}) or an instance of a
+  class. If the second optional argument ALL is non-NIL (default),
+  initargs for all slots are returned, otherwise only the slots with
+  :allocation type :instance are returned.
+\end{function}
+
+\begin{function}{structure-slots}{struct}[cl-ext]
+  Return the list of structure slot names.
+\end{function}
+
+\begin{function}{structure-keyword-constructor}{struct}[cl-ext]
+  Return the structure keyword constructor name.
+\end{function}
+
+\begin{function}{structure-boa-constructors}{struct}[cl-ext]
+  Return the list of structure BOA constructor names.
+\end{function}
+
+\begin{function}{structure-copier}{struct}[cl-ext]
+  Return the structure copier name.  
+\end{function}
+
+\begin{function}{structure-predicate}{struct}[cl-ext]
+  Return the structure predicate name.
+\end{function}
 
 \subsection{Generic functions and methods}
 \label{sec:generic-functions}
@@ -6179,11 +6246,15 @@ format.
 \end{function}
 
 \begin{function}{getenv}{var}[cl-ext]
-  
+  can use setf
 \end{function}
 
 \begin{function}{argv}{var}[cl-ext]
   
+\end{function}
+
+\begin{function}{function-lambda-list}{function}[cl-ext]
+  Return the signature of the function.
 \end{function}
 
 \begin{function}{lisp-implementation-type}{}
@@ -6222,6 +6293,35 @@ are running on, or NIL if we can't find any useful information.
 \begin{function}{software-version}{}
   Return a string describing version of the supporting software, or NIL
   if not available.
+\end{function}
+
+\begin{function}{sysinfo}{\op out}[cl-ext]
+  Print information about the current computer environment to a
+  stream.
+\end{function}
+
+\begin{function}{run-prog}{prog \rest opts \key args (wait t) \akeys}[cl-ext]
+  Common interface to shell. Does not return anything useful.
+\end{function}
+
+\begin{function}{pipe-output}{prog \rest args}[cl-ext]
+  Return an output stream which will go to the command.
+\end{function}
+
+\begin{function}{pipe-input}{prog \rest args}[cl-ext]
+  Return an input stream from which the command output will be read.
+\end{function}
+
+\begin{function}{close-pipe}{stream}[cl-ext]
+  
+\end{function}
+
+\begin{function}{with-open-pipe}{(pipe open) \body body}[cl-ext]
+  
+\end{function}
+
+\begin{function}{gc}{}[cl-ext]
+  Invoke the garbage collector.
 \end{function}
 
 
