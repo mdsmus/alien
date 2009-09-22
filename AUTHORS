@@ -1,5 +1,9 @@
 ; -*- org -*-
 
+* cffi 0.10.5
+Copyright © 2005 James Bielman <jamesjb at jamesjb.com>
+Copyright © 2005-2008 Luís Oliveira <loliveira at common-lisp.net>
+Copyright © 2006 Stephen Compall <s11 at member.fsf.org>
 * usocket svn 2009-09-22
 Copyright (c) 2003 Erik Enge
 Copyright (c) 2006-2007 Erik Huelsmann

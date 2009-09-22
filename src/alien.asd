@@ -17,4 +17,5 @@
                :closure-html
                :ltk
                :usocket
+               :cffi
                ))
