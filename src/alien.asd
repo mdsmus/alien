@@ -16,4 +16,5 @@
                :cxml
                :closure-html
                :ltk
+               :usocket
                ))
