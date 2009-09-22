@@ -24,7 +24,7 @@
 ** DONE Graphical User Interfaces
    http://www.cliki.net/Ltk
    http://phil.nullable.eu/
-** Network programming
+** DONE Network programming
    http://www.cliki.net/USOCKET
    http://common-lisp.net/project/cl-plus-ssl/
 ** Internet data and protocols
@@ -84,7 +84,7 @@
     http://common-lisp.net/project/log5/
     http://common-lisp.net/project/cl-syslog/
 *** Interface with C
-    http://www.cliki.net/CFFI
+    [OK] http://www.cliki.net/CFFI
 ** graphics
    http://www.cliki.net/cl-cairo2
    http://common-lisp.net/project/cl-jpeg/

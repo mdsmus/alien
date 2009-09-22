@@ -18,4 +18,5 @@
                :ltk
                :usocket
                :cffi
+               :cl+ssl
                ))

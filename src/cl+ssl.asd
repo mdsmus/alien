@@ -15,13 +15,14 @@
 (defsystem :cl+ssl
   :depends-on (:cffi :trivial-gray-streams :flexi-streams #+sbcl :sb-posix)
   :serial t
-  :components
-   ((:file "package")
-    (:file "reload")
-    (:file "conditions")
-    (:file "ffi")
-    (:file "ffi-buffer-all")
-    #-clisp (:file "ffi-buffer")
-    #+clisp (:file "ffi-buffer-clisp")
-    (:file "streams")
-    (:file "bio")))
+  :components ((:module "cl+ssl"
+                        :serial t
+                        :components ((:file "package")
+                                     (:file "reload")
+                                     (:file "conditions")
+                                     (:file "ffi")
+                                     (:file "ffi-buffer-all")
+                                     #-clisp (:file "ffi-buffer")
+                                     #+clisp (:file "ffi-buffer-clisp")
+                                     (:file "streams")
+                                     (:file "bio")))))
