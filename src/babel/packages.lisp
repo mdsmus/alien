@@ -27,7 +27,7 @@
 (in-package #:cl-user)
 
 (defpackage #:babel-encodings
-  (:use #:common-lisp #:alexandria)
+  (:use #:common-lisp #:cl-ext)
   (:export
    ;; character encoding objects
    #:list-character-encodings
@@ -71,7 +71,7 @@
    #:overlong-utf8-sequence))
 
 (defpackage #:babel
-  (:use #:common-lisp #:babel-encodings #:alexandria)
+  (:use #:common-lisp #:babel-encodings #:cl-ext)
   (:import-from #:babel-encodings)
   (:export
    ;; types

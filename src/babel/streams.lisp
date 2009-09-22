@@ -40,7 +40,7 @@
 (in-package :babel)
 
 (defpackage :babel-streams
-  (:use :common-lisp :babel :trivial-gray-streams :alexandria)
+  (:use :common-lisp :babel :trivial-gray-streams :cl-ext)
   (:export
    #:in-memory-stream
    #:vector-output-stream
