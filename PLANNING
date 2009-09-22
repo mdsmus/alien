@@ -11,35 +11,17 @@
 ** Check functions with PG book
 ** better chapter on types
 * Basic utils (merge with main soon)
-** DONE parse number
-   http://www.cliki.net/PARSE-NUMBER
-** DONE iterator
-   http://common-lisp.net/project/iterate/
-** DONE port
-   http://clocc.sourceforge.net/dist/port.html
-** shell
-   http://common-lisp.net/project/trivial-shell/
-** ch-util 
-   http://cyrusharmon.org/static/releases/ch-util_0.3.10.tar.gz
 ** decide between alert and paip debug
    http://www-cgi.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/ext/alerts/alerts.cl
-** DONE merge paip
-   http://norvig.com/paip/auxfns.lisp
 ** merge metatilities
    darcs get http://common-lisp.net/project/metatilities  
    darcs get http://common-lisp.net/project/metatilities-base  
    darcs get http://common-lisp.net/project/moptilities 
-** merge aima
-   http://aima.cs.berkeley.edu/lisp/utilities/utilities.lisp
-** defclass*
-   http://common-lisp.net/project/defclass-star/
 * Libraries
-** HTML, XML processing (test cxml, s-xml, xmls)
+** DONE HTML, XML processing (test cxml, s-xml, xmls)
    http://www.cliki.net/CXML
    http://www.cliki.net/closure-html
-   http://www.cliki.net/S-XML
-   http://www.cliki.net/XMLS
-** Graphical User Interfaces
+** DONE Graphical User Interfaces
    http://www.cliki.net/Ltk
    http://phil.nullable.eu/
 ** Network programming
@@ -51,6 +33,7 @@
    http://common-lisp.net/project/cl-json/
    http://www.cliki.net/CL-MIME
    http://www.cliki.net/cl-base64
+   [OK] http://puri.b9.com/
 ** Internet Protocols and Support
    http://common-lisp.net/project/s-xml-rpc/
    http://www.cliki.net/lisp-cgi-utils
@@ -65,7 +48,7 @@
 ** Multimedia
    http://www.cliki.net/midi
 ** Strings
-   http://common-lisp.net/project/babel/
+   [OK] http://common-lisp.net/project/babel/
    http://weitz.de/files/cl-ppcre.tar.gz
    http://www.cliki.net/CL-DIFFLIB
    http://www.cliki.net/cl-unicode
@@ -91,8 +74,9 @@
     http://common-lisp.net/project/local-time/
     http://code.google.com/p/cl-period/wiki/API
 *** Streams
-    http://weitz.de/flexi-streams/
+    [OK] http://weitz.de/flexi-streams/
     http://weitz.de/chunga/
+    [OK] http://www.cliki.net/trivial-gray-streams
 *** optparse
     http://common-lisp.net/project/cl-cli-parser/
     http://common-lisp.net/gitweb?p=projects/qitab/command-line-arguments.git;a=summary
@@ -122,6 +106,8 @@
    http://blog.viridian-project.de/cl-i18n/
    http://www.cliki.net/cl-l10n
 ** Development Tools
+*** portability
+    http://www.cliki.net/trivial-features
 *** memoize
     http://www.tfeb.org/lisp/hax.html#MEMOIZE
 *** profiling
@@ -148,26 +134,37 @@
    http://www.cliki.net/Screamer
 ** Series
    http://series.sourceforge.net/
+* For future release
+http://www.cliki.net/cxml-rng
+http://www.lichteblau.com/cxml-stp/
+http://www.cliki.net/plexippus-xpath
+http://common-lisp.net/project/xuriella/
 * Check out (1.0)
-  sugar is interesting, but having to put code to enable syntax is a
-  PITA I think
-  http://common-lisp.net/project/cl-syntax-sugar/
-  http://www.cliki.net/EXTREMUM
-  http://www.cliki.net/cl-configuration
-  http://www.cliki.net/cl-environment
-  http://common-lisp.net/project/metabang-bind/
-  http://common-lisp.net/project/cl-graph/
-  http://common-lisp.net/project/cl-containers/
-  http://common-lisp.net/project/metacopy/
-  http://www.cliki.net/MatLisp
-  http://common-lisp.net/project/lisplab/
-  http://www.cliki.net/fare-matcher
-  http://www.tfeb.org/lisp/hax.html#CONDUITS
-  http://www.cliki.net/Linedit
-  http://common-lisp.net/project/cl-match/doc/clmatch.htm
-  http://www.cliki.net/cl-future
-  http://www.cliki.net/Binary-types
-  http://common-lisp.net/project/cl-unification/
+** sugar
+   sugar is interesting, but having to put code to enable syntax is a
+   PITA I think
+   http://common-lisp.net/project/cl-syntax-sugar/
+** defclass*
+   is not quite what I want (having slot-of is no good for accessors)
+   http://common-lisp.net/project/defclass-star/
+** others
+   http://common-lisp.net/project/trivial-shell/
+   http://www.cliki.net/EXTREMUM
+   http://www.cliki.net/cl-configuration
+   http://www.cliki.net/cl-environment
+   http://common-lisp.net/project/metabang-bind/
+   http://common-lisp.net/project/cl-graph/
+   http://common-lisp.net/project/cl-containers/
+   http://common-lisp.net/project/metacopy/
+   http://www.cliki.net/MatLisp
+   http://common-lisp.net/project/lisplab/
+   http://www.cliki.net/fare-matcher
+   http://www.tfeb.org/lisp/hax.html#CONDUITS
+   http://www.cliki.net/Linedit
+   http://common-lisp.net/project/cl-match/doc/clmatch.htm
+   http://www.cliki.net/cl-future
+   http://www.cliki.net/Binary-types
+   http://common-lisp.net/project/cl-unification/
 ** math
    http://www.cliki.net/lisp-matrix
    http://common-lisp.net/project/cl-mathstats/

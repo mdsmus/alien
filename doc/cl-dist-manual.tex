@@ -6842,44 +6842,214 @@ or list acceptable to the reader macros \#+ and \#-.
 
 
 \chapter{HTML and XML processing}
+\label{cha:html-xml-processing}
+
+\section{Parsing XML}
+\label{sec:parsing-xml}
+
+Closure XML was written by Gilbert Baumann now maintained by David
+Lichteblau. 
+
+http://common-lisp.net/project/cxml/
+
+\section{Parsing HTML}
+\label{sec:parsing-html}
+
+Closure HTML
+
+Original author: Gilbert Baumann
+Current maintainer: David Lichteblau 
+
+http://www.cliki.net/closure-html
+
+\libversion{2009-09-21}
 
 
-\chapter{GUI programming}
+
+\chapter{Graphical user interfaces}
+\label{cha:graph-user-interf}
+
+\section{GUIs with TK}
+\label{sec:guis-with-tk}
+
+http://www.cliki.net/Ltk
+
+\section{The ABLE lisp editor}
+\label{sec:able-lisp-editor}
+
 
 
-\chapter{Threads}
+
+\chapter{Internet data and protocols}
+\label{cha:intern-data-prot}
+
+\section{URI parsing}
+\label{sec:uri-parsing}
+
+Franz, Inc <http://www.franz.com>
+Kevin Rosenberg <kevin@rosenberg.net>
+
+http://puri.b9.com/
 
 
-\chapter{Data persistance}
+
+\chapter{Strings}
+\label{cha:strings-1}
+
+http://common-lisp.net/project/babel/
+
+   ;; types
+   #:unicode-char
+   #:unicode-char-code-limit
+   #:unicode-string
+   #:simple-unicode-string
+   ;; fixed sharp-backslash reader
+   #:enable-sharp-backslash-syntax
+   #:set-sharp-backslash-syntax-in-readtable
+   ;; external formats
+   #:external-format
+   #:make-external-format
+   #:ensure-external-format
+   #:external-format-encoding
+   #:external-format-eol-style
+   #:external-format-equal
+   #:*default-eol-style*
+   ;; general user API
+   #:*default-character-encoding*
+   #:list-character-encodings
+   #:string-to-octets
+   #:octets-to-string
+   #:concatenate-strings-to-octets
+   #:string-size-in-octets
+   #:vector-size-in-chars
+   ;; errors
+   #:character-coding-error
+   #:character-coding-error-encoding    ; accessor
+   #:character-coding-error-buffer      ; accessor
+   #:character-coding-error-position    ; accessor
+   #:character-decoding-error
+   #:character-decoding-error-octets    ; accessor
+   #:character-encoding-error
+   #:character-encoding-error-code      ; accessor
+   #:end-of-input-in-character
+   #:character-out-of-range
+   #:invalid-utf8-starter-byte
+   #:invalid-utf8-continuation-byte
+   #:overlong-utf8-sequence
 
 
-\chapter{Data Compression and Archiving}
+
+\chapter{Operating System Services}
+\label{cha:oper-syst-serv}
+
+\section{Streams}
+\label{sec:streams-1}
+
+Copyright (c) 2005 David Lichteblau
+
+http://www.cliki.net/trivial-gray-streams
+
+1. Use the package TRIVIAL-GRAY-STREAMS instead of whatever
+   implementation-specific package you would have to use otherwise to
+   get at gray stream symbols.
+2. For STREAM-READ-SEQUENCE and STREAM-WRITE-SEQUENCE, notice that we
+   use two required arguments and allow additional keyword arguments.
+   So the lambda list when defining a method on either function should look
+   like this:
+     (stream sequence start end \&key)
+3. In order for (2) to work on all Lisps, make sure to subclass all your
+   stream classes from TRIVIAL-GRAY-STREAM-MIXIN if you intend to define
+   methods on those two generic functions.
+
+\begin{class}{trivial-gray-stream-mixin}{}[lib]
+          
+\end{class}
+
+\begin{function}{stream-read-sequence}{stream sequence start end \key}[lib]
+  
+\end{function}
+
+\begin{function}{stream-write-sequence}{stream sequence start end \key}[lib]
+  
+\end{function}
+
+\begin{function}{stream-file-position}{stream}[lib]
+  
+\end{function}
+
+Dr. Edmund Weitz
+http://weitz.de/flexi-streams/
 
 
-\chapter{Generic Operating System Services}
 
-time, parse options, logging, password, ffi
+\chapter{Development tools}
+\label{cha:development-tools}
 
-
-\chapter{File Formats}
+\section{Portability}
+\label{sec:portability}
 
-
-\chapter{Cryptographic Services}
+Copyright (C) 2007, Luis Oliveira  <loliveira@common-lisp.net>
 
-
-\chapter{Internationalization}
+http://www.cliki.net/trivial-features
 
-
-\chapter{Development Tools}
+=============
+Specification
 
-\section{Testing}
+* ENDIANNESS
 
-\section{Automatic documentation}
+Either :LITTLE-ENDIAN or :BIG-ENDIAN should present in *FEATURES*.
+For the time being, we will not concern ourselves with other
+orderings, switchable endianness, etc.
 
-
-\chapter{Internet Data Handling}
 
-email, json, mailbox, mime, etc
+* OPERATING SYSTEM
+
+On Windows, :WINDOWS should be present in *FEATURES*.
+
+On POSIX systems, the "sysname" information from uname(3) should be
+used to push the appropriate symbol to *FEATURES* by upcasing that
+string (or downcasing for the "modern" lisps) and interning it in the
+keyword package.
+
+Examples:
+
+  :DARWIN
+  :LINUX
+  :NETBSD
+  :OPENBSD
+  :FREEBSD
+
+For convenience, :UNIX should be pushed when running on
+POSIX/UNIX-like operating system (that doesn't include Windows) and
+:BSD should be present when running on BSD-based systems (that
+includes Darwin)
+
+[add :MACH too?]
+
+
+* CPU
+
+These features should be mutually exclusive:
+
+  :X86
+  :X86-64
+  :PPC
+  :PPC64
+  :MIPS
+  :ALPHA
+  :SPARC
+  :SPARC64
+  :HPPA
+  :HPPA64
+
+[add more ...]
+
+[note: it's debatable whether :X86 shouldn't also be exported on
+x86-64, and :PPC on ppc64.  SBCL doesn't.  Other ways
+to handle, for example, the x86/x86-64 case would be to export
+something like :PC386 in both cases or have an additional :X86-32. Or
+finally, have just :X86, :PPC, etc, and add :32-BIT-CPU and
+:64-BIT-CPU features.]
 
 \printindex
 
