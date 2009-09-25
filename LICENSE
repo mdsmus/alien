@@ -1,5 +1,7 @@
 ; -*- org -*-
 
+* cl-who
+http://www.opensource.org/licenses/bsd-license.php
 * cl-smtp
 ;;; This library is free software; you can redistribute it and/or
 ;;; modify it under the terms of the Lisp Lesser General Public License
