@@ -1,5 +1,8 @@
 ; -*- org -*-
 
+* rfc2388
+;;;; Copyright (c) 2003 Janis Dzerins
+;;;; Modifications for TBNL Copyright (c) 2004 Michael Weber and Dr. Edmund Weitz
 * cffi 0.10.5
 Copyright © 2005 James Bielman <jamesjb at jamesjb.com>
 Copyright © 2005-2008 Luís Oliveira <loliveira at common-lisp.net>
