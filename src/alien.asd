@@ -23,4 +23,5 @@
                ;;:mel-base
                :cl-json
                :cl-base64
+               :cl-ppcre
                ))

@@ -32,7 +32,7 @@
    [OK] http://www.cliki.net/mel-base
    [OK] http://common-lisp.net/project/cl-json/
    http://www.cliki.net/CL-MIME
-   http://www.cliki.net/cl-base64
+   [OK] http://www.cliki.net/cl-base64
    [OK] http://puri.b9.com/
 ** Internet Protocols and Support
    http://common-lisp.net/project/s-xml-rpc/
@@ -49,7 +49,7 @@
    http://www.cliki.net/midi
 ** Strings
    [OK] http://common-lisp.net/project/babel/
-   http://weitz.de/files/cl-ppcre.tar.gz
+   [OK] http://weitz.de/files/cl-ppcre.tar.gz
    http://www.cliki.net/CL-DIFFLIB
    http://www.cliki.net/cl-unicode
    http://weitz.de/cl-interpol/

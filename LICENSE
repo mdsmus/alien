@@ -1,6 +1,7 @@
 ; -*- org -*-
 
-
+* cl-ppcre
+http://www.opensource.org/licenses/bsd-license.php
 * cl-base64
 All rights reserved.
 
