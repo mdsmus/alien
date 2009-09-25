@@ -38,7 +38,7 @@
    [OK] http://www.cliki.net/CL-MIME
    [OK] http://www.cliki.net/cl-base64
    [OK] http://puri.b9.com/
-** Internet Protocols and Support
+** DONE Internet Protocols and Support
    [OK] http://common-lisp.net/project/s-xml-rpc/
    [OK] http://www.cliki.net/lisp-cgi-utils
    [OK] http://www.cliki.net/CL-SMTP
@@ -46,7 +46,7 @@
    [OK] http://weitz.de/html-template/
    [OK] http://common-lisp.net/project/parenscript/
    [OK] http://www.cl-user.net/asp/libs/css-lite
-   http://common-lisp.net/project/uri-template/
+   [OK] http://common-lisp.net/project/uri-template/
 ** Multimedia
    http://www.cliki.net/midi
 ** Strings

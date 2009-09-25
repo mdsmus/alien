@@ -34,4 +34,5 @@
                :html-template
                :parenscript
                :css-lite
+               :uri-template
                ))

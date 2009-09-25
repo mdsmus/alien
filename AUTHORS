@@ -1,4 +1,7 @@
 ; -*- org -*-
+
+* uri-template 0.8
+Copyright (c) 2007, 2008, 2009 Vladimir Sedach
 * cl-lite
 The author, Vladimir Sedach, can be contacted at vsedach@gmail.com and
 welcomes questions, bug reports and patches.
