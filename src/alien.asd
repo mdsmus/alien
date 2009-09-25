@@ -29,4 +29,5 @@
                :cl-mime
                :s-xml-rpc
                :lisp-cgi-utils
+               :cl-smtp
                ))
