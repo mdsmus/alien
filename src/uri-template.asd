@@ -8,7 +8,7 @@
                         :components ((:file "packages")
                                      (:file "uri-template")
                                      (:file "destructure-uri"))))
-  :depends-on (:kmrcl :cl-ppcre))
+  :depends-on (:cl-ppcre))
 
 (asdf:defsystem :uri-template.test
   :serial t
