@@ -19,4 +19,7 @@
                :usocket
                :cffi
                :cl+ssl
+               :rfc2388
+               ;;:mel-base
+               
                ))
