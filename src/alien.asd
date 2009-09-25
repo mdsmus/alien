@@ -35,4 +35,5 @@
                :parenscript
                :css-lite
                :uri-template
+               :midi
                ))

@@ -1,5 +1,19 @@
 ; -*- org -*-
 
+* midi 20070618
+
+This library for reading and writing MIDI files, and for representing
+MIDI events, was originally written by students of Robert Strandh at
+Université Bordeaux I.  It was then included in the Gsharp score
+editor[1], and was also posted to the alt.music.midi and
+comp.lang.lisp newsgroups[2].  Subsequently, workers at Goldsmiths
+College included it in their own projects, and took over the
+responsibility of distributing a copy usable by multiple projects.
+
+Please send bug reports, feature suggestions or comments to
+  David Lewis <d.lewis@gold.ac.uk>,
+  Marcus Pearce <m.pearce@gold.ac.uk>,
+  Christophe Rhodes <c.rhodes@gold.ac.uk>
 * uri-template 0.8
 Copyright (c) 2007, 2008, 2009 Vladimir Sedach
 * cl-lite
