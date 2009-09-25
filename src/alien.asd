@@ -32,4 +32,5 @@
                :cl-smtp
                :cl-who
                :html-template
+               :parenscript
                ))

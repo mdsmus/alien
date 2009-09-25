@@ -2,6 +2,8 @@
 
 * read stuff in @to-read
 * TO DO
+** add drakma
+   http://weitz.de/drakma/
 ** add hunchentoot
    http://weitz.de/hunchentoot/
 ** merge osicat (has to deal with ffi)
@@ -41,9 +43,8 @@
    [OK] http://www.cliki.net/lisp-cgi-utils
    [OK] http://www.cliki.net/CL-SMTP
    [OK] http://weitz.de/cl-who/
-   http://weitz.de/html-template/
-   http://weitz.de/drakma/
-   http://common-lisp.net/project/parenscript/
+   [OK] http://weitz.de/html-template/
+   [OK] http://common-lisp.net/project/parenscript/
    http://www.cl-user.net/asp/libs/css-lite
    http://common-lisp.net/project/uri-template/
 ** Multimedia
