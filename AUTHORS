@@ -1,6 +1,9 @@
 ; -*- org -*-
 
-
+* s-xml-rpc
+Originally it was written by Sven Van Caekenberghe. It is now being
+maintained by Sven Van Caekenberghe, Rudi Schlatte and Brian
+Mastenbrook. S-XML-RPC is using S-XML as parser.
 * s-xml 2009-09-25
 Originally it was written by Sven Van Caekenberghe. It is now being
 maintained by Sven Van Caekenberghe, Rudi Schlatte and Brian
