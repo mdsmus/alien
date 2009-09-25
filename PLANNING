@@ -30,7 +30,7 @@
 ** Internet data and protocols
    [OK] http://common-lisp.net/project/rfc2388/
    [OK] http://www.cliki.net/mel-base
-   http://common-lisp.net/project/cl-json/
+   [OK] http://common-lisp.net/project/cl-json/
    http://www.cliki.net/CL-MIME
    http://www.cliki.net/cl-base64
    [OK] http://puri.b9.com/

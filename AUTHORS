@@ -1,5 +1,7 @@
 ; -*- org -*-
 
+* cl-base64 3.3.3
+Copyright (c) 2002-2003 by Kevin Rosenberg
 * cl-json 2009-09-25
 Copyright (c) 2006-2008 Henrik Hjelte
 Copyright (c) 2008 Hans Hübner (code from the program YASON)

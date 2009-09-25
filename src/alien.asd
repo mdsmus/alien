@@ -22,4 +22,5 @@
                :rfc2388
                ;;:mel-base
                :cl-json
+               :cl-base64
                ))
