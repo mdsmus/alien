@@ -1,0 +1,32 @@
+  - 0.11
+    - added support for ACL 8.1, thanks to Andrew Philpot <philpot@ISI.EDU>
+  - 0.10
+    - added support for multibyte-encodings
+    - switched default encoding to UTF8
+    - there seems to be no full UTF8 support in CMUCL, so CMUCL doesn't
+      work in UTF8 mode
+  - 0.9
+    - Makefile fixes for dvips, 
+    - bugfix for CMUCL
+  - 0.8
+    - added Support for Lispworks
+  - 0.7 
+    - added system definition for asdf
+  - 0.6.1
+    - typo fixes
+  - 0.6
+   - added HTTP cookie support,
+  - 0.5
+   - reworked examples, now with examples for CMUCL and SBCL
+   - it doesn't work with GCL because GCL barfs on the (defpackage ...) form
+ - 0.4
+   - fixed tag generating functions -> better HTML 4.0 strict compliance,
+   - fixed up examples for better style as well as full HTML 4.0 strict
+     compliance - validator.w3c.org is happy with their output
+ - 0.3
+   - better examples, 
+   - added more HTML tags - should be mostly complete now
+ - 0.2
+   - cleanups, first public release
+ - 0.1
+   - internal use only

@@ -1,5 +1,7 @@
 ; -*- org -*-
 
+* lisp-cgi-utils 0.11
+     Copyright (C) 2003,2004 Alexander Schreiber
 * s-xml-rpc
 Originally it was written by Sven Van Caekenberghe. It is now being
 maintained by Sven Van Caekenberghe, Rudi Schlatte and Brian

@@ -28,4 +28,5 @@
                :cl-qprint
                :cl-mime
                :s-xml-rpc
+               :lisp-cgi-utils
                ))
