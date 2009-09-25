@@ -31,4 +31,5 @@
                :lisp-cgi-utils
                :cl-smtp
                :cl-who
+               :html-template
                ))

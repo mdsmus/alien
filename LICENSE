@@ -1,6 +1,6 @@
 ; -*- org -*-
 
-* cl-who
+* cl-who, html-template
 http://www.opensource.org/licenses/bsd-license.php
 * cl-smtp
 ;;; This library is free software; you can redistribute it and/or
