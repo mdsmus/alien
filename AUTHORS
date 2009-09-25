@@ -1,5 +1,10 @@
 ; -*- org -*-
 
+
+* s-xml 2009-09-25
+Originally it was written by Sven Van Caekenberghe. It is now being
+maintained by Sven Van Caekenberghe, Rudi Schlatte and Brian
+Mastenbrook.
 * cl-mime 0.5.3
 Robert Marlow
 * cl-qprint 0.2.1
@@ -7,7 +12,7 @@ Robert Marlow
 * cl-ppcre 2.0.2
 Edi Weitz
 * cl-base64 3.3.3
-Copyright (c) 2002-2003 by Kevin Rosenberg
+  Copyright (c) 2002-2003 by Kevin Rosenberg
 * cl-json 2009-09-25
 Copyright (c) 2006-2008 Henrik Hjelte
 Copyright (c) 2008 Hans Hübner (code from the program YASON)

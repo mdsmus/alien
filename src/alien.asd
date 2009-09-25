@@ -14,6 +14,7 @@
                :regexp
                :trivial-gray-streams
                :cxml
+               :s-xml
                :closure-html
                :ltk
                :usocket
@@ -26,4 +27,5 @@
                :cl-ppcre
                :cl-qprint
                :cl-mime
+               :s-xml-rpc
                ))

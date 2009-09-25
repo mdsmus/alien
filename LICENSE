@@ -1,5 +1,7 @@
 ; -*- org -*-
 
+* s-xml
+LLGPL
 * cl-qprint and cl-mime
  Preamble to the Gnu Lesser General Public License
  
@@ -216,7 +218,7 @@ fee.
     * c) You must cause the whole of the work to be licensed at no
       charge to all third parties under the terms of this License.
 
-* d) If a facility in the modified Library refers to a function or a
+ d) If a facility in the modified Library refers to a function or a
   table of data to be supplied by an application program that uses the
   facility, other than as an argument passed when the facility is
   invoked, then you must make a good faith effort to ensure that, in
@@ -347,7 +349,7 @@ of these things:
       copy from a designated place, offer equivalent access to copy
       the above specified materials from the same place.
 
-* d) Verify that the user has already received a copy of these
+ d) Verify that the user has already received a copy of these
   materials or that you have already sent this user a copy.
 
 For an executable, the required form of the "work that uses the
@@ -377,7 +379,7 @@ distribute.
       facilities. This must be distributed under the terms of the
       Sections above.
 
-* b) Give prominent notice with the combined library of the fact that
+ b) Give prominent notice with the combined library of the fact that
   part of it is a work based on the Library, and explaining where to
   find the accompanying uncombined form of the same work.
 
