@@ -27,11 +27,11 @@
 ** DONE Network programming
    http://www.cliki.net/USOCKET
    http://common-lisp.net/project/cl-plus-ssl/
-** Internet data and protocols
+** DONE Internet data and protocols
    [OK] http://common-lisp.net/project/rfc2388/
    [OK] http://www.cliki.net/mel-base
    [OK] http://common-lisp.net/project/cl-json/
-   http://www.cliki.net/CL-MIME
+   [OK] http://www.cliki.net/CL-MIME
    [OK] http://www.cliki.net/cl-base64
    [OK] http://puri.b9.com/
 ** Internet Protocols and Support

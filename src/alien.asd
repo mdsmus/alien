@@ -24,4 +24,6 @@
                :cl-json
                :cl-base64
                :cl-ppcre
+               :cl-qprint
+               :cl-mime
                ))

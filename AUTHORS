@@ -1,5 +1,9 @@
 ; -*- org -*-
 
+* cl-mime 0.5.3
+Robert Marlow
+* cl-qprint 0.2.1
+Robert Marlow
 * cl-ppcre 2.0.2
 Edi Weitz
 * cl-base64 3.3.3
