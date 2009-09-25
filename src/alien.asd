@@ -33,4 +33,5 @@
                :cl-who
                :html-template
                :parenscript
+               :css-lite
                ))

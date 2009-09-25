@@ -45,7 +45,7 @@
    [OK] http://weitz.de/cl-who/
    [OK] http://weitz.de/html-template/
    [OK] http://common-lisp.net/project/parenscript/
-   http://www.cl-user.net/asp/libs/css-lite
+   [OK] http://www.cl-user.net/asp/libs/css-lite
    http://common-lisp.net/project/uri-template/
 ** Multimedia
    http://www.cliki.net/midi
