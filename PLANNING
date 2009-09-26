@@ -52,7 +52,7 @@
 ** Strings
    [OK] http://common-lisp.net/project/babel/
    [OK] http://weitz.de/files/cl-ppcre.tar.gz
-   http://www.cliki.net/CL-DIFFLIB
+   [OK] http://www.cliki.net/CL-DIFFLIB
    http://www.cliki.net/cl-unicode
    http://weitz.de/cl-interpol/
 ** Data persistance (cl-serializer vs cl-store)

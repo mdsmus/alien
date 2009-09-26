@@ -37,4 +37,5 @@
                :uri-template
                :midi
                :cl-difflib
+               :cl-unicode
                ))

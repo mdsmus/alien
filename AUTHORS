@@ -1,5 +1,7 @@
 ; -*- org -*-
 
+* cl-unicode 0.1.1
+Edi Weitz
 * cl-difflib 0.1
 John Wiseman
 * midi 20070618
