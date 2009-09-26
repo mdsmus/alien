@@ -70,10 +70,9 @@
 ** DONE Data Compression and Archiving
    [OK] http://www.xach.com/lisp/salza2/
    [OK] http://www.cliki.net/archive
-** Concurrence, threads, and multiprocessing
-   http://common-lisp.net/project/cl-muproc/
-   http://common-lisp.net/project/bordeaux-threads/
-   http://common-lisp.net/project/cl-stm/
+** DONE Concurrence, threads, and multiprocessing
+   [OK] http://common-lisp.net/project/cl-muproc/
+   [OK] http://common-lisp.net/project/bordeaux-threads/
 ** Operating System Services
 *** time
     http://common-lisp.net/project/cl-date-calc/index.html
@@ -141,6 +140,7 @@
 ** Series
    http://series.sourceforge.net/
 * For future release
+  http://common-lisp.net/project/cl-stm/
 http://www.cliki.net/cxml-rng
 http://www.lichteblau.com/cxml-stp/
 http://www.cliki.net/plexippus-xpath

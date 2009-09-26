@@ -1,5 +1,12 @@
 ; -*- org -*-
 
+* bordeaux-threads 0.6.0
+Copyright 2006, 2007 Greg Pfeil
+* timer 0.4.0
+November 9th, 2003
+Zachary Beane <xach@xach.com>
+* cl-muproc 2008-01-11
+Klaus Harbo
 * cl-i18n 0.4
   Leslie P. Polzer <polzer@stardawn.org> (base)
   Vilson Vieira <vilson@void.cc> (string extractor)

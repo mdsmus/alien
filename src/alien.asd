@@ -47,4 +47,7 @@
                :ironclad
                :cl-l10n
                :cl-i18n
+               :timer
+               :bordeaux-threads
+               :cl-muproc
                ))
