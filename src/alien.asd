@@ -51,4 +51,5 @@
                :bordeaux-threads
                :cl-muproc
                :chunga
+               :date-calc
                ))

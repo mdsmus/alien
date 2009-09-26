@@ -75,7 +75,7 @@
    [OK] http://common-lisp.net/project/bordeaux-threads/
 ** Operating System Services
 *** time
-    http://common-lisp.net/project/cl-date-calc/index.html
+    [OK] http://common-lisp.net/project/cl-date-calc/index.html
     http://common-lisp.net/project/local-time/
     http://code.google.com/p/cl-period/wiki/API
 *** DONE Streams
