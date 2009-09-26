@@ -2,6 +2,8 @@
 
 * read stuff in @to-read
 * TO DO
+** add clsql
+   http://www.cliki.net/CLSQL
 ** add drakma
    http://weitz.de/drakma/
 ** add hunchentoot
@@ -55,16 +57,16 @@
    [OK] http://www.cliki.net/CL-DIFFLIB
    [OK] http://www.cliki.net/cl-unicode
    [OK] http://weitz.de/cl-interpol/
-** OOP extensions
-** Data persistance (cl-serializer vs cl-store)
-   http://common-lisp.net/project/cl-perec/
-   http://www.cliki.net/cl-store
-   http://common-lisp.net/project/cl-serializer/
-   http://www.cliki.net/cl-prevalence
-   http://common-lisp.net/project/elephant/
-   http://common-lisp.net/project/cl-rdbms/
-   http://www.cliki.net/CLSQL
-   http://common-lisp.net/project/cl-sqlite/
+** DONE OOP extensions
+   [OK] http://common-lisp.net/project/closer/closer-mop.html
+** DONE Data persistance
+   [OK] http://www.cliki.net/cl-store
+   [NO] http://common-lisp.net/project/cl-serializer/
+   [NO] http://common-lisp.net/project/cl-perec/
+   [NO] http://www.cliki.net/cl-prevalence
+   [NO] http://common-lisp.net/project/elephant/
+   [NO] http://common-lisp.net/project/cl-rdbms/
+   [NO] http://common-lisp.net/project/cl-sqlite/
 ** Data Compression and Archiving
    http://www.xach.com/lisp/salza2/
    http://www.cliki.net/archive

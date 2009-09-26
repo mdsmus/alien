@@ -40,4 +40,5 @@
                :cl-unicode
                :cl-interpol
                :closer-mop
+               :cl-store
                ))

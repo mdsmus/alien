@@ -1,5 +1,9 @@
 ; -*- org -*-
 
+* clsql 4.1.1
+Kevin M. Rosenberg
+* cl-store 0.8.10
+Copyright (c) 2004 Sean Ross
 * closer to MOP 2009-09-25
 Copyright (c) 2005 - 2008 Pascal Costanza
 * cl-interpol 0.2.1
