@@ -82,12 +82,12 @@
     [OK] http://weitz.de/flexi-streams/
     [OK] http://weitz.de/chunga/
     [OK] http://www.cliki.net/trivial-gray-streams
-*** optparse
+*** DONE optparse
     [NO] http://common-lisp.net/project/cl-cli-parser/
     [OK] http://common-lisp.net/gitweb?p=projects/qitab/command-line-arguments.git;a=summary
-*** logging
-    http://common-lisp.net/project/log5/
-    http://common-lisp.net/project/cl-syslog/
+*** DONE logging
+    [OK] http://common-lisp.net/project/log5/
+    [NO] http://common-lisp.net/project/cl-syslog/
 *** DONE Interface with C
     [OK] http://www.cliki.net/CFFI
 ** graphics

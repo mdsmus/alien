@@ -56,4 +56,5 @@
                :yacc
                :cl-period
                :command-line-arguments
+               :log5
                ))
