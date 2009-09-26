@@ -45,4 +45,6 @@
                :archive
                :md5
                :ironclad
+               :cl-l10n
+               :cl-i18n
                ))

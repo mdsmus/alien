@@ -108,9 +108,9 @@
 ** DONE Cryptographic Services
    [OK] http://www.cliki.net/MD5
    [OK] http://method-combination.net/lisp/ironclad/
-** Internationalization
-   http://blog.viridian-project.de/cl-i18n/
-   http://www.cliki.net/cl-l10n
+** DONE Internationalization
+   [OK] http://blog.viridian-project.de/cl-i18n/
+   [OK] http://www.cliki.net/cl-l10n
 ** Development Tools
 *** portability
     http://www.cliki.net/trivial-features
