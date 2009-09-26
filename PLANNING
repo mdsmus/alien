@@ -74,7 +74,7 @@
    [OK] http://common-lisp.net/project/cl-muproc/
    [OK] http://common-lisp.net/project/bordeaux-threads/
 ** Operating System Services
-*** time
+*** DONE time
     [OK] http://common-lisp.net/project/cl-date-calc/index.html
     [OK] http://common-lisp.net/project/local-time/
     [OK] http://code.google.com/p/cl-period/
@@ -83,8 +83,8 @@
     [OK] http://weitz.de/chunga/
     [OK] http://www.cliki.net/trivial-gray-streams
 *** optparse
-    http://common-lisp.net/project/cl-cli-parser/
-    http://common-lisp.net/gitweb?p=projects/qitab/command-line-arguments.git;a=summary
+    [NO] http://common-lisp.net/project/cl-cli-parser/
+    [OK] http://common-lisp.net/gitweb?p=projects/qitab/command-line-arguments.git;a=summary
 *** logging
     http://common-lisp.net/project/log5/
     http://common-lisp.net/project/cl-syslog/
@@ -129,7 +129,7 @@
     http://datlisp.blogspot.com/2009/01/minor-asdf-inconvenience.html
     http://boinkor.net/archives/2007/01/explaining_some_features_of_as.html
 *** Parsers generators
-    http://www.pps.jussieu.fr/~jch/software/cl-yacc/
+    [OK] http://www.pps.jussieu.fr/~jch/software/cl-yacc/
 ** s-expressions (spath vs s-query)
    http://common-lisp.net/project/cl-walker/
    http://www.defmacro.org/ramblings/s-query.html

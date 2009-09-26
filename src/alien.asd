@@ -55,4 +55,5 @@
                :local-time
                :yacc
                :cl-period
+               :command-line-arguments
                ))

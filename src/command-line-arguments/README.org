@@ -1,0 +1,16 @@
+* Tasks
+
+*** TODO add documentation
+  Besides the comments in the code.
+
+*** TODO add counter variables
+  For verbosity flags: -v -v -v adds 3 to the default value.
+  With minimum and maximum value caps in the finalizer.
+
+*** TODO enhance layout of self-documentation
+  Have an automatic layout strategy for self-documentation.
+  Maybe output the kind of things that man(1) expects, groff(7),
+  then actually integrate with the man system.
+  Or else, build a general tool to display stuff on a terminal
+  while respecting terminal width.
+  Or output HTML and use lynx -dump or a browser.
