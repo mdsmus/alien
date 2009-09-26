@@ -49,17 +49,19 @@
    [OK] http://common-lisp.net/project/uri-template/
 ** DONE Multimedia
    http://www.cliki.net/midi
-** Strings
+** DONE Strings
    [OK] http://common-lisp.net/project/babel/
    [OK] http://weitz.de/files/cl-ppcre.tar.gz
    [OK] http://www.cliki.net/CL-DIFFLIB
    [OK] http://www.cliki.net/cl-unicode
-   http://weitz.de/cl-interpol/
+   [OK] http://weitz.de/cl-interpol/
+** OOP extensions
 ** Data persistance (cl-serializer vs cl-store)
    http://common-lisp.net/project/cl-perec/
    http://www.cliki.net/cl-store
    http://common-lisp.net/project/cl-serializer/
    http://www.cliki.net/cl-prevalence
+   http://common-lisp.net/project/elephant/
    http://common-lisp.net/project/cl-rdbms/
    http://www.cliki.net/CLSQL
    http://common-lisp.net/project/cl-sqlite/

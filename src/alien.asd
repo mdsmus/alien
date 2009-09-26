@@ -39,4 +39,5 @@
                :cl-difflib
                :cl-unicode
                :cl-interpol
+               :closer-mop
                ))
