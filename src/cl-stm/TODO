@@ -1,0 +1,28 @@
+CL-STM TODO
+===========
+
+* Start writing tutorial.
+
+* Test return values of `orelse' and `sequence'.
+
+* Make sure queues grow when they reach a full size.
+
+* Make the queue example load correctly.
+
+* Add an `empty-queue' condition.
+
+* Start writing a CL-STM tutorial.
+
+* Investigate integrating CL-STM and Rucksack.
+
+* Party, Party, Party!
+
+Wishes
+======
+
+If you have any wishes for CL-STM, please send them to the
+cl-stm-devel mailing list:
+
+http://common-lisp.net/cgi-bin/mailman/listinfo/cl-stm-devel
+
+Your ideas are much appreciated.
