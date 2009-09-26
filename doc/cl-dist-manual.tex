@@ -1443,32 +1443,6 @@ strings. START and END specify the zero indexed offsets of a sub range
 of ARRAY.
 \end{function}
 
-\begin{function}{octets-to-string}{octets encoding}[cl-ext]
-  
-\end{function}
-
-\begin{function}{string-to-octets}{string encoding}[cl-ext]
-  Convert STRING, a list string, a vector of bytes according to ENCODING.
-
-ENCODING is a keyword representing the desired character
-encoding. We gurantee that :UTF-8, :UTF-16 and :ISO-8859-1 will
-work as expected. Any other values are simply passed to the
-underlying lisp's function and the results are implementation
-dependant.
-
-On CLISP we intern the ENCODING symbol in the CHARSET package and
-pass that. On SBCL we simply pass the keyword.
-\end{function}
-
-\begin{function}{encoding-keyword-to-native}{encoding}[cl-ext]
-  Convert ENCODING, a keyword, to an object the native list
-accepts as an encoding.
-
-ENCODING can be: :UTF-8, :UTF-16, or :US-ASCII and specify the
-corresponding encodings. Any other keyword is passed, as is, to
-the underlying lisp.
-\end{function}
-
 \section{String reading}
 \label{sec:string-reading}
 
@@ -7162,6 +7136,16 @@ http://common-lisp.net/project/cffi/
 http://www.cliki.net/MD5
 
 http://method-combination.net/lisp/ironclad/
+
+
+
+\chapter{Internationalization}
+\label{cha:internationalization}
+
+cl-l10n is a portable library for handling program localization.
+http://common-lisp.net/project/cl-l10n/
+
+
 
 
 \chapter{Development tools}

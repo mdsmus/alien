@@ -179,8 +179,6 @@
    #:strcat*
    #:join-strings
    #:fold-strings
-   #:string-to-octets
-   #:octets-to-string
    #:encoding-keyword-to-native
    #:string-from-array
    #:empty-string-p
