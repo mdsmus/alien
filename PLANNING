@@ -78,9 +78,9 @@
     http://common-lisp.net/project/cl-date-calc/index.html
     http://common-lisp.net/project/local-time/
     http://code.google.com/p/cl-period/wiki/API
-*** Streams
+*** DONE Streams
     [OK] http://weitz.de/flexi-streams/
-    http://weitz.de/chunga/
+    [OK] http://weitz.de/chunga/
     [OK] http://www.cliki.net/trivial-gray-streams
 *** optparse
     http://common-lisp.net/project/cl-cli-parser/
@@ -88,7 +88,7 @@
 *** logging
     http://common-lisp.net/project/log5/
     http://common-lisp.net/project/cl-syslog/
-*** Interface with C
+*** DONE Interface with C
     [OK] http://www.cliki.net/CFFI
 ** graphics
    http://www.cliki.net/cl-cairo2

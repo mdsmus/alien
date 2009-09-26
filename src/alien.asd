@@ -50,4 +50,5 @@
                :timer
                :bordeaux-threads
                :cl-muproc
+               :chunga
                ))
