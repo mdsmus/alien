@@ -43,4 +43,6 @@
                :cl-store
                :salza2
                :archive
+               :md5
+               :ironclad
                ))

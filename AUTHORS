@@ -1,5 +1,11 @@
 ; -*- org -*-
 
+* ironclad 0.27
+Copyright (c) 2004-2008, Nathan Froyd
+* md5 1.8.5
+;;;; It was written by Pierre R. Mai, with copious input from the
+;;;; cmucl-help mailing-list hosted at cons.org, in November 2001 and
+;;;; has been placed into the public domain.
 * archive 0.7.0
 Copyright (c) 2004, Nathan Froyd.  All rights reserved.
 * salza2 2.0.7
