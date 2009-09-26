@@ -1,5 +1,9 @@
 ; -*- org -*-
 
+* salza2 2.0.7
+;;;
+;;; Copyright (c) 2007 Zachary Beane, All Rights Reserved
+
 * clsql 4.1.1
 Kevin M. Rosenberg
 * cl-store 0.8.10
