@@ -76,7 +76,7 @@
 ** Operating System Services
 *** time
     [OK] http://common-lisp.net/project/cl-date-calc/index.html
-    http://common-lisp.net/project/local-time/
+    [OK] http://common-lisp.net/project/local-time/
     http://code.google.com/p/cl-period/wiki/API
 *** DONE Streams
     [OK] http://weitz.de/flexi-streams/

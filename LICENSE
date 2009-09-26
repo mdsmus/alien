@@ -1,5 +1,50 @@
 ; -*- org -*-
 
+* date-calc
+;;; License: GNU, Version 2, June 1991
+;;;
+;;; Legal issues:
+;;; -------------
+;;; This package with all its parts is
+;;; Copyright (c) 2005 by Heiko Schroeter.
+
+;;; This package is free software; you can use, modify and redistribute
+;;; under the "GNU General Public License" and the "Artistic License".
+
+;;; This package is intended as a date-calc module for "everyday" purposes. It is not intended
+;;; , nor claims to be,
+;;; a bullet proofed implementation of 'scientific' datum calculus.
+
+;;; Parts taken from DateCalc.el (EMACS, Doug Alcorn, <doug@lathi.net>, Ver. 0.1, 2003)
+;;; and the
+;;; Perl Package "Date::Calc" Version 5.4,Copyright (c) 1995 - 2004 by Steffen Beyer.
+
+;;; Some Documentation strings are only slightly edited from DateCalc.el
+
+;;; THIS PACKAGE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR
+;;; IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
+;;; WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+* local-time
+local-time Copyright (c) 2005-2008 by Daniel Lowe
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 * bordeaux-threads
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation

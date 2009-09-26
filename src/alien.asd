@@ -52,4 +52,5 @@
                :cl-muproc
                :chunga
                :date-calc
+               :local-time
                ))
