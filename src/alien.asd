@@ -42,4 +42,5 @@
                :closer-mop
                :cl-store
                :salza2
+               :archive
                ))

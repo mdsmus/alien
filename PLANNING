@@ -67,9 +67,9 @@
    [NO] http://common-lisp.net/project/elephant/
    [NO] http://common-lisp.net/project/cl-rdbms/
    [NO] http://common-lisp.net/project/cl-sqlite/
-** Data Compression and Archiving
-   http://www.xach.com/lisp/salza2/
-   http://www.cliki.net/archive
+** DONE Data Compression and Archiving
+   [OK] http://www.xach.com/lisp/salza2/
+   [OK] http://www.cliki.net/archive
 ** Concurrence, threads, and multiprocessing
    http://common-lisp.net/project/cl-muproc/
    http://common-lisp.net/project/bordeaux-threads/
