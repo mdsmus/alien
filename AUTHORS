@@ -1,5 +1,7 @@
 ; -*- org -*-
 
+* cl-difflib 0.1
+John Wiseman
 * midi 20070618
 
 This library for reading and writing MIDI files, and for representing

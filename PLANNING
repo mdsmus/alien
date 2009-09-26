@@ -47,7 +47,7 @@
    [OK] http://common-lisp.net/project/parenscript/
    [OK] http://www.cl-user.net/asp/libs/css-lite
    [OK] http://common-lisp.net/project/uri-template/
-** Multimedia
+** DONE Multimedia
    http://www.cliki.net/midi
 ** Strings
    [OK] http://common-lisp.net/project/babel/

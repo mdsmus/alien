@@ -36,4 +36,5 @@
                :css-lite
                :uri-template
                :midi
+               :cl-difflib
                ))
