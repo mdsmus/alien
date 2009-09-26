@@ -38,4 +38,5 @@
                :midi
                :cl-difflib
                :cl-unicode
+               :cl-interpol
                ))
