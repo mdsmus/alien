@@ -77,7 +77,7 @@
 *** time
     [OK] http://common-lisp.net/project/cl-date-calc/index.html
     [OK] http://common-lisp.net/project/local-time/
-    http://code.google.com/p/cl-period/wiki/API
+    [OK] http://code.google.com/p/cl-period/
 *** DONE Streams
     [OK] http://weitz.de/flexi-streams/
     [OK] http://weitz.de/chunga/
@@ -128,6 +128,8 @@
     http://xach.livejournal.com/191187.html
     http://datlisp.blogspot.com/2009/01/minor-asdf-inconvenience.html
     http://boinkor.net/archives/2007/01/explaining_some_features_of_as.html
+*** Parsers generators
+    http://www.pps.jussieu.fr/~jch/software/cl-yacc/
 ** s-expressions (spath vs s-query)
    http://common-lisp.net/project/cl-walker/
    http://www.defmacro.org/ramblings/s-query.html

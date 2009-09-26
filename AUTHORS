@@ -1,5 +1,9 @@
 ; -*- org -*-
 
+* cl-yacc
+Copyright (c) 2005-2009 by Juliusz Chroboczek
+* cl-period 0.01
+William S. Annis
 * cl-date-calc 2009-09-26
 Daniel Lowe
 * chunga 1.0.0

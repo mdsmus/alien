@@ -53,4 +53,6 @@
                :chunga
                :date-calc
                :local-time
+               :yacc
+               :cl-period
                ))
