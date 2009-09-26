@@ -3,10 +3,8 @@
 (in-package #:cl-l10n.system)
 
 (defpackage #:cl-l10n 
-  (:use #:cl #:cl-ppcre #:flexi-streams #:cl-fad #:iterate)
+  (:use #:cl #:cl-ppcre #:flexi-streams #:cl-ext)
   (:shadow cl:format cl:formatter)
-  (:shadowing-import-from :cl-fad
-                          #:copy-stream #:copy-file)
   (:export #:locale-name
            #:category-name
            #:locale
