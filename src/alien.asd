@@ -67,4 +67,8 @@
                :skippy
                :cl-pdf
                :cl-svg
+               :metabang-bind
+               :cl-graphviz
+               :fare-csv
+               :py-configparser
                ))

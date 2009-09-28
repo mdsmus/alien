@@ -1,5 +1,13 @@
 ; -*- org -*-
 
+* py-configparser 1.0.3
+Copyright (c) 2008 Erik Huelsmann
+* fare-csv
+Fare Rideau
+* cl-graphviz 2009-09-28
+  Attila Lendvai
+* metabang-bind 2009-09-28
+Gary Warren King
 * cl-svg 2009-09-28
 ;;; Copyright (c) 2008 William S. Annis.  All rights reserved.
 * cl-pdf 2009-09-28

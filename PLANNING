@@ -90,21 +90,19 @@
     [NO] http://common-lisp.net/project/cl-syslog/
 *** DONE Interface with C
     [OK] http://www.cliki.net/CFFI
-** graphics
+** DONE graphics
    [OK] http://www.cliki.net/cl-colors
    [OK] http://www.cliki.net/cl-cairo2
    [OK] http://www.xach.com/lisp/zpng/
    [OK] http://projects.tuxee.net/cl-vectors/
    [OK] http://www.xach.com/lisp/vecto/
    [OK] http://www.xach.com/lisp/skippy/
-   http://common-lisp.net/project/cl-graphviz/
-   http://www.martin-loetzsch.de/S-DOT/index.html
+   [OK] http://common-lisp.net/project/cl-graphviz/
    [OK] http://www.fractalconcept.com/asp/vYB7/sdataQIx2WvxqMSWeDM==/sdataQucgleAq9b==
    [OK] http://code.google.com/p/cl-svg/
-** File Formats
-   http://common-lisp.net/project/cl-markdown/
-   http://www.cliki.net/fare-csv
-   http://common-lisp.net/project/py-configparser/
+** DONE File Formats
+   [OK] http://www.cliki.net/fare-csv
+   [OK] http://common-lisp.net/project/py-configparser/
 ** DONE Cryptographic Services
    [OK] http://www.cliki.net/MD5
    [OK] http://method-combination.net/lisp/ironclad/
@@ -112,6 +110,8 @@
    [OK] http://blog.viridian-project.de/cl-i18n/
    [OK] http://www.cliki.net/cl-l10n
 ** Development Tools
+*** DONE binding
+    [OK] http://common-lisp.net/project/metabang-bind/
 *** DONE portability
     [OK] http://www.cliki.net/trivial-features
     [OK] http://www.cliki.net/trivial-garbage
@@ -144,11 +144,12 @@
 ** Series
    http://series.sourceforge.net/
 * For future release
+  http://common-lisp.net/project/cl-markdown/
   http://common-lisp.net/project/cl-stm/
-http://www.cliki.net/cxml-rng
-http://www.lichteblau.com/cxml-stp/
-http://www.cliki.net/plexippus-xpath
-http://common-lisp.net/project/xuriella/
+  http://www.cliki.net/cxml-rng
+  http://www.lichteblau.com/cxml-stp/
+  http://www.cliki.net/plexippus-xpath
+  http://common-lisp.net/project/xuriella/
 * Check out (1.0)
 ** sugar
    sugar is interesting, but having to put code to enable syntax is a
