@@ -28,7 +28,7 @@
 
 
 (defpackage :http
-  (:use :common-lisp)
+  (:use :common-lisp :cl-ext)
   (:documentation
    "A simple interface to HTTP for CGI programming, mainly offerering access
      to environment variables, query strings, parsed query parameters
@@ -122,16 +122,18 @@ parse-query-string")
 (defvar *cookie-name-xlator* (make-hash-table :test #'equal)
   "translator for case insensitive cookie lookup (according to RFC2109)")
 
-(defvar +hex-char-digits+ "0123456789ABCDEF"
-  "valid digits of hexadecimal numbers, inorder")
+(define-constant +hex-char-digits+ "0123456789ABCDEF"
+  :test #'equalp
+  :documentation "valid digits of hexadecimal numbers, inorder")
 
 (defvar *http-url-encoding-charset* :utf-8
   "Charset used to url-decode HTTP query, url-encode cookies. One of
 :latin1 (alias :iso-8859-1), :latin9 (alias :iso-8859-9), :utf-8")
 
 
-(defvar +url-encode-ok-chars+ '( #\. #\/) 
-  "Characters that are ok in URL-encoding and need not be encoded.
+(define-constant +url-encode-ok-chars+ '( #\. #\/)
+  :test #'equalp
+  :documentation "Characters that are ok in URL-encoding and need not be encoded.
    Note: alphanumerics are automagically assumed to not need encoding.")
 
 ;;; potentially implementation dependent functions

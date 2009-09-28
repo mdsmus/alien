@@ -24,7 +24,7 @@
 
 
 (defpackage :html
-  (:use :common-lisp)
+  (:use :common-lisp :cl-ext)
   (:documentation
    "A simple HTML generating package. Offers standard functions for most
  HTML tags (some are missing) and special function/macros for different
@@ -67,12 +67,13 @@ jobs.")
 ;;  "default HTML header")
 
 
-(defvar +html-header+
-  "<?xml version=\"1.0\" encoding=\"utf-8\"?>
+(define-constant +html-header+
+    "<?xml version=\"1.0\" encoding=\"utf-8\"?>
 <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
 
 <html xmlns=\"http://www.w3.org/1999/xhtml\">"
-  "default html header")
+  :test #'equalp
+  :documentation "default html header")
 
 ;;; macro to generate generic HTML tag functions
 ;;; the generated functions take a list of string arguments and print 

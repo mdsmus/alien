@@ -23,6 +23,7 @@
   :licence "LGPL"
   :description "Lisp CGI utilitiles"
   :long-description "THis package contains code to support writing CGI applications in Common lisp."
+  :depends-on (:cl-extensions)
   :components ((:module "lisp-cgi-utils"
                         :serial t
                         :components ((:file "http")
