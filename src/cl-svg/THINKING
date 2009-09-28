@@ -1,0 +1,81 @@
+TODO:
+  * soon, the scary part: javascript to enliven things
+
+References:
+  http://srufaculty.sru.edu/david.dailey/svg/SVGAnimations.htm - very good
+  http://www.codedread.com/displayWebStats.svg   - dragable library!
+  http://www.carto.net/papers/svg/samples/   - some really good stuff
+  http://www.dotuscomus.com/svg/lib/library.html   - funkiness
+  http://www.svgopen.org/2002/papers/sorotokin__svg_secrets/Pan.svg
+     - simple starting place for moving stuff around
+  http://croczilla.com/svg/samples/  - VERY nice - simple
+  http://apike.ca/prog_svg.html  -  another tutorial
+
+08mar17
+  * time to add grouping so traslation, rotation, etc. can be played
+    with
+
+08mar18
+  * need to map :view-box -> viewBox=  in attribute output (utils.lisp)
+
+08mar20
+  * indenting levels of grouping now works, and paragraph filling,
+    for neater XML reading
+
+08apr11
+  * oy
+  * use multiply embedded groups to add functionality (movability,
+    transparency, color themes, etc)
+  * I have a very bad feeling a complete rewrite might be in order
+
+08apr19
+  * rewrite done, now on to gradients and symbols
+  * needed next: FILL PATTERNS, markers
+  * also needed: path and lines helper functions
+  * note that an XML element may have several classes (space-separated
+    quotes), so that different kinds of functionality can be created
+    with appropriate class groups
+   
+08apr20
+  * more powerful generalizations for the group elemens macrofied
+  * I don't understand <marker ...> elements at all
+
+08may07
+  * markers work, even if I don't get them
+  * patterns work just dandy
+  * added a top-level DRAW* definition to throw a usage warning
+
+08may08
+  * http://osku.de/svg/gui-examples/xypad.svg for trivial dragging
+  * <script /> and <style /> elements
+  * just plain ol' <g />
+
+08may10
+  * cleaning up the <text> mess
+
+08may12
+  * trivial masks
+  * fiddling with pretty pictures
+
+08may13
+  * first, wretched pass at path helpers, later improved; might need a
+    reworking, or I can announce in huge letters that only pathing
+    commands should be used within WITH-PATH and PATH
+
+08may15
+  * small tweaks, added LINK for clickable, linked items
+  * need to work more on the PATH interface - it could be smarter
+    about line breaks (fixed 08may26)
+
+08may17
+  * transformations added over the last few days; some cleanup and a
+    few more docstrings, but actual documentation is in order now
+  * the GUI stuff may belong in an entirely different library
+
+08may26
+  * documentation, documentation
+  * a few refinements and convenience macros
+  * probably ready for a first packaging - the lively GUI sorts of
+    things will be in a different library sitting on top of this one
+  * probably should add a bunch of examples to the documentation
+  * otherwise, somewhere around 95% ready for a first release

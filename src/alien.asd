@@ -66,4 +66,5 @@
                :vecto
                :skippy
                :cl-pdf
+               :cl-svg
                ))
