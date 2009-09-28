@@ -72,4 +72,5 @@
                :fare-csv
                :py-configparser
                :memoize
+               :asdf-binary-locations
                ))

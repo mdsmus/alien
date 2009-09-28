@@ -1,5 +1,7 @@
 ; -*- org -*-
 
+* asdf-binary-locations
+MIT Style License
 * memoize
 ;;; memoize.lisp is copyright 1995-2000 by me, Tim Bradshaw, and may
 ;;; be used for any purpose whatsoever by anyone. It has no warranty
