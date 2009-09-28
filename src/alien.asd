@@ -61,4 +61,7 @@
                :trivial-garbage
                :cl-cairo2
                :zpng
+               :zpb-ttf
+               :cl-vectors
+               :vecto
                ))

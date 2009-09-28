@@ -23,5 +23,5 @@
   :author "Frederic Jolliton <frederic@jolliton.com>"
   :license "LLGPL (http://opensource.franz.com/preamble.html)"
   :depends-on ("cl-paths" "zpb-ttf")
-  :components ((:module "cl-paths-ttf"
+  :components ((:module "cl-vectors"
                         :components ((:file "paths-ttf")))))

@@ -22,6 +22,6 @@
   :version "0.1.3"
   :author "Frederic Jolliton <frederic@jolliton.com>"
   :license "LLGPL (http://opensource.franz.com/preamble.html)"
-  :components ((:module "cl-aa"
+  :components ((:module "cl-vectors"
                         :components ((:file "aa")
                                      (:file "aa-bin")))))

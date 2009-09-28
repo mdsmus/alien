@@ -22,7 +22,7 @@
   :version "0.1.3"
   :author "Frederic Jolliton <frederic@jolliton.com>"
   :license "LLGPL (http://opensource.franz.com/preamble.html)"
-  :components ((:module "cl-paths"
+  :components ((:module "cl-vectors"
                         :components ((:file "paths-package")
                                      (:file "paths" :depends-on ("paths-package"))
                                      (:file "paths-annotation" :depends-on ("paths-package" "paths"))))))

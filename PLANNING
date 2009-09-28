@@ -93,7 +93,8 @@
 ** graphics
    [OK] http://www.cliki.net/cl-colors
    [OK] http://www.cliki.net/cl-cairo2
-   http://www.xach.com/lisp/zpng/
+   [OK] http://www.xach.com/lisp/zpng/
+   http://projects.tuxee.net/cl-vectors/
    http://www.xach.com/lisp/vecto/
    http://www.xach.com/lisp/skippy/
    http://common-lisp.net/project/cl-graphviz/

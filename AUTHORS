@@ -1,5 +1,11 @@
 ; -*- org -*-
 
+* zpb-ttf  1.0
+;;; Copyright (c) 2006 Zachary Beane, All Rights Reserved
+* cl-vectors 0.1.3
+Frederic Jolliton <frederic@jolliton.com>
+* vecto 1.4.3
+;;; Copyright (c) 2007 Zachary Beane, All Rights Reserved
 * zpng 1.2
 ;;; Copyright (c) 2007 Zachary Beane, All Rights Reserved
 * trivial-garbage 2009-09-28
