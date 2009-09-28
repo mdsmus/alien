@@ -1,5 +1,7 @@
 ; -*- org -*-
 
+* zpng 1.2
+;;; Copyright (c) 2007 Zachary Beane, All Rights Reserved
 * trivial-garbage 2009-09-28
   Luis Oliveira
 * cl-colors 2009-09-28

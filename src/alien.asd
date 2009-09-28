@@ -60,4 +60,5 @@
                :cl-colors
                :trivial-garbage
                :cl-cairo2
+               :zpng
                ))
