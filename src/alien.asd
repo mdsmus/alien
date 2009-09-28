@@ -64,4 +64,5 @@
                :zpb-ttf
                :cl-vectors
                :vecto
+               :skippy
                ))
