@@ -9,7 +9,8 @@
   :version "0.1"
   :licence "Public Domain / 0-clause MIT"
   :serial t
-  :depends-on (:cl-extensions
+  :depends-on (:asdf
+               :cl-extensions
                :unittest
                :regexp
                :trivial-gray-streams
