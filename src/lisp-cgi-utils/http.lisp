@@ -122,15 +122,15 @@ parse-query-string")
 (defvar *cookie-name-xlator* (make-hash-table :test #'equal)
   "translator for case insensitive cookie lookup (according to RFC2109)")
 
-(defconstant  +hex-char-digits+ "0123456789ABCDEF" "valid digits of 
-hexadecimal numbers, inorder")
+(defvar +hex-char-digits+ "0123456789ABCDEF"
+  "valid digits of hexadecimal numbers, inorder")
 
 (defvar *http-url-encoding-charset* :utf-8
   "Charset used to url-decode HTTP query, url-encode cookies. One of
 :latin1 (alias :iso-8859-1), :latin9 (alias :iso-8859-9), :utf-8")
 
 
-(defconstant +url-encode-ok-chars+ '( #\. #\/) 
+(defvar +url-encode-ok-chars+ '( #\. #\/) 
   "Characters that are ok in URL-encoding and need not be encoded.
    Note: alphanumerics are automagically assumed to not need encoding.")
 
