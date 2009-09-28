@@ -1,5 +1,11 @@
 ; -*- org -*-
 
+* trivial-garbage 2009-09-28
+  Luis Oliveira
+* cl-colors 2009-09-28
+Tamas K Papp
+* cl-cairo2 2009-09-28
+Tamas K Papp
 * log5 2009-09-26
 Copyright (c) 2007 Gary Warren King (gwking@metabang.com) 
 * command-line-arguments 2009-09-26

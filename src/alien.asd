@@ -57,4 +57,7 @@
                :cl-period
                :command-line-arguments
                :log5
+               :cl-colors
+               :trivial-garbage
+               :cl-cairo2
                ))

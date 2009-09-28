@@ -73,7 +73,7 @@
 ** DONE Concurrence, threads, and multiprocessing
    [OK] http://common-lisp.net/project/cl-muproc/
    [OK] http://common-lisp.net/project/bordeaux-threads/
-** Operating System Services
+** DONE Operating System Services
 *** DONE time
     [OK] http://common-lisp.net/project/cl-date-calc/index.html
     [OK] http://common-lisp.net/project/local-time/
@@ -91,7 +91,8 @@
 *** DONE Interface with C
     [OK] http://www.cliki.net/CFFI
 ** graphics
-   http://www.cliki.net/cl-cairo2
+   [OK] http://www.cliki.net/cl-colors
+   [OK] http://www.cliki.net/cl-cairo2
    http://common-lisp.net/project/cl-jpeg/
    http://www.xach.com/lisp/zpng/
    http://www.xach.com/lisp/vecto/
@@ -111,8 +112,9 @@
    [OK] http://blog.viridian-project.de/cl-i18n/
    [OK] http://www.cliki.net/cl-l10n
 ** Development Tools
-*** portability
-    http://www.cliki.net/trivial-features
+*** DONE portability
+    [OK] http://www.cliki.net/trivial-features
+    [OK] http://www.cliki.net/trivial-garbage
 *** memoize
     http://www.tfeb.org/lisp/hax.html#MEMOIZE
 *** profiling

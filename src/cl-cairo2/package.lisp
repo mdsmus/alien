@@ -1,7 +1,7 @@
 (in-package #:cl-cairo2-asd)
 
 (defpackage cl-cairo2
-  (:use :common-lisp :cffi :cl-colors :cl-utilities)
+  (:use :common-lisp :cffi :cl-colors :cl-ext)
   (:nicknames :cairo)
   (:export
 
