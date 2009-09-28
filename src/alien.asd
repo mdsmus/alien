@@ -65,4 +65,5 @@
                :cl-vectors
                :vecto
                :skippy
+               :cl-pdf
                ))
