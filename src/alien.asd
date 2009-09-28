@@ -9,7 +9,7 @@
   :version "0.1"
   :licence "Public Domain / 0-clause MIT"
   :serial t
-  :depends-on (:asdf
+  :depends-on (:asdf-utils
                :cl-extensions
                :unittest
                :regexp
