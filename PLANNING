@@ -115,14 +115,14 @@
 *** DONE portability
     [OK] http://www.cliki.net/trivial-features
     [OK] http://www.cliki.net/trivial-garbage
-*** memoize
-    http://www.tfeb.org/lisp/hax.html#MEMOIZE
+*** DONE memoize
+    [OK] http://www.tfeb.org/lisp/hax.html#MEMOIZE
 *** profiling
     http://www.artfulcode.net/articles/profiling-lisp-application/
     http://www-users.cs.umn.edu/~gini/lisp/profile.html
     http://www-users.cs.umn.edu/~gini/lisp/metering.cl
-*** Unit Testing
-    http://common-lisp.net/project/bese/FiveAM.html
+*** DONE Unit Testing
+    [OK] http://common-lisp.net/project/bese/FiveAM.html
 *** System dependency (build systems)
     http://www.cliki.net/asdf
     http://www.cliki.net/ASDF-Binary-Locations
@@ -130,7 +130,7 @@
     http://xach.livejournal.com/191187.html
     http://datlisp.blogspot.com/2009/01/minor-asdf-inconvenience.html
     http://boinkor.net/archives/2007/01/explaining_some_features_of_as.html
-*** Parsers generators
+*** DONE Parsers generators
     [OK] http://www.pps.jussieu.fr/~jch/software/cl-yacc/
 ** s-expressions (spath vs s-query)
    http://common-lisp.net/project/cl-walker/

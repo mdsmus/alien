@@ -71,4 +71,5 @@
                :cl-graphviz
                :fare-csv
                :py-configparser
+               :memoize
                ))

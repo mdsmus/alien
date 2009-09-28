@@ -1,5 +1,11 @@
 ; -*- org -*-
 
+* memoize
+;;; memoize.lisp is copyright 1995-2000 by me, Tim Bradshaw, and may
+;;; be used for any purpose whatsoever by anyone. It has no warranty
+;;; whatsoever. I would appreciate acknowledgement if you use it in
+;;; anger, and I would also very much appreciate any feedback or bug
+;;; fixes.
 * py-configparser
 (This is the MIT / X Consortium license as taken from 
  http://www.opensource.org/licenses/mit-license.html)
@@ -24,7 +30,6 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
 * fare-csv
 	http://www.geocities.com/SoHo/Cafe/5947/bugroff.html
 	Also under no-restriction BSD license for those who insist.
