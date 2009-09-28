@@ -109,7 +109,7 @@
 ** DONE Internationalization
    [OK] http://blog.viridian-project.de/cl-i18n/
    [OK] http://www.cliki.net/cl-l10n
-** Development Tools
+** DONE Development Tools
 *** DONE binding
     [OK] http://common-lisp.net/project/metabang-bind/
 *** DONE portability

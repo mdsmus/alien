@@ -9,6 +9,7 @@
   :version "0.1"
   :licence "Public Domain / 0-clause MIT"
   :serial t
+  :components ((:file "alien-config"))
   :depends-on (:asdf-utils
                :cl-extensions
                :unittest

@@ -7,11 +7,12 @@
 
 (export '(load* reload register register-permanently))
 
-(defvar *registry-file*
-  (merge-pathnames (make-pathname :directory '(:relative "asdf")
-                                  :name "registry"
-                                  :type "sexp")
-                   (user-homedir-pathname)))
+(eval-when (:compile-toplevel :load-toplevel :execute)
+ (defvar *registry-file*
+   (merge-pathnames (make-pathname :directory '(:relative "asdf")
+                                   :name "registry"
+                                   :type "sexp")
+                    (user-homedir-pathname))))
 
 (eval-when (:compile-toplevel :load-toplevel :execute)
   (let ((registry (probe-file *registry-file*)))
