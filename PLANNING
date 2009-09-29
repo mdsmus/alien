@@ -124,18 +124,17 @@
     [OK] http://www.cliki.net/ASDF-Binary-Locations
 *** DONE Parsers generators
     [OK] http://www.pps.jussieu.fr/~jch/software/cl-yacc/
-** s-expressions (spath vs s-query)
-   http://common-lisp.net/project/cl-walker/
-   http://www.defmacro.org/ramblings/s-query.html
-   http://www.cliki.net/spath
-** lazy programming
-   http://common-lisp.net/project/clazy/
-   http://cl-heresy.sourceforge.net/Heresy.htm
-** nondeterministic programming
+** DONE s-expressions (spath vs s-query)
+   [OK] http://common-lisp.net/project/cl-walker/
+** DONE nondeterministic programming
    http://www.cliki.net/Screamer
-** Series
+** DONE Series
    http://series.sourceforge.net/
 * For future release
+  http://www.defmacro.org/ramblings/s-query.html
+  http://www.cliki.net/spath
+  http://common-lisp.net/project/clazy/
+  http://cl-heresy.sourceforge.net/Heresy.htm
   http://common-lisp.net/project/cl-markdown/
   http://common-lisp.net/project/cl-stm/
   http://www.cliki.net/cxml-rng

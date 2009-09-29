@@ -1,5 +1,13 @@
 ; -*- org -*-
 
+* cl-walker 2009-09-28
+Copyright (c) 2002-2006, Edward Marco Baringer
+Copyright (c) 2008, Attila Lendvai
+* series 2.2.10
+Series created by Richard C. Waters
+* screamer 2009-09-28
+  Jeffrey Mark Siskind (Department of Computer Science, University of Toronto)
+  David Allen McAllester (MIT Artificial Intelligence Laboratory)
 * asdf-binary-locations
 Gary Warren King
 * memoize 2007-04-19
