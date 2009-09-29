@@ -6,7 +6,7 @@
 \title{The Common Lisp Manual}
 \author{Pedro Kroger, editor}
 \date{May 19, 2009}
-\release{0.1}
+\release{0.5}
 
 \begin{document}
 
@@ -17,26 +17,23 @@
 
 \mainmatter
 
-\part{About this project}
-\label{part:about-this-project}
-
-\chapter{Introduction}
+\chapter*{Introduction}
 \label{cha:introduction}
 
 
 
-\chapter{Acknowledgement}
+\chapter*{Acknowledgement}
 \label{cha:acknowledgement}
 
 
 
-\chapter{Authors}
+\chapter*{Authors}
 \label{cha:authors}
 
 
 
-\part{The Common Lisp standard}
-\label{part:common-lisp-standard}
+\part{The Common Lisp languag}
+\label{part:common-lisp-language}
 
 \chapter{Syntax}
 \label{cha:syntax}
@@ -6912,23 +6909,23 @@ http://puri.b9.com/
 http://common-lisp.net/project/rfc2388/
 
   (:export
-   #:parse-header
-   #:header
-   #:header-name
-   #:header-value
-   #:header-parameters
+   parse-header
+   header
+   header-name
+   header-value
+   header-parameters
 
-   #:content-type
-   #:find-header
-   #:find-parameter
-   #:find-content-disposition-header
-   #:get-file-name
+   content-type
+   find-header
+   find-parameter
+   find-content-disposition-header
+   get-file-name
 
-   #:parse-mime
-   #:mime-part
-   #:mime-part-contents
-   #:mime-part-headers
-   #:make-mime-part))
+   parse-mime
+   mime-part
+   mime-part-contents
+   mime-part-headers
+   make-mime-part))
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -6998,43 +6995,43 @@ http://weitz.de/cl-ppcre/
 http://common-lisp.net/project/babel/
 
    ;; types
-   #:unicode-char
-   #:unicode-char-code-limit
-   #:unicode-string
-   #:simple-unicode-string
+   unicode-char
+   unicode-char-code-limit
+   unicode-string
+   simple-unicode-string
    ;; fixed sharp-backslash reader
-   #:enable-sharp-backslash-syntax
-   #:set-sharp-backslash-syntax-in-readtable
+   enable-sharp-backslash-syntax
+   set-sharp-backslash-syntax-in-readtable
    ;; external formats
-   #:external-format
-   #:make-external-format
-   #:ensure-external-format
-   #:external-format-encoding
-   #:external-format-eol-style
-   #:external-format-equal
-   #:*default-eol-style*
+   external-format
+   make-external-format
+   ensure-external-format
+   external-format-encoding
+   external-format-eol-style
+   external-format-equal
+   *default-eol-style*
    ;; general user API
-   #:*default-character-encoding*
-   #:list-character-encodings
-   #:string-to-octets
-   #:octets-to-string
-   #:concatenate-strings-to-octets
-   #:string-size-in-octets
-   #:vector-size-in-chars
+   *default-character-encoding*
+   list-character-encodings
+   string-to-octets
+   octets-to-string
+   concatenate-strings-to-octets
+   string-size-in-octets
+   vector-size-in-chars
    ;; errors
-   #:character-coding-error
-   #:character-coding-error-encoding    ; accessor
-   #:character-coding-error-buffer      ; accessor
-   #:character-coding-error-position    ; accessor
-   #:character-decoding-error
-   #:character-decoding-error-octets    ; accessor
-   #:character-encoding-error
-   #:character-encoding-error-code      ; accessor
-   #:end-of-input-in-character
-   #:character-out-of-range
-   #:invalid-utf8-starter-byte
-   #:invalid-utf8-continuation-byte
-   #:overlong-utf8-sequence
+   character-coding-error
+   character-coding-error-encoding    ; accessor
+   character-coding-error-buffer      ; accessor
+   character-coding-error-position    ; accessor
+   character-decoding-error
+   character-decoding-error-octets    ; accessor
+   character-encoding-error
+   character-encoding-error-code      ; accessor
+   end-of-input-in-character
+   character-out-of-range
+   invalid-utf8-starter-byte
+   invalid-utf8-continuation-byte
+   overlong-utf8-sequence
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -7299,7 +7296,7 @@ finally, have just :X86, :PPC, etc, and add :32-BIT-CPU and
 \section{Memoization}
 \label{sec:memoization}
 
-http://www.tfeb.org/lisp/hax.html#MEMOIZE
+http://www.tfeb.org/lisp/hax.html\#MEMOIZE
 
 \section{Unit testing}
 \label{sec:unit-testing}
@@ -7319,17 +7316,13 @@ http://common-lisp.net/project/cl-containers/asdf-binary-locations/
 http://www.pps.jussieu.fr/~jch/software/cl-yacc/
 
 
-\printindex
-
 
-
 \chapter{S-expressions}
 \label{cha:s-expressions}
 
 http://common-lisp.net/project/cl-walker/
 
 
-
 \chapter{Non-deterministic programming}
 \label{cha:non-determ-progr}
 
@@ -7341,7 +7334,9 @@ http://www.cliki.net/Screamer
 
 http://series.sourceforge.net/
 
+
 
+\printindex
 
 \bibliographystyle{plain}
 \bibliography{bibliography}
