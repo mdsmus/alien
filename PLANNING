@@ -23,7 +23,7 @@
    darcs get http://common-lisp.net/project/metatilities  
    darcs get http://common-lisp.net/project/metatilities-base  
    darcs get http://common-lisp.net/project/moptilities 
-* Libraries
+* DONE Libraries
 ** DONE HTML, XML processing (test cxml, s-xml, xmls)
    http://www.cliki.net/CXML
    http://www.cliki.net/closure-html
