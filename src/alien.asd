@@ -11,6 +11,7 @@
   :serial t
   ;;:components ((:file "alien-config"))
   :depends-on (;;:asdf-utils
+               :swank
                :cl-extensions
                :unittest
                :regexp

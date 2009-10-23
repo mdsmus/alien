@@ -1,5 +1,8 @@
 ; -*- org -*-
 
+* swank
+;; This code has been placed in the Public Domain.  All warranties
+;;; are disclaimed.
 * cl-walker
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
