@@ -571,7 +571,7 @@ User home:~20t~a~%Current directory:~20t~a~%Default pathname:~20t~a
 Features:~10t~{~<~%~9t ~1,74:; ~a~>~^,~}.
 Modules:~10t~{~<~%~9t ~1,74:; ~a~>~^,~}.~%Current package:~30t~a~%"
           (software-type) (software-version) (long-site-name)
-          (short-site-name) (user-homedir-pathname) (default-directory)
+          (short-site-name) (user-homedir-pathname) (current-directory)
           *default-pathname-defaults* *features* *modules* *package*)
   #+clisp (format out "[CLISP] Current language:~30t~a~%"
                   (sys::current-language))

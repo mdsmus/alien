@@ -91,7 +91,7 @@ element-types."
       (delete-file dir))
   #-(or allegro clisp cmu lispworks) (delete-file dir))
 
-(defun default-directory ()
+(defun current-directory ()
   "The default directory."
   #+allegro (excl:current-directory)
   #+clisp (#+lisp=cl ext:default-directory #-lisp=cl lisp:default-directory)

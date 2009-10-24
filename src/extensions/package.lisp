@@ -69,7 +69,7 @@
    #:defcustom
    #:mkdir
    #:rmdir
-   #:default-directory
+   #:current-directory
    #:run-prog
    #:pipe-output
    #:pipe-input

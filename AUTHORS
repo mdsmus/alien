@@ -173,7 +173,7 @@ defcustom
 quit
 mkdir
 rmdir
-default-directory
+default-directory renamed to current-directory
 run-prog
 pipe-output
 pipe-input
