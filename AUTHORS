@@ -502,3 +502,7 @@ with-gensyms
 with-unique-names
 write-string-into-file
 xor
+* simon.belak (MIT License)
+op
+op*
+

@@ -4213,6 +4213,14 @@ See also \funr{format}
 \section{Extensions}
 \label{sec:fun-extensions}
 
+\begin{function}{op}{\rest args}[cl-ext]
+  Make an anonymous function with implicit arguments.
+\end{function}
+
+\begin{function}{op*}{\rest args}[cl-ext]
+  Make an anonymous function with implicit arguments. Defer evaluation.
+\end{function}
+
 \begin{function}{ensure-function}{function-designator}[cl-ext]
   Returns the function designated by FUNCTION-DESIGNATOR:
 if FUNCTION-DESIGNATOR is a function, it is returned, otherwise

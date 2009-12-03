@@ -251,19 +251,18 @@ BEWARE!"
     var))
 
 (defmacro if-bind (var test &body then/else)
-  "Anaphoric IF control structure for multiple values.
+  "Anaphoric IF control structure.
 
-VAR (a symbol) will be bound to the primary value of TEST.  If
-TEST's second value is true then THEN will be executed, otherwise
+VAR (a symbol) will be bound to the primary value of TEST. If
+TEST returns a true value then THEN will be executed, otherwise
 ELSE will be executed."
   (assert (first then/else)
           (then/else)
           "IF-BIND missing THEN clause.")
   (destructuring-bind (then &optional else)
       then/else
-    (with-unique-names (bool)
-      `(multiple-value-bind (,var ,bool) ,test
-	 (if ,bool ,then ,else)))))
+    `(let ((,var ,test))
+       (if ,var ,then ,else))))
 
 (defmacro aif (test then &optional else)
   "Just like IF-BIND but the var is always IT."

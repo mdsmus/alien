@@ -203,6 +203,8 @@
    #:with-collector
    #:with-collectors
    #:funcall-if
+   #:op
+   #:op*
    ;; hash tables
    #:copy-hash-table
    #:maphash-keys
