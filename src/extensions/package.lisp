@@ -42,6 +42,7 @@
    #:define-constant
    #:if-bind
    #:aif
+   #:it
    #:when-bind
    #:awhen
    #:cond-bind
@@ -234,6 +235,7 @@
    #:list-directory
    #:pathname-as-directory
    #:pathname-as-file
+   #:directory-wildcard
    #:walk-directory
    ;; math
    #:10^
