@@ -273,6 +273,12 @@
    #:defprint-object
    #:with-accessors*
    #:class-name-of
+   #:instance-slot-names
+   #:make-uninitialized-instance
+   #:uninitialized-copy
+   #:copy
+   #:shallow-copy
+   #:deep-copy
    ;; types
    #:negative-double-float
    #:negative-fixnum-p
