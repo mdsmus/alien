@@ -1,0 +1,18 @@
+\begin{macro}{if-bind}{var test \body then/else}[cl-ext]
+  Anaphoric IF control structure.
+
+VAR (a symbol) will be bound to the primary value of TEST. If
+TEST returns a true value then THEN will be executed, otherwise
+ELSE will be executed.
+\end{macro}
+
+\begin{macro}{aif}{test then \op else}[cl-ext]
+  Just like IF-BIND but the var is always IT. Very useful with
+  functions like GETHASH.
+\end{macro}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

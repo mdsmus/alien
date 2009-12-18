@@ -3,6 +3,7 @@
   :licence "Public Domain / 0-clause MIT"
   :serial t
   :depends-on (#+sbcl :sb-posix
+               #+sbcl :sb-introspect
                #+allegro :osi)
   :components ((:module "extensions"
                         :serial t

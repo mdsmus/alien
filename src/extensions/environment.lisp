@@ -141,8 +141,7 @@
 (defun getenv (var)
   #+allegro (sys:getenv var)
   #+clisp (ext:getenv var)
-  #+cmu
-  (cdr (assoc var ext:*environment-list* :test #'string=))
+  #+cmu (cdr (assoc var ext:*environment-list* :test #'string=))
   #+lispworks (lw:environment-variable var)
   #+gcl (si:getenv var)
   #+lucid (lcl:environment-variable var)
@@ -166,7 +165,8 @@
   #+gcl (si:setenv (string var) (string val))
   #+lispworks (setf (lw:environment-variable (string var)) (string val))
   #+lucid (setf (lcl:environment-variable (string var)) (string val))
-  #-(or allegro clisp cmu gcl lispworks lucid scl)
+  #+sbcl (sb-posix:putenv (format nil "~a=~a" var val))
+  #-(or allegro clisp cmu gcl lispworks lucid scl sbcl)
   (error 'not-implemented :proc (list '(setf getenv) var)))
 
 (defun argv ()
