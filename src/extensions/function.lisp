@@ -1,5 +1,20 @@
 (in-package :cl-extensions)
 
+(defun mostn (fn list)
+  "Takes a function and a list and returns a list of all the elements
+for which the function yields the highest score (along with the score
+itself)."
+  (when list
+    (let ((max-value (funcall fn (first list)))
+          (list-max nil))
+      (dolist (el list)
+        (cond ((> (funcall fn el) max-value)
+               (setf max-value (funcall fn el))
+               (setf list-max (list el)))
+              ((= (funcall fn el) max-value)
+               (push el list-max))))
+      list-max)))
+
 (declaim (inline ensure-function))	; to propagate return type.
 (declaim (ftype (function (t) (values function &optional))
                 ensure-function))

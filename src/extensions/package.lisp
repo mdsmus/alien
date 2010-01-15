@@ -188,6 +188,7 @@
    #:split-newline
    #:replace-all
    ;; functions
+   #:mostn
    #:ensure-function
    #:disjoin
    #:conjoin
