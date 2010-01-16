@@ -1,5 +1,7 @@
 ; -*- org -*-
 
+* html-entities 0.02
+Aaron Sokoloski <asokoloski@gmail.com>
 * swank 2009-10-23
 http://common-lisp.net/project/slime/doc/html/Credits.html#Credits
 * cl-walker 2009-09-28

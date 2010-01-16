@@ -35,6 +35,7 @@
                :cl-smtp
                :cl-who
                :html-template
+               :html-entities
                :parenscript
                :css-lite
                :uri-template
